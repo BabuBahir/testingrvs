@@ -1,6 +1,8 @@
 angular.module('BuildingApp',[])
     .controller('MainCtrl',function ($scope,$http,$document) {
  
+    //constructor
+    $scope.selectedTab = "Masonry";
  	//setting values from mongo ejs
  	$scope.masonaryNameGJ =$document[0].getElementById('gjName_masonry').value;
  	$scope.masonaryNameEN =$document[0].getElementById('enName_masonry').value;
@@ -36,12 +38,59 @@ angular.module('BuildingApp',[])
  	$scope.compoDescGJ =$document[0].getElementById('gjDesc_compo').value; 	 
  	$scope.compoDescHI =$document[0].getElementById('hiDesc_compo').value; 	 
 
-	$scope.form_validate =function(){	    	 
+
+ 	 $scope.check_current_tab = function(){ 	 
+   		 switch($scope.selectedTab) {
+   		 	case 'Masonry' :
+	   		 		$scope.NameEN =$scope.masonaryNameEN;
+					$scope.NameGJ =$scope.masonaryNameGJ;
+					$scope.NameHI =$scope.masonaryNameHI;
+
+					$scope.DescEN  =$scope.masonaryDescEN;
+					$scope.DescHI  =$scope.masonaryDescHI;
+					$scope.DescGJ  =$scope.masonaryDescGJ;
+			break;
+			case  'Rcc'	:
+					$scope.NameEN =$scope.rccNameEN;
+					$scope.NameGJ =$scope.rccNameGJ;
+					$scope.NameHI =$scope.rccNameHI;
+
+					$scope.DescEN  =$scope.rccDescEN;
+					$scope.DescHI  =$scope.rccDescHI;
+					$scope.DescGJ  =$scope.rccDescGJ;
+			break;
+			case  'Steel'	:
+					$scope.NameEN =$scope.steelNameEN;
+					$scope.NameGJ =$scope.steelNameGJ;
+					$scope.NameHI =$scope.steelNameHI;
+
+					$scope.DescEN  =$scope.steelDescEN;
+					$scope.DescHI  =$scope.steelDescHI;
+					$scope.DescGJ  =$scope.steelDescGJ;
+			break;
+			case  'Composite'	:
+					$scope.NameEN =$scope.compoNameEN;
+					$scope.NameGJ =$scope.compoNameGJ;
+					$scope.NameHI =$scope.compoNameHI;
+
+					$scope.DescEN  =$scope.compoDescEN;
+					$scope.DescHI  =$scope.compoDescHI;
+					$scope.DescGJ  =$scope.compoDescGJ;
+			break;
+			default:;
+   		 }
+  	 };
+
+
+
+	$scope.form_validate =function(){
+		$scope.check_current_tab();	    	 
 		$http({
 		method : "POST",
 		url : "/test" ,
+		 
 		async : false,
-		data:({"NameEN":$scope.masonaryNameEN,"NameHI":$scope.masonaryNameHI,"NameGJ":$scope.masonaryNameGJ ,"DescEN":$scope.masonaryDescEN , "DescHI":$scope.masonaryDescHI  , "DescGJ":$scope.masonaryDescGJ})
+		data:({"NameEN":$scope.NameEN,"NameHI":$scope.NameHI,"NameGJ":$scope.NameGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ , "BuildingType":$scope.selectedTab})
 		}).then(function mySucces(response) {
 
 		   //$scope.myWelcome = response.data;
@@ -49,6 +98,7 @@ angular.module('BuildingApp',[])
 		  $scope.myWelcome = response.statusText;
 		});	 
 	};
+   
 
 	$scope.Delete_img = function(img_id){
 		var r = confirm("Do you want to Delete the Image!");	
@@ -72,7 +122,7 @@ angular.module('BuildingApp',[])
 		if (r == true) {	
 			$http({
 			method : "POST",
-			url : "/Delete_video" ,
+			url : "/Delete_video" ,			
 			async : false,
 			data:({"video_id":video_id})
 			}).then(function mySucces(response) {			 
@@ -83,5 +133,9 @@ angular.module('BuildingApp',[])
 			});	 
 		};
 	};	 
+
+	$scope.current_tab = function(msg){
+		$scope.selectedTab = msg;		 
+	};
 
 });

@@ -46,16 +46,7 @@ module.exports = function(app) {
 
     app.get('/showform', function(req, res) {
         res.render('general_Info-Form.html');
-    });
-
-    app.get('/buildingTypexxx',function(req,res){
-        var buildingType = require("../models/buildingType.js");
-
-        buildingType.find({_id: "Masonry"}, function(err, data){ 
-          console.log(data);
-          res.render('building_Type _Configuration',{drinks:data[0].name});                     
-        });        
-    });
+    }); 
 
     app.get('/buildingType',controller.index);
 
@@ -72,14 +63,12 @@ module.exports = function(app) {
 
     app.post('/create', multipartMiddleware, controller.create);
     
-    app.post('/test',function(req,res){         
-        var buildingType = require("../models/buildingType.js");
-   
-        buildingType.update({_id: "Masonry"},{
+    app.post('/test',function(req,res){                                                               
+        var buildingType = require("../models/buildingType.js");     
+        buildingType.update({_id: req.body["BuildingType"]},{
             name: {"Hindi":req.body["NameHI"],"English":req.body["NameEN"],"Gujarati":req.body["NameGJ"]},
-            description : {"Hindi":req.body["DescHI"], "English":req.body["DescEN"] , "Gujarati" : req.body["DescGJ"]},
-            _id: "Masonry"          
-            },function(err, test){                                        
+            description : {"Hindi":req.body["DescHI"], "English":req.body["DescEN"] , "Gujarati" : req.body["DescGJ"]}        
+            },function(err, test){     console.log(test);              
                 if(err){res.send(err)};                  
         });
 
@@ -102,8 +91,7 @@ module.exports = function(app) {
     });
 
     app.post('/', function(req, res) {
-        console.log(req.body.user.name);
-        console.log(req.body.user.email);  
+          
         res.send('done');       
     });
 

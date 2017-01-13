@@ -5,12 +5,12 @@
         <% include ./partials/head %>         
     </head>
     <body ng-controller="MainCtrl">    
-    <form action="/create" method="post" enctype="multipart/form-data">
+    <form action="/create" method="post" enctype="multipart/form-data" >
        <!-- nav bar starts here -->
             <% include ./partials/header %>     
        <!-- nav bar ends here -->       
         <div class="container-fluid sign-up-bg_img">
-          
+                <input type="hidden" name="selectedTab" value="{{selectedTab}}">
             <div class="col-sm-10 col-sm-offset-1">
                 
                 <div class="row">
@@ -28,12 +28,19 @@
                     
                     <div class="col-sm-12"> 
                         
-                        <ul class="nav nav-tabs building-type-tabs">
-                            <li role="presentation" class="active"><a data-toggle="tab" href="#masonary">Masonary</a></li>
-                            <li role="presentation"><a data-toggle="tab" href="#rcc">RCC</a></li>
-                            <li role="presentation"><a data-toggle="tab" href="#steel">Steel</a></li>
-                            <li role="presentation"><a data-toggle="tab" href="#composite">Composite</a></li>
-                        </ul>
+                    <ul class="nav nav-tabs building-type-tabs">
+                        <li role="presentation" class="active">
+                           <a ng-click="current_tab('Masonry')" data-toggle="tab" href="#masonary">Masonary</a>
+                        </li>
+                        <li role="presentation">
+                           <a ng-click="current_tab('Rcc')" data-toggle="tab" href="#rcc">RCC</a>
+                        </li>
+                        <li role="presentation">
+                           <a ng-click="current_tab('Steel')" data-toggle="tab" href="#steel">Steel</a></li>
+                        <li role="presentation">
+                        <a ng-click="current_tab('Composite')" data-toggle="tab" href="#composite">Composite</a>
+                        </li>
+                    </ul>
                         
                         <div class="tab-content">
                             <div id="masonary" class="tab-pane fade in active">
@@ -266,14 +273,14 @@
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                             <% Rcc_img.forEach(function(post, index) { %>
-                                                        <div class="upload-files">
+                                                        <div id="<%=post._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
-                                                                <img src="<%=post.image%>" />
+                                                                <img src="<%=post.imgUrl%>" />
                                                             </div> <!-- upload-wrapper -->
                                                                               
                                                            <!-- the below div will be visible on hover -->
                                                             <div class="upload-hover-wrapper">
-                                                                <span><i class="fa fa-times"></i></span>
+                                                                <span><i ng-click="Delete_img('<%=post._id%>')"  class="fa fa-times"></i></span>
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                                 
@@ -445,14 +452,14 @@
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                             <% Steel_img.forEach(function(post, index) { %>
-                                                        <div class="upload-files">
+                                                        <div id="<%=post._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
-                                                                <img src="<%=post.image%>" />
+                                                                <img src="<%=post.imgUrl%>" />
                                                             </div> <!-- upload-wrapper -->
                                                                               
                                                            <!-- the below div will be visible on hover -->
                                                             <div class="upload-hover-wrapper">
-                                                                <span><i class="fa fa-times"></i></span>
+                                                                <span><i ng-click="Delete_img('<%=post._id%>')"  class="fa fa-times"></i></span>
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                                 
@@ -619,14 +626,14 @@
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                             <% Comp_img.forEach(function(post, index) { %>
-                                                        <div class="upload-files">
+                                                        <div id="<%=post._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
-                                                                <img src="<%=post.image%>" />
+                                                                <img src="<%=post.imgUrl%>" />
                                                             </div> <!-- upload-wrapper -->
                                                                               
                                                            <!-- the below div will be visible on hover -->
                                                             <div class="upload-hover-wrapper">
-                                                                <span><i class="fa fa-times"></i></span>
+                                                                <span><i ng-click="Delete_img('<%=post._id%>')" class="fa fa-times"></i></span>
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                                 

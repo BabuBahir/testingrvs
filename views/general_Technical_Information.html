@@ -1,208 +1,619 @@
 <!DOCTYPE html>
-<html lang=en>
-	<head>
-		<title>General Technical Information</title>
-		<% include ./partials/head %>
-	</head>
-	<body>
-	   <!-- nav bar starts here -->
-	    <% include ./partials/header %>
-	  <!-- nav bar ends here -->
-	  
-	    <div class="container-fluid sign-up-bg_img">
-		  
-	        <div class="col-sm-10 col-sm-offset-1">
-			    
-				<div class="row">
-				    <div class="col-sm-6 col-sm-offset-3">
-					  <!-- top-side ad div -->
-				        <div class="ad-space-top">
-			                <img src="./img/ad1.png" class="img-responsive ad-top" style="margin-bottom:10px">
-						</div>
-				    </div> <!-- col-sm-6 -->
-				</div> <!-- row -->
-				
-				<h3 class="select-building-type">Technical Information</h3>
-				
-				<div class="row" style="margin:0; padding-bottom:20px; background:#fff;">
-				    
-				  <!-- left-side ad div -->
-		            <div class="col-sm-3 col-md-3 col-lg-2">
-			            <div class="ad-space-left">
-			                <img src="./img/ad2.png" class="img-responsive ad-left">
-				        </div>
-						<br/>
-						<div class="ad-space-left">
-			                <img src="./img/ad2.png" class="img-responsive ad-left">
-				        </div>
-			        </div>  <!-- col-sm-3 col-md-3 col-lg-2 -->
-					
-					<div class="col-sm-6 col-md-6 col-lg-8">
-					  <!--progress bar wrapper-->		
-					  <div class="text-center">				  
-						 <div class="progress-bar progress-bar-custom"  data-percent="40" data-color="#ccc,#DC143C">
-						 	<span class="progress-bar-text">No Animation</span>
-						 </div>	 &nbsp;&nbsp;&nbsp;&nbsp;					  
-						 <div class="progress-bar progress-bar-custom"  data-percent="55" data-color="#ccc,#7FFF00">
-						 	<span class="progress-bar-text">Animation Progress</span>
-						 </div>	 &nbsp;&nbsp;&nbsp;&nbsp;					  	     
-					 	 <div class="progress-bar progress-bar-custom"  data-percent="70" data-color="#ccc,#6495ED">
-					 	 	<span class="progress-bar-text">Value Progress</span>
-					 	 </div>
-				 	 </div>  <!--text-center-->
-				 	 	<br/><br/>
-				 	  <!--progress bar wrapper-->
-						 <div class="clearfix"></div>
-						 &nbsp;
-					  <!--clearfix for progressbar-->
-						<form class="general-form-bg">
-						    <div class="row" style="margin:0">
-							    <div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>Type of Ownership <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="ownershipType">
-                                            <option>Select</option>
-                                            <option>Public</option>
-			                                <option>Private</option>
-                                        </select>
+<html lang="en">
+
+<head>
+    <title>General Technical Info Configuration</title>
+    <% include ./partials/head %>
+</head>
+
+<body>
+    <!-- nav bar starts here -->
+     	<% include ./partials/header %>
+    <!-- nav bar ends here -->
+    
+    <div class="container-fluid sign-up-bg_img">
+        <div class="col-sm-10 col-sm-offset-1">
+            <br/>
+            
+            <div class="row page-header-wrap">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h3>General Technical Info Configuration</h3> </div>
+                <div class="col-sm-2"> <span class="survey-btns-wrap">
+					        <button type="button" class="btn btn-xs add-survey-btn">Add New &nbsp; <i class="fa fa-plus-circle"></i></button> 
+						<!--    <button type="button" class="btn btn-xs edit-survey-btn">Edit &nbsp; <i class="fa fa-edit"></i></button>  -->
+					    </span> </div>
+            </div>
+            
+            <div class="row" style="margin:0; padding:15px 0 20px; background:#f5f5f5;">
+                
+                <div class="survey-question-wrap">
+                    <div class="col-sm-12">
+                        
+                      <!-- Accordion starts -->
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default survey-questn-accordion">
+                                <div class="panel-heading" >
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="question-block">Q) Lorem Ipsum proin gravida ?</a> 
+                                </div>
+                                <!-- panel-heading -->
+                                <div id="collapse1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                      
+                                      <!-- edit-part --> 
+                                        <button class="btn btn-xs btn-info pull-right">
+                                            <i class="fa fa-edit"></i> &nbsp; Edit
+                                        </button>
+                                      <!-- edit-part --> 
+                                        
+                                        <div class="col-sm-12">
+                                            <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
+                                            
+                                            <label class="radio-inline" style="margin-right:28px;">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Checkbox </label>
+                                            
+                                            <label class="radio-inline" style="margin-right:28px;">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Dropdown </label>
+                                            
+                                            <label class="radio-inline" style="margin-right:28px;">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Text Field </label>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="clearfix"></div>
+                                        <br/>
+                                        
+                                        <label style="display:block;padding-left:15px;"><b>Question Text <span style="color:#fb6969">*</span></b>
+                                        </label>
+                                        
+                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" placeholder="English"> </div>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" placeholder="ગુજરાતી"> </div>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" placeholder="हिन्दी"> </div>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-12 ">
+                                            <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
+                                            
+                                            <div class="row add-options-in-survey-bg">
+                                                <div class="col-sm-10 col-md-11" style="padding:0">
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" placeholder="English"> </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" placeholder="ગુજરાતી"> </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" placeholder="हिन्दी"> </div>
+                                                </div>
+                                                <div class="col-sm-2 col-md-1 text-center"> 
+                                                    <i class="fa fa-plus" style="color:#717171; font-size:24px; margin-top:10px; cursor:pointer;"></i> 
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- add-options-in-survey-bg -->
+                                            
+                                            <div class="row delete-options-in-survey-bg">
+                                                <div class="col-sm-10 col-md-11" style="padding:0">
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" placeholder="English"> </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" placeholder="ગુજરાતી"> </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" placeholder="हिन्दी"> </div>
+                                                </div>
+                                                <div class="col-sm-2 col-md-1 text-center"> 
+                                                    <i class="fa fa-trash" style="color:#ef3536; font-size:22px; margin-top:10px; cursor:pointer;"></i> 
+                                                </div>
+                                                
+                                            </div>
+                                            <!-- delete-options-in-survey-bg -->
+                                        </div>
+                                        <!-- col-sm-12 -->
+                                        
+                                        
+                                        <div class="clearfix"></div>
+                                        <br/>
+                                        
+                                        <div class="col-sm-12 ">
+                                            
+                                            <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" id="inlineCheckbox1" value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
+                                            
+                                            <div class="row add-options-in-survey-bg">
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control" name="name" placeholder="English"> 
+                                                </div>
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control" name="name" placeholder="નામ સહાય"> 
+                                                </div>
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control" name="name" placeholder="सहायता का नाम">
+                                                </div>
+                                            </div>
+                                            <!-- options-in-survey-bg -->
+                                        </div>
+                                        <!-- col-sm-12  -->
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-4 form-group need-assist-desc">
+                                            <textarea class="form-control" rows="3" name="description" placeholder="Type description"></textarea>
+                                        </div>
+                                        
+                                        <div class="col-sm-4 form-group need-assist-desc">
+                                            <textarea class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન"></textarea>
+                                        </div>
+                                        
+                                        <div class="col-sm-4 form-group need-assist-desc">
+                                            <textarea class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण"></textarea>
+                                        </div>
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-12">
+                                            
+                                            <div class="row add-options-in-survey-bg">
+                                                <div class="col-sm-12">
+                                                    
+                                                    <div class="row" style="margin:10px 5px 0px; display:block;">
+                                                      <!-- upload video part starts -->
+                                                        <div class="col-sm-3 col-md-2 col-lg-2 side-padding">
+                                                            <label style="margin-top:15px;">Upload Image</label>
+                                                            <br/> </div>
+                                                        
+                                                        <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> <img src="img/image-1.png" /> </div>
+                                                                <!-- upload-wrapper -->
+                                                                <!-- the below div will be visible on hover -->
+                                                                <div class="upload-hover-wrapper"> <span><i class="fa fa-times"></i></span> </div>
+                                                                <!-- upload-hover-wrapper -->
+                                                            </div>  <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                                <!-- the below div will be visible on hover -->
+                                                                <div class="upload-hover-wrapper"> 
+                                                                    <span>
+														                <div class="progress">
+                                                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                                                                <span class="sr-only">60% Complete</span> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                                <!-- upload-hover-wrapper -->
+                                                            </div>  <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files" style="vertical-align:-5px;">
+                                                                <div class="upload-wrapper"> 
+                                                                    <i class="fa fa-picture-o"></i> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files" style="vertical-align:-5px;">
+                                                                <div class="upload-wrapper">
+                                                                    <label class="" for="my-file-selector">
+                                                                    <input id="my-file-selector" type="file" style="display:none;"> <i class="fa fa-plus"></i> </label>
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div>
+                                                            <!-- upload-files -->
+                                                        </div>
+                                                        <!-- col-sm-9 col-md-10 col-lg-10 -->
+                                                      <!-- upload video part ends-->
+                                                    </div>
+                                                    <!-- row -->
+                                                </div>
+                                                <!-- col-sm-12  -->
+                                            </div>
+                                            <!-- options-in-survey-bg -->
+                                    
+                                            <div class="row add-options-in-survey-bg">
+                                                
+                                                <div class="col-sm-12">
+                                                    <div class="row" style="margin:10px 5px 0px; display:block;">
+                                                      <!-- upload video part starts -->
+                                                        <div class="col-sm-3 col-md-2 col-lg-2 side-padding">
+                                                            <label style="margin-top:15px;">Upload Video</label>
+                                                            <br/> 
+                                                        </div>
+                                                        <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                              
+                                                              <!-- the below div will be visible on hover -->
+                                                                <div class="upload-hover-wrapper"> 
+                                                                    <span class="text-center"><i class="fa fa-play-circle play-icon"></i></span> 
+                                                                </div>
+                                                              <!-- upload-hover-wrapper -->
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                              <!-- upload-wrapper -->
+                                                              
+                                                                <!-- the below div will be visible on hover -->
+                                                                <div class="upload-hover-wrapper"> 
+                                                                    <span>
+														                <div class="progress">
+                                                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                                                                <span class="sr-only">60% Complete</span> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                                <!-- upload-hover-wrapper -->
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files" style="vertical-align:-5px;">
+                                                                <div class="upload-wrapper"> 
+                                                                    <i class="fa fa-video-camera"></i> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files" style="vertical-align:-5px;">
+                                                                <div class="upload-wrapper">
+                                                                    <label class="" for="my-file-selector">
+                                                                        <input id="my-file-selector" type="file" style="display:none;"> <i class="fa fa-plus"></i> 
+                                                                    </label>
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div>
+                                                            <!-- upload-files -->
+                                                        </div>
+                                                        <!-- col-sm-2 col-md-2 col-lg-1 -->
+                                                      <!-- upload video part ends-->
+                                                    </div>
+                                                    <!-- row -->
+                                                </div>
+                                                <!-- col-sm-12  -->
+                                            
+                                            </div>
+                                            <!-- options-in-survey-bg -->
+                                        </div>
+                                        <!-- col-sm-12 -->
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-12 select-radio-btn">
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox1" value="option1" style="margin-top:-4px;"> Masonary 
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox2" value="option2" style="margin-top:-4px;"> RCC 
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox3" value="option3" style="margin-top:-4px;"> Steel 
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox4" value="option4" style="margin-top:-4px;"> Composite 
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 text-center">
+                                            <br/> 
+                                            <a href="javascript:void(0);" class="orange-btn">Save</a> 
+                                        </div>
+                                    
                                     </div>
-								</div>
-								<div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>Usage of Building <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="buildingUsage">
-                                            <option>Select</option>
-                                            <option>School</option>
-			                                <option>College</option>
-                                        </select>
+                                    <!-- panel-body -->
+                                </div>
+                                <!-- id="collapse1" -->
+                            </div>
+                            <!-- panel panel-default -->
+                            
+                            <div class="panel panel-default survey-questn-accordion">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="question-block">
+                                        Q) Lorem Ipsum proin gravida nibh vel velit ?
+                                    </a>  
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                      
+                                      <!-- edit-part --> 
+                                        <button class="btn btn-xs btn-info pull-right">
+                                            <i class="fa fa-edit"></i> &nbsp; Edit
+                                        </button>
+                                      <!-- edit-part --> 
+                                        
+                                        <div class="col-sm-12">
+                                            <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
+                                            
+                                            <label class="radio-inline checked" style="margin-right:28px;">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> Checkbox </label>
+                                            
+                                            <label class="radio-inline disabled" style="margin-right:28px;">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" disabled> Dropdown 
+                                            </label>
+                                            
+                                            <label class="radio-inline disabled" style="margin-right:28px;">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> Text Field 
+                                            </label>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="clearfix"></div>
+                                        <br/>
+                                        
+                                        <label style="display:block;padding-left:15px;"><b>Question Text <span style="color:#fb6969">*</span></b>
+                                        </label>
+                                        
+                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" readonly placeholder="Where do you live ?"> 
+                                            </div>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" readonly placeholder="તમે ક્યાં રહો છો ?"> 
+                                            </div>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name" readonly placeholder="आप कहाँ रहते हैं ?"> 
+                                            </div>
+                                        </div>
+                                        <!-- col-sm-6 -->
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-12 ">
+                                            
+                                            <div class="row delete-options-in-survey-bg">
+                                                <div class="col-sm-10 col-md-11" style="padding:0">
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" readonly placeholder="When was the last survey done ?">
+                                                    </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" readonly placeholder="ક્યારે સર્વેક્ષણ કરવામાં આવ્યું હતું ?"> 
+                                                    </div>
+                                                    <div class="col-sm-4 form-group">
+                                                        <input type="text" class="form-control" name="name" readonly placeholder="पिछले सर्वेक्षण कब किया गया था ?"> 
+                                                    </div>
+                                                </div>
+                                                <!--
+                                                <div class="col-sm-2 col-md-1 text-center"> 
+                                                    <i class="fa fa-trash" style="color:#ef3536; font-size:22px; margin-top:10px; cursor:pointer;"></i> 
+                                                </div> -->
+                                                
+                                            </div>
+                                            <!-- delete-options-in-survey-bg -->
+                                        </div>
+                                        <!-- col-sm-12 -->
+                                        
+                                        
+                                        <div class="clearfix"></div>
+                                        <br/>
+                                        
+                                        <div class="col-sm-12 ">
+                                            
+                                            <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" id="inlineCheckbox1" value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
+                                            
+                                            <div class="row add-options-in-survey-bg">
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control" name="name" readonly placeholder="How Old is your Building ?"> 
+                                                </div>
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control" name="name" readonly placeholder="જૂના કેવી રીતે તમારા મકાન છે ?"> 
+                                                </div>
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control" name="name" readonly placeholder="कितनी पुरानी अपकी इमारत है ?">
+                                                </div>
+                                            </div>
+                                            <!-- options-in-survey-bg -->
+                                        </div>
+                                        <!-- col-sm-12  -->
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-4 form-group need-assist-desc">
+                                            <textarea class="form-control" rows="3" name="description" readonly placeholder="It is 20 years old"></textarea>
+                                        </div>
+                                        
+                                        <div class="col-sm-4 form-group need-assist-desc">
+                                            <textarea class="form-control" rows="3" name="description" readonly placeholder="તે 20 વર્ષ જૂના છે"></textarea>
+                                        </div>
+                                        
+                                        <div class="col-sm-4 form-group need-assist-desc">
+                                            <textarea class="form-control" rows="3" name="description" readonly placeholder="यह 20 साल पुराना है"></textarea>
+                                        </div>
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-12">
+                                            
+                                            <div class="row add-options-in-survey-bg">
+                                                <div class="col-sm-12">
+                                                    
+                                                    <div class="row" style="margin:10px 5px 0px; display:block;">
+                                                      <!-- upload video part starts -->
+                                                        <div class="col-sm-3 col-md-2 col-lg-2 side-padding">
+                                                            <label style="margin-top:15px;">Upload Image</label>
+                                                            <br/> </div>
+                                                        
+                                                        <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                              
+                                                            </div>  <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div>  <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files" style="vertical-align:-5px;">
+                                                                <div class="upload-wrapper"> 
+                                                                    <i class="fa fa-picture-o"></i> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            
+                                                        </div>
+                                                        <!-- col-sm-9 col-md-10 col-lg-10 -->
+                                                      <!-- upload video part ends-->
+                                                    </div>
+                                                    <!-- row -->
+                                                </div>
+                                                <!-- col-sm-12  -->
+                                            </div>
+                                            <!-- options-in-survey-bg -->
+                                    
+                                            <div class="row add-options-in-survey-bg">
+                                                
+                                                <div class="col-sm-12">
+                                                    <div class="row" style="margin:10px 5px 0px; display:block;">
+                                                      <!-- upload video part starts -->
+                                                        <div class="col-sm-3 col-md-2 col-lg-2 side-padding">
+                                                            <label style="margin-top:15px;">Upload Video</label>
+                                                            <br/> 
+                                                        </div>
+                                                        <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                              
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files">
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                              <!-- upload-wrapper -->
+                                                            
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            <div class="upload-files" style="vertical-align:-5px;">
+                                                                <div class="upload-wrapper"> 
+                                                                    <i class="fa fa-video-camera"></i> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                            </div> <!-- upload-files -->
+                                                            &nbsp;
+                                                            
+                                                        </div>
+                                                        <!-- col-sm-2 col-md-2 col-lg-1 -->
+                                                      <!-- upload video part ends-->
+                                                    </div>
+                                                    <!-- row -->
+                                                </div>
+                                                <!-- col-sm-12  -->
+                                            
+                                            </div>
+                                            <!-- options-in-survey-bg -->
+                                        </div>
+                                        <!-- col-sm-12 -->
+                                        
+                                        <div class="clearfix"></div>
+                                        
+                                        <div class="col-sm-12 select-radio-btn">
+                                            <label class="checkbox-inline checked">
+                                                <input type="checkbox" id="inlineCheckbox1" value="option1" checked style="margin-top:-4px;" checked> Masonary 
+                                            </label>
+                                            <label class="checkbox-inline disabled" >
+                                                <input type="checkbox" id="inlineCheckbox2" value="option2" style="margin-top:-4px;" disabled> RCC 
+                                            </label>
+                                            <label class="checkbox-inline disabled">
+                                                <input type="checkbox" id="inlineCheckbox3" value="option3" style="margin-top:-4px;" disabled> Steel 
+                                            </label>
+                                            <label class="checkbox-inline disabled">
+                                                <input type="checkbox" id="inlineCheckbox4" value="option4" style="margin-top:-4px;" disabled> Composite 
+                                            </label>
+                                        </div>
+                                    
                                     </div>
-								</div>
-								
-								<div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>How old is your building ? <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="buildingAge">
-										    <option>Select</option>
-                                            <option>2</option>
-                                            <option>5</option>
-			                                <option>6-10</option>
-                                        </select>
-                                    </div>
-								</div>
-								<div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>Number of Storey ? <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="buildingStorey">
-                                            <option>Select</option>
-                                            <option>G+1</option>
-			                                <option>G+2</option>
-											<option>G+3</option>
-                                        </select>
-                                    </div>
-								</div>
-								
-								<div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>No. of occupants <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="occupantsCount">
-                                            <option>Select</option>
-                                            <option>10</option>
-			                                <option>11-20</option>
-											<option>21-30</option>
-                                        </select>
-                                    </div>
-								</div>
-								<div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>Is there any basement present ? <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="basement">
-                                            <option>Select</option>
-                                            <option>Available</option>
-			                                <option>Not Available</option>
-										</select>
-                                    </div>
-								</div>
-								
-								<div class="col-sm-12 col-md-6">
-								    <div class="form-group">
-									    <label><b>Type of Construction ? <span style="color:#fb6969">*</span></b></label>
-                                        <select class="form-control" name="basement">
-                                            <option>Select</option>
-                                            <option>Engineered</option>
-			                                <option>Non Engineered</option>
-										</select>
-                                    </div>
-								</div>
-					        
-							</div>  <!-- row -->
-			            </form>
-						
-                        <br/>
-                        <a href="/seismic_Assessment" class="orange-btn" style="width:190px;">Save & Continue &nbsp; &nbsp; &nbsp;<i class="fa fa-arrow-right"></i></a>
-						<h6 class="text-center"><b><i>Continue to Seismic Assessment...</i></b></h6>
-					
-					</div> <!-- col-sm-6 -->
-					
-				  <!-- right-side ad div -->
-			        <div class="col-sm-3 col-md-3 col-lg-2">
-			            <div class="ad-space-right">
-			                <img src="./img/ad4.png" class="img-responsive ad-right">
-						</div>
-						<br/>
-						<div class="ad-space-right">
-			                <img src="./img/ad4.png" class="img-responsive ad-right">
-						</div>
-			        </div> <!-- col-sm-3 col-md-3 col-lg-2 -->
-					
-				</div>  <!-- row --->
-				
-				<div class="row">
-				    <div class="col-sm-6 col-sm-offset-3">
-					  <!-- bottom-side ad div -->
-				        <div class="ad-space-top">
-			                <img src="./img/ad3.png" class="img-responsive ad-bottom" style="margin:20px auto;">
-						</div>
-				    </div> <!-- col-sm-6 -->
-				</div> <!-- row -->
-			
-			</div>  <!-- col-sm-10 -->
-		
-		</div> <!-- container-fluid -->
-	  
-	  <!--- footer  -->
-		<div class="container-fluid footer-partners">
-		    <div class="row">
-			    
-				<div class="col-sm-2 col-xs-12">
-				    <img src="./img/logo-footer.png" style="height:35px; width:170px;"></a>
-                </div> 
-				<div class="col-sm-2 col-xs-12">
-				    <img src="./img/p1.png"></a>
-                </div> 
-				<div class="col-sm-2 col-xs-12">
-				    <img src="./img/p2.png"></a>
-                </div> 
-				<div class="col-sm-2 col-xs-12">
-				    <img src="./img/p3.png"></a>
-                </div> 
-				<div class="col-sm-2 col-xs-12">
-				    <img src="./img/p4.png"></a>
-                </div> 
-			</div> <!-- row -->
-        </div>  <!-- container-fluid -->		
-	  
-	    <footer>
-		    <i class="fa fa-twitter"></i> &nbsp;
-			<i class="fa fa-facebook-square"></i>
-        </footer>
-      <!--- footer  --> 	
-	    
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-		<script src="js/jQuery-plugin-progressbar.js"></script>
-		<script>
-		   $(".progress-bar").loading();
-		</script>
-		
-	</body>
+                                    <!-- panel-body -->
+                                </div>
+                                <!-- id="collapse2" -->
+                            </div>
+                            <!-- panel panel-default -->
+                        
+                        </div>
+                        <!-- panel-group -->
+                    </div>
+                    <!-- col-sm-12 -->
+                </div>
+                <!-- survey-question-wrap -->
+            </div>
+            <!-- row --->
+        
+        </div>
+        <!-- col-sm-10 -->
+    
+    </div>
+    <!-- container-fluid -->
+    
+  <!--- footer  -->
+    <div class="container-fluid footer-partners">
+        <div class="row">
+            <div class="col-sm-2 col-xs-12"> 
+                <img src="./img/logo-footer.png" style="height:35px; width:170px;">
+            </div>
+            <div class="col-sm-2 col-xs-12"> 
+                <img src="./img/p1.png">
+            </div>
+            <div class="col-sm-2 col-xs-12"> 
+                <img src="./img/p2.png">
+            </div>
+            <div class="col-sm-2 col-xs-12"> 
+                <img src="./img/p3.png">
+            </div>
+            <div class="col-sm-2 col-xs-12"> 
+                <img src="./img/p4.png">
+            </div>
+        </div>
+        <!-- row -->
+    </div>
+    <!-- container-fluid -->
+    
+    <footer> 
+        <i class="fa fa-twitter"></i> &nbsp; <i class="fa fa-facebook-square"></i> 
+    </footer>
+  <!--- footer  -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  <!-- ****  NOTE: custom code ***** --->
+    <script>
+        $(document).ready(function () {
+            $(".upload-files").hover(function () {
+                $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");
+            });
+        });
+    </script>
+
+</body>
+
 </html>

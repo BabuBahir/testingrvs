@@ -901,6 +901,16 @@ toggle {  0% {
 
 .navbar-nav>li>.dropdown-menu { top:65px;}
 
+.question-block { display:block; color:#333; text-decoration:none; font:600 16px Lato; cursor:pointer }
+
+.question-block:hover { color:#333; text-decoration:none; cursor:pointer }
+
+.question-block:focus { color:#333; outline:none; text-decoration:none; cursor:pointer }
+
+.panel-group .survey-questn-accordion  { margin-bottom:10px; }
+
+.survey-questn-accordion>.panel-heading { background:#fff; }
+
 /**** media styles starts here ****/
 
 @media (min-width: 768px) and (max-width: 991px) { 
