@@ -87,8 +87,7 @@ angular.module('BuildingApp',[])
 		$scope.check_current_tab();	    	 
 		$http({
 		method : "POST",
-		url : "/test" ,
-		 
+		url : "/test" ,		 
 		async : false,
 		data:({"NameEN":$scope.NameEN,"NameHI":$scope.NameHI,"NameGJ":$scope.NameGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ , "BuildingType":$scope.selectedTab})
 		}).then(function mySucces(response) {
