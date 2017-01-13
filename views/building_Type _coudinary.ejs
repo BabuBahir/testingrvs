@@ -8,8 +8,7 @@
     <form action="/create" method="post" enctype="multipart/form-data">
        <!-- nav bar starts here -->
             <% include ./partials/header %>     
-       <!-- nav bar ends here -->
-      
+       <!-- nav bar ends here -->       
         <div class="container-fluid sign-up-bg_img">
           
             <div class="col-sm-10 col-sm-offset-1">
@@ -47,11 +46,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>Name <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text"   class="form-control input-text-first" id="enName" ng-model="masonaryNameEN" name="name" value="<%=drinks.English%>">
+                                                <input type="text"   class="form-control input-text-first" id="enName_masonry" ng-model="masonaryNameEN" name="name" value="<%=Masonry_names.English%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>Description <span style="color:#fb6969">*</span></b></label>
-                                                <textarea id="enDesc"  class="form-control input-text-first" rows="3" ng-model="masonaryDescEN" name="description"   placeholder="Type description"><%=desc.English%></textarea>
+                                                <textarea id="enDesc_masonry"  class="form-control input-text-first" rows="3" ng-model="masonaryDescEN" name="description"   placeholder="Type description"><%=Masonry_desc.English%></textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -67,12 +66,12 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>નામ <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="gjName" value="<%=drinks.Gujarati%>" 
+                                                <input type="text" class="form-control" id="gjName_masonry" value="<%=Masonry_names.Gujarati%>" 
                                                 name="name" ng-model="masonaryNameGJ">  
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>વર્ણન <span style="color:#fb6969">*</span></b></label>
-                                                <textarea id="gjDesc" class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન" ng-model="masonaryDescGJ"><%=desc.Gujarati%></textarea>
+                                                <textarea id="gjDesc_masonry" class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન" ng-model="masonaryDescGJ"><%=Masonry_desc.Gujarati%></textarea>
                                             </div>
                                         </form>
                                         <br/>                                                                                                       
@@ -86,11 +85,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>नाम <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" name="name" id="hiName" ng-model="masonaryNameHI" placeholder="परियोजना का नाम" value="<%=drinks.Hindi%>">
+                                                <input type="text" class="form-control" name="name" id="hiName_masonry" ng-model="masonaryNameHI" placeholder="परियोजना का नाम" value="<%=Masonry_names.Hindi%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>विवरण <span style="color:#fb6969">*</span></b></label>
-                                                <textarea id="hiDesc" class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण" ng-model="masonaryDescHI"><%=desc.Hindi%></textarea>
+                                                <textarea id="hiDesc_masonry" class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण" ng-model="masonaryDescHI"><%=Masonry_desc.Hindi%></textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -110,7 +109,7 @@
                                                         <label style="margin-top:15px;">Upload Image</label> <br/>
                                                     </div>                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                            <% posts.forEach(function(post, index) { %>
+                                            <% Masonry_img.forEach(function(post, index) { %>
                                                         <div id="<%=post._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
                                                                 <img  src="<%=post.imgUrl%>" />
@@ -151,7 +150,7 @@
                                                     </div>
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">                                                
-                                                        <% videos.forEach(function(video, index) { %>
+                                                        <% Masonry_vid.forEach(function(video, index) { %>
                                                         <div id="<%=video._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
                                                                 <img  src="<%=video.videoUrl%>" />
@@ -202,11 +201,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>Name <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="enName" ng-model="masonaryNameEN" name="name" value="<%=drinks.English%>">
+                                                <input type="text" class="form-control" id="enName_rcc" ng-model="rccNameEN" name="name" value="<%=Rcc_names.English%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>Description <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="Type description">{{myWelcome}}</textarea>
+                                                <textarea id="enDesc_rcc" class="form-control" rows="3" name="description" placeholder="Type description" ng-model="rccDescEN"><%=Rcc_desc.English%></textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -222,12 +221,12 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>નામ <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="gjName" value="<%=drinks.Gujarati%>" 
-                                                name="name" ng-model="masonaryNameGJ">  
+                                                <input type="text" class="form-control" id="gjName_rcc" value="<%=Rcc_names.Gujarati%>" 
+                                                name="name" ng-model="rccNameGJ">  
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>વર્ણન <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન"></textarea>
+                                                <textarea id="gjDesc_rcc" class="form-control" rows="3" ng-model="rccDescGJ" name="description" placeholder="પ્રકાર વર્ણન"></textarea>
                                             </div>
                                         </form>
                                         <br/>                                                                                                       
@@ -241,11 +240,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>नाम <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" name="name" id="hiName" ng-model="masonaryNameHI" placeholder="परियोजना का नाम" value="<%=drinks.Hindi%>">
+                                                <input type="text" class="form-control" name="name" id="hiName_rcc" ng-model="rccNameHI" placeholder="परियोजना का नाम" value="<%=Rcc_names.Hindi%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>विवरण <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण"></textarea>
+                                                <textarea id="hiDesc_rcc" class="form-control" rows="3" name="description" ng-mdoel="rccDescHI" placeholder="प्रकार के विवरण"></textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -266,7 +265,7 @@
                                                     </div>
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                            <% posts.forEach(function(post, index) { %>
+                                            <% Rcc_img.forEach(function(post, index) { %>
                                                         <div class="upload-files">
                                                             <div class="upload-wrapper">
                                                                 <img src="<%=post.image%>" />
@@ -381,11 +380,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>Name <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="enName" ng-model="masonaryNameEN" name="name" value="<%=drinks.English%>">
+                                                <input type="text" class="form-control" id="enName_steel" ng-model="steelNameEN" name="name" value="<%=Steel_names.English%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>Description <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="Type description">{{myWelcome}}</textarea>
+                                                <textarea id="enDesc_steel" class="form-control" rows="3" name="description" placeholder="Type description" ng-model="steelDescEN"> <%=Steel_desc.English%> </textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -401,12 +400,12 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>નામ <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="gjName" value="<%=drinks.Gujarati%>" 
-                                                name="name" ng-model="masonaryNameGJ">  
+                                                <input type="text" class="form-control" id="gjName_steel" value="<%=Steel_names.Gujarati%>" 
+                                                name="name" ng-model="steelNameGJ">  
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>વર્ણન <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન"></textarea>
+                                                <textarea id="gjDesc_steel" class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન" ng-model="steelDescGJ"><%=Steel_desc.Gujarati%></textarea>
                                             </div>
                                         </form>
                                         <br/>                                                                                                       
@@ -420,11 +419,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>नाम <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" name="name" id="hiName" ng-model="masonaryNameHI" placeholder="परियोजना का नाम" value="<%=drinks.Hindi%>">
+                                                <input type="text" class="form-control" name="name" id="hiName_steel" ng-model="steelNameHI" placeholder="परियोजना का नाम" value="<%=Steel_names.Hindi%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>विवरण <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण"></textarea>
+                                                <textarea id="hiDesc_steel" class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण" ng-model="steelDescHI"> <%=Steel_desc.Hindi%> </textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -445,7 +444,7 @@
                                                     </div>
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                            <% posts.forEach(function(post, index) { %>
+                                            <% Steel_img.forEach(function(post, index) { %>
                                                         <div class="upload-files">
                                                             <div class="upload-wrapper">
                                                                 <img src="<%=post.image%>" />
@@ -555,11 +554,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>Name <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="enName" ng-model="masonaryNameEN" name="name" value="<%=drinks.English%>">
+                                                <input type="text" class="form-control" id="enName_compo" ng-model="compoNameEN" name="name" value="<%=Comp_names.English%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>Description <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="Type description">{{myWelcome}}</textarea>
+                                                <textarea id="enDesc_compo" ng-model="compoDescEN" class="form-control" rows="3" name="description" placeholder="Type description"><%=Comp_desc.English%></textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -575,12 +574,12 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>નામ <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" id="gjName" value="<%=drinks.Gujarati%>" 
-                                                name="name" ng-model="masonaryNameGJ">  
+                                                <input type="text" class="form-control" id="gjName_compo" value="<%=Comp_names.Gujarati%>" 
+                                                name="name" ng-model="compoNameGJ">  
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>વર્ણન <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન"></textarea>
+                                                <textarea id="gjDesc_compo" ng-model="compoDescGJ" class="form-control" rows="3" name="description" placeholder="પ્રકાર વર્ણન"><%=Comp_desc.Gujarati%></textarea>
                                             </div>
                                         </form>
                                         <br/>                                                                                                       
@@ -594,11 +593,11 @@
                                         <form class="building-type-config-form">
                                             <div class="form-group col-sm-12">
                                                 <label><b>नाम <span style="color:#fb6969">*</span></b></label>
-                                                <input type="text" class="form-control" name="name" id="hiName" ng-model="masonaryNameHI" placeholder="परियोजना का नाम" value="<%=drinks.Hindi%>">
+                                                <input type="text" class="form-control" name="name" id="hiName_compo" ng-model="compoNameHI" placeholder="परियोजना का नाम" value="<%=Comp_names.Hindi%>">
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label><b>विवरण <span style="color:#fb6969">*</span></b></label>
-                                                <textarea class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण"></textarea>
+                                                <textarea id="hiDesc_compo" ng-model="compoDescHI" class="form-control" rows="3" name="description" placeholder="प्रकार के विवरण"><%=Comp_desc.Hindi%></textarea>
                                             </div>
                                         </form>
                                         <br/>
@@ -619,7 +618,7 @@
                                                     </div>
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                            <% posts.forEach(function(post, index) { %>
+                                            <% Comp_img.forEach(function(post, index) { %>
                                                         <div class="upload-files">
                                                             <div class="upload-wrapper">
                                                                 <img src="<%=post.image%>" />

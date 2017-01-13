@@ -12,8 +12,13 @@ var dummyData = "";var imgurlArray=[];
 
 module.exports = {
   index: function (req, res) {       
-      buildingType.find({}, function(err, data){    console.log(data);                       
-        res.render('building_Type _coudinary',{drinks:data[1].name , desc:data[1].description , posts:data[1].buildingImgUrl , videos:data[1].buildingVideoUrl });                     
+      buildingType.find({}, function(err, data){                      
+        res.render('building_Type _coudinary',{
+            Masonry_names:data[0].name , Masonry_desc:data[0].description , Masonry_img:data[0].buildingImgUrl , Masonry_vid:data[0].buildingVideoUrl ,
+            Rcc_names:data[1].name , Rcc_desc:data[1].description , Rcc_img : data[1].buildingImgUrl , Rcc_vid : data[1].buildingVideoUrl ,
+            Steel_names:data[2].name , Steel_desc:data[2].description , Steel_img : data[2].buildingImgUrl , Steel_vid : data[2].buildingVideoUrl ,
+            Comp_names:data[3].name , Comp_desc:data[3].description , Comp_img : data[3].buildingImgUrl , Comp_vid : data[3].buildingVideoUrl 
+          });                     
       });        
   },
   create: function (req, res) {             
