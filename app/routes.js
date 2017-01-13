@@ -68,7 +68,7 @@ module.exports = function(app) {
         buildingType.update({_id: req.body["BuildingType"]},{
             name: {"Hindi":req.body["NameHI"],"English":req.body["NameEN"],"Gujarati":req.body["NameGJ"]},
             description : {"Hindi":req.body["DescHI"], "English":req.body["DescEN"] , "Gujarati" : req.body["DescGJ"]}        
-            },function(err, test){     console.log(test);              
+            },function(err, test){                  
                 if(err){res.send(err)};                  
         });
 

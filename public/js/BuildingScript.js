@@ -107,7 +107,7 @@ angular.module('BuildingApp',[])
 			method : "POST",
 			url : "/Delete_img" ,
 			async : false,
-			data:({"image_id":img_id})
+			data:({"image_id":img_id  , "BuildingType":$scope.selectedTab })
 			}).then(function mySucces(response) {			 
 			   //$scope.myWelcome = response.data; 
 			    document.getElementById(img_id).style.display = 'none';
@@ -124,7 +124,7 @@ angular.module('BuildingApp',[])
 			method : "POST",
 			url : "/Delete_video" ,			
 			async : false,
-			data:({"video_id":video_id})
+			data:({"video_id":video_id , "BuildingType":$scope.selectedTab })
 			}).then(function mySucces(response) {			 
 			   //$scope.myWelcome = response.data; 
 			    document.getElementById(video_id).style.display = 'none';

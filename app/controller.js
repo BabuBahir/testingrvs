@@ -61,8 +61,8 @@ module.exports = {
    destory: function (req, res) {               
       var imageId = req.body.image_id;  
       cloudinary.v2.uploader.destroy(imageId, function (error, result) { 
-                buildingType.update({_id: req.body["selectedTab"]}, { $pull: { buildingImgUrl : { _id : imageId } } },{ safe: true }, function(err, test){                                        
-                        if(err){res.send(err)};        console.log(req.body["selectedTab"]);                                       
+                buildingType.update({_id: req.body["BuildingType"]}, { $pull: { buildingImgUrl : { _id : imageId } } },{ safe: true }, function(err, test){                                        
+                        if(err){res.send(err)};                                           
                         res.send("done");
                   });
           });
@@ -70,7 +70,7 @@ module.exports = {
    destory_video:function(req,res){
       var videoId = req.body.video_id;  
       cloudinary.uploader.destroy(videoId, function (error, result) {   
-                buildingType.update({_id: req.body["selectedTab"]}, { $pull: { buildingVideoUrl : { _id : videoId } } },{ safe: true }, function(err, test){                                        
+                buildingType.update({_id: req.body["BuildingType"]}, { $pull: { buildingVideoUrl : { _id : videoId } } },{ safe: true }, function(err, test){                                        
                         if(err){res.send(err)};                                            
                         res.send("done");
                   });

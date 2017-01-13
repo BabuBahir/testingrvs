@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en ng-app="BuildingApp">
     <head>
-        <title>Building Type Configuration cloudinary</title>        
+        <title>Building Type   </title>        
         <% include ./partials/head %>         
     </head>
     <body ng-controller="MainCtrl">    
@@ -22,7 +22,7 @@
                     </div> <!-- col-sm-6 -->
                 </div> <!-- row -->
                 
-                <h3 class="select-building-type">Building Type Configuration</h3>
+                <h3 class="select-building-type">Building Type </h3>
                 
                 <div class="row" style="margin:0; padding:15px 0 20px; background:#f5f5f5;">
                     
@@ -43,7 +43,7 @@
                     </ul>
                         
                         <div class="tab-content">
-                            <div id="masonary" class="tab-pane fade in active">
+                            <div id="masonary" class="tab-pane fade in active ">
                                                            
                                 <div class="row" style="margin:13px 0 20px; background:#fff;">
                                    <!-- language="english" block -->
@@ -314,41 +314,19 @@
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                                 
-                                                        <div class="upload-files">
+                                                           <% Rcc_vid.forEach(function(video, index) { %>
+                                                        <div id="<%=video._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
-                                                                <img src="img/image-1.png" />
+                                                                <img  src="<%=video.videoUrl%>" />
                                                             </div> <!-- upload-wrapper -->
                                                                               
                                                            <!-- the below div will be visible on hover -->
                                                             <div class="upload-hover-wrapper">
-                                                                <span class="text-center"><i class="fa fa-play-circle play-icon"></i></span>
+                                                             <span><i ng-click="Delete_video('<%=video._id%>')" class="fa fa-times"></i></span>
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
-                                                        &nbsp;
-                                                        <div class="upload-files">
-                                                            <div class="upload-wrapper">
-                                                                <img src="img/image-1.png" />
-                                                            </div> <!-- upload-wrapper -->
-                                                                              
-                                                           <!-- the below div will be visible on hover -->
-                                                            <div class="upload-hover-wrapper">
-                                                                <span>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                                             <span class="sr-only">60% Complete</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </span>
-                                                            </div> <!-- upload-hover-wrapper -->
-                                                        </div>  <!-- upload-files -->
-                                                        &nbsp;
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <i class="fa fa-video-camera"></i>
-                                                            </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
-                                                        &nbsp;
+                                                         &nbsp;                                                                 <% }) %>              
+                                                          
                                                         <div class="upload-files" style="vertical-align:-5px;">
                                                             <div class="upload-wrapper">
                                                                 <label class="" for="my-file-selector">
@@ -493,41 +471,19 @@
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                                 
-                                                        <div class="upload-files">
+                                                         <% Steel_vid.forEach(function(video, index) { %>
+                                                        <div id="<%=video._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
-                                                                <img src="img/image-1.png" />
+                                                                <img  src="<%=video.videoUrl%>" />
                                                             </div> <!-- upload-wrapper -->
                                                                               
                                                            <!-- the below div will be visible on hover -->
                                                             <div class="upload-hover-wrapper">
-                                                                <span class="text-center"><i class="fa fa-play-circle play-icon"></i></span>
+                                                             <span><i ng-click="Delete_video('<%=video._id%>')" class="fa fa-times"></i></span>
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
-                                                        &nbsp;
-                                                        <div class="upload-files">
-                                                            <div class="upload-wrapper">
-                                                                <img src="img/image-1.png" />
-                                                            </div> <!-- upload-wrapper -->
-                                                                              
-                                                           <!-- the below div will be visible on hover -->
-                                                            <div class="upload-hover-wrapper">
-                                                                <span>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                                             <span class="sr-only">60% Complete</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </span>
-                                                            </div> <!-- upload-hover-wrapper -->
-                                                        </div>  <!-- upload-files -->
-                                                        &nbsp;
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <i class="fa fa-video-camera"></i>
-                                                            </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
-                                                        &nbsp;
+                                                         &nbsp;                                                                 <% }) %>                          
+                                                       
                                                         <div class="upload-files" style="vertical-align:-5px;">
                                                             <div class="upload-wrapper">
                                                                 <label class="" for="my-file-selector">
@@ -667,41 +623,19 @@
                                             
                                                     <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                                 
-                                                        <div class="upload-files">
+                                                          <% Comp_vid.forEach(function(video, index) { %>
+                                                        <div id="<%=video._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
-                                                                <img src="img/image-1.png" />
+                                                                <img  src="<%=video.videoUrl%>" />
                                                             </div> <!-- upload-wrapper -->
                                                                               
                                                            <!-- the below div will be visible on hover -->
                                                             <div class="upload-hover-wrapper">
-                                                                <span class="text-center"><i class="fa fa-play-circle play-icon"></i></span>
+                                                             <span><i ng-click="Delete_video('<%=video._id%>')" class="fa fa-times"></i></span>
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
-                                                        &nbsp;
-                                                        <div class="upload-files">
-                                                            <div class="upload-wrapper">
-                                                                <img src="img/image-1.png" />
-                                                            </div> <!-- upload-wrapper -->
-                                                                              
-                                                           <!-- the below div will be visible on hover -->
-                                                            <div class="upload-hover-wrapper">
-                                                                <span>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                                             <span class="sr-only">60% Complete</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </span>
-                                                            </div> <!-- upload-hover-wrapper -->
-                                                        </div>  <!-- upload-files -->
-                                                        &nbsp;
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <i class="fa fa-video-camera"></i>
-                                                            </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
-                                                        &nbsp;
+                                                         &nbsp;                                                                 <% }) %>  
+                                                         
                                                         <div class="upload-files" style="vertical-align:-5px;">
                                                             <div class="upload-wrapper">
                                                                 <label class="" for="my-file-selector">
