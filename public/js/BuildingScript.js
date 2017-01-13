@@ -25,18 +25,37 @@ angular.module('BuildingApp',[])
 	};
 
 	$scope.Delete_img = function(img_id){
-		alert("Delete the image "+img_id);
-		$http({
-		method : "POST",
-		url : "/Delete_img" ,
-		async : false,
-		data:({"image_id":img_id})
-		}).then(function mySucces(response) {			 
-		   //$scope.myWelcome = response.data; 
-		    document.getElementById(img_id).style.display = 'none';
-		}, function myError(response) {
-		  $scope.myWelcome = response.statusText;
-		});	 
+		var r = confirm("Do you want to Delete the Image!");	
+		if (r == true) {			 
+			$http({
+			method : "POST",
+			url : "/Delete_img" ,
+			async : false,
+			data:({"image_id":img_id})
+			}).then(function mySucces(response) {			 
+			   //$scope.myWelcome = response.data; 
+			    document.getElementById(img_id).style.display = 'none';
+			}, function myError(response) {
+			  $scope.myWelcome = response.statusText;
+			});	 
+		};
 	};
+
+	$scope.Delete_video = function(video_id){
+		var r = confirm("Do you want to Delete the Video!");	
+		if (r == true) {	
+			$http({
+			method : "POST",
+			url : "/Delete_video" ,
+			async : false,
+			data:({"video_id":video_id})
+			}).then(function mySucces(response) {			 
+			   //$scope.myWelcome = response.data; 
+			    document.getElementById(video_id).style.display = 'none';
+			}, function myError(response) {
+			  $scope.myWelcome = response.statusText;
+			});	 
+		};
+	};	 
 
 });

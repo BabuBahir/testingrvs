@@ -4,8 +4,20 @@ var controller = require('./controller');
 
 module.exports = function(app) {
 
+    app.get('/user_management',function(req,res){
+        res.render('user_Management.html');
+    });
+
+    app.get('/survey',function(req,res){
+        res.render('survey_Management.html');
+    });
+
     app.get('/', function(req, res) {
-        res.render('1)sign_In.html');
+        res.render('admin_Sign-In.html');
+    });
+
+    app.get('/surveyquestions',function(req,res){
+        res.render('survey_Question&Answer.html');
     });
 
     app.get('/2', function(req, res) {
@@ -36,7 +48,7 @@ module.exports = function(app) {
         res.render('general_Info-Form.html');
     });
 
-    app.get('/buildingType',function(req,res){
+    app.get('/buildingTypexxx',function(req,res){
         var buildingType = require("../models/buildingType.js");
 
         buildingType.find({_id: "Masonry"}, function(err, data){ 
@@ -45,7 +57,7 @@ module.exports = function(app) {
         });        
     });
 
-    app.get('/cloudinaryTest',controller.index);
+    app.get('/buildingType',controller.index);
 
     app.get('/general_techincal',function(req,res){
         res.render('general_Technical_Information.html');
@@ -56,22 +68,20 @@ module.exports = function(app) {
     });
     //---some post 
     app.post('/Delete_img' , controller.destory);
+    app.post('/Delete_video' , controller.destory_video);
 
     app.post('/create', multipartMiddleware, controller.create);
     
     app.post('/test',function(req,res){         
         var buildingType = require("../models/buildingType.js");
-
-        var testBuilding = new buildingType({
+   
+        buildingType.update({_id: "Masonry"},{
             name: {"Hindi":req.body["NameHI"],"English":req.body["NameEN"],"Gujarati":req.body["NameGJ"]},
             description : {"Hindi":req.body["DescHI"], "English":req.body["DescEN"] , "Gujarati" : req.body["DescGJ"]},
-            _id: "Masonry" 
+            _id: "Masonry"          
+            },function(err, test){                                        
+                if(err){res.send(err)};                  
         });
-
-        buildingType.find({_id: "Masonry"}, function(err, test){                                        
-                        if(err){res.send(err)}; 
-                        console.log(test);
-                });
 
         // save user to database
         /* testBuilding.save(function (err) {
