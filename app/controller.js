@@ -12,8 +12,8 @@ var dummyData = "";var imgurlArray=[];
 
 module.exports = {
   index: function (req, res) {       
-      buildingType.find({_id: "Masonry"}, function(err, data){                          
-        res.render('building_Type _coudinary',{drinks:data[0].name , desc:data[0].description , posts:data[0].buildingImgUrl , videos:data[0].buildingVideoUrl });                     
+      buildingType.find({}, function(err, data){    console.log(data);                       
+        res.render('building_Type _coudinary',{drinks:data[1].name , desc:data[1].description , posts:data[1].buildingImgUrl , videos:data[1].buildingVideoUrl });                     
       });        
   },
   create: function (req, res) {             
