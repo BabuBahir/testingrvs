@@ -1,69 +1,48 @@
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var controller = require('./controller');
+var login = require('./login');
 
 module.exports = function(app) {
-
-    app.get('/user_management',function(req,res){
-        res.render('user_Management.html');
-    });
-
-    app.get('/survey',function(req,res){
-        res.render('survey_Management.html');
-    });
 
     app.get('/', function(req, res) {
         res.render('admin_Sign-In.html');
     });
 
-    app.get('/surveyquestions',function(req,res){
+    app.get('/user_management',requireLogin,function(req,res){
+        res.render('user_Management.html');
+    });
+
+    app.get('/survey',requireLogin, function(req,res){
+        res.render('survey_Management.html');
+    });
+
+    app.get('/surveyquestions',requireLogin,function(req,res){
         res.render('survey_Question&Answer.html');
-    });
+    });      
 
-    app.get('/2', function(req, res) {
-        res.render('2)select_Language.html');
-    });
-
-    app.get('/3', function(req, res) {
-        res.render('3)choose_Assessment.html');
-    });
-
-    app.get('/4', function(req, res) {
-        res.render('4)new_Survey_Or_survey_History.html');
-    });
-
-    app.get('/history', function(req, res) {
-        res.render('5)survey_History.html');
-    });
-
-    app.get('/newsurvey', function(req, res) {
-        res.render('select.html');
-    });
-
-    app.get('/addpicture', function(req, res) {
-        res.render('add_Picture.html');
-    });
-
-    app.get('/showform', function(req, res) {
+    app.get('/generalInfo',requireLogin, function(req, res) {
         res.render('general_Info-Form.html');
     }); 
 
-    app.get('/buildingType',controller.index);
+    app.get('/buildingType',requireLogin,controller.index);
 
-    app.get('/general_techincal',function(req,res){
+    app.get('/general_techincal',requireLogin,function(req,res){
         res.render('general_Technical_Information.html');
     });
     
-    app.get('/seismic_Assessment',function(req,res){
+    app.get('/seismic_Assessment',requireLogin,function(req,res){
         res.render('seismic_Assessment.html');
     });
+
     //---some post 
     app.post('/Delete_img' , controller.destory);
+
     app.post('/Delete_video' , controller.destory_video);
 
     app.post('/create', multipartMiddleware, controller.create);
     
-    app.post('/test',function(req,res){                                                               
+    app.post('/test',function(req,res){                         console.log(req.body);                                      
         var buildingType = require("../models/buildingType.js");     
         buildingType.update({_id: req.body["BuildingType"]},{
             name: {"Hindi":req.body["NameHI"],"English":req.body["NameEN"],"Gujarati":req.body["NameGJ"]},
@@ -71,16 +50,6 @@ module.exports = function(app) {
             },function(err, test){                  
                 if(err){res.send(err)};                  
         });
-
-        // save user to database
-        /* testBuilding.save(function (err) {
-            if (err) {
-                 return err;
-            }
-            else {
-                //console.log("Post saved");
-            }
-        }); */
         res.send(req.body);
     });
 
@@ -90,10 +59,11 @@ module.exports = function(app) {
         res.end('done');
     });
 
-    app.post('/', function(req, res) {
-          
+    app.post('/', function(req, res) {          
         res.send('done');       
     });
+
+    app.post('/adminLogin',login.index);
 
     app.get('/admin', function(req, res) {
         sess = req.session;
@@ -108,7 +78,6 @@ module.exports = function(app) {
     });
 
     app.get('/logout', function(req, res) {
-
         req.session.destroy(function(err) {
             if (err) {
                 console.log(err);
@@ -116,7 +85,14 @@ module.exports = function(app) {
                 res.redirect('/');
             }
         });
-
     });
+
+    function requireLogin (req, res, next) {         
+        if (!req.session.user) {
+            res.redirect('/');
+        } else {
+            next();
+        }
+    };
 
 }

@@ -1,5 +1,4 @@
-var cloudinary = require('cloudinary');
-var Model = require('./model');
+var cloudinary = require('cloudinary'); 
 var buildingType = require("../models/buildingType.js");
 
 cloudinary.config({
