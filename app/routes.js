@@ -34,6 +34,9 @@ module.exports = function(app) {
         res.render('seismic_Assessment.html');
     });
 
+    app.get('/generalInfoPartial',function(req,res){
+        res.render('generalInfo_partial.html');
+    });
     //---some post 
     app.post('/Delete_img' , controller.destory);
 

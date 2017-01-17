@@ -1,3 +1,4 @@
+ 
 angular.module('GeneralInfoApp',[])
     .controller('MainCtrl',function ($scope,$http,$document) { 
 
