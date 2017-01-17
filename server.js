@@ -10,7 +10,7 @@
  mongoose.connection.once('connected', function() {
      console.log("Connected to MongoLab");   
  });
-
+ 
  app.set('views', __dirname + '/views');
  app.engine('html', require('ejs').renderFile);
  app.set('view engine', 'ejs');

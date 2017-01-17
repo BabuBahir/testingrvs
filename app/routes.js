@@ -2,6 +2,7 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var controller = require('./controller');
 var login = require('./login');
+var questionController = require('./questionController');
 
 module.exports = function(app) {
 
@@ -21,9 +22,7 @@ module.exports = function(app) {
         res.render('survey_Question&Answer.html');
     });      
 
-    app.get('/generalInfo',requireLogin, function(req, res) {
-        res.render('general_Info-Form.html');
-    }); 
+    app.get('/generalInfo',questionController.getQuestions);     
 
     app.get('/buildingType',requireLogin,controller.index);
 
@@ -42,7 +41,7 @@ module.exports = function(app) {
 
     app.post('/create', multipartMiddleware, controller.create);
     
-    app.post('/test',function(req,res){                         console.log(req.body);                                      
+    app.post('/test',function(req,res){                                                            
         var buildingType = require("../models/buildingType.js");     
         buildingType.update({_id: req.body["BuildingType"]},{
             name: {"Hindi":req.body["NameHI"],"English":req.body["NameEN"],"Gujarati":req.body["NameGJ"]},

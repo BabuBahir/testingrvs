@@ -17,27 +17,28 @@ var questionSchema = new Schema({
     },
     needAssistance: {
         title: {
-            [
+            
                 Hindi: String,
                 English: String,
                 Gujarati: String
-            ]
+            
         },
         description: {
-            [
+            
                 Hindi: String,
                 English: String,
                 Gujarati: String
-            ]
-        }
+            
+        },
+        questionImgUrl:[{imgUrl: String, _id : String}],
+        questionVideoUrl: [{videoUrl : String , _id : String}] 
     },
-    buildingId: [{
+    buildingsAssociated: [{
         type: Schema.Types.ObjectId, 
         ref: 'BuildingType'
-    }],
-    questionImgUrl: [String],
-    questionVideoUrl: [String]
+    }]    
+
 });
 
-module.exports  = mongoose.model('Question', questionSchema);
+module.exports  = mongoose.model('question', questionSchema);
  
