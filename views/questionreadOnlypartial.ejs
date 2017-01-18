@@ -76,7 +76,9 @@
                                         
                                         <div class="col-sm-12 ">
                                             
-                                            <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()" ng-model="Option" id="inlineCheckbox1" value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
+                                            <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox"  ng-change="showAssistance()" ng-model="CheckNeedAssistance" id="inlineCheckbox1"
+                                            ng-init="$parent.CheckNeedAssistance='<% if(rawData.needAssistance.title.English != '') { %>  false <% } else { %> true <% } %> '" value="option1" style="margin-left: 17px; margin-top: -5px;">
+                                             </label>
                                         </div> <!-- col-sm-12  -->
                                         
                                        <div  ng-show="needAssistanceDiv"> 

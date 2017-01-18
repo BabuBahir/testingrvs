@@ -17,8 +17,7 @@ var questionSchema = new Schema({
         }]
     },
     needAssistance: {
-        title: {
-            
+        title: {            
                 Hindi: String,
                 English: String,
                 Gujarati: String

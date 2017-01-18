@@ -50,9 +50,9 @@
                                         </button>
                                       <!-- edit-part --> 
                                         
-                                        <div  ng-hide="QuestionTypeDiv" class="col-sm-12">
+                                        <div  class="col-sm-12">
                                             <div ng-show="testing" ng-include="'questionTypePartial'"></div>
-                                            <div ng-hide="testing" ng-include="'questionReadOnlypartial'"></div>
+                                            <div ng-hide="testing" ng-include="'questionReadOnlypartial/'+updateTime"></div>
                                         </div>
                                         <!-- col-sm-6 -->
                                         

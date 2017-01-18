@@ -44,7 +44,7 @@ module.exports = function(app) {
 
 
     // get for partials
-    app.get('/questionReadOnlypartial',questionController.fillreadOnlyPartial);     
+    app.get('/questionReadOnlypartial/:id?',questionController.fillreadOnlyPartial);     
 
     app.get('/questionTypePartial', questionController.fillQuestionPartial);     
 
