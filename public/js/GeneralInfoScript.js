@@ -2,9 +2,21 @@
 angular.module('GeneralInfoApp',[])
     .controller('MainCtrl',function ($scope,$http,$document) { 
 
-    $scope.updateTime = Date.now();          
-    $scope.CheckNeedAssistance = true;
+    $scope.updateTime = Date.now();               
     
+    $scope.Add_New = function(){
+    	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
+    };
+
+    $scope.init_checkbox = function(msg){
+    	msg= msg.trim();
+    	if(msg){
+    		$scope.CheckNeedAssistance = true;
+    	}else{
+    		$scope.CheckNeedAssistance = false;
+    	};
+    };
+
 	$scope.btn_click = function(){  
 		$scope.testing = !$scope.testing;
 		$scope.Edit_btn = !$scope.Edit_btn;
@@ -19,7 +31,7 @@ angular.module('GeneralInfoApp',[])
 		method : "POST",
 		url : "/saveQuestions" ,		 		 
 		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ , "QuestionID":Q_id})
-		}).then(function mySucces(response) { 
+		}).then(function mySucces(response) {  
 		    $scope.Call_Another_Ajax();
 			$scope.btn_click(); //call this function 
 		   //$scope.myWelcome = response.data;

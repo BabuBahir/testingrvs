@@ -46,13 +46,9 @@ module.exports = function(app) {
     // get for partials
     app.get('/questionReadOnlypartial/:id?',questionController.fillreadOnlyPartial);     
 
-    app.get('/questionTypePartial', questionController.fillQuestionPartial);     
+    app.get('/questionTypePartial', questionController.fillQuestionPartial);       
 
-    app.get('/needAssistancePartial',function(req,res){
-        res.render('needAssistancePartial.html');
-    });
-
-
+    app.get('/needAssistancePartial' , questionController.ShowAssistancePartial);
     //---some post 
     app.post('/saveQuestions', questionController.UpdateQuestions);
 
