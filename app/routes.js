@@ -14,6 +14,13 @@ module.exports = function(app) {
         res.render('user_Management.html');
     });
 
+    app.get('/index',function(req,res){
+        res.render('index.html');
+    });
+    app.get('/test',function(req,res){
+        res.render('test.html');
+    });
+
     app.get('/survey',requireLogin, function(req,res){
         res.render('survey_Management.html');
     });
@@ -47,6 +54,8 @@ module.exports = function(app) {
 
 
     //---some post 
+    app.post('/saveQuestions', questionController.UpdateQuestions);
+
     app.post('/Delete_img' , controller.destory);
 
     app.post('/Delete_video' , controller.destory_video);
