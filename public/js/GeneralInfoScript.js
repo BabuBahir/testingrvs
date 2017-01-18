@@ -26,6 +26,16 @@ angular.module('GeneralInfoApp',[])
 		$scope.needAssistanceDiv = !($scope.needAssistanceDiv) ;
 	};    	
  	
+ 	$scope.Add_question_fn = function(){ console.log($scope.ENQues);
+ 		$http({
+ 			method : "POST",
+ 			url : "/addQuestion",
+ 			data: ({"NameEN":$scope.ENQues})
+ 		}).then(function mySucces(response){
+ 			 location.reload(); //some action on success
+ 		});
+ 	};
+
  	$scope.form_submit =function(Q_id){  	    
 		$http({
 		method : "POST",

@@ -37,7 +37,7 @@
                             <div class="panel panel-default survey-questn-accordion">
                                 <div class="panel-heading">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
-                                        Q) <%=rawData[i].question.text.English%> ?
+                                        Q) <%=rawData[i].question.text.English%>  
                                     </a>  
                                 </div>
                                 <div id="collapse<%=i%>" class="panel-collapse collapse ">
@@ -52,7 +52,7 @@
                                         
                                         <div class="col-sm-12">
                                             <div ng-show="testing" ng-include="'questionTypePartial'"></div>
-                                            <div ng-hide="testing" ng-include="'questionReadOnlypartial/'+updateTime"></div>
+                                            <div ng-hide="testing" ng-include="'questionReadOnlypartial/'+<%=i%>"></div>
                                         </div>
                                         <!-- col-sm-6 -->
                                         
@@ -90,7 +90,7 @@
                                     <div class="panel-body">
                                    
                                         <div class="col-sm-12">
-                                            <div  ng-include="'questionTypePartial'"></div>                                           
+                                            <div  ng-include="'questionNewPartial'"></div>                                           
                                         </div>
                                         <!-- col-sm-6 -->
                                         

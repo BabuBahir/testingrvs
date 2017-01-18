@@ -49,7 +49,14 @@ module.exports = function(app) {
     app.get('/questionTypePartial', questionController.fillQuestionPartial);       
 
     app.get('/needAssistancePartial' , questionController.ShowAssistancePartial);
+
+    app.get('/questionNewPartial', function(req,res){
+        res.render('questionNewPartial.html');
+    });
+
     //---some post 
+    app.post('/addQuestion' , questionController.addQuestion);
+
     app.post('/saveQuestions', questionController.UpdateQuestions);
 
     app.post('/Delete_img' , controller.destory);

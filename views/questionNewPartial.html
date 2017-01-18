@@ -1,0 +1,95 @@
+ 
+    <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
+    
+    <label class="radio-inline" style="margin-right:28px;">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Checkbox </label>
+
+    <label class="radio-inline" style="margin-right:28px;">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Dropdown </label>
+
+    <label class="radio-inline" style="margin-right:28px;">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Text Field </label>
+
+<div class="clearfix"></div><br/>
+                                        
+                                      
+  <label style="display:block;padding-left:15px;"><b>Question Text <span style="color:#fb6969">*</span></b>
+                                        </label>
+    
+    <div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+    <input type="text" class="form-control" name="name" ng-model="$parent.ENQues" placeholder="English"> </div>
+    </div>
+    <!-- col-sm-6 -->
+
+    <div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="ગુજરાતી"> </div>
+    </div>
+    <!-- col-sm-6 -->
+
+    <div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="हिन्दी"> </div>
+    </div>
+    <!-- col-sm-6 -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="col-sm-12 ">
+        <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
+
+        <div class="row delete-options-in-survey-bg">
+            <div class="col-sm-10 col-md-11" style="padding:0">
+                <div class="col-sm-4 form-group">
+                    <input type="text" class="form-control" name="name"   placeholder="When was the last survey done ?">
+                </div>
+                <div class="col-sm-4 form-group">
+                    <input type="text" class="form-control" name="name"   placeholder="ક્યારે સર્વેક્ષણ કરવામાં આવ્યું હતું ?"> 
+                </div>
+                <div class="col-sm-4 form-group">
+                    <input type="text" class="form-control" name="name"   placeholder="पिछले सर्वेक्षण कब किया गया था ?"> 
+                </div>
+            </div>
+            <!--
+            <div class="col-sm-2 col-md-1 text-center"> 
+                <i class="fa fa-trash" style="color:#ef3536; font-size:22px; margin-top:10px; cursor:pointer;"></i> 
+            </div> -->
+            
+        </div>
+        <!-- delete-options-in-survey-bg -->
+    </div>
+    <!-- col-sm-12 -->
+    
+    
+    <div class="clearfix"></div>
+    <br/>
+    
+    <div class="col-sm-12 ">
+        
+        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()" ng-model="Option" id="inlineCheckbox1" value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
+    </div> <!-- col-sm-12  -->
+    
+   <div  ng-show="needAssistanceDiv"> 
+        <div  ng-include="'needAssistancePartial'"></div>
+   </div> <!--needAssistanceDiv-->                                               
+    <div class="clearfix"></div>
+    
+    <div class="col-sm-12 select-radio-btn">
+        <label class="checkbox-inline checked">
+            <input type="checkbox" id="inlineCheckbox1" value="option1" checked style="margin-top:-4px;" checked> Masonary 
+        </label>
+        <label class="checkbox-inline  " >
+            <input type="checkbox" id="inlineCheckbox2" value="option2" style="margin-top:-4px;"  > RCC 
+        </label>
+        <label class="checkbox-inline  ">
+            <input type="checkbox" id="inlineCheckbox3" value="option3" style="margin-top:-4px;"  > Steel 
+        </label>
+        <label class="checkbox-inline  ">
+            <input type="checkbox" id="inlineCheckbox4" value="option4" style="margin-top:-4px;"  > Composite 
+        </label>
+    </div>
+<div class="col-sm-12 text-center">
+    <br/> 
+    <button  ng-click="Add_question_fn()" href="javascript:void(0);" class="orange-btn">Save</button>    
+</div>
