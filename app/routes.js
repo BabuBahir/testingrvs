@@ -56,13 +56,8 @@ module.exports = function(app) {
         res.render('questionNewPartial.html');
     });
   
-    //---some post 
-    app.post('/AddNewQuestion' , function(req,res){
-        console.log(req.body);
-        res.send(req.body);
-    });
-
-    app.post('/addQuestion' , questionController.addQuestion);
+    //---some post    
+    app.post('/AddNewQuestion' , multipartMiddleware , questionController.addQuestion); 
 
     app.post('/saveQuestions', questionController.UpdateQuestions);
 

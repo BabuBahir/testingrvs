@@ -33,13 +33,7 @@ angular.module('GeneralInfoApp',[])
 	};
  	
  	$scope.Add_question_fn = function(){  
- 		$http({
- 			method : "POST",
- 			url : "/addQuestion",
- 			data: ({"NameEN":$scope.ENQues})
- 		}).then(function mySucces(response){
- 			 location.reload(); //some action on success
- 		});
+ 		  // validations
  	};
 
  	$scope.form_submit =function(Q_id){  	    

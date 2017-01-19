@@ -1,6 +1,14 @@
 var question = require("../models/question.js");
-var mongoose = require('mongoose');
 var pseudoID = Date.now(); 
+
+var cloudinary = require('cloudinary'); 
+
+cloudinary.config({
+    cloud_name: 'dcu5hz0re',
+    api_key: '812825971867232',
+    api_secret: '_pk-gzAhdI63mSU1FDXIkrXkABo'
+});
+
 module.exports = { 
 	getQuestions:function(req,res){		 
 		question.find({}, function(err, data){    
@@ -27,7 +35,7 @@ module.exports = {
 	},  
 	UpdateQuestions : function(req,res){   
 		id=req.body["QuestionID"];
-		question.findOneAndUpdate({_id:id}, { $set: { 'question.text.Hindi': req.body["NameHI"]} }, { new: true }, function (err, tank) {
+		question.findOneAndUpdate({_id:id}, { $set: { 'question.text.Hindi': req.body["NameHI"] , 'question.text.English': req.body["NameEN"] } }, { new: true }, function (err, tank) {
             if (err) return handleError(err);  
                     // call read only partial with id
  			res.send(tank);     
@@ -43,18 +51,53 @@ module.exports = {
 		res.render('needAssistancePartial/needAssistancePartialBlank');
 	},
 
-	addQuestion :function(req,res){ 
-		var post = new question({questionType: "2", _id: pseudoID, question : { text : { "English" : req.body["NameEN"]}} });
-		 console.log(req.body);
+	addQuestion :function(req,res){  
+		var QTNew = new question({
+			questionType: req.body["inlineRadioOptions"], 
+			_id: pseudoID,   //current Date_Time to prevent creation of $oid
+			question : { 
+				  text : { 
+							"English" : req.body["QT_English"],
+							"Hindi"   : req.body["QT_Hindi"],
+							"Gujarati": req.body["QT_Gujarati"]
+						}
+					},
+		  needAssistance : {
+	  				description :{
+	  						"English" : req.body["NA_DescEnglish"],
+							"Hindi"   : req.body["NA_DescHindi"],
+							"Gujarati": req.body["NA_DescGujarati"]	
+	  				},
+	  				title : {
+	  						"English" : req.body["NA_NameEnglish"],
+							"Hindi"   : req.body["NA_NameHindi"],
+							"Gujarati": req.body["NA_NameGujarati"]
+	  				}
+			  }
+
+
+		});		 
+
+		 
+ 
+		if(req.files.image_masonry.type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
+           cloudinary.v2.uploader.upload(req.files.image_masonry.path,
+                { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
+                function(err, result) {        // call back after uploading image to cloudinary    
+                	var element= {}; element.imgUrl= result.url ; element._id =result.public_id;                                                           
+                     QTNew.needAssistance.questionImgUrl.push(element);
+                  });
+           };         
+         console.log(QTNew);
 		//save model to MongoDB
-		/*post.save(function (err) {
+		 QTNew.save(function (err) {
 		  if (err) {
 				return err;
 		  }
 		  else {
-		  		res.send(err);
+	  		res.redirect('/generalInfo');
 		  	console.log("Post saved");
 		  }
-		});*/
+		});   
 	}
 };

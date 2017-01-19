@@ -1,5 +1,5 @@
-var cloudinary = require('cloudinary'); 
 var buildingType = require("../models/buildingType.js");
+var cloudinary = require('cloudinary'); 
 
 cloudinary.config({
     cloud_name: 'dcu5hz0re',
@@ -31,13 +31,14 @@ module.exports = {
                         imgurlArray = test[0].buildingImgUrl;                                                          
                         buildingType.findOneAndUpdate({_id: req.body["selectedTab"]}, { $set: { buildingImgUrl: imgurlArray}}, { new: true }, function (err, tank) {
                         if (err) return handleError(err);                      
-                        res.redirect('/buildingType');             
+                         // res.redirect('/buildingType');       NEVER RETURN ,, NEVER !!!!
                         }); 
                      
                   });
             });
-        } else if (req.files.image_masonry.originalFilename) {  // check if video is present
-            cloudinary.uploader.upload_large(req.files.image_masonry.path, 
+        };
+      if ((req.files.video_masonry.size >0) && (req.files.video_masonry.type =='application/octet-stream')) {  // check if video is present                          
+            cloudinary.uploader.upload_large(req.files.video_masonry.path, 
             function(result) {            // call back after uploading video to cloudinary 
                 result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg                        
                 buildingType.find({_id: req.body["selectedTab"]}, function(err, test){                                        
@@ -52,7 +53,7 @@ module.exports = {
                   });               
             }, 
             
-            { resource_type: "video" });
+            { resource_type: "video" });  
         } else {           
         res.redirect('/buildingType');
       };
