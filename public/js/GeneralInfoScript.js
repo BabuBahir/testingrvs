@@ -9,6 +9,15 @@ angular.module('GeneralInfoApp',[])
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     };
 
+    $scope.radioSelect = function(msg){
+    	if(msg != "textFeild"){
+    		$scope.OptionDiv = true;
+    	}else{
+    		$scope.OptionDiv = false;
+    	}
+    	console.log(msg);
+    };
+
     $scope.init_checkbox = function(msg){
     	msg= msg.trim();
     	if(msg){

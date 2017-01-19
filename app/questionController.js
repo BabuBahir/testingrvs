@@ -43,15 +43,15 @@ module.exports = {
 	},
 	ShowAssistancePartial : function(req,res){
 		question.find({}, function(err, data){   
-			res.render('needAssistancePartial/needAssistancePartialID',{question: data[2].question.text ,questionType: data[2].questionType ,rawData : data[2].needAssistance}); 
+			res.render('needAssistancePartial/needAssistancePartialID',{question: data[2].question.text ,questionType: data[2].questionType ,rawData : data[3].needAssistance}); 
 		});
 	},
  
 	ShowAssistancePartialBlank : function(req,res){
 		res.render('needAssistancePartial/needAssistancePartialBlank');
 	},
-
-	addQuestion :function(req,res){  
+ 
+	addQuestion :function(req,res){   
 		var QTNew = new question({
 			questionType: req.body["inlineRadioOptions"], 
 			_id: pseudoID,   //current Date_Time to prevent creation of $oid
@@ -72,7 +72,8 @@ module.exports = {
 	  						"English" : req.body["NA_NameEnglish"],
 							"Hindi"   : req.body["NA_NameHindi"],
 							"Gujarati": req.body["NA_NameGujarati"]
-	  				}
+	  				},
+	  				questionImgUrl : []
 			  }
 
 
@@ -84,20 +85,18 @@ module.exports = {
            cloudinary.v2.uploader.upload(req.files.image_masonry.path,
                 { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
                 function(err, result) {        // call back after uploading image to cloudinary    
-                	var element= {}; element.imgUrl= result.url ; element._id =result.public_id;                                                           
-                     QTNew.needAssistance.questionImgUrl.push(element);
+                		var element= {}; element.imgUrl= result.url ; element._id =result.public_id;                                                           
+                     	QTNew.needAssistance.questionImgUrl.push(element);
+						         //save model to MongoDB
+						QTNew.save(function (err) {
+							if (err) {
+								return err;
+							}
+							else {
+								res.redirect('/generalInfo');								 
+							}
+						});    
                   });
-           };         
-         console.log(QTNew);
-		//save model to MongoDB
-		 QTNew.save(function (err) {
-		  if (err) {
-				return err;
-		  }
-		  else {
-	  		res.redirect('/generalInfo');
-		  	console.log("Post saved");
-		  }
-		});   
+           };                   		
 	}
 };

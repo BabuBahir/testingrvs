@@ -1,14 +1,15 @@
 <form action="/AddNewQuestion" method="post" enctype="multipart/form-data"> 
+
     <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
     
     <label class="radio-inline" style="margin-right:28px;">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Checkbox </label>
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="radio_model" ng-change="radioSelect('checkBox')"  value="option1"> Checkbox </label>
 
     <label class="radio-inline" style="margin-right:28px;">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Dropdown </label>
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="radio_model" ng-change="radioSelect('dropDown')" value="option2"> Dropdown </label>
 
     <label class="radio-inline" style="margin-right:28px;">
-    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Text Field </label>
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" ng-model="radio_model" ng-change="radioSelect('textFeild')" > Text Field </label>
 
 <div class="clearfix"></div><br/>
                                         
@@ -36,19 +37,19 @@
     
     <div class="clearfix"></div>
     
-    <div class="col-sm-12 ">
+    <div ng-show="$parent.OptionDiv"  class="col-sm-12 ">
         <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
 
         <div class="row delete-options-in-survey-bg">
             <div class="col-sm-10 col-md-11" style="padding:0">
                 <div class="col-sm-4 form-group">
-                    <input type="text" class="form-control" name="name"   placeholder="When was the last survey done ?">
+                    <input type="text" class="form-control" name="name_d"   placeholder="When was the last survey done ?">
                 </div>
                 <div class="col-sm-4 form-group">
-                    <input type="text" class="form-control" name="name"   placeholder="ક્યારે સર્વેક્ષણ કરવામાં આવ્યું હતું ?"> 
+                    <input type="text" class="form-control" name="name_d"   placeholder="ક્યારે સર્વેક્ષણ કરવામાં આવ્યું હતું ?"> 
                 </div>
                 <div class="col-sm-4 form-group">
-                    <input type="text" class="form-control" name="name"   placeholder="पिछले सर्वेक्षण कब किया गया था ?"> 
+                    <input type="text" class="form-control" name="name_d"   placeholder="पिछले सर्वेक्षण कब किया गया था ?"> 
                 </div>
             </div>
             <!--
