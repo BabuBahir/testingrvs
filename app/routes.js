@@ -23,7 +23,7 @@ module.exports = function(app) {
 
     app.get('/survey',requireLogin, function(req,res){
         res.render('survey_Management.html');
-    });
+    }); 
 
     app.get('/surveyquestions',requireLogin,function(req,res){
         res.render('survey_Question&Answer.html');
