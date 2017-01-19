@@ -36,7 +36,7 @@
                             
                             <div class="panel panel-default survey-questn-accordion">
                                 <div class="panel-heading">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
+                                    <a data-toggle="collapse" ng-click="GetDataForReadOnly('<%=QTArray[i]%>')" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
                                         Q) <%=rawData[i].question.text.English%>  
                                     </a>  
                                 </div>
@@ -45,14 +45,14 @@
                                       
                                       <!-- edit-part --> 
                                         <button   ng-disabled="Edit_btn" class="btn btn-xs btn-info pull-right" 
-                                        ng-click="btn_click()">
+                                        ng-click="btn_click('<%=QTArray[i]%>')">
                                             <i class="fa fa-edit"></i> &nbsp; Edit
                                         </button>
                                       <!-- edit-part --> 
                                         
-                                        <div class="col-sm-12">
-                                            <div ng-show="testing" ng-include="'questionTypePartial'"></div>
-                                            <div ng-hide="testing" ng-include="'questionReadOnlypartial/'+'<%=QTArray[i]%>'"></div>
+                                        <div class="col-sm-12">                                             
+                                            <div ng-show="testing" ng-include="'questionTypePartial/'+QEditID"></div>
+                                            <div ng-hide="testing" ng-include="'questionReadOnlypartial/'+QEditID"> </div>
                                         </div>
                                         <!-- col-sm-6 -->
                                         

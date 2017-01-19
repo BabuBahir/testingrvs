@@ -27,7 +27,7 @@ module.exports = function(app) {
 
     app.get('/surveyquestions',requireLogin,function(req,res){
         res.render('survey_Question&Answer.html');
-    });      
+    });       
 
     app.get('/generalInfo',questionController.getQuestions);     
 
@@ -42,19 +42,26 @@ module.exports = function(app) {
     });
 
 
-
+ 
     // get for partials
     app.get('/questionReadOnlypartial/:id?',questionController.fillreadOnlyPartial);     
 
-    app.get('/questionTypePartial', questionController.fillQuestionPartial);       
+    app.get('/questionTypePartial/:id', questionController.fillQuestionPartial);       
 
     app.get('/needAssistancePartial' , questionController.ShowAssistancePartial);
+
+    app.get('/needAssistancePartialBlank', questionController.ShowAssistancePartialBlank)
 
     app.get('/questionNewPartial', function(req,res){
         res.render('questionNewPartial.html');
     });
-
+  
     //---some post 
+    app.post('/AddNewQuestion' , function(req,res){
+        console.log(req.body);
+        res.send(req.body);
+    });
+
     app.post('/addQuestion' , questionController.addQuestion);
 
     app.post('/saveQuestions', questionController.UpdateQuestions);

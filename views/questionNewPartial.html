@@ -1,4 +1,4 @@
- 
+<form action="/AddNewQuestion" method="POST"> 
     <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
     
     <label class="radio-inline" style="margin-right:28px;">
@@ -61,35 +61,36 @@
     </div>
     <!-- col-sm-12 -->
     
-    
+     
     <div class="clearfix"></div>
     <br/>
     
     <div class="col-sm-12 ">
         
-        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()" ng-model="Option" id="inlineCheckbox1" value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
+        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()" ng-model="Option" id="inlineCheckbox1" name="CB_NeedAssistance" style="margin-left: 17px; margin-top: -5px;"> </label>
     </div> <!-- col-sm-12  -->
     
    <div  ng-show="needAssistanceDiv"> 
-        <div  ng-include="'needAssistancePartial'"></div>
+        <div  ng-include="'needAssistancePartialBlank'"></div>
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>
     
     <div class="col-sm-12 select-radio-btn">
-        <label class="checkbox-inline checked">
-            <input type="checkbox" id="inlineCheckbox1" value="option1" checked style="margin-top:-4px;" checked> Masonary 
+        <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox1" name="CB_Masonary" style="margin-top:-4px;" > Masonary 
         </label>
         <label class="checkbox-inline  " >
-            <input type="checkbox" id="inlineCheckbox2" value="option2" style="margin-top:-4px;"  > RCC 
+            <input type="checkbox" id="inlineCheckbox2" name="CB_Rcc"    style="margin-top:-4px;"  > RCC 
         </label>
         <label class="checkbox-inline  ">
-            <input type="checkbox" id="inlineCheckbox3" value="option3" style="margin-top:-4px;"  > Steel 
+            <input type="checkbox" id="inlineCheckbox3" name="CB_Steel" style="margin-top:-4px;"  > Steel 
         </label>
         <label class="checkbox-inline  ">
-            <input type="checkbox" id="inlineCheckbox4" value="option4" style="margin-top:-4px;"  > Composite 
+            <input type="checkbox" id="inlineCheckbox4" name="CB_Compo"  style="margin-top:-4px;"  > Composite 
         </label>
     </div>
 <div class="col-sm-12 text-center">
     <br/> 
-    <button  ng-click="Add_question_fn()" href="javascript:void(0);" class="orange-btn">Save</button>    
+    <button type="submit" ng-click="Add_question_fn()" href="javascript:void(0);" class="orange-btn">Save</button>    
 </div>
+</form>
