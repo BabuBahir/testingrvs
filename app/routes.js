@@ -61,9 +61,11 @@ module.exports = function(app) {
     });
   
     //---some post    
+    app.post('/UpdateQuestions' , multipartMiddleware , questionController.UpdateQuestions); 
+
     app.post('/AddNewQuestion' , multipartMiddleware , questionController.addQuestion); 
 
-    app.post('/saveQuestions', questionController.UpdateQuestions);
+    app.post('/saveQuestions', questionController.SaveQuestions);
 
     app.post('/Delete_img' , controller.destory);
 

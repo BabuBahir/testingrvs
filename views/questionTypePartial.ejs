@@ -1,3 +1,4 @@
+<form action="/UpdateQuestions" method="post" enctype="multipart/form-data"> 
 <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
     
     <label class="radio-inline" style="margin-right:28px;">
@@ -101,5 +102,5 @@
     </div>
 <div class="col-sm-12 text-center">
     <br/> 
-    <button  ng-click="form_submit('<%=rawData._id%>')" href="javascript:void(0);" class="orange-btn">Save</button>    
+    <button type="submit" ng-click="form_submit('<%=rawData._id%>')" href="javascript:void(0);" class="orange-btn">Save</button>    
 </div>
