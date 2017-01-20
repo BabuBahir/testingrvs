@@ -1,4 +1,4 @@
-      <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
+<label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
     
     <label class="radio-inline" style="margin-right:28px;">
         <input type="radio" ng-model="formData.checkbox"   value="option1" ng-change="radioSelect('checkBox')"
@@ -11,9 +11,9 @@
     </label>
 
     <label class="radio-inline" style="margin-right:28px;">
-        <input type="radio"  ng-model="formData.checkbox"   value="option3"  ng-change="radioSelect('textFeild')"  
-        <% if(questionType == '2') {%>checked<% } else { %>  <%}%> > Text Field 
-    </label>
+        <input type="radio"  ng-model="formData.checkbox"   ng-change="radioSelect('textFeild')"  
+        <% if(questionType == '2'){%>checked<%}%> > Text Field 
+    </label>   
 
 <div class="clearfix"></div><br/>
                                         

@@ -2,6 +2,8 @@
 angular.module('GeneralInfoApp',[])
     .controller('MainCtrl',function ($scope,$http,$document) { 
 
+     
+
     $scope.updateTime = Date.now();               
     $scope.QEditID = 'third';   
      
