@@ -33,10 +33,7 @@ var questionSchema = new Schema({
         questionImgUrl:[{imgUrl: String, _id : String}],
         questionVideoUrl: [{videoUrl : String , _id : String}] 
     },
-    buildingsAssociated: [{
-        type: Schema.Types.ObjectId, 
-        ref: 'BuildingType'
-    }]    
+    buildingsAssociated: [{_id: String}]    
 
 });
 

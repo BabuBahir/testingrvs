@@ -24,7 +24,7 @@ module.exports = {
 	fillQuestionPartial : function(req,res){
 		id=req.params.id;   
 		question.find({_id:id}, function(err, data){   // data[0] has the requied question
-			res.render('questionTypePartial',{ question: data[0].question.text , questionType: data[0].questionType , rawData : data[0]});
+			res.render('questionTypePartial',{ question: data[0].question.text , questionType: data[0].questionType , rawData : data[0] , Q_id : id});
 		});  
 	},
 	fillreadOnlyPartial : function(req,res){	 
@@ -33,6 +33,13 @@ module.exports = {
 			res.render('questionreadOnlypartial',{question: data[0].question.text ,questionType: data[0].questionType ,rawData : data[0]}); 
 		});  
 	},  
+
+	Na_WithID_Editable : function(req,res){
+		id=req.params.id;
+		question.find({}, function(err, data){  // data[0] has the requied question
+			res.render('needAssistancePartial/needAssistanceIDEditable',{rawData : data[4].needAssistance}); 
+		});
+	},
 	UpdateQuestions : function(req,res){   
 		id=req.body["QuestionID"];
 		question.findOneAndUpdate({_id:id}, { $set: { 'question.text.Hindi': req.body["NameHI"] , 'question.text.English': req.body["NameEN"] } }, { new: true }, function (err, tank) {
@@ -52,34 +59,60 @@ module.exports = {
 	},
  
 	addQuestion :function(req,res){   
-		var QTNew = new question({
-			questionType: req.body["inlineRadioOptions"], 
-			_id: pseudoID,   //current Date_Time to prevent creation of $oid
-			question : { 
-				  text : { 
-							"English" : req.body["QT_English"],
-							"Hindi"   : req.body["QT_Hindi"],
-							"Gujarati": req.body["QT_Gujarati"]
-						}
-					},
-		  needAssistance : {
-	  				description :{
-	  						"English" : req.body["NA_DescEnglish"],
-							"Hindi"   : req.body["NA_DescHindi"],
-							"Gujarati": req.body["NA_DescGujarati"]	
-	  				},
-	  				title : {
-	  						"English" : req.body["NA_NameEnglish"],
-							"Hindi"   : req.body["NA_NameHindi"],
-							"Gujarati": req.body["NA_NameGujarati"]
-	  				},
-	  				questionImgUrl : []
-			  }
+ 
+	    buildingObj = [];
+
+		if((req.body["CB_Masonary"]) =='on') 
+				buildingObj.push({_id : 'Masonry'});
+
+		if((req.body["CB_Rcc"]) =='on')
+				buildingObj.push({_id : 'Rcc'});
+
+		if((req.body["CB_Steel"]) =='on')
+				buildingObj.push({_id : 'Steel'});
+
+		if((req.body["CB_Compo"]) =='on')
+				buildingObj.push({_id : 'Composite'}); 	
 
 
-		});		 
 
+			var QTNew = new question({			
+				_id: pseudoID,   //current Date_Time to prevent creation of $oid
+				question : { 
+					  text : { 
+								"English" : req.body["QT_English"],
+								"Hindi"   : req.body["QT_Hindi"],
+								"Gujarati": req.body["QT_Gujarati"]
+							}
+						},
+			  needAssistance : {
+		  				description :{
+		  						"English" : req.body["NA_DescEnglish"],
+								"Hindi"   : req.body["NA_DescHindi"],
+								"Gujarati": req.body["NA_DescGujarati"]	
+		  				},
+		  				title : {
+		  						"English" : req.body["NA_NameEnglish"],
+								"Hindi"   : req.body["NA_NameHindi"],
+								"Gujarati": req.body["NA_NameGujarati"]
+		  				},
+		  				questionImgUrl : []
+				  },
+			   	buildingsAssociated : buildingObj				
+			    
+			});
+		
+			 console.log(QTNew);
+ 
 		 
+		 QTNew.save(function (err) {
+							if (err) {
+								return err;
+							}
+							else {
+								res.redirect('/generalInfo');								 
+							}
+						});   
  
 		if(req.files.image_masonry.type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
            cloudinary.v2.uploader.upload(req.files.image_masonry.path,
@@ -97,6 +130,6 @@ module.exports = {
 							}
 						});    
                   });
-           };                   		
+           };                 		
 	}
 };

@@ -68,10 +68,10 @@
     
     <div class="col-sm-12 ">
         
-        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()" ng-model="Option" id="inlineCheckbox1" name="CB_NeedAssistance" style="margin-left: 17px; margin-top: -5px;"> </label>
+        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance_create()" ng-model="Option" id="inlineCheckbox1" name="CB_NeedAssistance" style="margin-left: 17px; margin-top: -5px;"> </label>
     </div> <!-- col-sm-12  -->
     
-   <div  ng-show="needAssistanceDiv"> 
+   <div  ng-show="needAssistanceDiv_Create"> 
         <div  ng-include="'needAssistancePartialBlank'"></div>
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>

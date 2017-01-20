@@ -3,8 +3,8 @@ angular.module('GeneralInfoApp',[])
     .controller('MainCtrl',function ($scope,$http,$document) { 
 
     $scope.updateTime = Date.now();               
-    $scope.QEditID = 'third';
-
+    $scope.QEditID = 'third';   
+     
     $scope.Add_New = function(){
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     };
@@ -18,7 +18,7 @@ angular.module('GeneralInfoApp',[])
     	console.log(msg);
     };
 
-    $scope.init_checkbox = function(msg){
+    $scope.init_checkbox = function(msg){  
     	msg= msg.trim();
     	if(msg){
     		$scope.CheckNeedAssistance = true;
@@ -27,16 +27,33 @@ angular.module('GeneralInfoApp',[])
     	};
     };
 
+    $scope.init_checkbox_EditPage = function(msg){    	 
+    	msg= msg.trim();
+    	if(msg){
+    		$scope.needAssistanceDiv = $scope.CheckNeedAssistance_editpage = true;
+    	}else{
+    		$scope.needAssistanceDiv = $scope.CheckNeedAssistance_editpage = false;
+    	};
+    };
+
+    $scope.Delete_img = function(msg){
+    	console.log(msg);
+    };
+
 	$scope.btn_click = function(Q_id){  
 		$scope.QEditID = Q_id;    
 		$scope.testing = !$scope.testing;
 		$scope.Edit_btn = !$scope.Edit_btn;
 	};
 
-	$scope.showAssistance=function(){  
+	$scope.showAssistance=function(){ 
 		$scope.needAssistanceDiv = !($scope.needAssistanceDiv) ;
 	};    	
 
+    $scope.showAssistance_create = function(){
+        $scope.needAssistanceDiv_Create = !($scope.needAssistanceDiv_Create) ;
+    };
+    
 	$scope.GetDataForReadOnly = function(Q_id){
 		$scope.QEditID = Q_id;
 	};

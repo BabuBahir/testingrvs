@@ -1,20 +1,18 @@
- 
-    <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
+      <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
     
-    <label class="radio-inline " style="margin-right:28px;">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" 
-        <% if(questionType == '0') {%> checked<% } else { %>  
-        <%}%> > Checkbox 
+    <label class="radio-inline" style="margin-right:28px;">
+        <input type="radio" ng-model="formData.checkbox"   value="option1" ng-change="radioSelect('checkBox')"
+        <% if(questionType == '0') {%> checked<% } else { %>  <%}%> > Checkbox 
     </label>
 
-    <label class="radio-inline " style="margin-right:28px;">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" <% if(questionType == '1') {%> checked<% } else { %>  
-        <%}%> > Dropdown 
+    <label class="radio-inline" style="margin-right:28px;">
+        <input type="radio" ng-model="formData.checkbox"  value="option2" ng-change="radioSelect('dropDown')" 
+        <% if(questionType == '1') {%> checked<% } else { %>  <%}%> > Dropdown 
     </label>
 
-    <label class="radio-inline " style="margin-right:28px;">
-        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"  <% if(questionType == '2') {%> checked<% } else { %>  
-        <%}%> > Text Field 
+    <label class="radio-inline" style="margin-right:28px;">
+        <input type="radio"  ng-model="formData.checkbox"   value="option3"  ng-change="radioSelect('textFeild')"  
+        <% if(questionType == '2') {%>checked<% } else { %>  <%}%> > Text Field 
     </label>
 
 <div class="clearfix"></div><br/>
@@ -46,7 +44,7 @@
     
     <div class="clearfix"></div>
     
-    <div class="col-sm-12 ">
+    <div ng-show="$parent.OptionDiv" class="col-sm-12 ">
         <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
 
         <div class="row delete-options-in-survey-bg">
@@ -77,11 +75,13 @@
     
     <div class="col-sm-12 ">
         
-        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()" ng-model="Option" id="inlineCheckbox1" value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
+        <label class="checkbox-inline" style="padding-left:1px; margin-bottom:20px;"> <b>Need Assistance <span style="color:#e33132">*</span></b><input type="checkbox" ng-change="showAssistance()"  id="inlineCheckbox1" ng-model="CheckNeedAssistance_editpage" 
+        ng-init="init_checkbox_EditPage('<%=rawData.needAssistance.title.English%>')"
+        value="option1" style="margin-left: 17px; margin-top: -5px;"> </label>
     </div> <!-- col-sm-12  -->
     
    <div  ng-show="needAssistanceDiv"> 
-        <div  ng-include="'needAssistancePartialEditable/'+"></div>
+        <div  ng-include="'needAssistancePartialEditable/'+'<%=Q_id%>'"></div>
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>
     

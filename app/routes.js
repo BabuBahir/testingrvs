@@ -45,6 +45,9 @@ module.exports = function(app) {
 
  
     // get for partials
+ 
+    app.get('/needAssistancePartialEditable/:id', questionController.Na_WithID_Editable);
+
     app.get('/questionReadOnlypartial/:id?',questionController.fillreadOnlyPartial);     
 
     app.get('/questionTypePartial/:id', questionController.fillQuestionPartial);       

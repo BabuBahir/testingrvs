@@ -3,14 +3,16 @@
                                        <div class="col-sm-12 ">  <!-- col-sm-12  -->
                                             <div class="row add-options-in-survey-bg">
                                                 <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" name="NA_NameEnglish"> 
+                                                    <input type="text" class="form-control" ng-model="NA_NameEnglish" ng-init="NA_NameEnglish='<%=rawData.title.English%>'" > 
                                                 </div>
                                                 <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" name="NA_NameGujarati"> 
+                                                    <input type="text" class="form-control" ng-model="NA_NameGujarati" 
+                                                    ng-init="NA_NameGujarati='<%=rawData.title.Gujarati%>'">
                                                 </div>
                                                 <div class="col-sm-4 form-group">
                                                     <input type="text" class="form-control" 
-                                                    name="NA_NameHindi">
+                                                    ng-model="NA_NameHindi" 
+                                                    ng-init="NA_NameHindi='<%=rawData.title.Hindi%>'">
                                                 </div>
                                             </div>
                                             <!-- options-in-survey-bg -->
@@ -23,15 +25,21 @@
                                         <div class="col-sm-12 ">  <!-- col-sm-12  -->
                                             <div class="row add-options-in-survey-bg">
                                                 <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" name="NA_DescEnglish"></textarea>
+                                                    <textarea class="form-control" rows="3" ng-model="NA_DescEnglish" 
+                                                    ng-init="NA_DescEnglish='<%=rawData.description.English%>'"
+                                                    ></textarea>
                                                 </div>
                                                 
                                                 <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" name="NA_DescGujarati"></textarea>
+                                                    <textarea class="form-control" rows="3" ng-model="NA_DescGujarati" 
+                                                ng-init="NA_DescGujarati='<%=rawData.description.Gujarati%>'"
+                                                    ></textarea>
                                                 </div>
                                                 
                                                 <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" name="NA_NameHindi"  ></textarea>
+                                                    <textarea class="form-control" rows="3" ng-model="NA_DescHindi" 
+                                                    ng-init="NA_DescHindi='<%=rawData.description.Hindi%>'"
+                                                     ></textarea>
                                                 </div>
                                             </div>
                                         </div>  <!-- col-sm-12  -->
