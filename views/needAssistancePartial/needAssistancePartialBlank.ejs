@@ -58,24 +58,26 @@
                                                             <!-- upload-hover-wrapper -->
                                                     </div> <!-- upload-files -->
                                                     &nbsp;  
+                                                   
                                                     <div class="upload-files">
-                                                            <div class="upload-wrapper"> 
-                                                                 <img src="img/image-1.png" /> 
-                                                            </div>
-                                                            <!-- upload-wrapper -->
+                                                                <div class="upload-wrapper"> 
+                                                                    <img src="img/image-1.png" /> 
+                                                                </div>
+                                                                <!-- upload-wrapper -->
+                                                                <!-- the below div will be visible on hover -->
+                                                                <div class="upload-hover-wrapper"> 
+                                                                    <span>
+                                            <div class="progress">
+                                                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                                                                <span class="sr-only">60% Complete</span> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                                <!-- upload-hover-wrapper -->
+                                                            </div>  <!-- upload-files -->
+                                                    
 
-                                                            <!-- the below div will be visible on hover -->
-                                                            <div class="upload-hover-wrapper"> 
-                                                                <span>
-                                                                  <div class="progress">
-                                                                     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                                          <span class="sr-only">60% Complete</span> 
-                                                                     </div>
-                                                                  </div>
-                                                                </span>
-                                                            </div>
-                                                            <!-- upload-hover-wrapper -->
-                                                    </div> <!-- upload-files -->
                                                           &nbsp;
                                                           <div class="upload-files" style="vertical-align:-5px;">
                                                                   <div class="upload-wrapper"> 
@@ -149,5 +151,12 @@
                                             </div>
                                             <!-- options-in-survey-bg -->
                                          </div>
-                                        <!-- col-sm-12 -->    
-        
+                                        <!-- col-sm-12 -->       
+  <!-- ****  NOTE: custom code ***** -->
+    <script>
+        $(document).ready(function () {
+            $(".upload-files").hover(function () {
+                $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");
+            });
+        });
+    </script>

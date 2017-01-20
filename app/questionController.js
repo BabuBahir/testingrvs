@@ -43,7 +43,7 @@ module.exports = {
 	},
 	ShowAssistancePartial : function(req,res){
 		question.find({}, function(err, data){   
-			res.render('needAssistancePartial/needAssistancePartialID',{question: data[2].question.text ,questionType: data[2].questionType ,rawData : data[3].needAssistance}); 
+			res.render('needAssistancePartial/needAssistancePartialID',{question: data[2].question.text ,questionType: data[2].questionType ,rawData : data[4].needAssistance}); 
 		});
 	},
  

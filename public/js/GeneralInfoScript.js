@@ -28,7 +28,7 @@ angular.module('GeneralInfoApp',[])
     };
 
 	$scope.btn_click = function(Q_id){  
-		$scope.QEditID = Q_id;   console.log(Q_id);
+		$scope.QEditID = Q_id;    
 		$scope.testing = !$scope.testing;
 		$scope.Edit_btn = !$scope.Edit_btn;
 	};

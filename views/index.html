@@ -2,6 +2,7 @@
 <head>
 <title>Session Management in NodeJS using Express4.2</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script>
 $(document).ready(function(){
   var email,pass;
@@ -21,9 +22,24 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body>
+<body ng-app="">
+<div ng-include="'test'"></div>
 <input type="text" size="40" placeholder="Type your email" id="email"><br />
 <input type="password" size="40" placeholder="Type your password" id="password"><br />
 <input type="button" value="Submit" id="submit">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- ****  NOTE: custom code ***** -->
+    <script>
+        $(document).ready(function () {
+            $(".upload-files").hover(function () {
+                $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");
+            });
+        });
+</script>
+
+
 </body>
 </html>
