@@ -58,7 +58,7 @@ module.exports = function(app) {
     });
   
     //---some post    
-    app.post('/UpdateQuestions' , multipartMiddleware , questionController.UpdateQuestions); 
+    app.post('/UpdateQuestions/:id' , multipartMiddleware , questionController.UpdateQuestions); 
 
     app.post('/AddNewQuestion' , multipartMiddleware , questionController.addQuestion); 
 

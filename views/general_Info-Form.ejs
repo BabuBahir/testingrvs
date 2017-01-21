@@ -10,8 +10,8 @@
     <script src="js/bootstrap.min.js"></script>         
 </head>
 
-<body ng-controller="MainCtrl"> 
-<form action="/UpdateQuestions" method="post" enctype="multipart/form-data">
+<body ng-controller="MainCtrl">  
+<form action="{{'/UpdateQuestions/'+QEditID}}" method="post" enctype="multipart/form-data">
     <!-- nav bar starts here -->
      	<nav class="navbar navbar-default">
         <div class="container-fluid">

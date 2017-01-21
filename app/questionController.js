@@ -50,7 +50,9 @@ module.exports = {
             });
         }, 
 
-        UpdateQuestions : function(req,res){  console.log('53');            
+        UpdateQuestions : function(req,res){  
+            id = req.params.id;  
+            console.log(id);            
             res.send(req.files.image_masonry[0]);
             question.find({}, function(err, data) { // data[0] has the requied question
                 
