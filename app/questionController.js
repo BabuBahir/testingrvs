@@ -52,12 +52,26 @@ module.exports = {
 
         UpdateQuestions : function(req,res){  
             id = req.params.id;  
-            console.log(id);            
-            res.send(req.files.image_masonry[0]);
-            question.find({}, function(err, data) { // data[0] has the requied question
-                
-            });          
-            //res.send(req.body);  
+            console.log(id);                         
+                if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
+               cloudinary.v2.uploader.upload(req.files.image_masonry[0].path,
+                    { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
+                    function(err, result) {    // call back after uploading image to cloudinary                     
+                        question.find({_id:id}, function(err, test){                                        
+                            if(err){res.send(err)};                   
+                            test[0].needAssistance.questionImgUrl.push({imgUrl:result.url,_id:result.public_id});
+                            imgurlArray = test[0].needAssistance.questionImgUrl;       
+                             console.log(imgurlArray); 
+
+                            question.findOneAndUpdate({_id: id}, { $set: { 'needAssistance.questionImgUrl': imgurlArray}}, { new: true }, function (err, tank) {
+                            if (err) return handleError(err);                      
+                            //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
+                            }); 
+                         
+                      });
+                });
+            };         
+            res.redirect('/generalInfo');
         },
   
         SaveQuestions: function(req, res) {  

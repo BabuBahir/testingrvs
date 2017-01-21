@@ -71,7 +71,7 @@ angular.module('GeneralInfoApp',[])
             $scope.change_READONLY_page(response.data,Q_id);
 			$scope.btn_click(Q_id); //call this function  
              
-		//	location.reload(); // refresh page once   
+			location.reload(); // refresh page once   
 		   //$scope.myWelcome = response.data;
 		}, function myError(response) {  
 		  $scope.myWelcome = response.statusText;
