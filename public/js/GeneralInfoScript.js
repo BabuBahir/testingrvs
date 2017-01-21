@@ -53,7 +53,7 @@ angular.module('GeneralInfoApp',[])
         $scope.needAssistanceDiv_Create = !($scope.needAssistanceDiv_Create) ;
     }; 
     
-	$scope.GetDataForReadOnly = function(Q_id){ console.log(Q_id);
+	$scope.GetDataForReadOnly = function(Q_id){  
 		$scope.QEditID = Q_id;
 	};
  	
@@ -70,7 +70,7 @@ angular.module('GeneralInfoApp',[])
 		}).then(function mySucces(response) {	
             $scope.change_READONLY_page(response.data,Q_id);
 			$scope.btn_click(Q_id); //call this function  
-            location.reload();
+             
 		//	location.reload(); // refresh page once   
 		   //$scope.myWelcome = response.data;
 		}, function myError(response) {  
@@ -87,6 +87,6 @@ angular.module('GeneralInfoApp',[])
          $document[0].getElementById(ReadOnlyGJQues).value = msg.question.text.Gujarati;
          $document[0].getElementById(ReadOnlyHIQues).value = msg.question.text.Hindi;
 
-         console.log(ReadOnlyENQues);console.log($document[0].getElementById(ReadOnlyENQues).value);
+          
      };
 });

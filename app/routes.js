@@ -3,35 +3,11 @@ var multipartMiddleware = multipart();
 var controller = require('./controller');
 var login = require('./login');
 var questionController = require('./questionController');
+ 
+ 
 
-
-var multer  =   require('multer'); 
-var storage =   multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, 'public/uploads/');
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now());
-  }
-});
-
-var upload = multer({ storage : storage}).single('userPhoto');
 module.exports = function(app) {
-
-    app.post('/photo',function(req,res){
-    upload(req,res,function(err) { console.log(req);
-        if(err) {
-            return res.end("Error uploading file.");
-        }
-        res.end("File is uploaded");
-        });
-    });
-
-
-    app.get('/testPhoto',function(req,res){
-        res.render('test.html');
-    });
-
+    
     app.get('/', function(req, res) {
         res.render('admin_Sign-In.html');
     });
@@ -46,7 +22,7 @@ module.exports = function(app) {
 
     app.get('/survey',requireLogin, function(req,res){
         res.render('survey_Management.html');
-    }); 
+    });  
 
     app.get('/surveyquestions',requireLogin,function(req,res){
         res.render('survey_Question&Answer.html');

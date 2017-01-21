@@ -44,13 +44,14 @@ module.exports = {
         },
 
         Na_WithID_Editable: function(req, res) {
-            id = req.params.id;
+            id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             });
         }, 
 
-        UpdateQuestions : function(req,res){  
+        UpdateQuestions : function(req,res){  console.log('53');            
+            res.send(req.files.image_masonry[0]);
             question.find({}, function(err, data) { // data[0] has the requied question
                 
             });          

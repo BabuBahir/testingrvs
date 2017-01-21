@@ -20,7 +20,7 @@
 
      $('#uploadForm').submit(function() {
          $("#status").empty().text("File is uploading...");
-
+         console.log('23');
         $(this).ajaxSubmit({
 
             error: function(xhr) {
