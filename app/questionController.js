@@ -50,7 +50,7 @@ module.exports = {
             });
         }, 
 
-        UpdateQuestions : function(req,res){  console.log(44);
+        UpdateQuestions : function(req,res){  
             question.find({}, function(err, data) { // data[0] has the requied question
                 
             });          
@@ -66,7 +66,7 @@ module.exports = {
             });  
         },
         ShowAssistancePartial: function(req, res) {
-            question.find({_id: id}, function(err, data) {  console.log(data[0]);
+            question.find({_id: id}, function(err, data) {   
                 res.render('needAssistancePartial/needAssistancePartialID', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0].needAssistance });
             });
         },
@@ -75,7 +75,7 @@ module.exports = {
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) { console.log()
+        addQuestion: function(req, res) {  
 
                 buildingObj = [];
 
@@ -129,13 +129,13 @@ module.exports = {
                                     function(err, result) { // call back after uploading image to cloudinary    
                                     
                                         question.find({ _id: pseudoID }, function(err, data) { // get last insert  
-                                            console.log(data[0]);                                      	
+                                                                                  	
                                             data[0].needAssistance.questionImgUrl.push({imgUrl: result.url , _id: result.public_id}); // pushing url from cloudinary
                                             imgurlArray = data[0].needAssistance.questionImgUrl;
-                                            console.log(data[0]);
+                                            
                                             question.findOneAndUpdate({ _id: pseudoID }, { $set: { 'needAssistance.questionImgUrl': imgurlArray } }, { new: true }, function(err, tank) {
                                                 if (err) return handleError(err);
-                                                console.log(tank); //save model to MongoDB
+                                                 //save model to MongoDB
                                                 res.redirect('/generalInfo');
                                             });
                                         });

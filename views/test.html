@@ -1,180 +1,40 @@
-<!DOCTYPE html>
 <html>
-<head>
-  
-</head>
-<body>
+  <head>
+    <title>File upload Node.</title>
+  </head>
+  <body>
+      <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/photo"
+          method="post">
+      <input type="file" name="userPhoto" />
+      <button type="submit" value="Upload Image" >UPLOAD</button> 
+      <span id = "status"></span>
+      <img src="/uploads/userPhoto">
+    </form>
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+  <script>
+  $(document).ready(function() {
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/rvs-style.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+     $('#uploadForm').submit(function() {
+         $("#status").empty().text("File is uploading...");
 
-                                       <div class="col-sm-12 ">  <!-- col-sm-12  -->
-                                            <div class="row add-options-in-survey-bg">
-                                                <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" name="NA_NameEnglish" > 
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" name="NA_NameGujarati"> 
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" 
-                                                    name="NA_NameHindi">
-                                                </div>
-                                            </div>
-                                            <!-- options-in-survey-bg -->
-                                        </div>
-                                        <!-- col-sm-12  -->
-                                        <div class="clearfix"></div>
-                                        
-                                        <div class="col-sm-12 ">  <!-- col-sm-12  -->
-                                            <div class="row add-options-in-survey-bg">
-                                                <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" name="NA_DescEnglish"></textarea>
-                                                </div>
-                                                
-                                                <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" name="NA_DescGujarati"></textarea>
-                                                </div>
-                                                
-                                                <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" name="NA_NameHindi"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>  <!-- col-sm-12  -->
-                                        <div class="clearfix"></div>
+        $(this).ajaxSubmit({
 
-                                            <div class="col-sm-12">  
-                                                <div class="row add-options-in-survey-bg">
+            error: function(xhr) {
+                    status('Error: ' + xhr.status);
+            },
 
-                                        <div class="col-sm-12">
-                                              <div class="row" style="margin:10px 5px 0px; display:block;">
-                                              <!-- upload video part starts -->
-                                              <div class="col-sm-3 col-md-2 col-lg-2 side-padding">
-                                                    <label style="margin-top:15px;">Upload Video</label>
-                                                    <br/> 
-                                              </div>
-                                              <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                                    <div class="upload-files">
-                                                            <div class="upload-wrapper"> 
-                                                            <img src="img/image-1.png" /> 
-                                                            </div>
-                                                            <!-- upload-wrapper -->
+            success: function(response) {
+                    console.log(response)
+                    $("#status").empty().text(response);
+            }
+    });
 
-                                                            <!-- the below div will be visible on hover -->
-                                                            <div class="upload-hover-wrapper"> 
-                                                            <span class="text-center"><i class="fa fa-play-circle play-icon"></i></span> 
-                                                            </div>
-                                                            <!-- upload-hover-wrapper -->
-                                                    </div> <!-- upload-files -->
-                                                    &nbsp;  
-                                                   
-                                                    <div class="upload-files">
-                                                                <div class="upload-wrapper"> 
-                                                                    <img src="img/image-1.png" /> 
-                                                                </div>
-                                                                <!-- upload-wrapper -->
-                                                                <!-- the below div will be visible on hover -->
-                                                                <div class="upload-hover-wrapper"> 
-                                                                    <span>
-                                            <div class="progress">
-                                                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                                                <span class="sr-only">60% Complete</span> 
-                                                                            </div>
-                                                                        </div>
-                                                                    </span>
-                                                                </div>
-                                                                <!-- upload-hover-wrapper -->
-                                                            </div>  <!-- upload-files -->
-                                                    
-
-                                                          &nbsp;
-                                                          <div class="upload-files" style="vertical-align:-5px;">
-                                                                  <div class="upload-wrapper"> 
-                                                                           <i class="fa fa-video-camera"></i> 
-                                                                  </div>
-                                                                  <!-- upload-wrapper -->
-                                                          </div> <!-- upload-files -->
-                                                          &nbsp;
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                          <div class="upload-wrapper">
-                                                            <label class="" for="image-selector-na">
-                                                                     <input id="image-selector-na" name="image_masonry" type="file" style="display:none;">
-                                                                      <i class="fa fa-plus"></i> 
-                                                            </label>
-                                                          </div>
-                                                          <!-- upload-wrapper -->
-                                                          </div>
-                                                  <!-- upload-files -->
-                                            </div>
-                                            <!-- col-sm-2 col-md-2 col-lg-1 -->
-                                            <!-- upload video part ends-->
-                                            </div>
-                                                                              <!-- row -->
-                                        </div>
-                                        <!-- col-sm-12  -->
-
-                                        </div> <!-- options-in-survey-bg -->
-                                    
-                                       <div class="row add-options-in-survey-bg">
-                                                
-                                                <div class="col-sm-12">
-                                                    <div class="row" style="margin:10px 5px 0px; display:block;">
-                                                      <!-- upload video part starts -->
-                                                        <div class="col-sm-3 col-md-2 col-lg-2 side-padding">
-                                                            <label style="margin-top:15px;">Upload Video</label>
-                                                            <br/> 
-                                                        </div>
-                                                        <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                                            <div class="upload-files">
-                                                                <div class="upload-wrapper"> 
-                                                                    <img src="img/image-1.png" /> 
-                                                                </div>
-                                                                <!-- upload-wrapper -->
-                                                              
-                                                            </div> <!-- upload-files -->
-                                                            &nbsp;
-                                                            <div class="upload-files">
-                                                                <div class="upload-wrapper"> 
-                                                                    <img src="img/image-1.png" /> 
-                                                                </div>
-                                                              <!-- upload-wrapper -->
-                                                            
-                                                            </div> <!-- upload-files -->
-                                                            &nbsp;
-                                                            <div class="upload-files" style="vertical-align:-5px;">
-                                                                <div class="upload-wrapper"> 
-                                                                    <i class="fa fa-video-camera"></i> 
-                                                                </div>
-                                                                <!-- upload-wrapper -->
-                                                            </div> <!-- upload-files -->
-                                                            &nbsp;
-                                                            
-                                                        </div>
-                                                        <!-- col-sm-2 col-md-2 col-lg-1 -->
-                                                      <!-- upload video part ends-->
-                                                    </div>
-                                                    <!-- row -->
-                                                </div>
-                                                <!-- col-sm-12  -->
-                                            
-                                            </div>
-                                            <!-- options-in-survey-bg -->
-                                         </div>
-                                        <!-- col-sm-12 -->    
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <!-- ****  NOTE: custom code ***** -->
-    <script>
-        $(document).ready(function () {
-            $(".upload-files").hover(function () {
-                $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");
-            });
-        });
-    </script>
-
-
-</body>
+    return false;
+    });    
+});
+  </script>
 </html>
