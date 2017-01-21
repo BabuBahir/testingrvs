@@ -68,9 +68,9 @@
                                             ng-init="init_checkbox('<%=rawData.needAssistance.title.English%>')" value="option1" style="margin-left: 17px; margin-top: -5px;">
                                              </label>
                                         </div> <!-- col-sm-12  -->
-                                        
+                                         
                                        <div  ng-show="CheckNeedAssistance"> 
-                                            <div  ng-include="'needAssistancePartial'"></div>
+                                            <div  ng-include="'needAssistancePartial/'+<%=Q_id%>"></div>
                                        </div> <!--needAssistanceDiv-->                                               
                                         <div class="clearfix"></div>
                                         

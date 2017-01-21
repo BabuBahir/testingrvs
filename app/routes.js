@@ -52,7 +52,7 @@ module.exports = function(app) {
 
     app.get('/questionTypePartial/:id', questionController.fillQuestionPartial);       
 
-    app.get('/needAssistancePartial' , questionController.ShowAssistancePartial);
+    app.get('/needAssistancePartial/:id' , questionController.ShowAssistancePartial);
 
     app.get('/needAssistancePartialBlank', questionController.ShowAssistancePartialBlank)
 

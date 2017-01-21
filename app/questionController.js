@@ -37,7 +37,7 @@ module.exports = {
             question.find({ _id: id }, function(err, data) { // data[0] has the requied question
                   people[0].name =(data[0].question.text.English);
                   people[1].name =(data[0].question.text.Gujarati);
-                  people[2].name =(data[0].question.text.Hindi);
+                  people[2].name =(data[0].question.text.Hindi); 
                                    
                 res.render('questionreadOnlypartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id , people : people });
             });
@@ -45,10 +45,10 @@ module.exports = {
 
         Na_WithID_Editable: function(req, res) {
             id = req.params.id;
-            question.find({}, function(err, data) { // data[0] has the requied question
-                res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[5].needAssistance });
+            question.find({ _id: id}, function(err, data) { // data[0] has the requied question
+                res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             });
-        },
+        }, 
 
         UpdateQuestions : function(req,res){  console.log(44);
             question.find({}, function(err, data) { // data[0] has the requied question
@@ -56,7 +56,7 @@ module.exports = {
             });          
             //res.send(req.body);  
         },
- 
+  
         SaveQuestions: function(req, res) {  
             id = req.body["QuestionID"];   
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"]} }, { new: true }, function(err, tank) {
@@ -66,8 +66,8 @@ module.exports = {
             });  
         },
         ShowAssistancePartial: function(req, res) {
-            question.find({}, function(err, data) {
-                res.render('needAssistancePartial/needAssistancePartialID', { question: data[2].question.text, questionType: data[2].questionType, rawData: data[5].needAssistance });
+            question.find({_id: id}, function(err, data) {  console.log(data[0]);
+                res.render('needAssistancePartial/needAssistancePartialID', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0].needAssistance });
             });
         },
 
@@ -100,7 +100,7 @@ module.exports = {
                             "English": req.body["QT_English"],
                             "Hindi": req.body["QT_Hindi"],
                             "Gujarati": req.body["QT_Gujarati"]
-                        }
+                        } 
                     },
                     needAssistance: {
                         description: {

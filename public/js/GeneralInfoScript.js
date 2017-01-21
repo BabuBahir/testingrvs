@@ -53,7 +53,7 @@ angular.module('GeneralInfoApp',[])
         $scope.needAssistanceDiv_Create = !($scope.needAssistanceDiv_Create) ;
     }; 
     
-	$scope.GetDataForReadOnly = function(Q_id){
+	$scope.GetDataForReadOnly = function(Q_id){ console.log(Q_id);
 		$scope.QEditID = Q_id;
 	};
  	
