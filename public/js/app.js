@@ -1,6 +1,6 @@
 angular.module('website', ['ngAnimate', 'ngTouch'])
     .controller('MainCtrl', function ($scope,$http,$sce) {
- 
+  
 //function to controller with params
 $scope.call_slider= function(msg){  
 	    $scope.currentIndex =0; //.. initiazlizing to zero 

@@ -28,9 +28,18 @@ module.exports = {
             });
         },
         fillreadOnlyPartial: function(req, res) {
+
+            var people = [
+                { model: 'ReadOnlyENQues',name: '<%=question.English%>' },
+                { model: 'ReadOnlyGJQues',name: '<%=question.Gujarati%>' },
+                { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];              
             id = req.params.id;
             question.find({ _id: id }, function(err, data) { // data[0] has the requied question
-                res.render('questionreadOnlypartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0] });
+                  people[0].name =(data[0].question.text.English);
+                  people[1].name =(data[0].question.text.Gujarati);
+                  people[2].name =(data[0].question.text.Hindi);
+                                   
+                res.render('questionreadOnlypartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id , people : people });
             });
         },
 
@@ -41,18 +50,20 @@ module.exports = {
             });
         },
 
-        UpdateQuestions : function(req,res){
-            console.log(req.body);console.log(req.files);
-            res.send(req.body);
+        UpdateQuestions : function(req,res){  console.log(44);
+            question.find({}, function(err, data) { // data[0] has the requied question
+                
+            });          
+            //res.send(req.body);  
         },
-
-        SaveQuestions: function(req, res) {
-            id = req.body["QuestionID"];
-            question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] } }, { new: true }, function(err, tank) {
-                if (err) return handleError(err);
+ 
+        SaveQuestions: function(req, res) {  
+            id = req.body["QuestionID"];   
+            question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"]} }, { new: true }, function(err, tank) {
+                if (err) return handleError(err); 
                 // call read only partial with id
                 res.send(tank);
-            });
+            });  
         },
         ShowAssistancePartial: function(req, res) {
             question.find({}, function(err, data) {
@@ -64,7 +75,7 @@ module.exports = {
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) {
+        addQuestion: function(req, res) { console.log()
 
                 buildingObj = [];
 
@@ -106,7 +117,7 @@ module.exports = {
                     },
                     buildingsAssociated: buildingObj
 
-                });
+                }); 
 
                 QTNew.save(function(err) {
                         if (err) {
@@ -129,6 +140,8 @@ module.exports = {
                                             });
                                         });
                                     });
+                            } else {
+                                  res.redirect('/generalInfo');  
                             };
                         };
                     });

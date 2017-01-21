@@ -1,15 +1,13 @@
  
 angular.module('GeneralInfoApp',[])
-    .controller('MainCtrl',function ($scope,$http,$document) { 
-
-     
+    .controller('MainCtrl',function ($scope,$http,$document) {      
 
     $scope.updateTime = Date.now();               
     $scope.QEditID = 'third';   
      
     $scope.Add_New = function(){
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
-    };
+    }; 
 
     $scope.radioSelect = function(msg){
     	if(msg != "textFeild"){
@@ -17,7 +15,6 @@ angular.module('GeneralInfoApp',[])
     	}else{
     		$scope.OptionDiv = false;
     	}
-    	console.log(msg);
     };
 
     $scope.init_checkbox = function(msg){  
@@ -54,7 +51,7 @@ angular.module('GeneralInfoApp',[])
 
     $scope.showAssistance_create = function(){
         $scope.needAssistanceDiv_Create = !($scope.needAssistanceDiv_Create) ;
-    };
+    }; 
     
 	$scope.GetDataForReadOnly = function(Q_id){
 		$scope.QEditID = Q_id;
@@ -67,10 +64,13 @@ angular.module('GeneralInfoApp',[])
  	$scope.form_submit =function(Q_id){  	    
 		$http({
 		method : "POST",
-		url : "/saveQuestions" ,		 		 
+		url : "/saveQuestions" ,	
+        async: false, //blocks window close	 		 
 		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ , "QuestionID":Q_id})
-		}).then(function mySucces(response) {  		console.log(response.data);
-			$scope.btn_click(Q_id); //call this function 
+		}).then(function mySucces(response) {	
+            $scope.change_READONLY_page(response.data,Q_id);
+			$scope.btn_click(Q_id); //call this function  
+            location.reload();
 		//	location.reload(); // refresh page once   
 		   //$scope.myWelcome = response.data;
 		}, function myError(response) {  
@@ -78,4 +78,15 @@ angular.module('GeneralInfoApp',[])
 		});	 
 	};
  
+     $scope.change_READONLY_page = function(msg,Q_id){            // changes value from $scope after every update
+        var ReadOnlyENQues= "ReadOnlyENQues"+Q_id;   //checking if first updateTime
+        var ReadOnlyGJQues= "ReadOnlyGJQues"+Q_id;
+        var ReadOnlyHIQues= "ReadOnlyHIQues"+Q_id;
+        
+         $document[0].getElementById(ReadOnlyENQues).value = msg.question.text.English;
+         $document[0].getElementById(ReadOnlyGJQues).value = msg.question.text.Gujarati;
+         $document[0].getElementById(ReadOnlyHIQues).value = msg.question.text.Hindi;
+
+         console.log(ReadOnlyENQues);console.log($document[0].getElementById(ReadOnlyENQues).value);
+     };
 });
