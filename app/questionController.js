@@ -93,9 +93,20 @@ module.exports = {
         },
 
         addQuestion: function(req, res) {    
-
+                var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
+                optionObj   = [];
 
+                // checking question type
+                if((req.body["inlineRadioOptions"]) == 'option1') {
+                    var Selected_qtType = '0';
+                } else if ((req.body["inlineRadioOptions"]) == 'option2') {
+                    var Selected_qtType = '1';
+                }else {   
+                    var Selected_qtType = '2';
+                }
+
+                // checking building type(s)  
                 if ((req.body["CB_Masonary"]) == 'on')
                     buildingObj.push({ _id: 'Masonry' });
 
@@ -108,16 +119,23 @@ module.exports = {
                 if ((req.body["CB_Compo"]) == 'on')
                     buildingObj.push({ _id: 'Composite' });
 
-
+                // putting options in the object
+                var optLength = req.body.opt_EN.length;
+                for(var i=0;i<optLength; i++){ 
+                    optionObj.push( { _id : i , English : req.body.opt_EN[i] , Gujarati : req.body.opt_GJ[i] , Hindi : req.body.opt_HI[i]} );
+                };
+                // putting options in the object
 
                 var QTNew = new question({
                     _id: pseudoID, //current Date_Time to prevent creation of $oid
+                    questionType : Selected_qtType,
                     question: {
-                        text: {
-                            "English": req.body["QT_English"],
-                            "Hindi": req.body["QT_Hindi"],
-                            "Gujarati": req.body["QT_Gujarati"]
-                        } 
+                            text: {
+                                "English": req.body["QT_English"],
+                                "Hindi": req.body["QT_Hindi"],
+                                "Gujarati": req.body["QT_Gujarati"]
+                            },
+                            options : optionObj
                     },
                     needAssistance: {
                         description: {
@@ -134,15 +152,15 @@ module.exports = {
                     },
                     buildingsAssociated: buildingObj
 
-                }); 
-
+                });   
+ 
                 QTNew.save(function(err) {
                         if (err) {
                             return err;
                         } else {
                             // now upload image 					
-                            if (req.files.image_masonry.type == "image/jpeg") { // check if image is uploaded... if yes upload to cloudinary..else redirect        									
-                                cloudinary.v2.uploader.upload(req.files.image_masonry.path, { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation: 'manual' },
+                            if (req.files.image_masonry[loc].type == "image/jpeg") { // check if image is uploaded... if yes upload to cloudinary..else redirect        									
+                                cloudinary.v2.uploader.upload(req.files.image_masonry[loc].path, { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation: 'manual' },
                                     function(err, result) { // call back after uploading image to cloudinary    
                                     
                                         question.find({ _id: pseudoID }, function(err, data) { // get last insert  

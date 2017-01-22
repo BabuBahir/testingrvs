@@ -11,6 +11,7 @@ var questionSchema = new Schema({
             Gujarati: String
         },
         options: [{
+            _id  : String,
             Hindi: String,
             English: String,
             Gujarati: String

@@ -1,11 +1,23 @@
  
-angular.module('GeneralInfoApp',[])
+angular.module('GeneralInfoApp',[]) 
     .controller('MainCtrl',function ($scope,$http,$document) {      
  
     $scope.updateTime = Date.now();               
     $scope.QEditID = 'BH';   
      
     $scope.FormDestination = "AddNewQuestion";
+
+    $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+
+    $scope.addNewChoice = function() {
+        var newItemNo = $scope.choices.length+1;
+        $scope.choices.push({'id':'choice'+newItemNo});
+    };
+
+    $scope.removeChoice = function() {
+        var lastItem = $scope.choices.length-1;
+        $scope.choices.splice(lastItem);
+    };
 
     $scope.Add_New = function(){
         $scope.FormDestination = "AddNewQuestion";
