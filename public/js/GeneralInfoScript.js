@@ -90,12 +90,12 @@ angular.module('GeneralInfoApp',[])
  		  // validations
  	};
 
- 	$scope.form_submit =function(Q_id){  	    
+ 	$scope.form_submit =function(Q_id){  
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	
         async: false, //blocks window close	 		 
-		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ , "QuestionID":Q_id})
+		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ ,"QType": $scope.checkbox ,"QuestionID":Q_id})
 		}).then(function mySucces(response) {	
             $scope.change_READONLY_page(response.data,Q_id);
 			$scope.btn_click(Q_id); //call this function  

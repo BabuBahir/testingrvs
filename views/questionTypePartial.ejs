@@ -1,22 +1,22 @@
-<%=questionType%>
+
 <label style="display:block;"><b>Question Type <span style="color:#fb6969">*</span></b></label>
     
     <label class="radio-inline" style="margin-right:28px;">
-        <input type="radio" ng-model="formData.checkbox"   value="option1" ng-change="radioSelect('checkBox')"
-        <% if(questionType == '0') {%> checked<% } else { %>  <%}%> > Checkbox 
+        <input type="radio"  ng-model="$parent.checkbox" ng-checked="$parent.checkbox =='0'"  ng-init="$parent.checkbox='<%=questionType%>'" value="0" ng-change="radioSelect('checkBox')"
+           > Checkbox 
     </label>
 
     <label class="radio-inline" style="margin-right:28px;">
-        <input type="radio" ng-model="formData.checkbox"  value="option2" ng-change="radioSelect('dropDown')" 
-        <% if(questionType == '1') {%> checked<% } else { %>  <%}%> > Dropdown 
+        <input type="radio"   ng-model="$parent.checkbox" ng-checked="$parent.checkbox =='1'"  ng-init="$parent.checkbox='<%=questionType%>'"  value="1" ng-change="radioSelect('dropDown')" 
+        <% if(questionType == '1') {%> checked<% } else { %>  <%}%>  > Dropdown 
     </label>
 
     <label class="radio-inline" style="margin-right:28px;">
-        <input type="radio"  ng-model="formData.checkbox"   ng-change="radioSelect('textFeild')"  
-        <% if(questionType == '2'){%>checked<%}%> > Text Field 
+        <input type="radio"  ng-model="$parent.checkbox" ng-checked="checkbox =='2'"  ng-init="checkbox='<%=questionType%>'"  value="2"  ng-change="radioSelect('textFeild')"  
+        <% if(questionType == '2') {%>checked<%}%>  > Text Field 
     </label>   
-
-<div class="clearfix"></div><br/>
+     
+<div class="clearfix"></div><br/> 
                                         
                                       
   <label style="display:block;padding-left:15px;"><b>Question Text <span style="color:#fb6969">*</span></b>

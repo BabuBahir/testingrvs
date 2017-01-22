@@ -42,16 +42,16 @@ module.exports = {
                                    
                 res.render('questionreadOnlypartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id , people : people });
             });
-        },
+        }, 
 
         Na_WithID_Editable: function(req, res) {
             id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             });
-        }, 
+        },   
 
-        UpdateQuestions : function(req,res){     
+        UpdateQuestions : function(req,res){      
             Uid = req.params.id;   
                var  imgurlArray = [];                     
                 if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
@@ -76,7 +76,7 @@ module.exports = {
   
         SaveQuestions: function(req, res) {   
             id = req.body["QuestionID"];   
-            question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"]} }, { new: true }, function(err, tank) {
+            question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] } }, { new: true }, function(err, tank) {
                 if (err) return handleError(err);   
                 // call read only partial with id
                 res.send(tank);
