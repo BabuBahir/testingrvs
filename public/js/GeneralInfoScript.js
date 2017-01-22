@@ -8,6 +8,7 @@ angular.module('GeneralInfoApp',[])
     $scope.FormDestination = "AddNewQuestion";
 
     $scope.Add_New = function(){
+        $scope.FormDestination = "AddNewQuestion";
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     }; 
 

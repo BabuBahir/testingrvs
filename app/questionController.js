@@ -59,7 +59,8 @@ module.exports = {
                     { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
                     function(err, result) {    // call back after uploading image to cloudinary                     
                         question.find({_id:Uid}, function(err, test){   // id changes                                      
-                            if(err){res.send(err)};                   
+                            if(err){res.send(err)};         
+                             result.url=result.url.replace("png","jpg");  // replace image to png to jpg to prevent error                   
                             test[0].needAssistance.questionImgUrl.push({imgUrl:result.url,_id:result.public_id});
                             imgurlArray = test[0].needAssistance.questionImgUrl;                                                                 
                             question.findOneAndUpdate({_id: Uid}, { $set: { 'needAssistance.questionImgUrl': imgurlArray}}, { new: true }, function (err, tank) {
@@ -145,7 +146,7 @@ module.exports = {
                                     function(err, result) { // call back after uploading image to cloudinary    
                                     
                                         question.find({ _id: pseudoID }, function(err, data) { // get last insert  
-                                                                                  	
+                                            result.url=result.url.replace("png","jpg");                                     	
                                             data[0].needAssistance.questionImgUrl.push({imgUrl: result.url , _id: result.public_id}); // pushing url from cloudinary
                                             imgurlArray = data[0].needAssistance.questionImgUrl;
                                             
