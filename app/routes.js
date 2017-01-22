@@ -8,7 +8,7 @@ var questionController = require('./questionController');
 
 module.exports = function(app) {
     
-    app.get('/', function(req, res) {
+    app.get('/', function(req, res) { 
         res.render('admin_Sign-In.html');
     });
 
@@ -60,7 +60,7 @@ module.exports = function(app) {
     //---some post    
     app.post('/UpdateQuestions/:id' , multipartMiddleware , questionController.UpdateQuestions); 
 
-    app.post('/AddNewQuestion' , multipartMiddleware , questionController.addQuestion); 
+    app.post('/AddNewQuestion/:id?' , multipartMiddleware , questionController.addQuestion); 
 
     app.post('/saveQuestions', questionController.SaveQuestions);
 

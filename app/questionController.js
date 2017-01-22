@@ -9,6 +9,7 @@ cloudinary.config({
     api_secret: '_pk-gzAhdI63mSU1FDXIkrXkABo'
 });
 
+ 
 module.exports = {
         getQuestions: function(req, res) {
             question.find({}, function(err, data) {
@@ -50,34 +51,32 @@ module.exports = {
             });
         }, 
 
-        UpdateQuestions : function(req,res){  
-            id = req.params.id;  
-            console.log(id);                         
+        UpdateQuestions : function(req,res){     
+            Uid = req.params.id;   
+               var  imgurlArray = [];                     
                 if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
                cloudinary.v2.uploader.upload(req.files.image_masonry[0].path,
                     { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
                     function(err, result) {    // call back after uploading image to cloudinary                     
-                        question.find({_id:id}, function(err, test){                                        
+                        question.find({_id:Uid}, function(err, test){   // id changes                                      
                             if(err){res.send(err)};                   
                             test[0].needAssistance.questionImgUrl.push({imgUrl:result.url,_id:result.public_id});
-                            imgurlArray = test[0].needAssistance.questionImgUrl;       
-                             console.log(imgurlArray); 
-
-                            question.findOneAndUpdate({_id: id}, { $set: { 'needAssistance.questionImgUrl': imgurlArray}}, { new: true }, function (err, tank) {
+                            imgurlArray = test[0].needAssistance.questionImgUrl;                                                                 
+                            question.findOneAndUpdate({_id: Uid}, { $set: { 'needAssistance.questionImgUrl': imgurlArray}}, { new: true }, function (err, tank) {
                             if (err) return handleError(err);                      
                             //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
                             }); 
                          
                       });
                 });
-            };         
+            };       
             res.redirect('/generalInfo');
         },
   
-        SaveQuestions: function(req, res) {  
+        SaveQuestions: function(req, res) {   
             id = req.body["QuestionID"];   
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"]} }, { new: true }, function(err, tank) {
-                if (err) return handleError(err); 
+                if (err) return handleError(err);   
                 // call read only partial with id
                 res.send(tank);
             });  
@@ -92,7 +91,7 @@ module.exports = {
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) {  
+        addQuestion: function(req, res) {    
 
                 buildingObj = [];
 
