@@ -3,7 +3,7 @@ angular.module('GeneralInfoApp',[])
     .controller('MainCtrl',function ($scope,$http,$document) {      
  
     $scope.updateTime = Date.now();               
-    $scope.QEditID = 'third';   
+    $scope.QEditID = 'BH';   
      
     $scope.FormDestination = "AddNewQuestion";
 
@@ -38,9 +38,22 @@ angular.module('GeneralInfoApp',[])
     	};
     };
 
-    $scope.Delete_img = function(msg){
-    	console.log(msg);
-    };
+    $scope.Delete_img = function(msg){         
+    	var r = confirm("Do you want to Delete the Image!");   
+        if (r == true) {             
+            $http({
+            method : "POST",
+            url : "/Delete_Questionimg" ,
+            async : false,
+            data:({"image_id":msg  , "Q_ID":$scope.QEditID})
+            }).then(function mySucces(response) {            
+               //$scope.myWelcome = response.data; 
+                document.getElementById(img_id).style.display = 'none';
+            }, function myError(response) {
+              $scope.myWelcome = response.statusText;
+            });  
+            };
+        };   
 
 	$scope.btn_click = function(Q_id){  
         $scope.FormDestination = "UpdateQuestions";   // on edit change form destination

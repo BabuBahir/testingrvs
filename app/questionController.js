@@ -161,6 +161,16 @@ module.exports = {
                                   res.redirect('/generalInfo');  
                             };
                         };
-                    });
-                }
+                    });  
+                },
+    destory: function (req, res) {               
+      var imageId = req.body.image_id; id = req.params.Q_ID;  
+
+      cloudinary.v2.uploader.destroy(imageId, function (error, result) { 
+                question.update({_id: id}, { $pull: { 'needAssistance.questionImgUrl' : { _id : imageId } } },{ safe: true }, function(err, test){                                        
+                        if(err){res.send(err)};                                           
+                        res.send("done");
+                  });
+          });
+   }
 }
