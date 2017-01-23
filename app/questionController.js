@@ -15,10 +15,10 @@ module.exports = {
             question.find({}, function(err, data) {  
 
                 var newArrayOfID = [];
-                for (var i = 0; i < data.length; i++) {
-                    newArrayOfID.push(data[i]._id); // pushing ID of each Question
+                for (var i = 0; i < data.length; i++) {  
+                    newArrayOfID.push({id:data[i]._id , Q_Type : data[i].questionType}); // pushing ID of each Question
                 }
-
+                 
                 res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "General Info" });
             });
         },

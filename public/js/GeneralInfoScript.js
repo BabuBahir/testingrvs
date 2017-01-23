@@ -22,7 +22,7 @@ angular.module('GeneralInfoApp',[])
     };
 
     $scope.FillChoices  = function(msg) {//filling choices        
-       $scope.choices =  JSON.parse(msg) ;        
+       $scope.choices =  JSON.parse(msg) ;       
     };
 
     $scope.Add_New = function(){
@@ -30,7 +30,7 @@ angular.module('GeneralInfoApp',[])
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     }; 
 
-    $scope.radioSelect = function(msg){
+    $scope.radioSelect = function(msg){ console.log(msg);
     	if(msg != "textFeild"){
     		$scope.OptionDiv = true;
     	}else{
@@ -73,8 +73,13 @@ angular.module('GeneralInfoApp',[])
             };
         };   
 
-	$scope.btn_click = function(Q_id){
-        $scope.OptionDiv  = true;         // opion div RESET
+	$scope.btn_click = function(Q_id , Q_Type){ console.log(Q_Type);
+        if(Q_Type != '2') {
+            $scope.OptionDiv  = true;         // opion div RESET
+        }
+        else{
+            $scope.OptionDiv  = false; 
+        };
         $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+$scope.choices.length;   // on edit change form destination
 		$scope.QEditID = Q_id;    
 		$scope.testing = !$scope.testing;

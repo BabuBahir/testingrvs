@@ -75,7 +75,7 @@
                             <div class="panel panel-default survey-questn-accordion">
                                 <div class="panel-heading">
                                     <a data-toggle="collapse" 
-                                    ng-click="GetDataForReadOnly('<%=QTArray[i]%>','  <%=i%>')" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
+                                    ng-click="GetDataForReadOnly('<%=QTArray[i].id%>','  <%=i%>')" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
                                         Q) <%=rawData[i].question.text.English%> 
                                     </a>  
                                 </div>
@@ -84,7 +84,7 @@
                                       
                                       <!-- edit-part --> 
                                         <button   ng-disabled="Edit_btn" class="btn btn-xs btn-info pull-right" 
-                                        ng-click="btn_click('<%=QTArray[i]%>')">
+                                        ng-click="btn_click('<%=QTArray[i].id%>','<%=QTArray[i].Q_Type%>')">
                                             <i class="fa fa-edit"></i> &nbsp; Edit
                                         </button>
                                       <!-- edit-part --> 

@@ -44,8 +44,8 @@
     <!-- col-sm-6 -->
     
     <div class="clearfix"></div>
- 
- <% if(questionType != '2')  { %>    <!-- Looping if question is not for text feild -->   
+  
+  <!--   if question is not for text feild -->   
     <div ng-show="$parent.OptionDiv" ng-init="FillChoices('<%=qOptions%>')" class="col-sm-12 ">
         <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
 
@@ -73,7 +73,6 @@
         </div><!-- delete-options-in-survey-bg -->
     </div>
     <!-- col-sm-12 -->
- <%}%>
     
     <div class="clearfix"></div>
     <br/>
