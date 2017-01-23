@@ -19,6 +19,10 @@ angular.module('GeneralInfoApp',[])
         $scope.choices.splice(lastItem);
     };
 
+    $scope.FillChoices  = function(msg) {//filling choices
+       $scope.choices=  JSON.parse(msg) ;
+    };
+
     $scope.Add_New = function(){
         $scope.FormDestination = "AddNewQuestion";
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
@@ -91,7 +95,7 @@ angular.module('GeneralInfoApp',[])
  		  // validations
  	};
 
- 	$scope.form_submit =function(Q_id){  
+ 	$scope.form_submit =function(Q_id){    
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

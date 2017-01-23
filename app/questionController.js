@@ -24,8 +24,8 @@ module.exports = {
         },
         fillQuestionPartial: function(req, res) {
             id = req.params.id; 
-            question.find({ _id: id }, function(err, data) { // data[0] has the requied question
-                res.render('questionTypePartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : data[0].question.options});
+            question.find({ _id: id }, function(err, data) {  // data[0] has the requied question
+                res.render('questionTypePartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) });
             });
         },
         fillreadOnlyPartial: function(req, res) {
@@ -33,7 +33,7 @@ module.exports = {
             var people = [
                 { model: 'ReadOnlyENQues',name: '<%=question.English%>' },
                 { model: 'ReadOnlyGJQues',name: '<%=question.Gujarati%>' },
-                { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];              
+                { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];               
             id = req.params.id;
 
             question.find({ _id: id }, function(err, data) {  // data[0] has the requied question
@@ -45,14 +45,14 @@ module.exports = {
             });
         }, 
 
-        Na_WithID_Editable: function(req, res) {
+        Na_WithID_Editable: function(req, res) { 
             id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             });
         },   
-
-        UpdateQuestions : function(req,res){      
+  
+        UpdateQuestions : function(req,res){       console.log(req.body); 
             Uid = req.params.id;   
                var  imgurlArray = [];                     
                 if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
@@ -75,7 +75,7 @@ module.exports = {
             res.redirect('/generalInfo');
         },
   
-        SaveQuestions: function(req, res) {   
+        SaveQuestions: function(req, res) { 
             id = req.body["QuestionID"];   
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] } }, { new: true }, function(err, tank) {
                 if (err) return handleError(err);   
