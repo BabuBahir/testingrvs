@@ -11,11 +11,13 @@ angular.module('GeneralInfoApp',[])
 
     $scope.addNewChoice = function() {
         var newItemNo = $scope.choices.length;
+        $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+($scope.choices.length+1);   // on edit change form destination         
         $scope.choices.push({'_id':newItemNo});
     };
 
     $scope.removeChoice = function() {
         var lastItem = $scope.choices.length-1;
+        $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+($scope.choices.length-1);   // on edit change form destination         
         $scope.choices.splice(lastItem);
     };
 
@@ -73,7 +75,7 @@ angular.module('GeneralInfoApp',[])
 
 	$scope.btn_click = function(Q_id){
         $scope.OptionDiv  = true;         // opion div RESET
-        $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues;   // on edit change form destination
+        $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+$scope.choices.length;   // on edit change form destination
 		$scope.QEditID = Q_id;    
 		$scope.testing = !$scope.testing;
 		$scope.Edit_btn = !$scope.Edit_btn;
@@ -96,7 +98,7 @@ angular.module('GeneralInfoApp',[])
  		  // validations
  	};
 
- 	$scope.form_submit =function(Q_id){  
+ 	$scope.form_submit =function(Q_id){  console.log($scope.choices.length);
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

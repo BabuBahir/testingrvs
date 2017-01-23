@@ -52,32 +52,36 @@ module.exports = {
             });
         },    
    
-        UpdateQuestions : function(req,res){ 
+        UpdateQuestions : function(req,res){    console.log(req.body);
             Qindex = req.params.Qindex; 
             Uid = req.params.id;   
+            TotalCount = req.params.TotalCount;
             var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
             var NewOptions = []; // to get all new options 
-
+ 
             question.find({ _id: Uid}, function(err, data) {
-                    var optCount = data[0].question.options.length;
-                    for (var i=0 ; i < optCount ; i ++) {
+                    var optCount = data[0].question.options.length; 
+                    for (var i=0 ; i < TotalCount ; i ++) {
                         var ENobj = "Editopt"+'EN_'+i+'-'+Qindex+'*'+Uid;
-                        var HIobj = 'Editopt'+'HI_'+i+'-'+Qindex+'*'+Uid;
+                        var HIobj = 'Editopt'+'HI_'+i+'-'+Qindex+'*'+Uid; 
                         var GJobj = "Editopt"+'GJ_'+i+'-'+Qindex+'*'+Uid;
                          
                          OptNameObj.push({ENobj ,GJobj , HIobj});
-                    }; 
+                    };  
 
-                    for(var i =0 ; i < optCount ; i ++){
-                        NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                        
-                    };
-
+                    for(var i =0 ; i < TotalCount ; i ++){
+                        if(i < optCount) {
+                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                        
+                        } else {
+                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj] ,Gujarati : req.body[OptNameObj[i].GJobj], Hindi : req.body[OptNameObj[i].HIobj] });                                        
+                        }
+                    };  
+                      
                     question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions }}, { new: true }, function (err, tank) {
-                    if (err) return handleError(err);  
-                     console.log(tank);                    
+                    if (err) return handleError(err);                                    
                     //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
-                    });                      
-                });         
+                    });                   
+            });         
              //console.log(req.body);
            /////////////////////////////////////////            
             var  imgurlArray = [];                      
@@ -100,7 +104,7 @@ module.exports = {
                   });
                 });
             };                   
-            res.redirect('/generalInfo');   
+            res.redirect('/generalInfo');  
         },
   
         SaveQuestions: function(req, res) { 
