@@ -49,7 +49,7 @@ module.exports = {
             question.find({ _id: id }, function(err, data) {  // console.log(data[0]); //has the requied question
                 res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) });
             });
-        },
+        }, 
         fillreadOnlyPartial: function(req, res) {
 
             var people = [
@@ -65,8 +65,8 @@ module.exports = {
                                    
                 res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options});
             });
-        },   
-
+        },    
+  
         Na_WithID_Editable: function(req, res) { 
             id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
@@ -80,8 +80,22 @@ module.exports = {
             TotalCount = req.params.TotalCount;
             var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
             var NewOptions = []; // to get all new options 
- 
-            question.find({ _id: Uid}, function(err, data) {
+            var buildingObj = [];
+
+            // checking building type(s)  
+            if ((req.body["CB_Masonary"]) == 'on')
+                buildingObj.push({ _id: 'Masonry' });
+
+            if ((req.body["CB_Rcc"]) == 'on')
+                buildingObj.push({ _id: 'Rcc' });
+
+            if ((req.body["CB_Steel"]) == 'on')
+                buildingObj.push({ _id: 'Steel' });
+
+            if ((req.body["CB_Compo"]) == 'on')
+                buildingObj.push({ _id: 'Composite' });            
+
+            question.find({ _id: Uid}, function(err, data) {   
                     var optCount = data[0].question.options.length; 
                     for (var i=0 ; i < TotalCount ; i ++) {
                         var ENobj = "Editopt"+'EN_'+i+'-'+Qindex+'*'+Uid;
@@ -99,7 +113,10 @@ module.exports = {
                         }
                     };  
                       
-                    question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions }}, { new: true }, function (err, tank) {
+                    
+                    if(data[0].questionType == '2') {NewOptions = []; }; //  if Question Type = 2 .. remove OPTIONS
+
+                    question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions , 'buildingsAssociated' : buildingObj }}, { new: true }, function (err, tank) {
                     if (err) return handleError(err);                                    
                     //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
                     });                   
