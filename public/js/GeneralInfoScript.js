@@ -1,7 +1,7 @@
  
 angular.module('GeneralInfoApp',[]) 
-    .controller('MainCtrl',function ($scope,$http,$document) {      
- 
+    .controller('MainCtrl',function ($scope,$http,$document) {         
+
     $scope.updateTime = Date.now();               
     $scope.QEditID = 'BH';   
      
@@ -67,7 +67,8 @@ angular.module('GeneralInfoApp',[])
             };
         };   
 
-	$scope.btn_click = function(Q_id){  
+	$scope.btn_click = function(Q_id){
+        $scope.OptionDiv  = true;         // opion div RESET
         $scope.FormDestination = "UpdateQuestions";   // on edit change form destination
 		$scope.QEditID = Q_id;    
 		$scope.testing = !$scope.testing;

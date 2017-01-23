@@ -44,32 +44,34 @@
     <!-- col-sm-6 -->
     
     <div class="clearfix"></div>
-    
-    <div ng-show="$parent.OptionDiv" class="col-sm-12 ">
+ 
+ <% if(questionType != '2')  { %>    <!-- Looping if question is not for text feild -->   
+    <div ng-show="$parent.OptionDiv"  class="col-sm-12 ">
         <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
 
         <div class="row delete-options-in-survey-bg">
+          <fieldset  data-ng-repeat="choice in choices">    <!--$scope.choices from controller -->  
             <div class="col-sm-10 col-md-11" style="padding:0">
-                <div class="col-sm-4 form-group">
-                    <input type="text" class="form-control" name="name"   placeholder="When was the last survey done ?">
+                <div class="col-sm-3 form-group">                     
+                    <input type="text"   name="Edit_opt_EN" placeholder="">
+                </div>   
+                <div class="col-sm-3 form-group">                     
+                    <input type="text"  name="Edit_opt_GJ" placeholder="">
                 </div>
-                <div class="col-sm-4 form-group">
-                    <input type="text" class="form-control" name="name"   placeholder="ક્યારે સર્વેક્ષણ કરવામાં આવ્યું હતું ?"> 
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input type="text" class="form-control" name="name"   placeholder="पिछले सर्वेक्षण कब किया गया था ?"> 
-                </div>
+                <div class="col-sm-3 form-group">                     
+                    <input type="text"   name="Edit_opt_HI" placeholder="">
+                </div> 
+                 <div class="col-sm-3 form-group">                     
+                    <a class="btn" ng-show="$last" ng-if="choices.length > 2" 
+                    ng-click="removeChoice()">Remove </a>    
+                </div>  
             </div>
-            <!--
-            <div class="col-sm-2 col-md-1 text-center"> 
-                <i class="fa fa-trash" style="color:#ef3536; font-size:22px; margin-top:10px; cursor:pointer;"></i> 
-            </div> -->
-            
-        </div>
-        <!-- delete-options-in-survey-bg -->
+           </fieldset>       
+            <a class="btn" ng-click="addNewChoice()">Add fields</a>                  
+        </div><!-- delete-options-in-survey-bg -->
     </div>
     <!-- col-sm-12 -->
-    
+ <%}%>
     
     <div class="clearfix"></div>
     <br/>

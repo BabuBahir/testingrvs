@@ -41,7 +41,7 @@
         <label style="display:block;"><b>Options <span style="color:#fb6969">*</span></b></label>
 
         <div class="row delete-options-in-survey-bg">
-         <fieldset  data-ng-repeat="choice in choices">    
+         <fieldset  data-ng-repeat="choice in choices">    <!--$scope.choices from controller -->  
             <div class="col-sm-10 col-md-11" style="padding:0">
                 <div class="col-sm-3 form-group">                     
                     <input type="text"   name="opt_EN" placeholder="">
@@ -58,10 +58,7 @@
             </div>
          </fieldset>       
             <a class="btn" ng-click="addNewChoice()">Add fields</a>                  
-        </div>
-        <!--Adding Dynamic Input-->                        
-        <!--Adding Dynamic Input-->
-        <!-- delete-options-in-survey-bg -->
+        </div><!-- delete-options-in-survey-bg -->
     </div>
     <!-- col-sm-12 -->
     
