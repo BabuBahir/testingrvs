@@ -60,7 +60,7 @@ module.exports = function(app) {
     //---some post    
     app.post('/Delete_Questionimg' , questionController.destory);
 
-    app.post('/UpdateQuestions/:id' , multipartMiddleware , questionController.UpdateQuestions); 
+    app.post('/UpdateQuestions/:Qindex/:id' , multipartMiddleware , questionController.UpdateQuestions); 
 
     app.post('/AddNewQuestion/:id?' , multipartMiddleware , questionController.addQuestion); 
 

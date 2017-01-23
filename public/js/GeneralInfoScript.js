@@ -10,8 +10,8 @@ angular.module('GeneralInfoApp',[])
     $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
 
     $scope.addNewChoice = function() {
-        var newItemNo = $scope.choices.length+1;
-        $scope.choices.push({'id':'choice'+newItemNo});
+        var newItemNo = $scope.choices.length;
+        $scope.choices.push({'_id':newItemNo});
     };
 
     $scope.removeChoice = function() {
@@ -19,8 +19,8 @@ angular.module('GeneralInfoApp',[])
         $scope.choices.splice(lastItem);
     };
 
-    $scope.FillChoices  = function(msg) {//filling choices
-       $scope.choices=  JSON.parse(msg) ;
+    $scope.FillChoices  = function(msg) {//filling choices        
+       $scope.choices =  JSON.parse(msg) ;        
     };
 
     $scope.Add_New = function(){
@@ -73,7 +73,7 @@ angular.module('GeneralInfoApp',[])
 
 	$scope.btn_click = function(Q_id){
         $scope.OptionDiv  = true;         // opion div RESET
-        $scope.FormDestination = "UpdateQuestions";   // on edit change form destination
+        $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues;   // on edit change form destination
 		$scope.QEditID = Q_id;    
 		$scope.testing = !$scope.testing;
 		$scope.Edit_btn = !$scope.Edit_btn;
@@ -87,15 +87,16 @@ angular.module('GeneralInfoApp',[])
         $scope.needAssistanceDiv_Create = !($scope.needAssistanceDiv_Create) ;
     }; 
     
-	$scope.GetDataForReadOnly = function(Q_id){  
-		$scope.QEditID = Q_id;
+	$scope.GetDataForReadOnly = function(Q_id,key){  
+        $scope.thisQues=key.trim();
+		$scope.QEditID = Q_id;         
 	};
  	
  	$scope.Add_question_fn = function(){  
  		  // validations
  	};
 
- 	$scope.form_submit =function(Q_id){    
+ 	$scope.form_submit =function(Q_id){  
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

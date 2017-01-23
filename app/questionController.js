@@ -36,43 +36,71 @@ module.exports = {
                 { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];               
             id = req.params.id;
 
-            question.find({ _id: id }, function(err, data) {  // data[0] has the requied question
+            question.find({ _id: id }, function(err, data) {   // data[0] has the requied question
                   people[0].name =(data[0].question.text.English);
                   people[1].name =(data[0].question.text.Gujarati);
                   people[2].name =(data[0].question.text.Hindi); 
                                    
                 res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options});
             });
-        }, 
+        },   
 
         Na_WithID_Editable: function(req, res) { 
             id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             });
-        },   
-  
-        UpdateQuestions : function(req,res){       console.log(req.body); 
+        },    
+   
+        UpdateQuestions : function(req,res){ 
+            Qindex = req.params.Qindex; 
             Uid = req.params.id;   
-               var  imgurlArray = [];                     
-                if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
-               cloudinary.v2.uploader.upload(req.files.image_masonry[0].path,
-                    { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
-                    function(err, result) {    // call back after uploading image to cloudinary                     
-                        question.find({_id:Uid}, function(err, test){   // id changes                                      
-                            if(err){res.send(err)};         
-                             result.url=result.url.replace("png","jpg");  // replace image to png to jpg to prevent error                   
-                            test[0].needAssistance.questionImgUrl.push({imgUrl:result.url,_id:result.public_id});
-                            imgurlArray = test[0].needAssistance.questionImgUrl;                                                                 
-                            question.findOneAndUpdate({_id: Uid}, { $set: { 'needAssistance.questionImgUrl': imgurlArray}}, { new: true }, function (err, tank) {
-                            if (err) return handleError(err);                      
-                            //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
-                            }); 
+            var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
+            var NewOptions = []; // to get all new options 
+
+            question.find({ _id: Uid}, function(err, data) {
+                    var optCount = data[0].question.options.length;
+                    for (var i=0 ; i < optCount ; i ++) {
+                        var ENobj = "Editopt"+'EN_'+i+'-'+Qindex+'*'+Uid;
+                        var HIobj = 'Editopt'+'HI_'+i+'-'+Qindex+'*'+Uid;
+                        var GJobj = "Editopt"+'GJ_'+i+'-'+Qindex+'*'+Uid;
                          
-                      });
+                         OptNameObj.push({ENobj ,GJobj , HIobj});
+                    }; 
+
+                    for(var i =0 ; i < optCount ; i ++){
+                        NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                        
+                    };
+
+                    question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions }}, { new: true }, function (err, tank) {
+                    if (err) return handleError(err);  
+                     console.log(tank);                    
+                    //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
+                    });                      
+                });         
+             //console.log(req.body);
+           /////////////////////////////////////////            
+            var  imgurlArray = [];                      
+            if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
+            cloudinary.v2.uploader.upload(req.files.image_masonry[0].path,
+            { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
+                function(err, result) {    // call back after uploading image to cloudinary                     
+                    question.find({_id:Uid}, function(err, test){   // id changes                                      
+                        if(err){res.send(err)};         
+                         result.url=result.url.replace("png","jpg");  // replace image to png to jpg to prevent error                   
+                        test[0].needAssistance.questionImgUrl.push({imgUrl:result.url,_id:result.public_id});
+                        imgurlArray = test[0].needAssistance.questionImgUrl;     
+
+                        //update                                                            
+                        question.findOneAndUpdate({_id: Uid}, { $set: { 'needAssistance.questionImgUrl': imgurlArray }}, { new: true }, function (err, tank) {
+                        if (err) return handleError(err);                      
+                        //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
+                        }); 
+                     
+                  });
                 });
-            };       
-            res.redirect('/generalInfo');
+            };                   
+            res.redirect('/generalInfo');   
         },
   
         SaveQuestions: function(req, res) { 

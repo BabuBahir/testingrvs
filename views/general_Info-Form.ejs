@@ -74,8 +74,9 @@
                             
                             <div class="panel panel-default survey-questn-accordion">
                                 <div class="panel-heading">
-                                    <a data-toggle="collapse" ng-click="GetDataForReadOnly('<%=QTArray[i]%>')" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
-                                        Q) <%=rawData[i].question.text.English%>  
+                                    <a data-toggle="collapse" 
+                                    ng-click="GetDataForReadOnly('<%=QTArray[i]%>','  <%=i%>')" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
+                                        Q) <%=rawData[i].question.text.English%> 
                                     </a>  
                                 </div>
                                 <div id="collapse<%=i%>" class="panel-collapse collapse ">
