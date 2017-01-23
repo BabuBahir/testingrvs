@@ -2,7 +2,7 @@
 <html lang="en" ng-app="GeneralInfoApp">
 
 <head>
-    <title>General Info </title>
+    <title> <%=title%> </title>
     
     <% include ./partials/head %>        
 
@@ -55,7 +55,7 @@
             
             <div class="row page-header-wrap">
                 <div class="col-sm-8 col-sm-offset-2">
-                    <h3>General Info </h3> </div>
+                    <h3> <%=title%> </h3> </div>
                 <div class="col-sm-2"> <span class="survey-btns-wrap">
 					        <button type="button" ng-click="Add_New()" class="btn btn-xs add-survey-btn">Add New &nbsp; <i class="fa fa-plus-circle"></i></button> 
 						<!--    <button type="button" class="btn btn-xs edit-survey-btn">Edit &nbsp; 

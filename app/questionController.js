@@ -11,7 +11,7 @@ cloudinary.config({
 
  
 module.exports = {
-        getQuestions: function(req, res) {
+        getQuestions: function(req, res) { 
             question.find({}, function(err, data) {  
 
                 var newArrayOfID = [];
@@ -19,13 +19,35 @@ module.exports = {
                     newArrayOfID.push(data[i]._id); // pushing ID of each Question
                 }
 
-                res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID });
+                res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "General Info" });
+            });
+        },
+        getQuestions_technical: function(req, res) {
+            question.find({}, function(err, data) {  
+
+                var newArrayOfID = [];
+                for (var i = 0; i < data.length; i++) {
+                    newArrayOfID.push(data[i]._id); // pushing ID of each Question
+                }
+
+                res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "General Technical Info" });
+            });
+        },
+        getSurveyQuestions: function(req, res) {
+            question.find({}, function(err, data) {  
+
+                var newArrayOfID = [];
+                for (var i = 0; i < data.length; i++) {
+                    newArrayOfID.push(data[i]._id); // pushing ID of each Question
+                }
+
+                res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "Seismic Assessment" });
             });
         },
         fillQuestionPartial: function(req, res) {
             id = req.params.id; 
-            question.find({ _id: id }, function(err, data) {  // data[0] has the requied question
-                res.render('questionTypePartial', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) });
+            question.find({ _id: id }, function(err, data) {  // console.log(data[0]); //has the requied question
+                res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) });
             });
         },
         fillreadOnlyPartial: function(req, res) {
@@ -52,7 +74,7 @@ module.exports = {
             });
         },    
    
-        UpdateQuestions : function(req,res){    console.log(req.body);
+        UpdateQuestions : function(req,res){    
             Qindex = req.params.Qindex; 
             Uid = req.params.id;   
             TotalCount = req.params.TotalCount;

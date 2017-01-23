@@ -24,22 +24,17 @@ module.exports = function(app) {
         res.render('survey_Management.html');
     });  
 
-    app.get('/surveyquestions',requireLogin,function(req,res){
-        res.render('survey_Question&Answer.html');
-    });       
+    app.get('/buildingType',requireLogin,controller.index);
 
     app.get('/generalInfo',questionController.getQuestions);     
 
-    app.get('/buildingType',requireLogin,controller.index);
-
-    app.get('/general_techincal',requireLogin,function(req,res){
-        res.render('general_Technical_Information.html');
-    });
+    app.get('/general_techincal',questionController.getQuestions_technical);
     
+    app.get('/surveyquestions', questionController.getSurveyQuestions);
+
     app.get('/seismic_Assessment',requireLogin,function(req,res){
         res.render('seismic_Assessment.html');
     });
-
  
     // get for partials
  
