@@ -76,17 +76,22 @@
                                        </div> <!--needAssistanceDiv-->                                               
                                         <div class="clearfix"></div>
                                         
-                                        <div class="col-sm-12 select-radio-btn">
-                                            <label class="checkbox-inline checked">
-                                                <input type="checkbox" id="inlineCheckbox1" value="option1" checked style="margin-top:-4px;" onclick="return false;" checked> Masonary 
-                                            </label>
-                                            <label class="checkbox-inline disabled" >
-                                                <input type="checkbox" id="inlineCheckbox2" value="option2" style="margin-top:-4px;" disabled> RCC 
-                                            </label>
-                                            <label class="checkbox-inline disabled">
-                                                <input type="checkbox" id="inlineCheckbox3" value="option3" style="margin-top:-4px;" disabled> Steel 
-                                            </label>
-                                            <label class="checkbox-inline disabled">
-                                                <input type="checkbox" id="inlineCheckbox4" value="option4" style="margin-top:-4px;" disabled> Composite 
-                                            </label>
-                                        </div>
+    <div class="col-sm-12 select-radio-btn">   
+
+        <label class="checkbox-inline disabled">
+            <input type="checkbox" id="inlineCheckbox1" value="option1" style="margin-top:-4px;" disabled 
+             <% if(buildingTypes.search('Masonry') > -1)  { %> checked  <% } else { %> <% }%> > Masonry 
+        </label>
+        <label class="checkbox-inline disabled" >
+            <input type="checkbox" id="inlineCheckbox2" value="option2" style="margin-top:-4px;" disabled
+            <% if(buildingTypes.search('Rcc') > -1)  { %> checked  <% } else { %> <% }%>   > RCC 
+        </label>
+        <label class="checkbox-inline disabled">
+            <input type="checkbox" id="inlineCheckbox3" value="option3" style="margin-top:-4px;" disabled
+            <% if(buildingTypes.search('Steel') > -1)  { %> checked  <% } else { %> <% }%>  > Steel 
+        </label>
+        <label class="checkbox-inline disabled">
+            <input type="checkbox" id="inlineCheckbox4" value="option4" style="margin-top:-4px;" disabled
+            <% if(buildingTypes.search('Composite') > -1)  { %> checked  <% } else { %> <% }%> > Composite 
+        </label>
+    </div>
