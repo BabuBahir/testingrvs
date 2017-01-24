@@ -58,7 +58,7 @@ module.exports = {
                 { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];               
             id = req.params.id;
 
-            question.find({ _id: id }, function(err, data) {   console.log(data[0]); // data[0] has the requied question
+            question.find({ _id: id }, function(err, data) {   // data[0] has the requied question
                   people[0].name =(data[0].question.text.English);
                   people[1].name =(data[0].question.text.Gujarati);
                   people[2].name =(data[0].question.text.Hindi); 
@@ -71,29 +71,60 @@ module.exports = {
             id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
-            });
+            }); 
         },    
    
-        UpdateQuestions : function(req,res){    
-            Qindex = req.params.Qindex; 
+        UpdateQuestions : function(req,res){   console.log(req.body.CB_Rcc_edit);
+            Qindex = req.params.Qindex;     
             Uid = req.params.id;   
-            TotalCount = req.params.TotalCount;
+            TotalCount = req.params.TotalCount;  
             var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
             var NewOptions = []; // to get all new options 
             var buildingObj = [];
 
             // checking building type(s)  
-            if ((req.body["CB_Masonary"]) == 'on')
+         if( typeof (req.body["CB_Masonary_edit"]) !== 'undefined') { 
+            if (((req.body["CB_Masonary_edit"]) == 'on') || ((req.body["CB_Masonary_edit"][0]) == 'on'))
                 buildingObj.push({ _id: 'Masonry' });
+        };
 
-            if ((req.body["CB_Rcc"]) == 'on')
+
+        if( typeof (req.body["CB_Rcc_edit"]) !== 'undefined') { 
+            if  (((req.body["CB_Rcc_edit"]) == 'on') || ((req.body["CB_Rcc_edit"][0]) == 'on'))                 
                 buildingObj.push({ _id: 'Rcc' });
+        };
 
-            if ((req.body["CB_Steel"]) == 'on')
+        if( typeof (req.body["CB_Steel_edit"]) !== 'undefined') { 
+            if (((req.body["CB_Steel_edit"]) == 'on') || ((req.body["CB_Steel_edit"][0]) == 'on'))                 
                 buildingObj.push({ _id: 'Steel' });
+        };
 
-            if ((req.body["CB_Compo"]) == 'on')
-                buildingObj.push({ _id: 'Composite' });            
+        if( typeof (req.body["CB_Compo_edit"]) !== 'undefined') {
+            if (((req.body["CB_Compo_edit"]) == 'on') || ((req.body["CB_Compo_edit"][0]) == 'on'))                 
+                buildingObj.push({ _id: 'Composite' }); 
+        };      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
             question.find({ _id: Uid}, function(err, data) {   
                     var optCount = data[0].question.options.length; 

@@ -30,7 +30,7 @@ angular.module('GeneralInfoApp',[])
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     }; 
 
-    $scope.radioSelect = function(msg){ console.log(msg);
+    $scope.radioSelect = function(msg){  
     	if(msg != "textFeild"){
     		$scope.OptionDiv = true;
     	}else{
@@ -73,7 +73,7 @@ angular.module('GeneralInfoApp',[])
             };
         };   
 
-	$scope.btn_click = function(Q_id , Q_Type){ console.log(Q_Type);
+	$scope.btn_click = function(Q_id , Q_Type){  
         if(Q_Type != '2') {
             $scope.OptionDiv  = true;         // opion div RESET
         }
@@ -103,7 +103,9 @@ angular.module('GeneralInfoApp',[])
  		  // validations
  	};
 
- 	$scope.form_submit =function(Q_id){  console.log($scope.choices.length);
+
+
+ 	$scope.form_submit =function(Q_id){    
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	
@@ -125,9 +127,9 @@ angular.module('GeneralInfoApp',[])
         var ReadOnlyGJQues= "ReadOnlyGJQues"+Q_id;
         var ReadOnlyHIQues= "ReadOnlyHIQues"+Q_id;
         
-         $document[0].getElementById(ReadOnlyENQues).value = msg.question.text.English;
-         $document[0].getElementById(ReadOnlyGJQues).value = msg.question.text.Gujarati;
-         $document[0].getElementById(ReadOnlyHIQues).value = msg.question.text.Hindi;
+         document.getElementById(ReadOnlyENQues).value = msg.question.text.English;
+         document.getElementById(ReadOnlyGJQues).value = msg.question.text.Gujarati;
+         document.getElementById(ReadOnlyHIQues).value = msg.question.text.Hindi;
 
           
      };
