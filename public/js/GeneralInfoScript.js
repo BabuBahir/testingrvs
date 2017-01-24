@@ -103,9 +103,11 @@ angular.module('GeneralInfoApp',[])
  		  // validations
  	};
 
+    $scope.Remove_past = function(msg){
+          
+    };
 
-
- 	$scope.form_submit =function(Q_id){    
+ 	$scope.form_submit =function(Q_id){ console.log($scope.CB_R);
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

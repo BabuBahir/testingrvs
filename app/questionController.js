@@ -73,8 +73,8 @@ module.exports = {
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             }); 
         },    
-   
-        UpdateQuestions : function(req,res){   console.log(req.body.CB_Rcc_edit);
+    
+        UpdateQuestions : function(req,res){   console.log(req.body);
             Qindex = req.params.Qindex;     
             Uid = req.params.id;   
             TotalCount = req.params.TotalCount;  
@@ -104,22 +104,6 @@ module.exports = {
                 buildingObj.push({ _id: 'Composite' }); 
         };      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -148,7 +132,7 @@ module.exports = {
                     if(data[0].questionType == '2') {NewOptions = []; }; //  if Question Type = 2 .. remove OPTIONS
 
                     question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions , 'buildingsAssociated' : buildingObj }}, { new: true }, function (err, tank) {
-                    if (err) return handleError(err);                                    
+                    if (err) return handleError(err);                               
                     //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
                     });                   
             });         
@@ -178,9 +162,9 @@ module.exports = {
         },
   
         SaveQuestions: function(req, res) { 
-            id = req.body["QuestionID"];   
+            id = req.body["QuestionID"];    
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] } }, { new: true }, function(err, tank) {
-                if (err) return handleError(err);   
+                if (err) return handleError(err);    
                 // call read only partial with id
                 res.send(tank);
             });  

@@ -92,19 +92,31 @@
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
             <input type="checkbox" id="inlineCheckbox_edit" name="CB_Masonary_edit"  style="margin-top:-4px;"
-            <% if(buildingTypes.search('Masonry') > -1)  { %> checked  <% } else { %> <% }%> > Masonry  
+            <% if(buildingTypes.search('Masonry') > -1) { 
+            %> checked ng-change="Remove_past('M')" ng-model="$parent.CB_M" ng-init="$parent.CB_M=true" <% } else { 
+            %> <% }%> > Masonry  
+
         </label>
         <label class="checkbox-inline  " >
             <input type="checkbox" id="inlineCheckbox2_edit" name="CB_Rcc_edit" style="margin-top:-4px;"  
-            <% if(buildingTypes.search('Rcc') > -1)  { %> checked  <% } else { %> <% }%>   > RCC 
+            <% if(buildingTypes.search('Rcc') > -1) { 
+            %> checked  ng-change="Remove_past('R')"  ng-model="$parent.CB_R" ng-init="$parent.CB_R=true" <% } else { 
+            %> <% }%>   > RCC 
+
         </label>
         <label class="checkbox-inline  ">
             <input type="checkbox" id="inlineCheckbox3_edit" name="CB_Steel_edit"  style="margin-top:-4px;"  
-            <% if(buildingTypes.search('Steel') > -1)  { %> checked  <% } else { %> <% }%>  > Steel 
+            <% if(buildingTypes.search('Steel') > -1) {
+             %> checked ng-change="Remove_past('S')"  ng-model="$parent.CB_S" ng-init="$parent.CB_S=true" <% } else 
+             { %> <% }%>  > Steel 
+
         </label>
         <label class="checkbox-inline  ">
             <input type="checkbox" id="inlineCheckbox4_edit" name="CB_Compo_edit"  style="margin-top:-4px;" 
-            <% if(buildingTypes.search('Composite') > -1)  { %> checked  <% } else { %> <% }%> > Composite 
+        <% if(buildingTypes.search('Composite') > -1) { 
+        %> checked ng-change="Remove_past('C')"  ng-model="$parent.CB_C" ng-init="$parent.CB_C=true" <% } else 
+        { %> <% }%> > Composite 
+
         </label>
     </div>
 <div class="col-sm-12 text-center">
