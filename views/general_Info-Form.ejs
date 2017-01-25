@@ -63,19 +63,18 @@
 					    </span> </div>
             </div>
             
-            <div ng-hide="oldQuestionDiv" class="row" style="margin:0;padding:15px 0 20px; background:#f5f5f5;">
-               <% for(var i=0 ; i< JSON.stringify(QTArray.length);i++) {%> 
-                <div class="survey-question-wrap">
+            <div ng-hide="oldQuestionDiv" class="row" style="margin:0;padding:15px 0 20px; background:#f5f5f5;">     <div class="survey-question-wrap">
                     <div class="col-sm-12">
                         
                       <!-- Accordion starts -->
                         <div class="panel-group" id="accordion">                            
                             <!-- panel panel-default -->
-                            
+                        <% for(var i=0 ; i< JSON.stringify(QTArray.length);i++) {%>    
                             <div class="panel panel-default survey-questn-accordion">
                                 <div class="panel-heading">
                                     <a data-toggle="collapse" 
-                                    ng-click="GetDataForReadOnly('<%=QTArray[i].id%>','  <%=i%>')" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
+                                    ng-click="GetDataForReadOnly('<%=QTArray[i].id%>','  <%=i%>')" 
+                                    data-parent="#accordion" href="#collapse<%=i%>" class="question-block">
                                         Q) <%=rawData[i].question.text.English%> 
                                     </a>  
                                 </div>
@@ -101,13 +100,12 @@
                                 <!-- id="collapse2" -->
                             </div>
                             <!-- panel panel-default -->
-                        
+                          <%}%>
                         </div>
                         <!-- panel-group -->
                     </div>
                     <!-- col-sm-12 -->
-                </div>
-                <%}%>
+                </div>              
                 <!-- survey-question-wrap -->
 
             </div>
