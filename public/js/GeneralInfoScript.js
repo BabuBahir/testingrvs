@@ -95,6 +95,8 @@ angular.module('GeneralInfoApp',[])
     }; 
     
 	$scope.GetDataForReadOnly = function(Q_id,key){  
+        $scope.testing = false;
+        $scope.Edit_btn = false;
         $scope.thisQues=key.trim();
 		$scope.QEditID = Q_id;         
 	};
@@ -107,7 +109,7 @@ angular.module('GeneralInfoApp',[])
           
     };
 
- 	$scope.form_submit =function(Q_id){ console.log($scope.CB_R);
+ 	$scope.form_submit =function(Q_id){ 
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

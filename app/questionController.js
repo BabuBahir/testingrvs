@@ -74,7 +74,7 @@ module.exports = {
             }); 
         },    
     
-        UpdateQuestions : function(req,res){   console.log(req.body);
+        UpdateQuestions : function(req,res){   
             Qindex = req.params.Qindex;     
             Uid = req.params.id;   
             TotalCount = req.params.TotalCount;  
@@ -103,7 +103,7 @@ module.exports = {
             if (((req.body["CB_Compo_edit"]) == 'on') || ((req.body["CB_Compo_edit"][0]) == 'on'))                 
                 buildingObj.push({ _id: 'Composite' }); 
         };      
-
+ 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
