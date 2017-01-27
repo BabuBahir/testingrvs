@@ -7,7 +7,7 @@ angular.module('GeneralInfoApp',[])
      
     $scope.FormDestination = "AddNewQuestion";
 
-    $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+    $scope.choices = [{_id: 0}, {_id: 1}];
 
     $scope.addNewChoice = function() {
         var newItemNo = $scope.choices.length;
@@ -26,7 +26,7 @@ angular.module('GeneralInfoApp',[])
     };
 
     $scope.Add_New = function(){
-        $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];  // repush 2 default elements
+        $scope.choices = [{_id: 0}, {_id: 1}];  // repush 2 default elements
         $scope.FormDestination = "AddNewQuestion";
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     }; 
@@ -80,7 +80,7 @@ angular.module('GeneralInfoApp',[])
             $scope.OptionDiv  = true;         // opion div RESET
         }
         else{
-            $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];  // repush 2 default elements
+            $scope.choices = [{_id: 0}, {_id: 1}];  // repush 2 default elements
             $scope.OptionDiv  = false; 
         };
         $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+$scope.choices.length;   // on edit change form destination
@@ -112,7 +112,7 @@ angular.module('GeneralInfoApp',[])
           
     };
 
- 	$scope.form_submit =function(Q_id){ 
+ 	$scope.form_submit =function(Q_id){ console.log($scope.NA_NameEnglish);
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

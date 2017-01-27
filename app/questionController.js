@@ -127,13 +127,12 @@ module.exports = {
                             NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj] ,Gujarati : req.body[OptNameObj[i].GJobj], Hindi : req.body[OptNameObj[i].HIobj] });                                        
                         }
                     };  
-                      
                     
                     if(data[0].questionType == '2') {NewOptions = []; }; //  if Question Type = 2 .. remove OPTIONS
 
                     question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions , 'buildingsAssociated' : buildingObj }}, { new: true }, function (err, tank) {
                     if (err) return handleError(err);                               
-                    //   res.redirect('/generalInfo');    //   NEVER RETURN ,, NEVER !!!!
+                         //   res.redirect('/generalInfo');  NEVER RETURN ,, NEVER !!!!
                     });                   
             });         
              //console.log(req.body);
@@ -180,7 +179,7 @@ module.exports = {
         },
 
         addQuestion: function(req, res) {  
-              
+               
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
                 optionObj   = [];
@@ -278,15 +277,14 @@ module.exports = {
                                   res.redirect('/generalInfo');  
                             };
                         };
-         });   
+         });  
     },
     destory: function (req, res) {               
       var imageId = req.body.image_id; Q_id = req.body.Q_ID;  
        
       cloudinary.v2.uploader.destroy(imageId, function (error, result) {   
                 question.update({_id: Q_id}, { $pull: { 'needAssistance.questionImgUrl' : { _id : imageId } } },{ safe: true }, function(err, test){                                        
-                        if(err){res.send(err)}; 
-                        console.log(test);                                        
+                        if(err){res.send(err)};                                                             
                         res.send("done");
                   });
           });

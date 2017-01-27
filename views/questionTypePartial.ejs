@@ -51,7 +51,7 @@
 
         <div class="row delete-options-in-survey-bg">
           <fieldset  data-ng-repeat="choice in choices">    <!--$scope.choices from controller -->  
-            <div class="col-sm-10 col-md-11" style="padding:0">
+            <div class="col-sm-10 col-md-11" style="padding:0">  
                 <div class="col-sm-3 form-group">                     
                     <input type="text" value="{{choice.English}}"  name="{{'EditoptEN_'+choice._id+'-'+thisQues+'*'}}<%=Q_id%>" placeholder="">
                 </div>   
