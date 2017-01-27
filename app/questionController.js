@@ -169,17 +169,18 @@ module.exports = {
                 res.send(tank);
             });  
         },
-        ShowAssistancePartial: function(req, res) {
+        ShowAssistancePartial: function(req, res) {  
             question.find({_id: id}, function(err, data) {   
                 res.render('needAssistancePartial/needAssistancePartialID', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0].needAssistance });
-            });
+            }); 
         },
 
-        ShowAssistancePartialBlank: function(req, res) {
+        ShowAssistancePartialBlank: function(req, res) { 
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) {    
+        addQuestion: function(req, res) {   
+
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
                 optionObj   = [];
@@ -192,7 +193,7 @@ module.exports = {
                 }else {   
                     var Selected_qtType = '2';
                 }
-
+                 
                 // checking building type(s)  
                 if ((req.body["CB_Masonary"]) == 'on')
                     buildingObj.push({ _id: 'Masonry' });
@@ -207,10 +208,13 @@ module.exports = {
                     buildingObj.push({ _id: 'Composite' });
 
                 // putting options in the object
-                var optLength = req.body.opt_EN.length;
-                for(var i=0;i<optLength; i++){ 
-                    optionObj.push( { _id : i , English : req.body.opt_EN[i] , Gujarati : req.body.opt_GJ[i] , Hindi : req.body.opt_HI[i]} );
+                if(Selected_qtType != '2' && (req.body.opt_EN.length != 'undefined' )) {
+                    var optLength = req.body.opt_EN.length;  
+                    for(var i=0;i<optLength; i++){ 
+                        optionObj.push( { _id : i , English : req.body.opt_EN[i] , Gujarati : req.body.opt_GJ[i] , Hindi : req.body.opt_HI[i]} );
+                    };
                 };
+ 
                 // putting options in the object
 
                 var QTNew = new question({

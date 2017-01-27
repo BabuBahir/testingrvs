@@ -32,6 +32,8 @@ angular.module('GeneralInfoApp',[])
 
     $scope.radioSelect = function(msg){  
     	if(msg != "textFeild"){
+            $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+            console.log($scope.choices.length);
     		$scope.OptionDiv = true;
     	}else{
     		$scope.OptionDiv = false;

@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 
 module.exports = {
   index: function (req, res) {
-  	admin.findOne({name:"Admin 001"}, function(err, data){  console.log(req.body);		
+  	admin.findOne({name:"Admin 001"}, function(err, data){  	
   		var salt = bcrypt.genSaltSync(10);// Hash the password with the salt
 		var hash = bcrypt.hashSync("papa", salt);		
 		if(req.body.email == "admin@gmail.com"){ 
