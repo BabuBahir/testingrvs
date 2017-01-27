@@ -26,14 +26,13 @@ angular.module('GeneralInfoApp',[])
     };
 
     $scope.Add_New = function(){
+        $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];  // repush 2 default elements
         $scope.FormDestination = "AddNewQuestion";
     	$scope.oldQuestionDiv = !$scope.oldQuestionDiv ;
     }; 
 
     $scope.radioSelect = function(msg){  
-    	if(msg != "textFeild"){
-            $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
-            console.log($scope.choices.length);
+    	if(msg != "textFeild"){                        
     		$scope.OptionDiv = true;
     	}else{
     		$scope.OptionDiv = false;
@@ -80,6 +79,7 @@ angular.module('GeneralInfoApp',[])
             $scope.OptionDiv  = true;         // opion div RESET
         }
         else{
+            $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];  // repush 2 default elements
             $scope.OptionDiv  = false; 
         };
         $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+$scope.choices.length;   // on edit change form destination

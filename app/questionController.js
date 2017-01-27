@@ -12,7 +12,7 @@ cloudinary.config({
  
 module.exports = {
         getQuestions: function(req, res) { 
-            question.find({}, function(err, data) {  
+            question.find({}).sort({'_id':-1}).exec(function(err,data){    
 
                 var newArrayOfID = [];
                 for (var i = 0; i < data.length; i++) {  
