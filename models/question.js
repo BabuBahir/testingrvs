@@ -17,6 +17,7 @@ var questionSchema = new Schema({
             Gujarati: String
         }]
     },
+    ifNeedAssistance : String ,
     needAssistance: {
         title: {            
                 Hindi: String,

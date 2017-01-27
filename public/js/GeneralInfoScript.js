@@ -39,9 +39,9 @@ angular.module('GeneralInfoApp',[])
     	}
     };
 
-    $scope.init_checkbox = function(msg){  
+    $scope.init_checkbox = function(msg){   
     	msg= msg.trim();
-    	if(msg){
+    	if(msg == '1'){
     		$scope.CheckNeedAssistance = true;
     	}else{
     		$scope.CheckNeedAssistance = false;
@@ -50,24 +50,25 @@ angular.module('GeneralInfoApp',[])
 
     $scope.init_checkbox_EditPage = function(msg){    	 
     	msg= msg.trim();
-    	if(msg){
+    	if(msg == '1'){
     		$scope.needAssistanceDiv = $scope.CheckNeedAssistance_editpage = true;
     	}else{
     		$scope.needAssistanceDiv = $scope.CheckNeedAssistance_editpage = false;
     	};
     };
 
-    $scope.Delete_img = function(msg){         
+    $scope.Delete_img = function(msg){        
     	var r = confirm("Do you want to Delete the Image!");   
-        if (r == true) {             
+        if (r == true) {              
             $http({
             method : "POST",
             url : "/Delete_Questionimg" ,
             async : false,
             data:({"image_id":msg  , "Q_ID":$scope.QEditID})
-            }).then(function mySucces(response) {            
+            }).then(function mySucces(response) {      
                //$scope.myWelcome = response.data; 
-                document.getElementById(img_id).style.display = 'none';
+                document.getElementsByClassName(msg).style.display = 'none';
+                console.log(msg);  
             }, function myError(response) {
               $scope.myWelcome = response.statusText;
             });  

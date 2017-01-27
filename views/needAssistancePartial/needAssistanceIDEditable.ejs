@@ -55,9 +55,10 @@
                                                     <label style="margin-top:15px;">Upload Image</label>
                                                     <br/> 
                                               </div>
-                                              <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
+                                              <div  class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                 <% rawData.questionImgUrl.forEach(function(post, index) { %>
-                                                <div id="<%=post._id%>" class="upload-files">
+                                             
+                                                <div id='<%=post._id%>' class="upload-files">
                                                     <div class="upload-wrapper">
                                                         <img  src="<%=post.imgUrl%>" />
                                                     </div> <!-- upload-wrapper -->
@@ -67,6 +68,7 @@
                                                         <span><i ng-click="Delete_img('<%=post._id%>')" class="fa fa-times"></i></span>
                                                     </div> <!-- upload-hover-wrapper -->
                                                 </div>  <!-- upload-files -->
+                                            
                                                  &nbsp;                                                                 <% }) %>                           
                                                    
                                                 <div class="upload-files" style="vertical-align:-5px;">

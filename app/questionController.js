@@ -179,8 +179,8 @@ module.exports = {
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) {   
-
+        addQuestion: function(req, res) {  
+              
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
                 optionObj   = [];
@@ -214,6 +214,13 @@ module.exports = {
                         optionObj.push( { _id : i , English : req.body.opt_EN[i] , Gujarati : req.body.opt_GJ[i] , Hindi : req.body.opt_HI[i]} );
                     };
                 };
+
+                // Check if needAssistance checkbox is clicked
+                if((req.body["CB_NeedAssistance"]) == 'on' ) {
+                    var ifNeedAssistance = '1';
+                } else {
+                    var ifNeedAssistance = '0';
+                };
  
                 // putting options in the object
 
@@ -228,6 +235,7 @@ module.exports = {
                             },
                             options : optionObj
                     },
+                    ifNeedAssistance : ifNeedAssistance ,
                     needAssistance: {
                         description: {
                             "English": req.body["NA_DescEnglish"],
@@ -270,14 +278,15 @@ module.exports = {
                                   res.redirect('/generalInfo');  
                             };
                         };
-                    });  
-                },
+         });   
+    },
     destory: function (req, res) {               
-      var imageId = req.body.image_id; id = req.params.Q_ID;  
-
-      cloudinary.v2.uploader.destroy(imageId, function (error, result) { 
-                question.update({_id: id}, { $pull: { 'needAssistance.questionImgUrl' : { _id : imageId } } },{ safe: true }, function(err, test){                                        
-                        if(err){res.send(err)};                                           
+      var imageId = req.body.image_id; Q_id = req.body.Q_ID;  
+       
+      cloudinary.v2.uploader.destroy(imageId, function (error, result) {   
+                question.update({_id: Q_id}, { $pull: { 'needAssistance.questionImgUrl' : { _id : imageId } } },{ safe: true }, function(err, test){                                        
+                        if(err){res.send(err)}; 
+                        console.log(test);                                        
                         res.send("done");
                   });
           });
