@@ -157,6 +157,30 @@ module.exports = {
                   });
                 });
             };                   
+
+            //video update
+            var videourlArray = [];    
+            if ((req.files.video_masonry[0].size >0) && (req.files.video_masonry[0].originalFilename  != "" )) {  // check if video is present                          
+            cloudinary.uploader.upload_large(req.files.video_masonry[0].path, 
+            function(result) {  // call back after uploading video to cloudinary 
+                result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg   
+
+                question.find({_id: Uid}, function(err, test){                                        
+                        if(err){res.send(err)};              
+
+                        test[0].needAssistance.questionVideoUrl.push({videoUrl:result.url,_id:result.public_id});
+                        videourlArray = test[0].needAssistance.questionVideoUrl;
+                         
+                        question.findOneAndUpdate({_id: Uid}, { $set: { 'needAssistance.questionVideoUrl' : videourlArray}}, { new: true }, function (err, tank) {
+                        if (err) return handleError(err);                      
+                             
+                        }); 
+                     
+                  });               
+            }, { resource_type: "video" });  
+        };
+
+
             res.redirect('/generalInfo');  
         },
   
@@ -273,7 +297,30 @@ module.exports = {
                                             });
                                         });
                                     });
-                            } else {
+                            };
+                            //video upload
+                            var videourlArray = [];
+                            if ((req.files.video_masonry[loc].size >0) && (req.files.video_masonry[loc].originalFilename  != "" )) {  // check if video is present                          
+                                cloudinary.uploader.upload_large(req.files.video_masonry[loc].path, 
+                                function(result) {  // call back after uploading video to cloudinary 
+                                result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg   
+
+                                question.find({_id: pseudoID}, function(err, test){                                        
+                                if(err){res.send(err)};              
+
+                                        test[0].needAssistance.questionVideoUrl.push({videoUrl:result.url,_id:result.public_id});
+                                        videourlArray = test[0].needAssistance.questionVideoUrl;
+
+                                        question.findOneAndUpdate({_id: pseudoID}, { $set: { 'needAssistance.questionVideoUrl' : videourlArray}}, { new: true }, function (err, tank) {
+                                        if (err) return handleError(err);                      
+                                            res.redirect('/generalInfo');  
+                                        }); 
+
+                                });               
+                                }, { resource_type: "video" });  
+                            }
+                            //video upload
+                             else {
                                   res.redirect('/generalInfo');  
                             };
                         };

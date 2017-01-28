@@ -1,6 +1,6 @@
  
 angular.module('GeneralInfoApp',[]) 
-    .controller('MainCtrl',function ($scope,$http,$document) {         
+    .controller('MainCtrl',function ($scope,$http,$document,$rootScope) {         
 
     $scope.updateTime = Date.now();               
     $scope.QEditID = 'BH';   
@@ -112,7 +112,7 @@ angular.module('GeneralInfoApp',[])
           
     };
 
- 	$scope.form_submit =function(Q_id){ console.log($scope.NA_NameEnglish);
+ 	$scope.form_submit =function(Q_id){ console.log($rootScope.NA_NameEnglish);
 		$http({
 		method : "POST",
 		url : "/saveQuestions" ,	

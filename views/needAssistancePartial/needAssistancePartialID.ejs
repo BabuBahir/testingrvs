@@ -84,30 +84,24 @@
                                                             <br/> 
                                                         </div>
                                                         <div class="col-sm-9 col-md-10 col-lg-10 side-padding">
-                                                            <div class="upload-files">
-                                                                <div class="upload-wrapper"> 
-                                                                    <img src="img/image-1.png" /> 
-                                                                </div>
-                                                                <!-- upload-wrapper -->
-                                                              
-                                                            </div> <!-- upload-files -->
-                                                            &nbsp;
-                                                            <div class="upload-files">
-                                                                <div class="upload-wrapper"> 
-                                                                    <img src="img/image-1.png" /> 
-                                                                </div>
-                                                              <!-- upload-wrapper -->
-                                                            
-                                                            </div> <!-- upload-files -->
-                                                            &nbsp;
-                                                            <div class="upload-files" style="vertical-align:-5px;">
-                                                                <div class="upload-wrapper"> 
-                                                                    <i class="fa fa-video-camera"></i> 
-                                                                </div>
-                                                                <!-- upload-wrapper -->
-                                                            </div> <!-- upload-files -->
-                                                            &nbsp;
-                                                            
+
+
+                                                    <% rawData.questionVideoUrl.forEach(function(post, index) { %>
+
+                                                    <div id='<%=post._id%>' class="upload-files">
+                                                    <div class="upload-wrapper">
+                                                        <img  src="<%=post.videoUrl%>" />
+                                                    </div> <!-- upload-wrapper -->
+
+                                                     
+                                                    </div>  <!-- upload-files -->
+
+                                                    &nbsp;                                                
+                                                    <% }) %>    
+
+
+
+
                                                         </div>
                                                         <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                       <!-- upload video part ends-->
