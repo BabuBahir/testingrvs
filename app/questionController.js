@@ -46,7 +46,7 @@ module.exports = {
         },
         fillQuestionPartial: function(req, res) {
             id = req.params.id; 
-            question.find({ _id: id }, function(err, data) {  // console.log(data[0]); //has the requied question
+            question.find({ _id: id }, function(err, data) {  //  //has the requied question
                 res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) , buildingTypes : JSON.stringify(data[0].buildingsAssociated) });
             });
         }, 
@@ -67,7 +67,7 @@ module.exports = {
             });
         },    
   
-        Na_WithID_Editable: function(req, res) { 
+        Na_WithID_Editable: function(req, res) {  
             id = req.params.id;  
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
@@ -135,7 +135,7 @@ module.exports = {
                          //   res.redirect('/generalInfo');  NEVER RETURN ,, NEVER !!!!
                     });                   
             });         
-             //console.log(req.body);
+             
            /////////////////////////////////////////            
             var  imgurlArray = [];                      
             if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
@@ -184,9 +184,22 @@ module.exports = {
             res.redirect('/generalInfo');  
         },
   
-        SaveQuestions: function(req, res) { 
+        SaveQuestions: function(req, res) {   
+
+
+            if(req.body.IF_NA_removed == false){
+                var IF_NA_removed = 0;
+            }else if(req.body.IF_NA_removed == true){
+                var IF_NA_removed = 1;
+            };
+
+
+
             id = req.body["QuestionID"];    
-            question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] } }, { new: true }, function(err, tank) {
+            question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] ,
+                        'needAssistance.title.English' : req.body["NA_NameEN"] , 'needAssistance.title.Hindi' : req.body["NA_NameHI"] , 'needAssistance.title.Gujarati' : req.body["NA_NameGJ"] ,
+                        'needAssistance.description.English' :  req.body["NA_DescEN"] , 'needAssistance.description.Hindi' :  req.body["NA_DescHI"] , 'needAssistance.description.Gujarati' : req.body["NA_DescGJ"] , 'ifNeedAssistance' :IF_NA_removed
+                    } }, { new: true }, function(err, tank) {   
                 if (err) return handleError(err);    
                 // call read only partial with id
                 res.send(tank);
@@ -223,7 +236,7 @@ module.exports = {
 
                 if ((req.body["CB_Rcc"]) == 'on')
                     buildingObj.push({ _id: 'Rcc' });
-
+ 
                 if ((req.body["CB_Steel"]) == 'on')
                     buildingObj.push({ _id: 'Steel' });
 

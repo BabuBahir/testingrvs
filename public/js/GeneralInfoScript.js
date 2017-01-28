@@ -89,7 +89,7 @@ angular.module('GeneralInfoApp',[])
 		$scope.Edit_btn = !$scope.Edit_btn;
 	};
 
-	$scope.showAssistance=function(){ 
+	$scope.showAssistance=function(){           
 		$scope.needAssistanceDiv = !($scope.needAssistanceDiv) ;
 	};    	
 
@@ -112,12 +112,17 @@ angular.module('GeneralInfoApp',[])
           
     };
 
- 	$scope.form_submit =function(Q_id){ console.log($rootScope.NA_NameEnglish);
+ 	$scope.form_submit =function(Q_id){  
 		$http({
-		method : "POST",
-		url : "/saveQuestions" ,	
-        async: false, //blocks window close	 		 
-		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ ,"QType": $scope.checkbox ,"QuestionID":Q_id})
+    		method : "POST",
+    		url : "/saveQuestions" ,	
+            async: false, //blocks window close	 		 
+    		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ ,"QType": $scope.checkbox ,"QuestionID":Q_id,
+                        "NA_NameEN": $rootScope.NA_NameEnglish_edit , "NA_NameHI": $rootScope.NA_NameHindi_edit , "NA_NameGJ": $rootScope.NA_NameGujarati_edit ,
+                        "NA_DescEN": $rootScope.NA_DescEnglish_edit , "NA_DescHI" :$rootScope.NA_DescGujarati_edit, "NA_DescGJ" : $rootScope.NA_DescHindi_edit ,
+                        "IF_NA_removed" : $scope.needAssistanceDiv
+                    })
+
 		}).then(function mySucces(response) {	
             $scope.change_READONLY_page(response.data,Q_id);
 			$scope.btn_click(Q_id); //call this function  

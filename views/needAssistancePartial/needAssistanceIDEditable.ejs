@@ -3,17 +3,22 @@
                                        <div class="col-sm-12 ">  <!-- col-sm-12  -->
                                             <div class="row add-options-in-survey-bg">
                                                 <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" ng-model="$root.NA_NameEnglish" 
-                                                    ng-init="$root.NA_NameEnglish='<%=rawData.title.English%>'" > 
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <input type="text" class="form-control" ng-model="NA_NameGujarati" 
-                                                    ng-init="NA_NameGujarati='<%=rawData.title.Gujarati%>'">
+                                                    <input type="text" class="form-control" 
+                                                    name = "NA_NameEnglish_edit"
+                                                    ng-model="$root.NA_NameEnglish_edit" 
+                                                    ng-init="$root.NA_NameEnglish_edit='<%=rawData.title.English%>'" > 
                                                 </div>
                                                 <div class="col-sm-4 form-group">
                                                     <input type="text" class="form-control" 
-                                                    ng-model="NA_NameHindi" 
-                                                    ng-init="NA_NameHindi='<%=rawData.title.Hindi%>'">
+                                                    name = "NA_NameGujarati_edit"
+                                                    ng-model="$root.NA_NameGujarati_edit" 
+                                                    ng-init="$root.NA_NameGujarati_edit='<%=rawData.title.Gujarati%>'">
+                                                </div>
+                                                <div class="col-sm-4 form-group">
+                                                    <input type="text" class="form-control"
+                                                    name = "NA_NameHindi_edit" 
+                                                    ng-model="$root.NA_NameHindi_edit" 
+                                                    ng-init="$root.NA_NameHindi_edit='<%=rawData.title.Hindi%>'">
                                                 </div>
                                             </div>
                                             <!-- options-in-survey-bg -->
@@ -26,20 +31,26 @@
                                         <div class="col-sm-12 ">  <!-- col-sm-12  -->
                                             <div class="row add-options-in-survey-bg">
                                                 <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" ng-model="NA_DescEnglish" 
-                                                    ng-init="NA_DescEnglish='<%=rawData.description.English%>'"
+                                                    <textarea class="form-control" rows="3" 
+                                                    name="NA_DescEnglish_edit"
+                                                    ng-model="$root.NA_DescEnglish_edit" 
+                                                    ng-init="$root.NA_DescEnglish_edit='<%=rawData.description.English%>'"
                                                     ></textarea>
                                                 </div>
                                                 
                                                 <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" ng-model="NA_DescGujarati" 
-                                                ng-init="NA_DescGujarati='<%=rawData.description.Gujarati%>'"
+                                                    <textarea class="form-control" rows="3" 
+                                                     name="NA_DescGujarati_edit"
+                                                     ng-model="$root.NA_DescGujarati_edit" 
+                                                ng-init="$root.NA_DescGujarati_edit='<%=rawData.description.Gujarati%>'"
                                                     ></textarea>
                                                 </div>
                                                 
                                                 <div class="col-sm-4 form-group need-assist-desc">
-                                                    <textarea class="form-control" rows="3" ng-model="NA_DescHindi" 
-                                                    ng-init="NA_DescHindi='<%=rawData.description.Hindi%>'"
+                                                    <textarea class="form-control" rows="3" 
+                                                    name="NA_DescHindi_edit"
+                                                    ng-model="$root.NA_DescHindi_edit" 
+                                                    ng-init="$root.NA_DescHindi_edit='<%=rawData.description.Hindi%>'"
                                                      ></textarea>
                                                 </div>
                                             </div>
