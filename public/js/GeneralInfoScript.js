@@ -97,7 +97,7 @@ angular.module('GeneralInfoApp',[])
         $scope.needAssistanceDiv_Create = !($scope.needAssistanceDiv_Create) ;
     }; 
     
-	$scope.GetDataForReadOnly = function(Q_id,key){  
+	$scope.GetDataForReadOnly = function(Q_id,key){ 
         $scope.testing = false;
         $scope.Edit_btn = false;
         $scope.thisQues=key.trim();
