@@ -164,7 +164,7 @@ module.exports = {
             cloudinary.uploader.upload_large(req.files.video_masonry[1].path, 
             function(result) {  // call back after uploading video to cloudinary 
                 result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg   
-                 console.log(result);
+                  
                 question.find({_id: Uid}, function(err, test){                                        
                         if(err){res.send(err)};              
 
