@@ -74,7 +74,7 @@ module.exports = {
             }); 
         },    
     
-        UpdateQuestions : function(req,res){   
+        UpdateQuestions : function(req,res){  
             Qindex = req.params.Qindex;     
             Uid = req.params.id;   
             TotalCount = req.params.TotalCount;  
@@ -138,8 +138,8 @@ module.exports = {
              
            /////////////////////////////////////////            
             var  imgurlArray = [];                      
-            if(req.files.image_masonry[0].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
-            cloudinary.v2.uploader.upload(req.files.image_masonry[0].path,
+            if(req.files.image_masonry[1].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
+            cloudinary.v2.uploader.upload(req.files.image_masonry[1].path,
             { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
                 function(err, result) {    // call back after uploading image to cloudinary                     
                     question.find({_id:Uid}, function(err, test){   // id changes                                      
@@ -159,12 +159,12 @@ module.exports = {
             };                   
 
             //video update
-            var videourlArray = [];    
-            if ((req.files.video_masonry[0].size >0) && (req.files.video_masonry[0].originalFilename  != "" )) {  // check if video is present                          
-            cloudinary.uploader.upload_large(req.files.video_masonry[0].path, 
+            var videourlArray = [];     
+            if ((req.files.video_masonry[1].size >0) && (req.files.video_masonry[1].originalFilename  != "" )) { // check if video is present                          
+            cloudinary.uploader.upload_large(req.files.video_masonry[1].path, 
             function(result) {  // call back after uploading video to cloudinary 
                 result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg   
-
+                 console.log(result);
                 question.find({_id: Uid}, function(err, test){                                        
                         if(err){res.send(err)};              
 
@@ -215,8 +215,8 @@ module.exports = {
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) {  
-               
+        addQuestion: function(req, res) {   
+                
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
                 optionObj   = [];
@@ -313,8 +313,8 @@ module.exports = {
                             };
                             //video upload
                             var videourlArray = [];
-                            if ((req.files.video_masonry[loc].size >0) && (req.files.video_masonry[loc].originalFilename  != "" )) {  // check if video is present                          
-                                cloudinary.uploader.upload_large(req.files.video_masonry[loc].path, 
+                            if ((req.files.video_masonry[0].size >0) && (req.files.video_masonry[0].originalFilename  != "" )) {  // check if video is present                          
+                                cloudinary.uploader.upload_large(req.files.video_masonry[0].path, 
                                 function(result) {  // call back after uploading video to cloudinary 
                                 result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg   
 
