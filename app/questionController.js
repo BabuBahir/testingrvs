@@ -12,7 +12,9 @@ cloudinary.config({
  
 module.exports = {
         getQuestions: function(req, res) { 
-            question.find({}).sort({'_id':-1}).exec(function(err,data){    
+            req.session.forPAge = 'GI'; //setting up Session
+
+            question.find({'forPAge':'GI'}).sort({'_id':-1}).exec(function(err,data){    
 
                 var newArrayOfID = [];
                 for (var i = 0; i < data.length; i++) {  
@@ -23,24 +25,28 @@ module.exports = {
             });
         },
         getQuestions_technical: function(req, res) {
-            question.find({}, function(err, data) {  
+            req.session.forPAge = 'GT'; //setting up Session
+
+           question.find({'forPAge':'GT'}).sort({'_id':-1}).exec(function(err,data){    
 
                 var newArrayOfID = [];
-                for (var i = 0; i < data.length; i++) {
-                    newArrayOfID.push(data[i]._id); // pushing ID of each Question
+                for (var i = 0; i < data.length; i++) {  
+                    newArrayOfID.push({id:data[i]._id , Q_Type : data[i].questionType}); // pushing ID of each Question
                 }
-
+                 
                 res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "General Technical Info" });
             });
         },
         getSurveyQuestions: function(req, res) {
-            question.find({}, function(err, data) {  
+            req.session.forPAge = 'SA'; //setting up Session
+
+            question.find({'forPAge':'SA'}).sort({'_id':-1}).exec(function(err,data){    
 
                 var newArrayOfID = [];
-                for (var i = 0; i < data.length; i++) {
-                    newArrayOfID.push(data[i]._id); // pushing ID of each Question
+                for (var i = 0; i < data.length; i++) {  
+                    newArrayOfID.push({id:data[i]._id , Q_Type : data[i].questionType}); // pushing ID of each Question
                 }
-
+                 
                 res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "Seismic Assessment" });
             });
         },
@@ -263,6 +269,7 @@ module.exports = {
                 var QTNew = new question({
                     _id: pseudoID, //current Date_Time to prevent creation of $oid
                     questionType : Selected_qtType,
+                      forPAge :  req.session.forPAge, //Setting up questions for page sessions
                     question: {
                             text: {
                                 "English": req.body["QT_English"],
@@ -287,13 +294,15 @@ module.exports = {
                     },
                     buildingsAssociated: buildingObj
 
-                });   
- 
+                });  
+
+             
                 QTNew.save(function(err) {
                         if (err) {
                             return err;
-                        } else {
+                        } else {  
                             // now upload image 					
+                        if(req.files.image_masonry.size > 0) {
                             if (req.files.image_masonry[loc].type == "image/jpeg") { // check if image is uploaded... if yes upload to cloudinary..else redirect        									
                                 cloudinary.v2.uploader.upload(req.files.image_masonry[loc].path, { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation: 'manual' },
                                     function(err, result) { // call back after uploading image to cloudinary    
@@ -310,8 +319,10 @@ module.exports = {
                                             });
                                         });
                                     });
+                                };
                             };
                             //video upload
+                      if(req.files.video_masonry.size > 0) {
                             var videourlArray = [];
                             if ((req.files.video_masonry[0].size >0) && (req.files.video_masonry[0].originalFilename  != "" )) {  // check if video is present                          
                                 cloudinary.uploader.upload_large(req.files.video_masonry[0].path, 
@@ -331,10 +342,15 @@ module.exports = {
 
                                 });               
                                 }, { resource_type: "video" });  
-                            }
+                            };
+                        }
                             //video upload
                              else {
+                                if(req.session.forPAge == 'GI'){
                                   res.redirect('/generalInfo');  
+                                } else if (req.session.forPAge == 'GT'){
+                                   res.redirect('/general_techincal');  
+                                };
                             };
                         };
          });  
