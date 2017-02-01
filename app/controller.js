@@ -10,8 +10,8 @@ cloudinary.config({
 var dummyData = "";var imgurlArray=[]; 
 
 module.exports = {
-  index: function (req, res) {       
-      buildingType.find({}, function(err, data){                 
+  index: function (req, res) {             
+      buildingType.find({}).sort({'orderIndex':-1}).exec(function(err,data){  
         res.render('building_Type _coudinary',{
             Masonry_names:data[3].name , Masonry_desc:data[3].description , Masonry_img:data[3].buildingImgUrl , Masonry_vid:data[3].buildingVideoUrl ,
             Rcc_names:data[1].name , Rcc_desc:data[1].description , Rcc_img : data[1].buildingImgUrl , Rcc_vid : data[1].buildingVideoUrl ,
