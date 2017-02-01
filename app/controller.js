@@ -8,7 +8,7 @@ cloudinary.config({
 });
 
 var dummyData = "";var imgurlArray=[]; 
-
+ 
 module.exports = {
   index: function (req, res) {             
       buildingType.find({}).sort({'orderIndex':-1}).exec(function(err,data){  
@@ -20,7 +20,7 @@ module.exports = {
           });                     
       });        
   },
-  create: function (req, res) {     
+  create: function (req, res) {   
      if(req.files.image_masonry.type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
            cloudinary.v2.uploader.upload(req.files.image_masonry.path,
                 { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
@@ -37,8 +37,10 @@ module.exports = {
                   });
             });
         };
-      if ((req.files.video_masonry.size >0) && (req.files.video_masonry.type =='application/octet-stream')) {  // check if video is present                          
-            cloudinary.uploader.upload_large(req.files.video_masonry.path, 
+      
+       console.log(req.files.image_masonry.type);  
+      if ((req.files.image_masonry.size >0) && ((req.files.image_masonry.type =='application/octet-stream') || (req.files.image_masonry.type =='video/mp4'))) {  // check if video is present                          
+            cloudinary.uploader.upload_large(req.files.image_masonry.path, 
             function(result) {            // call back after uploading video to cloudinary 
                 result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg                        
                 buildingType.find({_id: req.body["selectedTab"]}, function(err, test){                                        

@@ -24,7 +24,7 @@ module.exports = function(app) {
         res.render('survey_Management.html');
     });  
 
-    app.get('/buildingType',requireLogin,controller.index);
+    app.get('/buildingType',controller.index);
 
     app.get('/generalInfo',questionController.getQuestions);     
 
