@@ -51,6 +51,10 @@ module.exports = function(app) {
     app.get('/questionNewPartial', function(req,res){
         res.render('questionNewPartial.html');
     });
+
+    app.get('/ViewStatistics' , function(req,res){
+        res.render('ViewStatistics.html');
+    });
   
     //---some post    
     app.post('/Delete_Questionimg' , questionController.destory);
