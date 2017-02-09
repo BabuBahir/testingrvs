@@ -1,7 +1,9 @@
-angular.module('BuildingApp',[])
-    .controller('MainCtrl',function ($scope,$http,$document) {
+angular.module('BuildingApp',['angularFileUpload'])
+    .controller('MainCtrl',function ($scope,$http,$document,$upload ) {
  
-    //constructor
+   $.cloudinary.config({cloud_name: "dcu5hz0re", upload_preset: 'fbesyowr'});  //cloudinary config
+
+{    //constructor
     $scope.selectedTab = "Masonry";
  	//setting values from mongo ejs
  	$scope.masonaryNameGJ =$document[0].getElementById('gjName_masonry').value;
@@ -37,7 +39,7 @@ angular.module('BuildingApp',[])
  	$scope.compoDescEN =$document[0].getElementById('enDesc_compo').value; 	 
  	$scope.compoDescGJ =$document[0].getElementById('gjDesc_compo').value; 	 
  	$scope.compoDescHI =$document[0].getElementById('hiDesc_compo').value; 	 
-
+}
 
  	 $scope.check_current_tab = function(){ 	 
    		 switch($scope.selectedTab) {
@@ -136,5 +138,62 @@ angular.module('BuildingApp',[])
 	$scope.current_tab = function(msg){
 		$scope.selectedTab = msg;		 
 	};
+
+////////////////		// latest /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	   $scope.MasonImgdiv_1 = true;
+	   $scope.MasonImgdiv_2 = false;
+	   $scope.MasonImgdiv_3 = false;
+
+		$scope.$watch('files_1', function () {    //1st Image Watch
+       		 $scope.upload($scope.files_1, 1);
+    	});
+
+		$scope.$watch('files_2', function () {    //2nd Image Watch
+       		 $scope.upload($scope.files_2, 2);
+    	});
+
+    	$scope.$watch('files_3', function () {    //3rd  Image Watch
+       		 $scope.upload($scope.files_3, 3);
+    	});
+
+		$scope.upload = function (files , imgIndex) {   
+        if (files && files.length) {  
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                console.log(file);
+                 
+                $upload.upload({
+                    url: 'https://api.cloudinary.com/v1_1/'+ $.cloudinary.config().cloud_name +'/image'+'/upload',
+                    fields: {'cloud_name': $.cloudinary.config().cloud_name , upload_preset: 'fbesyowr' },
+                    file: file
+                }).progress(function (evt) {
+
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);                      
+                                      
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+
+                }).success(function (data, status, headers, config) { 
+                         
+                    $scope.UpdateUrl(data.url , imgIndex);                   
+	  				  
+                    console.log(imgIndex+'file ' + config.file + 'uploaded. Response: ' + data);
+ 
+                });
+
+                
+            }
+        }
+    };
+
+    $scope.UpdateUrl = function(data , imgIndex){
+    	var imrStr = "ImgMasonSrc_"+imgIndex;
+    	$scope[imrStr]=data;
+
+    	var nextImgIndex = imgIndex +1;
+    	var divStr ="MasonImgdiv_"+nextImgIndex;
+    	$scope[divStr]= true;
+    };
 
 });
