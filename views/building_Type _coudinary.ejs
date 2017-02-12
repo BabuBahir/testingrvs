@@ -128,7 +128,7 @@
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>       
-                                        
+                                                  <!--IMAGE FROM CLOUDINARY-->
                                                     <div ng-show="MasonImgdiv_1" 
                                                             ng-init="MasonImgdiv_1 = true" 
                                                             class="upload-files" style="vertical-align:-5px;">
@@ -194,7 +194,7 @@
                                                                 class="fa fa-times"></i></span>
                                                             </div> 
                                                     </div>  <!-- upload-files -->
-
+                                                    <!--IMAGE FROM CLOUDINARY-->
                                                         
                                                 </div> <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                         
@@ -229,8 +229,8 @@
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %> 
 
-
-                                                        <div ng-show="MasonImgdiv_4" 
+                                                  <!--VIDEO CLOUDINARY-->
+                                                      <div ng-show="MasonImgdiv_4" 
                                                             ng-init="MasonImgdiv_4 = true" 
                                                             class="upload-files" style="vertical-align:-5px;">
                                                             <div ng-show="ImgMasonSrc_4 == null"
@@ -291,8 +291,7 @@
                                                                 class="fa fa-times"></i></span>
                                                             </div> 
                                                     </div>  <!-- upload-files -->
-
-
+                                                <!--VIDEO CLOUDINARY-->
 
 
 
@@ -403,15 +402,76 @@
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                                 
-                                                           <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <label class="" for="my-file-selector">
-                                                                   <input id="my-file-selector" name="image_rcc" type="file" style="display:none;">
+                                                          
+                                                           <!--IMAGE FROM CLOUDINARY-->
+                                                    <div ng-show="MasonImgdiv_7" 
+                                                            ng-init="MasonImgdiv_7 = true" 
+                                                            class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_7 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_7">
+                                                                   <input ng-model="files_7" ng-file-select=""
+                                                                   id="files_7" name="image_masonry" type="file" style="display:none;">
                                                                   <i class="fa fa-plus"></i>
                                                                 </label>
                                                             </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_7 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_7}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_7 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                 ng-click = "DeleteCloudiImage('ImgMasonID_7','7')"
+                                                                 class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_8" 
+                                                            ng-init="MasonImgdiv_8 = false"        
+                                                             class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_8 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_8">
+                                                                   <input ng-model="files_8" ng-file-select=""
+                                                                   id="files_8" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_8 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_8}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_8 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiImage('ImgMasonID_8','8')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_9" 
+                                                             ng-init="MasonImgdiv_9 = false"  
+                                                             class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_9 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_9">
+                                                                   <input ng-model="files_9" ng-file-select=""
+                                                                   id="files_9" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_9 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_9}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_9 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiImage('ImgMasonID_9','9')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+                                                    <!--IMAGE FROM CLOUDINARY-->
+
+
                                                         
                                                     </div> <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                   <!-- upload video part ends-->
@@ -446,17 +506,79 @@
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>              
                                                           
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <label class="" for="my-file-selector">
-                                                                   <input id="my-file-selector" type="file" 
-                                                                   name="video_masonry"
-                                                                   style="display:none;">
+
+
+                                                        <!--VIDEO CLOUDINARY-->
+                                                      <div ng-show="MasonImgdiv_10" 
+                                                            ng-init="MasonImgdiv_10 = true" 
+                                                            class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_10 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_10">
+                                                                   <input ng-model="files_10" ng-file-select=""
+                                                                   id="files_10" name="image_masonry" type="file" style="display:none;">
                                                                   <i class="fa fa-plus"></i>
                                                                 </label>
                                                             </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_10 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_10}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_10 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                 ng-click = "DeleteCloudiVideo('ImgMasonID_10','10')"
+                                                                 class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_11" class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_11 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_11">
+                                                                   <input ng-model="files_11" ng-file-select=""
+                                                                   id="files_11" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_11 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_11}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_11 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiVideo('ImgMasonID_11','11')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_12" class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_12 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_12">
+                                                                   <input ng-model="files_12" ng-file-select=""
+                                                                   id="files_12" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_12 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_12}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_12 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiVideo('ImgMasonID_12','12')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+                                                <!--VIDEO CLOUDINARY-->
+
+
+
+
+
+
+
+
                                                         
                                                     </div> <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                   <!-- upload video part ends-->
@@ -562,15 +684,76 @@
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                                 
-                                                           <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <label class="" for="my-file-selector">
-                                                                   <input id="my-file-selector" name="image_rcc" type="file" style="display:none;">
+                                                         
+                                                         <!--IMAGE FROM CLOUDINARY-->
+                                                    <div ng-show="MasonImgdiv_13" 
+                                                            ng-init="MasonImgdiv_13 = true" 
+                                                            class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_13 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_13">
+                                                                   <input ng-model="files_13" ng-file-select=""
+                                                                   id="files_13" name="image_masonry" type="file" style="display:none;">
                                                                   <i class="fa fa-plus"></i>
                                                                 </label>
                                                             </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_13 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_13}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_13 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                 ng-click = "DeleteCloudiImage('ImgMasonID_13','13')"
+                                                                 class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_14" 
+                                                            ng-init="MasonImgdiv_14 = false"        
+                                                             class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_14 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_14">
+                                                                   <input ng-model="files_14" ng-file-select=""
+                                                                   id="files_14" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_14 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_14}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_14 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiImage('ImgMasonID_14','14')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_15" 
+                                                             ng-init="MasonImgdiv_15 = false"  
+                                                             class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_15 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_15">
+                                                                   <input ng-model="files_15" ng-file-select=""
+                                                                   id="files_15" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_15 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_15}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_15 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiImage('ImgMasonID_15','15')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+                                                    <!--IMAGE FROM CLOUDINARY-->
+
+
                                                         
                                                     </div> <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                   <!-- upload video part ends-->
@@ -605,15 +788,73 @@
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                          
                                                        
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <label class="" for="my-file-selector">
-                                                                   <input id="my-file-selector" type="file" 
-                                                                   name="video_masonry"
-                                                                   style="display:none;">
+                                                        
+
+                                                         <!--VIDEO CLOUDINARY-->
+                                                      <div ng-show="MasonImgdiv_16" 
+                                                            ng-init="MasonImgdiv_16 = true" 
+                                                            class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_16 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_16">
+                                                                   <input ng-model="files_16" ng-file-select=""
+                                                                   id="files_16" name="image_masonry" type="file" style="display:none;">
                                                                   <i class="fa fa-plus"></i>
                                                                 </label>
                                                             </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_16 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_16}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_16 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                 ng-click = "DeleteCloudiVideo('ImgMasonID_16','16')"
+                                                                 class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_17" class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_17 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_17">
+                                                                   <input ng-model="files_17" ng-file-select=""
+                                                                   id="files_17" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_17 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_17}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_17 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiVideo('ImgMasonID_17','17')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_18" class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_18 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_18">
+                                                                   <input ng-model="files_18" ng-file-select=""
+                                                                   id="files_18" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_18 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_18}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_18 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiVideo('ImgMasonID_18','18')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+                                                <!--VIDEO CLOUDINARY-->
+
+
                                                                               
                                                         </div>  <!-- upload-files -->
                                                         
@@ -628,8 +869,8 @@
                         
                                     </div>  <!-- col-sm-12 -->
                                     
-                                </div> <!-- row -->
-                            </div>                                      <!-- steel -->
+                                </div> <!-- row -->                <!-- steel -->
+                                                    
 
                             <div id="composite" class="tab-pane fade in">
                                 <div class="row" style="margin:13px 0 20px; background:#fff;">
@@ -716,15 +957,76 @@
                                                             </div> <!-- upload-hover-wrapper -->
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>                                 
-                                                           <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <label class="" for="my-file-selector">
-                                                                   <input id="my-file-selector" name="image_rcc" type="file" style="display:none;">
+
+
+  <!--IMAGE FROM CLOUDINARY-->
+                                                    <div ng-show="MasonImgdiv_19" 
+                                                            ng-init="MasonImgdiv_19 = true" 
+                                                            class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_19 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_19">
+                                                                   <input ng-model="files_19" ng-file-select=""
+                                                                   id="files_19" name="image_masonry" type="file" style="display:none;">
                                                                   <i class="fa fa-plus"></i>
                                                                 </label>
                                                             </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_19 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_19}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_19 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                 ng-click = "DeleteCloudiImage('ImgMasonID_19','19')"
+                                                                 class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_20" 
+                                                            ng-init="MasonImgdiv_20 = false"        
+                                                             class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_20 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_20">
+                                                                   <input ng-model="files_20" ng-file-select=""
+                                                                   id="files_20" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_20 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_20}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_20 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiImage('ImgMasonID_20','20')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_21" 
+                                                             ng-init="MasonImgdiv_21 = false"  
+                                                             class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_21 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_21">
+                                                                   <input ng-model="files_21" ng-file-select=""
+                                                                   id="files_21" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_21 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_21}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_21 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiImage('ImgMasonID_21','21')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+                                                    <!--IMAGE FROM CLOUDINARY-->
+
                                                         
                                                     </div> <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                   <!-- upload video part ends-->
@@ -759,17 +1061,73 @@
                                                         </div>  <!-- upload-files -->
                                                          &nbsp;                                                                 <% }) %>  
                                                          
-                                                        <div class="upload-files" style="vertical-align:-5px;">
-                                                            <div class="upload-wrapper">
-                                                                <label class="" for="my-file-selector">
-                                                                   <input id="my-file-selector" type="file" 
-                                                                   name="video_masonry"
-                                                                   style="display:none;">
+                                                         <!--VIDEO CLOUDINARY-->
+                                                      <div ng-show="MasonImgdiv_22" 
+                                                            ng-init="MasonImgdiv_22 = true" 
+                                                            class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_22 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_22">
+                                                                   <input ng-model="files_22" ng-file-select=""
+                                                                   id="files_22" name="image_masonry" type="file" style="display:none;">
                                                                   <i class="fa fa-plus"></i>
                                                                 </label>
                                                             </div> <!-- upload-wrapper -->
-                                                                              
-                                                        </div>  <!-- upload-files -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_22 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_22}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_22 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                 ng-click = "DeleteCloudiVideo('ImgMasonID_22','22')"
+                                                                 class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_23" class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_23 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_23">
+                                                                   <input ng-model="files_23" ng-file-select=""
+                                                                   id="files_23" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_23 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_23}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_23 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiVideo('ImgMasonID_23','23')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+
+                                                    <div ng-show="MasonImgdiv_24" class="upload-files" style="vertical-align:-5px;">
+                                                            <div ng-show="ImgMasonSrc_24 == null"
+                                                                class="upload-wrapper">
+                                                                <label class="" for="files_24">
+                                                                   <input ng-model="files_24" ng-file-select=""
+                                                                   id="files_24" name="image_masonry" type="file" style="display:none;">
+                                                                  <i class="fa fa-plus"></i>
+                                                                </label>
+                                                            </div> <!-- upload-wrapper -->
+                                                             
+                                                             <div ng-hide="ImgMasonSrc_24 == null" class="upload-wrapper">       
+                                                                <img src="{{ImgMasonSrc_24}}" >
+                                                             </div>
+                                                             <div ng-hide="ImgMasonSrc_24 == null" class="upload-hover-wrapper">
+                                                                <span><i  
+                                                                ng-click = "DeleteCloudiVideo('ImgMasonID_24','24')"
+                                                                class="fa fa-times"></i></span>
+                                                            </div> 
+                                                    </div>  <!-- upload-files -->
+                                                <!--VIDEO CLOUDINARY-->
+
+
+
+
                                                         
                                                     </div> <!-- col-sm-2 col-md-2 col-lg-1 -->
                                                   <!-- upload video part ends-->
@@ -784,6 +1142,9 @@
                                     
                                 </div> <!-- row -->
                             </div>
+
+
+                            <!-- composite -->
                         </div>  <!-- tab-content -->
                         
                     </div> <!-- col-sm-12 -->

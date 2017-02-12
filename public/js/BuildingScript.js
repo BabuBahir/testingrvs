@@ -135,13 +135,13 @@ angular.module('BuildingApp',['angularFileUpload'])
 		};
 	};	 
 
-	$scope.current_tab = function(msg){
+	$scope.current_tab = function(msg){ console.log(msg);
 		$scope.selectedTab = msg;		 
 	};
 
 ////////////////		// latest /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//images Masonry
 $scope.$watch('files_1', function () {    //1st Image Watch
 		 $scope.upload($scope.files_1, 1 ,'/image');
 });
@@ -154,6 +154,7 @@ $scope.$watch('files_3', function () {    //3rd  Image Watch
 		 $scope.upload($scope.files_3, 3 ,'/image');
 });
 
+// videos Masonry
 $scope.$watch('files_4', function () {    //1st Image Watch
 		 $scope.upload($scope.files_4, 4 ,'/video');
 });
@@ -166,7 +167,87 @@ $scope.$watch('files_6', function () {    //3rd  Image Watch
 		 $scope.upload($scope.files_6, 6 ,'/video');
 });
 
-$scope.upload = function (files , imgIndex , type) {   
+//images rcc
+$scope.$watch('files_7', function () {    //1st Image Watch
+		 $scope.upload($scope.files_7, 7 ,'/image');
+});
+
+$scope.$watch('files_8', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_8, 8 ,'/image');
+});
+
+$scope.$watch('files_9', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_9, 9 ,'/image');
+});
+
+// videos rcc
+$scope.$watch('files_10', function () {    //1st Image Watch
+		 $scope.upload($scope.files_10, 10 ,'/video');
+});
+
+$scope.$watch('files_11', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_11,11 ,'/video');
+});
+
+$scope.$watch('files_12', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_12, 12 ,'/video');
+});
+
+// images steel 
+$scope.$watch('files_13', function () {    //1st Image Watch
+		 $scope.upload($scope.files_13, 13 ,'/image');
+});
+
+$scope.$watch('files_14', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_14, 14 ,'/image');
+});
+
+$scope.$watch('files_15', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_15, 15 ,'/image');
+});
+
+// video steel 
+$scope.$watch('files_16', function () {    //1st Image Watch
+		 $scope.upload($scope.files_16, 16 ,'/video');
+});
+
+$scope.$watch('files_17', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_17, 17 ,'/video');
+});
+
+$scope.$watch('files_18', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_18, 18 ,'/video');
+});
+
+// images Composite 
+$scope.$watch('files_19', function () {    //1st Image Watch
+		 $scope.upload($scope.files_19, 19 ,'/image');
+});
+
+$scope.$watch('files_20', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_20, 20 ,'/image');
+});
+
+$scope.$watch('files_21', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_21, 21 ,'/image');
+});
+
+// video composite 
+$scope.$watch('files_22', function () {    //1st Image Watch
+		 $scope.upload($scope.files_22, 22 ,'/video');
+});
+
+$scope.$watch('files_23', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_23, 23 ,'/video');
+});
+
+$scope.$watch('files_24', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_24, 24 ,'/video');
+});
+
+
+
+$scope.upload = function (files , imgIndex , type) {   console.log(type);
         if (files && files.length) {  
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
@@ -200,7 +281,7 @@ $scope.upload = function (files , imgIndex , type) {
 
 
 
-    $scope.UpdateUrl = function(data , imgIndex , type){
+    $scope.UpdateUrl = function(data , imgIndex , type){ 
     	var imrStr = "ImgMasonSrc_"+imgIndex;
     	var idStr  = "ImgMasonID_"+imgIndex;
     	$scope[imrStr]= (data.url).replace("mp4","jpg") ;    	 
