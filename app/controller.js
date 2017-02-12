@@ -42,7 +42,8 @@ module.exports = {
       if ((req.files.image_masonry.size >0) && ((req.files.image_masonry.type =='application/octet-stream') || (req.files.image_masonry.type =='video/mp4'))) {  // check if video is present                          
             cloudinary.uploader.upload_large(req.files.image_masonry.path, 
             function(result) {            // call back after uploading video to cloudinary 
-                result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg                        
+                result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg   
+
                 buildingType.find({_id: req.body["selectedTab"]}, function(err, test){                                        
                         if(err){res.send(err)};                   
                         test[0].buildingVideoUrl.push({videoUrl:result.url,_id:result.public_id});
@@ -89,6 +90,23 @@ module.exports = {
                         test[0].buildingImgUrl.push({imgUrl:result.url,_id:result.public_id});
                         imgurlArray = test[0].buildingImgUrl;                                                          
                         buildingType.findOneAndUpdate({_id: req.body["selectedTab"]}, { $set: { buildingImgUrl: imgurlArray}}, { new: true }, function (err, tank) {
+                    if (err) return handleError(err);                      
+                         // res.redirect('/buildingType');       NEVER RETURN ,, NEVER !!!!
+                        }); 
+                     
+      });
+
+   } ,
+
+   DynamicVideoUpdate : function(req,res) {
+     var result = req.body.data;
+     result.url=(result.url).replace("mp4","jpg");    // replacing .mp4 by its .jpg 
+
+      buildingType.find({_id: req.body["selectedTab"]}, function(err, test){                                        
+                    if(err){res.send(err)};                   
+                        test[0].buildingVideoUrl.push({videoUrl:result.url,_id:result.public_id});
+                        imgurlArray = test[0].buildingVideoUrl;                                                          
+                        buildingType.findOneAndUpdate({_id: req.body["selectedTab"]}, { $set: { buildingVideoUrl: imgurlArray}}, { new: true }, function (err, tank) {   
                     if (err) return handleError(err);                      
                          // res.redirect('/buildingType');       NEVER RETURN ,, NEVER !!!!
                         }); 

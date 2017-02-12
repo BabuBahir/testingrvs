@@ -59,6 +59,8 @@ module.exports = function(app) {
     //---some post    
     app.post('/DynamicImageUpdate' , controller.DynamicImageUpdate);
 
+    app.post('/DynamicVideoUpdate' , controller.DynamicVideoUpdate);
+
     app.post('/Delete_Questionimg' , questionController.destory);
 
     app.post('/UpdateQuestions/:Qindex/:TotalCount/:id' , multipartMiddleware , questionController.UpdateQuestions); 

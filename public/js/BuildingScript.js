@@ -141,23 +141,32 @@ angular.module('BuildingApp',['angularFileUpload'])
 
 ////////////////		// latest /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	   $scope.MasonImgdiv_1 = true;
-	   $scope.MasonImgdiv_2 = false;
-	   $scope.MasonImgdiv_3 = false;
 
-		$scope.$watch('files_1', function () {    //1st Image Watch
-       		 $scope.upload($scope.files_1, 1);
-    	});
+$scope.$watch('files_1', function () {    //1st Image Watch
+		 $scope.upload($scope.files_1, 1 ,'/image');
+});
 
-		$scope.$watch('files_2', function () {    //2nd Image Watch
-       		 $scope.upload($scope.files_2, 2);
-    	});
+$scope.$watch('files_2', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_2, 2 ,'/image');
+});
 
-    	$scope.$watch('files_3', function () {    //3rd  Image Watch
-       		 $scope.upload($scope.files_3, 3);
-    	});
+$scope.$watch('files_3', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_3, 3 ,'/image');
+});
 
-		$scope.upload = function (files , imgIndex) {   
+$scope.$watch('files_4', function () {    //1st Image Watch
+		 $scope.upload($scope.files_4, 4 ,'/video');
+});
+
+$scope.$watch('files_5', function () {    //2nd Image Watch
+		 $scope.upload($scope.files_5, 5 ,'/video');
+});
+
+$scope.$watch('files_6', function () {    //3rd  Image Watch
+		 $scope.upload($scope.files_6, 6 ,'/video');
+});
+
+$scope.upload = function (files , imgIndex , type) {   
         if (files && files.length) {  
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
@@ -165,7 +174,7 @@ angular.module('BuildingApp',['angularFileUpload'])
                 console.log(file);
                  
                 $upload.upload({
-                    url: 'https://api.cloudinary.com/v1_1/'+ $.cloudinary.config().cloud_name +'/image'+'/upload',
+                    url: 'https://api.cloudinary.com/v1_1/'+ $.cloudinary.config().cloud_name +type+'/upload',
                     fields: {'cloud_name': $.cloudinary.config().cloud_name , upload_preset: 'fbesyowr' },
                     file: file
                 }).progress(function (evt) {
@@ -175,8 +184,8 @@ angular.module('BuildingApp',['angularFileUpload'])
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
 
                 }).success(function (data, status, headers, config) { 
-                         
-                    $scope.UpdateUrl(data , imgIndex);                   
+                     
+                    $scope.UpdateUrl(data , imgIndex , type);                   
 	  				  
                     console.log(imgIndex+'file ' + config.file + 'uploaded. Response: ' + data);
  
@@ -187,24 +196,33 @@ angular.module('BuildingApp',['angularFileUpload'])
         }
     };
 
-    $scope.UpdateUrl = function(data , imgIndex){
+
+
+
+
+    $scope.UpdateUrl = function(data , imgIndex , type){
     	var imrStr = "ImgMasonSrc_"+imgIndex;
     	var idStr  = "ImgMasonID_"+imgIndex;
-    	$scope[imrStr]=data.url;    	 
+    	$scope[imrStr]= (data.url).replace("mp4","jpg") ;    	 
     	$scope[idStr] = data.public_id;
 
     	var nextImgIndex = imgIndex +1;
     	var divStr ="MasonImgdiv_"+nextImgIndex;
     	$scope[divStr]= true;
 
-    	$scope.DynamicImageUpdate(data);
+    	if(type == '/image'){
+    		$scope.DynamicImageUpdate(data , "/DynamicImageUpdate" );
+    	} else if (type == '/video') {
+    		$scope.DynamicImageUpdate(data , "/DynamicVideoUpdate" );
+    	};   	
     };
 
-    $scope.DynamicImageUpdate = function(data){
+    //ADD
+    $scope.DynamicImageUpdate = function(data , ajaxLoc){
 
     	$http({
 		method : "POST",
-		url : "/DynamicImageUpdate" ,		 
+		url :  ajaxLoc,		 
 		async : false,
 		data:({ "selectedTab":$scope.selectedTab , "data":data }) 
 		}).then(function mySucces(response) {
@@ -216,16 +234,43 @@ angular.module('BuildingApp',['angularFileUpload'])
 
     };
 
-    $scope.DeleteCloudiImage = function(img_id , imgIndex){ 
+
+
+    //DELETE IMAGE
+    $scope.DeleteCloudiImage = function(img_id , imgIndex){  
 
 		var r = confirm("Do you want to Delete the Image!");	
-		
+
 		if (r == true) {			 
 				$http({
 				method : "POST",
 				url : "/Delete_img" ,
 				async : false,
 				data:({"image_id": $scope[img_id] , "BuildingType":$scope.selectedTab })
+				}).then(function mySucces(response) {			 
+				   //$scope.myWelcome = response.data; 
+				    var divStr ="MasonImgdiv_"+imgIndex; 
+					$scope[divStr]= false;				 // Hiding that Div
+
+				}, function myError(response) {
+				  $scope.myWelcome = response.statusText;
+				});	 
+		};
+
+    };
+
+    //DELETE VIDEO
+
+    $scope.DeleteCloudiVideo = function(img_id , imgIndex){  
+
+		var r = confirm("Do you want to Delete the Image!");	
+
+		if (r == true) {			 
+				$http({
+				method : "POST",
+				url : "/Delete_video" ,
+				async : false,
+				data:({"video_id": $scope[img_id] , "BuildingType":$scope.selectedTab })
 				}).then(function mySucces(response) {			 
 				   //$scope.myWelcome = response.data; 
 				    var divStr ="MasonImgdiv_"+imgIndex; 
