@@ -247,7 +247,7 @@ $scope.$watch('files_24', function () {    //3rd  Image Watch
 
 
 
-$scope.upload = function (files , imgIndex , type) {   console.log(type);
+$scope.upload = function (files , imgIndex , type) { 
         if (files && files.length) {  
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
@@ -261,11 +261,16 @@ $scope.upload = function (files , imgIndex , type) {   console.log(type);
                 }).progress(function (evt) {
 
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);                      
-                                      
+                    
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+
+                    $scope.progressPercentage =progressPercentage;
+
 
                 }).success(function (data, status, headers, config) { 
                      
+                    $scope.progressPercentage =false;
+
                     $scope.UpdateUrl(data , imgIndex , type);                   
 	  				  
                     console.log(imgIndex+'file ' + config.file + 'uploaded. Response: ' + data);

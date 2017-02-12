@@ -203,10 +203,20 @@
                                             </div>  <!-- row -->
                                 
                                         </div> <!-- col-sm-12  -->
-                    
+                                
                                     </div>  <!-- options-in-survey-bg -->
-                        
-                                        <div class="row add-options-in-survey-bg"style="margin-left:15px; margin-right:15px ">
+                             
+                               <div class="progress" ng-if="progressPercentage" 
+                                        ng-init="progressPercentage = false" >
+                                    <div class="progress-bar progress-bar-info progress-bar-striped"
+                                       role="progressbar"                       
+                                       aria-valuemin="0" aria-valuemax="100" 
+                                       style="width:{{progressPercentage}}% ; background-color: blue; height: 10px">  
+                                    </div>
+                               </div>
+
+
+                                   <div class="row add-options-in-survey-bg"style="margin-left:15px; margin-right:15px ">
                                             <div class="col-sm-12">
                             
                                                 <div class="row" style="margin:10px 5px 0px; display:block;">
@@ -482,6 +492,14 @@
                     
                                         </div>  <!-- options-in-survey-bg -->
                         
+                        <div class="progress" ng-if="progressPercentage" >
+                                    <div class="progress-bar progress-bar-info progress-bar-striped"
+                                       role="progressbar"                       
+                                       aria-valuemin="0" aria-valuemax="100" 
+                                       style="width:{{progressPercentage}}% ; background-color: blue; height: 10px">  
+                                    </div>
+                         </div>
+
                                         <div class="row add-options-in-survey-bg"style="margin-left:15px; margin-right:15px ">
                                             <div class="col-sm-12">
                             
@@ -763,7 +781,17 @@
                                             </div> <!-- col-sm-12  -->
                     
                                         </div>  <!-- options-in-survey-bg -->
-                        
+
+
+                              <div class="progress" ng-if="progressPercentage" >
+                                    <div class="progress-bar progress-bar-info progress-bar-striped"
+                                       role="progressbar"                       
+                                       aria-valuemin="0" aria-valuemax="100" 
+                                       style="width:{{progressPercentage}}% ; background-color: blue; height: 10px">  
+                                    </div>
+                               </div>
+
+
                                         <div class="row add-options-in-survey-bg"style="margin-left:15px; margin-right:15px ">
                                             <div class="col-sm-12">
                             
@@ -1036,7 +1064,16 @@
                                             </div> <!-- col-sm-12  -->
                     
                                         </div>  <!-- options-in-survey-bg -->
-                        
+
+                              <div class="progress" ng-if="progressPercentage" >
+                                    <div class="progress-bar progress-bar-info progress-bar-striped"
+                                       role="progressbar"                       
+                                       aria-valuemin="0" aria-valuemax="100" 
+                                       style="width:{{progressPercentage}}% ; background-color: blue; height: 10px">  
+                                    </div>
+                               </div>
+
+
                                         <div class="row add-options-in-survey-bg" style="margin-left:15px; margin-right:15px ">
                                             <div class="col-sm-12">
                             
