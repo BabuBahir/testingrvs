@@ -176,7 +176,7 @@ angular.module('BuildingApp',['angularFileUpload'])
 
                 }).success(function (data, status, headers, config) { 
                          
-                    $scope.UpdateUrl(data.url , imgIndex);                   
+                    $scope.UpdateUrl(data , imgIndex);                   
 	  				  
                     console.log(imgIndex+'file ' + config.file + 'uploaded. Response: ' + data);
  
@@ -189,11 +189,53 @@ angular.module('BuildingApp',['angularFileUpload'])
 
     $scope.UpdateUrl = function(data , imgIndex){
     	var imrStr = "ImgMasonSrc_"+imgIndex;
-    	$scope[imrStr]=data;
+    	var idStr  = "ImgMasonID_"+imgIndex;
+    	$scope[imrStr]=data.url;    	 
+    	$scope[idStr] = data.public_id;
 
     	var nextImgIndex = imgIndex +1;
     	var divStr ="MasonImgdiv_"+nextImgIndex;
     	$scope[divStr]= true;
+
+    	$scope.DynamicImageUpdate(data);
+    };
+
+    $scope.DynamicImageUpdate = function(data){
+
+    	$http({
+		method : "POST",
+		url : "/DynamicImageUpdate" ,		 
+		async : false,
+		data:({ "selectedTab":$scope.selectedTab , "data":data }) 
+		}).then(function mySucces(response) {
+
+		   //$scope.myWelcome = response.data;
+		}, function myError(response) {
+		  $scope.myWelcome = response.statusText;
+		});	
+
+    };
+
+    $scope.DeleteCloudiImage = function(img_id , imgIndex){ 
+
+		var r = confirm("Do you want to Delete the Image!");	
+		
+		if (r == true) {			 
+				$http({
+				method : "POST",
+				url : "/Delete_img" ,
+				async : false,
+				data:({"image_id": $scope[img_id] , "BuildingType":$scope.selectedTab })
+				}).then(function mySucces(response) {			 
+				   //$scope.myWelcome = response.data; 
+				    var divStr ="MasonImgdiv_"+imgIndex; 
+					$scope[divStr]= false;				 // Hiding that Div
+
+				}, function myError(response) {
+				  $scope.myWelcome = response.statusText;
+				});	 
+		};
+
     };
 
 });

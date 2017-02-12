@@ -69,6 +69,7 @@ module.exports = {
                   });
           });
    },
+
    destory_video:function(req,res){
       var videoId = req.body.video_id;  
       cloudinary.uploader.destroy(videoId, function (error, result) {   
@@ -77,5 +78,23 @@ module.exports = {
                         res.send("done");
                   });
           }, { resource_type: "video" });
+   } ,
+
+
+   DynamicImageUpdate : function(req,res) {
+     var result = req.body.data;
+
+      buildingType.find({_id: req.body["selectedTab"]}, function(err, test){                                         
+                    if(err){res.send(err)};                   
+                        test[0].buildingImgUrl.push({imgUrl:result.url,_id:result.public_id});
+                        imgurlArray = test[0].buildingImgUrl;                                                          
+                        buildingType.findOneAndUpdate({_id: req.body["selectedTab"]}, { $set: { buildingImgUrl: imgurlArray}}, { new: true }, function (err, tank) {
+                    if (err) return handleError(err);                      
+                         // res.redirect('/buildingType');       NEVER RETURN ,, NEVER !!!!
+                        }); 
+                     
+      });
+
    }
+
 };
