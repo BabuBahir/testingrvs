@@ -2,144 +2,134 @@
 <html lang="en">
 
 <head>
-    <title>Survey Management</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/rvs-style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"> 
+  <title>Survey Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/rvs-style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"> 
 </head>
 
 <body>
-    
-    <!-- nav bar starts here -->
-    
-        <% include ./partials/header %>
-    
-    <!-- nav bar ends here -->
-    
-    <div class="container-fluid sign-up-bg_img">
-        
+  
+  <!-- nav bar starts here -->
+  
+      <% include ./partials/header %>
+  
+  <!-- nav bar ends here -->
+  
+  <div class="container-fluid sign-up-bg_img">
+      
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <br/>
+      <h3 class="select-building-type">Survey Management</h3>
+      
+      <div class="row" style="margin:0; padding-top:25px; padding-bottom:10px; background:#f5f5f5;">
+          
         <div class="col-sm-12 col-md-10 col-md-offset-1">
+            
+          <div class="table-responsive">
+              
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for=""><i class="fa fa-filter"></i>&nbsp; Filter</label> &nbsp; &nbsp; &nbsp;
+                    <select class="form-control" id="" name="">
+                        <option>Select</option>
+                        <option>Draft</option>
+                        <option>Submitted</option>
+                        <option>Review Requested</option>
+                        <option>Review Completed</option>
+                    </select>
+                </div>
+            </form>
             <br/>
-            <h3 class="select-building-type">Survey Management</h3>
-            
-            <div class="row" style="margin:0; padding-top:25px; padding-bottom:10px; background:#f5f5f5;">
-                
-                <div class="col-sm-12 col-md-10 col-md-offset-1">
+              
+            <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th></th>
+                      <th>Address</th>
+                      <th>User</th>
+                      <th>Type Of Assessment</th>
+                      <th>Building Type</th>
+                      <th>Submitted Date</th>
+                      <th>Status</th>
+                      <th>Expert Comment</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% surveyData.forEach(function (survey) { %>
+                  <tr>
+                    <td>
+                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Building ID:  <br/> Survey ID:">
+                        <img src="img/image-1.png" width="50" />
+                        </p>
+                    </td>
+                    <td>
+                      <%= survey.basicInfo.streetAddr %> <br/> <%= survey.basicInfo.city %> <%= survey.basicInfo.state %> <br/> <%= survey.basicInfo.pincode %>
+                    </td>
+                    <td>
+                      <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="
+                      <% registersurveyer.forEach(function (user) { %>
+                        <% if(user._id  === survey.userId ) { %>
+                          Email: <%= user.email %> <br/> Phone: <%= user.phone %>
+                        <% } %>
+                      <% }) %>
+                      ">
+                      <% registersurveyer.forEach(function (user) { %>
+                        <% if(user._id  === survey.userId ) { %>
+                          <%= user.prefix %> <%= user.firstname %> <%= user.middlename %> <%= user.lastname %>
+                        <% } %>
+                      <% }) %>
+                      </p>
+                    </td>
+                    <td>
+                        <%= survey.typeOfAssessment %>
+                    </td>
+                    <td> 
+                    <% buildingType.forEach(function (building) { %>
+                        <% if(building._id  === survey.buildingTypeId ) { %>
+                          <%= building.name.English %>
+                        <% } %>
+                      <% }) %>
+                    </td>
+                    <td><%= moment(survey.dateTime).format('DD/MM/YYYY') %></td>
+                    <td class="text-success"><b><%= survey.status %></b></td>
+                    <td>
+                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="<%= survey.ExpertComment %>">
+                            
+                            Hover to read the expert comment
+                        </p>
+                    </td>
+                    <td class="hover-pointer">
+                        <i class="fa fa-eye text-info"></i> &nbsp;&nbsp;
+                        <i class="fa fa-trash text-danger"></i>
+                    </td>
                     
-                    <div class="table-responsive">
-                        
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for=""><i class="fa fa-filter"></i>&nbsp; Filter</label> &nbsp; &nbsp; &nbsp;
-                                <select class="form-control" id="" name="">
-                                    <option>Select</option>
-                                    <option>Completed</option>
-                                    <option>Draft</option>
-                                    <option>Submitted</option>
-                                </select>
-                            </div>
-                        </form>
-                        <br/>
-                        
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>ID</th>
-                                    <th>Building ID</th>
-                                    <th>User</th>
-                                    <th>Status</th>
-                                    <th>Submitted Date</th>
-                                    <th>Remarks</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img src="img/image-1.png" width="50" /></td>
-                                    <td>ID12345</td>
-                                    <td>ID-B-1234</td>
-                                    <td>
-                                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Email: raman.singh@gmail.com <br/> Phone: +91 9876 5432 10">
-                                            Raman Singh
-                                        </p>
-                                    </td>
-                                    <td class="text-success"><b>Completed</b></td>
-                                    <td>04/12/2016</td>
-                                    <td>
-                                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Lorem Ipsum proin gravida nibh vel velit auctor aliquet.Lorem Ipsum proin gravida nibh vel velit auctor aliquet.Lorem Ipsum proin gravida nibh vel velit auctor aliquet.">
-                                            Lorem Ipsum proin gravida nibh vel velit auctor aliquet.
-                                        </p>
-                                    </td>
-                                    <td class="hover-pointer">
-                                        <i class="fa fa-eye text-info"></i> &nbsp;&nbsp;
-                                        <i class="fa fa-trash text-danger"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/bk.png" width="50" /></td>
-                                    <td>ID22345</td>
-                                    <td>ID-B-2234</td>
-                                    <td>
-                                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Email: dhiraj.sharma@gmail.com <br/> Phone: +91 9090 8080 77">
-                                            Dhiraj Sharma
-                                        </p>
-                                    </td>
-                                    <td class="text-warning"><b>Draft</b></td>
-                                    <td>14/12/2016</td>
-                                    <td>
-                                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Lorem Ipsum proin gravida nibh vel velit auctor aliquet.Lorem Ipsum proin gravida nibh vel velit auctor aliquet.Lorem Ipsum proin gravida nibh vel velit auctor aliquet.">
-                                            Lorem Ipsum proin gravida nibh vel velit auctor aliquet.
-                                        </p>
-                                    </td>
-                                    <td class="hover-pointer">
-                                        <i class="fa fa-eye text-info"></i> &nbsp;&nbsp;
-                                        <i class="fa fa-trash text-danger"></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img/image-3.png" width="50" /></td>
-                                    <td>ID32345</td>
-                                    <td>ID-B-3234</td>
-                                    <td>
-                                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Email: navneet.agarwal@gmail.com <br/> Phone: +91 9889 9090 11">
-                                            Navneet Agarwal
-                                        </p>
-                                    </td>
-                                    <td class="text-primary"><b>Submitted</b></td>
-                                    <td>20/12/2016</td>
-                                    <td>
-                                        <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Lorem Ipsum proin gravida nibh vel velit auctor aliquet.Lorem Ipsum proin gravida nibh vel velit auctor aliquet.Lorem Ipsum proin gravida nibh vel velit auctor aliquet.">
-                                            Lorem Ipsum proin gravida nibh vel velit auctor aliquet.
-                                        </p>
-                                    </td>
-                                    <td class="hover-pointer">
-                                        <i class="fa fa-eye text-info"></i> &nbsp;&nbsp;
-                                        <i class="fa fa-trash text-danger"></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>  <!-- table-responsive -->
-                
-                </div> <!-- col-sm-12 -->
-                
-            </div> <!-- row --->
-            
-        </div> <!-- col-sm-12 -->
+                  </tr>
+                <% }) %>
+                  
+              </tbody>
+            </table>
+          </div>  <!-- table-responsive -->
         
-    </div> <!-- container-fluid -->
-    
-  <!--- footer  -->
-     <% include ./partials/footer %> 
-  <!-- Custom Code -->
-    <script>
-        $(document).ready(function(){
-           $('[data-toggle="tooltip"]').tooltip();   
-        });
-    </script>
+        </div> <!-- col-sm-12 -->
+          
+      </div> <!-- row -->
+        
+    </div> <!-- col-sm-12 -->
+      
+  </div> <!-- container-fluid -->
+  
+<!--- footer  -->
+   <% include ./partials/footer %> 
+<!-- Custom Code -->
+  <script>
+      $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();   
+      });
+  </script>
 </body>
 
 </html>

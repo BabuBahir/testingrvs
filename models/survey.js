@@ -10,7 +10,7 @@ var SurveySchema = new Schema({
   dateTime: String,
   status: {
     type: String,
-    enum: ['Draft', 'Submitted', 'ReviewRequest','Reviewed'],
+    enum: ['Draft', 'Submitted', 'ReviewRequest','Review Completed'],
     default: 'Draft'
   },
   surveyLanguage:String,
@@ -41,7 +41,7 @@ var SurveySchema = new Schema({
   buildingSketchImgs: [{imgUrl :String}],
   buildingDamageImgs: [{imgUrl :String}],
   survey_img : [ { imgUrl :String  , _id : String } ],
-  addressInfo : {
+  basicInfo : {
     buildingName: String,
     ownerName: String,
     streetAddr: String,
@@ -55,7 +55,7 @@ var SurveySchema = new Schema({
     SoilGrade  : String,
     aadharCardNo: String 
   },
-  adminComments: String
+  ExpertComment: String
 });
 
 module.exports  = mongoose.model('Survey', SurveySchema);
