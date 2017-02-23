@@ -7,7 +7,7 @@ var userSchema = new Schema({
   phone: String,
   password :  String,
   designation : String,
-  verified : boolean,
+  verified : Boolean,
   profilePicUrl : String,
   status : String,
   profileCreatedOn : Date

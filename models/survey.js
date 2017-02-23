@@ -2,34 +2,60 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SurveySchema = new Schema({
-  userId:  String,
-  datetime: String,
-  status: String,
-  QuestionsAnswered : [
-  		{
-  			QuestionText : String,
-  			OptionSelected : String
-  			QuestionID : String
-  		}
+  buildingId: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'registersurveyer'
+  },
+  dateTime: String,
+  status: {
+    type: String,
+    enum: ['Draft', 'Submitted', 'ReviewRequest','Reviewed'],
+    default: 'Draft'
+  },
+  surveyLanguage:String,
+  generalInfoQuestions : [
+      {
+        questionId : String,
+        answer: String 
+      }
   ],
-  building_type : [
-				  	 {
-				  	 	[{ type: Schema.Types.ObjectId, ref: 'BuildingType' }]
-				  	 }
-				  ],
-  survey_img : { [ url :String ] },
-  generalTechnicalInfo : [ 
-  	{
-      
-  	}
-  ]
+  technicalInfoQuestions : [
+    {
+      questionId : String,
+      answer: String 
+    }
+  ],
+  seismicAssessmentQuestions : [
+    {
+      questionId : String,
+      answer: String 
+    }
+  ],
+  buildingTypeId : 
+             {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'BuildingType'
+             },
+  buildingProfileImg: {imgUrl :String},
+  buildingSketchImgs: [{imgUrl :String}],
+  buildingDamageImgs: [{imgUrl :String}],
+  survey_img : [ { imgUrl :String  , _id : String } ],
   addressInfo : {
-  	 city : String,
-  	 LocalAuthority : String,
-  	 Latitude : String,
-  	 EarthquakeZone : String,
-  	 SoilGrade
-  }
+    buildingName: String,
+    ownerName: String,
+    streetAddr: String,
+    city : String,
+    state:String,
+    pincode: Number,
+    LocalAuthority : String,
+    Latitude : String,
+    longitude: String,
+    EarthquakeZone : String,
+    SoilGrade  : String,
+    aadharCardNo: String 
+  },
+  adminComments: String
 });
 
 module.exports  = mongoose.model('Survey', SurveySchema);

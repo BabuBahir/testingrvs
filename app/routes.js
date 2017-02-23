@@ -3,8 +3,10 @@ var multipartMiddleware = multipart();
 var controller = require('./controller');
 var login = require('./login');
 var questionController = require('./questionController');
- 
- 
+var Registersurveyer = require('../models/registersurveyer');
+var Survey = require('../models/survey');
+var moment = require('moment');
+
 
 module.exports = function(app) {
     
@@ -13,7 +15,28 @@ module.exports = function(app) {
     });
 
     app.get('/user_management',requireLogin,function(req,res){
-        res.render('user_Management.html');
+        Registersurveyer
+        .find()
+        .exec()
+        .then(function (user) {
+            registerUser = user;
+            // console.log(user)
+            return Survey
+            .find()
+            .exec()
+        })
+        .then(function (surveyDetails) {
+            console.log(surveyDetails)
+          res.render("user_Management.html", {
+            surveyData: surveyDetails,
+            registersurveyer: registerUser,
+            moment: moment
+          })
+        })
+        .catch(function (err) {
+          console.log(err);
+          return res.json({error: true, reason: err});
+        })
     });
 
     app.get('/index',function(req,res){
