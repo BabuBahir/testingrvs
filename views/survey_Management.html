@@ -33,12 +33,12 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for=""><i class="fa fa-filter"></i>&nbsp; Filter</label> &nbsp; &nbsp; &nbsp;
-                    <select class="form-control" id="" name="">
-                        <option>Select</option>
-                        <option>Draft</option>
-                        <option>Submitted</option>
-                        <option>Review Requested</option>
-                        <option>Review Completed</option>
+                    <select class="form-control filterStatus" id="" name="">
+                        <option value="select" >Select</option>
+                        <option value="draft">Draft</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="review requested">Review Requested</option>
+                        <option value="review completed">Review Completed</option>
                     </select>
                 </div>
             </form>
@@ -58,8 +58,9 @@
                       <th>Action</th>
                   </tr>
               </thead>
-              <tbody>
-                <% surveyData.forEach(function (survey) { %>
+              <% surveyData.forEach(function (survey) { %>
+              <tbody class="tbody-data" data-survey-status='<%= survey.status %>'>
+                
                   <tr>
                     <td>
                         <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Building ID:  <br/> Survey ID:">
@@ -95,7 +96,7 @@
                       <% }) %>
                     </td>
                     <td><%= moment(survey.dateTime).format('DD/MM/YYYY') %></td>
-                    <td class="text-success"><b><%= survey.status %></b></td>
+                    <td class="text-success sur-status"><b><%= survey.status %></b></td>
                     <td>
                         <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="<%= survey.ExpertComment %>">
                             
@@ -108,9 +109,10 @@
                     </td>
                     
                   </tr>
-                <% }) %>
+                
                   
               </tbody>
+              <% }) %>
             </table>
           </div>  <!-- table-responsive -->
         
@@ -130,6 +132,57 @@
          $('[data-toggle="tooltip"]').tooltip();   
       });
   </script>
+  <script type="text/javascript">
+
+    $('.filterStatus').change(function (e) {
+        e.preventDefault();
+        var data1 = $(this).val()
+        console.log(data1)
+        if (data1 === 'submitted'){
+
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+
+            if ( status == 'Submitted'){
+              $(el).show();
+            }
+          })
+
+        } else if(data1 === 'draft') {
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+             if ( status == 'Draft'){
+             $(el).show();
+            }
+          })
+
+        } else if(data1 === 'review requested') {
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+             if ( status == 'Review Requested'){
+             $(el).show();
+            }
+          })
+
+        } else if(data1 === 'review completed') {
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+             if ( status == 'Review Completed'){
+             $(el).show();
+            }
+          })
+
+        } else if (data1 === 'select'){
+
+          $('.tbody-data').show();
+
+        }
+    });
+</script>
 </body>
 
 </html>
