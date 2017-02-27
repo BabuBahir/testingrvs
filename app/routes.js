@@ -44,6 +44,35 @@ module.exports = function(app) {
         res.render('index.html');
     });
 
+    app.get('/survey_details/:id?',function(req,res){
+        var dataId = req.params.id
+        console.log(dataId)
+        Registersurveyer
+        .find()
+        .exec()
+        .then(function (user) {
+            registerUser = user;
+            // console.log(user)
+            return Survey
+            .findOne({_id: dataId})
+            .exec()
+        })       
+        .then(function(surveyResult){
+            console.log(surveyResult)
+             res.render("survey_details_view", {
+            surveyData: surveyResult,
+            allRegister: registerUser
+
+          })
+        })
+        .catch(function (err) {
+          console.log(err);
+          return res.json({error: true, reason: err});
+        })
+        // console.log(dataId)
+        
+    });
+
     app.get('/survey',requireLogin, function(req,res){
        
         Registersurveyer
@@ -65,6 +94,7 @@ module.exports = function(app) {
         })
         .then(function (surveyDetails) {
             console.log(surveyDetails)
+            // console.log(surveyDeta)
           res.render("survey_Management.html", {
             surveyData: surveyDetails,
             registersurveyer: registerUser,

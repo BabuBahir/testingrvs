@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Survey Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/css/rvs-style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"> 
+</head>
+
+<body>
+  
+  <!-- nav bar starts here -->
+  
+      <% include ./partials/header %>
+  
+  <!-- nav bar ends here -->
+    <div class="container-fluid sign-up-bg_img">
+      <div class="col-sm-12 col-md-10 col-md-offset-1" >
+
+        <h2 class="" style="text-align: center; font-weight: 900; padding: 20px; margin-top: 12px">Survey Details</h2>
+
+        <!-- for user Details -->
+
+        <h3 style="background-color: #dbdbdc">User Details</h3>
+        <h4 class="" style="">        
+          <b style=" background-color: #1f334f; border : 2px solid black; color: #fff;">&nbsp; User &nbsp;</b>
+          <% allRegister.forEach(function (user) { %>
+            <% if(user.email  === surveyData.userId._id ) { %>
+              &nbsp; <%= user.prefix %> <%= user.firstname %> <%= user.middlename %> <%= user.lastname %> &nbsp; &nbsp; &nbsp; <%= user.email %> &nbsp; &nbsp; &nbsp; <%= user.phone %>
+            <% } %>
+          <% }) %>   
+
+        </h4>
+        <h4 class="">        
+          <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Language &nbsp;</b> &nbsp; <%= surveyData.surveyLanguage %> 
+        </h4>
+        <h4 class="">        
+          <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp;  Building Type &nbsp;</b> &nbsp; <%= surveyData.building_type._id %>
+        </h4>
+
+        <!-- for profile picture use -->
+
+        <!-- <div class="container-fluid col-sm-12" style="background-color: blue; height: 200px"> -->
+          <div class="row">
+            <div class="col-sm-4">
+              <center><h3>Building Picture</h3></center>
+              <% if(surveyData.buildingProfileImg  !== undefined &&  surveyData.buildingProfileImg.length) { %>
+              <img src="<%= surveyData.buildingProfileImg %>" class="img-responsive" style="height: 300px; width: 300px">
+              <% } else { %>
+                <center><h4>Building image not uploded</h4></center>
+              <% } %>
+
+            </div>
+            <div class="col-sm-8">
+              
+              <div class="col-sm-12" style="height: 180px">
+                <h4>Building Sketch Picture</h4>
+                <% surveyData.buildingSketchImgs.forEach(function (pic) { %>
+                <div class="col-sm-3">
+                  <img src="<%= pic.imgUrl %>" class="img-responsive" style="height: 140px; width: 150px">
+                </div> 
+                <% }) %>
+               <!--  <div class="col-sm-3">
+                  <img src="<%= surveyData.buildingProfileImg %>" class="img-responsive" style="height: 150px; width: 150px">
+                </div>           
+                <div class="col-sm-3">
+                  <img src="<%= surveyData.buildingProfileImg %>" class="img-responsive" style="height: 150px; width: 150px">
+                </div>           
+                <div class="col-sm-3">
+                  <img src="<%= surveyData.buildingProfileImg %>" class="img-responsive" style="height: 150px; width: 150px">
+                </div> -->                     
+              </div>  
+              <div class="col-sm-12" style="height: 180px">
+                <h4>Building Damage Picture</h4>
+                <% surveyData.buildingDamageImgs.forEach(function (pic) { %>
+                <div class="col-sm-3">
+                  <img src="<%= pic.imgUrl %>" class="img-responsive" style="height: 150px; width: 150px">
+                </div> 
+                <% }) %>
+                <!-- <div class="col-sm-3">
+                  <img src="/img/superman.png" class="img-responsive" style="height: 150px; width: 150px">
+                </div> 
+                <div class="col-sm-3">
+                  <img src="/img/superman.png" class="img-responsive" style="height: 150px; width: 150px">
+                </div>           
+                <div class="col-sm-3">
+                  <img src="/img/superman.png" class="img-responsive" style="height: 150px; width: 150px">
+                </div>           
+                <div class="col-sm-3">
+                  <img src="/img/superman.png" class="img-responsive" style="height: 150px; width: 150px">
+                </div>                      -->
+              </div>                 
+            </div>
+          </div>
+
+        <!-- for general info -->
+        
+        <h3 style="background-color: #dbdbdc">General Information</h3>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;">&nbsp; Name of your Building &nbsp;</b> &nbsp; <%= surveyData.basicInfo.buildingName %> 
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Owner's Name &nbsp;</b> &nbsp; <%= surveyData.basicInfo.ownerName %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp;  Address &nbsp;</b> &nbsp; <%= surveyData.basicInfo.streetAddr %> &nbsp; &nbsp;City: &nbsp; <%= surveyData.basicInfo.city %> &nbsp;&nbsp; State: &nbsp;<%= surveyData.basicInfo.state %>- &nbsp; <%= surveyData.basicInfo.pincode %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Latitude &nbsp;</b> &nbsp; <%= surveyData.basicInfo.Latitude %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Longitude &nbsp;</b> &nbsp; <%= surveyData.basicInfo.longitude %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Local Authority &nbsp;</b> &nbsp; <%= surveyData.basicInfo.LocalAuthority %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Earthquake Zone &nbsp;</b> &nbsp; <%= surveyData.basicInfo.EarthquakeZone %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Soil Grade &nbsp;</b> &nbsp; <%= surveyData.basicInfo.SoilGrade %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Aadhar Card &nbsp;</b> &nbsp; <%= surveyData.basicInfo.aadharCardNo %>
+        </h4>
+
+
+        <!-- start question answer -->
+
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Type of ownerships &nbsp;</b> &nbsp; 
+            <% surveyData.generalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  == 'BH' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Is there any basement present &nbsp;</b> &nbsp; 
+            <% surveyData.generalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485336674354' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Number of Occupants  &nbsp;</b> &nbsp; 
+            <% surveyData.generalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485525406625' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Number of Storey &nbsp;</b> &nbsp; 
+            <% surveyData.generalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485764398054' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; How old is your building   &nbsp;</b> &nbsp; 
+            <% surveyData.generalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485514164246' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Usage of the Building &nbsp;</b> &nbsp; 
+            <% surveyData.generalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485763385036' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>
+        </h4>
+        
+        <!-- for technical info -->
+
+        <h3 style="background-color: #dbdbdc">Technical Information</h3>
+
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Type of Construction  &nbsp;</b> &nbsp;  
+            <% surveyData.technicalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485934954075' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %> 
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Is your Building an Individual or an Apartment &nbsp;</b> &nbsp; 
+            <% surveyData.technicalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485935080548') { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %> 
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Total plinth area of the building block    &nbsp;</b> &nbsp; <% surveyData.technicalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485935454531' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %> 
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Is the Building Symmetric &nbsp;</b> &nbsp; 
+            <% surveyData.technicalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485936001961' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %> 
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Type of Roof   &nbsp;</b> &nbsp;  
+            <% surveyData.technicalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '14859349543445' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>   
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Building Location &nbsp;</b> &nbsp;  
+            <% surveyData.technicalInfoQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485935840906' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %> 
+        </h4>
+
+        <!-- Seismic Assessment of Your Building -->
+
+        <h3 style="background-color: #dbdbdc">Seismic Assessment of Your Building</h3>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp;Is there are any soft storey present &nbsp;</b> &nbsp;  
+            <% surveyData.seismicAssessmentQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '148593495403434345' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>   
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Are Balconies Provided &nbsp;</b> &nbsp; 
+            <% surveyData.seismicAssessmentQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1485955403434345' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>   
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Is plinth band present &nbsp;</b> &nbsp; 
+            <% surveyData.seismicAssessmentQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '143434955403434345' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>   
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Is lintel band present &nbsp;</b> &nbsp; 
+            <% surveyData.seismicAssessmentQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '1434334345403434345' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>   
+        </h4>
+        <h4 class="">        
+            <b style="background-color: #1f334f; border : 2px solid black; color: #fff;"> &nbsp; Is roof band present    &nbsp;</b> &nbsp;  
+            <% surveyData.seismicAssessmentQuestions.forEach(function (ans) { %>
+              <% if(ans._id  === '145403434345' ) { %>
+                <%= ans.answer %> 
+              <% } %>
+            <% }) %>     
+        </h4>
+        <h3 style="background-color: #dbdbdc">Expert's Comment</h3>
+        <input class="form-control" type="text" name="expert-input" value="<%= surveyData.ExpertComment %>">
+        <br/>
+        <div class="row "><center> <button class="review-done btn btn-info " style="height: 50px; width: 100px" type="submit"><b>Submit</b></button></center></div>
+        <br/>
+        
+      
+
+      </div>
+
+    </div>
+
+<!--- footer  -->
+   <% include ./partials/footer %> 
+<!-- Custom Code -->
+  <script>
+      $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();   
+      });
+  </script>
+ <!--  <script type="text/javascript">
+
+    $('.filterStatus').change(function (e) {
+        e.preventDefault();
+        var data1 = $(this).val()
+        console.log(data1)
+        if (data1 === 'submitted'){
+
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+
+            if ( status == 'Submitted'){
+              $(el).show();
+            }
+          })
+
+        } else if(data1 === 'draft') {
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+             if ( status == 'Draft'){
+             $(el).show();
+            }
+          })
+
+        } else if(data1 === 'review requested') {
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+             if ( status == 'Review Requested'){
+             $(el).show();
+            }
+          })
+
+        } else if(data1 === 'review completed') {
+          $('.tbody-data').hide();
+          $('.tbody-data').each(function (idx, el) {
+            var status = $(el).data('survey-status')
+             if ( status == 'Review Completed'){
+             $(el).show();
+            }
+          })
+
+        } else if (data1 === 'select'){
+
+          $('.tbody-data').show();
+
+        }
+    });
+</script> -->
+</body>
+
+</html>

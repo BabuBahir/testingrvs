@@ -73,13 +73,13 @@
                     <td>
                       <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="
                       <% registersurveyer.forEach(function (user) { %>
-                        <% if(user._id  === survey.userId ) { %>
+                        <% if(user.email  === survey.userId._id ) { %>
                           Email: <%= user.email %> <br/> Phone: <%= user.phone %>
                         <% } %>
                       <% }) %>
                       ">
                       <% registersurveyer.forEach(function (user) { %>
-                        <% if(user._id  === survey.userId ) { %>
+                        <% if(user.email  === survey.userId._id ) { %>
                           <%= user.prefix %> <%= user.firstname %> <%= user.middlename %> <%= user.lastname %>
                         <% } %>
                       <% }) %>
@@ -104,7 +104,7 @@
                         </p>
                     </td>
                     <td class="hover-pointer">
-                        <i class="fa fa-eye text-info"></i> &nbsp;&nbsp;
+                        <i class="fa fa-eye text-info" data-sur-id='<%= survey._id %>' value='<%= survey._id %>' ></i> &nbsp;&nbsp;
                         <i class="fa fa-trash text-danger"></i>
                     </td>
                     
@@ -132,6 +132,27 @@
          $('[data-toggle="tooltip"]').tooltip();   
       });
   </script>
+
+<script type="text/javascript">
+
+    $('.fa-eye').click(function (e) {
+        e.preventDefault();
+        
+        var data1 = $(this).data('sur-id')
+        console.log(data1)
+        window.location.href = "/survey_details/"+data1
+        // $.ajax({
+        //   url: "/survey_details/"+data1,   
+        //   type: "get",                      
+        //   // data: {id: data1},                         
+        //   success: function(result) {
+               
+        //    }
+
+        // });
+    });
+</script>
+
   <script type="text/javascript">
 
     $('.filterStatus').change(function (e) {
@@ -183,6 +204,7 @@
         }
     });
 </script>
+
 </body>
 
 </html>
