@@ -3,7 +3,7 @@ var multipartMiddleware = multipart();
 var controller = require('./controller');
 var login = require('./login');
 var questionController = require('./questionController');
- 
+var earthquake = require('./earthquake');
  
 
 module.exports = function(app) {
@@ -11,7 +11,15 @@ module.exports = function(app) {
     app.get('/', function(req, res) { 
         res.render('admin_Sign-In.html');
     });
-
+    app.get('/earthquakeSurvey', function(req, res) { 
+        res.render('earthquake');
+    });
+    app.get('/editEarthquake', function(req, res) { 
+        res.render('editEarthquake');
+    });
+    app.post('/addEarthquake', earthquake.addInfo);
+    app.post('/updateInfo', earthquake.updateInfo);
+    app.get('/viewReport', earthquake.viewInfo);
     app.get('/user_management',requireLogin,function(req,res){
         res.render('user_Management.html');
     });
@@ -97,7 +105,7 @@ module.exports = function(app) {
     });
 
     app.post('/adminLogin',login.index);
-
+    
     app.get('/admin', function(req, res) {
         sess = req.session;
         if (sess.email) {
