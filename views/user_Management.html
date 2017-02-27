@@ -59,15 +59,15 @@
                 
                       <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="
                       <% surveyData.forEach(function (survey) { %>
-                        <% if(user._id  === survey.userId ) { %>
-                          <div><span class='tooltip-span1'><img src='<%= survey.buildingProfileImg %>' class='img-in-tooltip' /> ID: <%= survey.buildingId %> </span> <span class='tooltip-span2'><%= survey.addressInfo.ownerName %><br/><%= user.email %> <br/> Date: <%= moment(survey.dateTime).format('DD/MM/YYYY') %> <br/></span> <div class='clearfix'></div> <span>Status: <%= survey.status %></span> </div>
+                        <% if(user.email  === survey.userId._id ) { %>
+                          <div><span class='tooltip-span1'><img src='<%= survey.buildingProfileImg %>' class='img-in-tooltip' /> ID: <%= survey.buildingId %> </span> <span class='tooltip-span2'><%= survey.basicInfo.ownerName %><br/><%= user.email %> <br/> Date: <%= moment(survey.dateTime).format('DD/MM/YYYY') %> <br/></span> <div class='clearfix'></div> <span>Status: <%= survey.status %></span> </div>
                           <% } %>
                       <% }) %>">
 
                      
                       <%= 
                       surveyData.reduce( (acc, cur) => {
-                        if (cur.userId == user._id) {
+                        if (cur.userId._id == user.email) {
                           return acc + 1
                         } else {
                           return acc
