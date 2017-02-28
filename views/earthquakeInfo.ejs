@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="/js/listStates.js"></script>
+  <script src="/js/function.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+th, td{border:2px solid gray;
+text-align:center;
+}
+input[type="text"]{
+border-style:none;}
+#dd{
+    border-bottom:2px solid gray
+}
+</style>
+<body>
+<div class="container">
+<div style="display:inline">
+
+<button type='button' id='btn'>submit</button>
+</div>
+</div>
+
+</body>
+</html>
+<script>
+$(document).ready(function() {
+  var op = []
+  $("#btn").click(function(e) {
+    var cnt = $(".pick-me").length
+    $(".pick-me").each(function (idx, el) {
+      // console.log(el)
+      var state = $(el).data('state')
+      var stage = $(el).data('stage')
+      var key = $(el).
+       //var soilpro = $(el).data('type');
+     var myObj = {
+        state: state,
+        zone: stage,
+        zoneinfo: $(el).val()
+      }
+      console.log(myObj)
+
+      cnt--;      
+      
+      op.push(myObj)
+      if (cnt == 0) {
+         $.ajax({
+             type:"POST",
+             url:"/updateEarthquake",
+             data :  {info: op}, 
+             //dataType: 'json',  // multiple data sent using ajax
+             success: function (result) {
+                   alert(result)
+               }
+             });
+
+      }
+
+    });
+    //var data = {op};
+    
+
+  });
+});
+
+
+  </script>

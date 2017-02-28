@@ -3,18 +3,28 @@ var multipartMiddleware = multipart();
 var controller = require('./controller');
 var login = require('./login');
 var questionController = require('./questionController');
+var earthquake = require('./earthquake');
 var Registersurveyer = require('../models/registersurveyer');
 var Survey = require('../models/survey');
 var BuildingType = require('../models/buildingType');
 var moment = require('moment');
-
 
 module.exports = function(app) {
     
     app.get('/', function(req, res) { 
         res.render('admin_Sign-In.html');
     });
-
+    /*
+    app.get('/earthquakeSurvey', function(req, res) { 
+        res.render('earthquake');
+    });
+    app.get('/editEarthquake', function(req, res) { 
+        res.render('editEarthquake');
+    });
+    */
+    app.post('/addEarthquake', earthquake.addInfo);
+    app.post('/updateInfo', earthquake.updateInfo);
+    app.get('/viewReport', earthquake.viewInfo);
     app.get('/user_management',requireLogin,function(req,res){
         Registersurveyer
         .find()
@@ -177,7 +187,7 @@ module.exports = function(app) {
     });
 
     app.post('/adminLogin',login.index);
-
+    
     app.get('/admin', function(req, res) {
         sess = req.session;
         if (sess.email) {
