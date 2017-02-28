@@ -272,9 +272,9 @@
             <% }) %>     
         </h4>
         <h3 style="background-color: #dbdbdc">Expert's Comment</h3>
-        <input class="form-control" type="text" name="expert-input" value="<%= surveyData.ExpertComment %>">
+        <input class="form-control expert-comment" type="text" name="expert-input" value="<% if(surveyData.ExpertComment  !== undefined ){%><%= surveyData.ExpertComment %><% } %>">
         <br/>
-        <div class="row "><center> <button class="review-done btn btn-info " style="height: 50px; width: 100px" type="submit"><b>Submit</b></button></center></div>
+        <div class="row "><center> <button class="review-done btn btn-info " data-user-id='<%= surveyData._id %>' style="height: 50px; width: 100px" type="submit"><b>Submit</b></button></center></div>
         <br/>
         
       
@@ -291,57 +291,30 @@
          $('[data-toggle="tooltip"]').tooltip();   
       });
   </script>
- <!--  <script type="text/javascript">
 
-    $('.filterStatus').change(function (e) {
+  <script type="text/javascript">
+
+    $('.review-done').click(function (e) {
         e.preventDefault();
-        var data1 = $(this).val()
-        console.log(data1)
-        if (data1 === 'submitted'){
+        var comment = $('.expert-comment').val()
+        var data1 = $(this).data('user-id')
+        console.log(comment)
+        
+        $.ajax({
+          url: "/expert_comment_added",   
+          type: "put",                      
+          data: {
+            id: data1,
+            ecomment: comment
+          },                         
+          success: function(result) {
+               window.location.href = "/survey"
+           }
 
-          $('.tbody-data').hide();
-          $('.tbody-data').each(function (idx, el) {
-            var status = $(el).data('survey-status')
-
-            if ( status == 'Submitted'){
-              $(el).show();
-            }
-          })
-
-        } else if(data1 === 'draft') {
-          $('.tbody-data').hide();
-          $('.tbody-data').each(function (idx, el) {
-            var status = $(el).data('survey-status')
-             if ( status == 'Draft'){
-             $(el).show();
-            }
-          })
-
-        } else if(data1 === 'review requested') {
-          $('.tbody-data').hide();
-          $('.tbody-data').each(function (idx, el) {
-            var status = $(el).data('survey-status')
-             if ( status == 'Review Requested'){
-             $(el).show();
-            }
-          })
-
-        } else if(data1 === 'review completed') {
-          $('.tbody-data').hide();
-          $('.tbody-data').each(function (idx, el) {
-            var status = $(el).data('survey-status')
-             if ( status == 'Review Completed'){
-             $(el).show();
-            }
-          })
-
-        } else if (data1 === 'select'){
-
-          $('.tbody-data').show();
-
-        }
+        });
     });
-</script> -->
+</script>
+
 </body>
 
 </html>
