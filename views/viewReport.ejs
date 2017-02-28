@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
-  <title>EarthQuake zone & soil</title>
- 
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,7 +36,58 @@ width:100px;
 
   <thead><tr><th style='border:2px solid gray'></th><th id='dd'>ZONE-I</th><th id='dd'>ZONE-II</th><th id='dd'>ZONE-III</th><th id='dd'>ZONE-IV</th><th id='dd'>ZONE-V</th><th  style='border-left:2px solid gray;border-bottom:2px solid gray'>TYPE-I</th><th id='dd'>TYPE-II</th><th id='dd'>TYPE-III</th></tr></thead>
   <tr>
-     <td><%= andman['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     <td><%= andman['state']%><p>zone:<select id="default-zone" data-state="<%= andman['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(andman['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(andman['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(andman['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(andman['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(andman['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= andman['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(andman['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(andman['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(andman['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
      <td><input type='text' class='pick-me' data-state="<%= andman['state']%>" data-stage='zone-1' value="<%= andman['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= andman['state']%>" data-stage='zone-2' value="<%= andman['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= andman['state']%>" data-stage='zone-3' value="<%= andman['zone-3']%>"></td>
@@ -49,7 +98,59 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= andman['state']%>" data-stage='soil-3' value="<%= andman['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= an['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= an['state']%><p>zone:<select id="default-zone" data-state="<%= an['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(an['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(an['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(an['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(an['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(an['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= an['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(an['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(an['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(an['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
      <td><input type='text' class='pick-me' data-state="<%= an['state']%>" data-stage='zone-1' value="<%= an['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= an['state']%>" data-stage='zone-2' value="<%= an['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= an['state']%>" data-stage='zone-3' value="<%= an['zone-3']%>"></td>
@@ -60,7 +161,59 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= an['state']%>" data-stage='soil-3' value="<%= an['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= ar['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= ar['state']%><p>zone:<select id="default-zone" data-state="<%= ar['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(ar['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(ar['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(ar['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(ar['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(ar['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= ar['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(ar['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(ar['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(ar['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
      <td><input type='text' class='pick-me' data-state="<%= ar['state']%>" data-stage='zone-1' value="<%= ar['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= ar['state']%>" data-stage='zone-2' value="<%= ar['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= ar['state']%>" data-stage='zone-3' value="<%= ar['zone-3']%>"></td>
@@ -71,7 +224,59 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= ar['state']%>" data-stage='soil-3' value="<%= ar['soil-3']%>"></td>
    </tr>
     <tr>
-     <td><%= as['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= as['state']%><p>zone:<select id="default-zone" data-state="<%= as['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(as['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(as['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(as['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(as['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(as['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= as['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(as['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(as['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(as['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
      <td><input type='text' class='pick-me' data-state="<%= as['state']%>" data-stage='zone-1' value="<%= as['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= as['state']%>" data-stage='zone-2' value="<%= as['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= as['state']%>" data-stage='zone-3' value="<%= as['zone-3']%>"></td>
@@ -82,7 +287,59 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= as['state']%>" data-stage='soil-3' value="<%= as['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x1['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= x1['state']%><p>zone:<select id="default-zone" data-state="<%= x1['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x1['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x1['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x1['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x1['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x1['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x1['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x1['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x1['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x1['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
      <td><input type='text' class='pick-me' data-state="<%= x1['state']%>" data-stage='zone-1' value="<%= x1['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x1['state']%>" data-stage='zone-2' value="<%= x1['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x1['state']%>" data-stage='zone-3' value="<%= x1['zone-3']%>"></td>
@@ -93,7 +350,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x1['state']%>" data-stage='soil-3' value="<%= x1['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= bihar['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= bihar['state']%><p>zone:<select id="default-zone" data-state="<%= bihar['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(bihar['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(bihar['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x2['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %>>
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x2['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x2['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= bihar['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(bihar['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(bihar['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(bihar['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type="text" class='pick-me' data-state="<%= bihar['state']%>" data-stage='zone-1' value="<%= bihar['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= bihar['state']%>" data-stage='zone-2' value="<%= bihar['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= bihar['state']%>" data-stage='zone-3' value="<%= bihar['zone-3']%>"></td>
@@ -104,7 +414,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= bihar['state']%>" data-stage='soil-3' value="<%= bihar['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= gujarat['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= gujarat['state']%><p>zone:<select id="default-zone" data-state="<%= gujarat['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(gujarat['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(gujarat['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(gujarat['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(gujarat['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(gujarat['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= gujarat['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(gujarat['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(gujarat['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(gujarat['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= gujarat['state']%>" data-stage='zone-1' value="<%= gujarat['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= gujarat['state']%>" data-stage='zone-2' value="<%= gujarat['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= gujarat['state']%>" data-stage='zone-3' value="<%= gujarat['zone-3']%>"></td>
@@ -115,7 +478,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= gujarat['state']%>" data-stage='soil-3' value="<%= gujarat['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x2['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= x2['state']%><p>zone:<select id="default-zone" data-state="<%= x2['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x2['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x2['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x2['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x2['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x2['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x2['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x2['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x2['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x2['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x2['state']%>" data-stage='zone-1' value="<%= x2['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x2['state']%>" data-stage='zone-2' value="<%= x2['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x2['state']%>" data-stage='zone-3' value="<%= x2['zone-3']%>"></td>
@@ -126,7 +542,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x2['state']%>" data-stage='soil-3' value="<%= x2['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x3['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= x3['state']%><p>zone:<select id="default-zone" data-state="<%= x3['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x3['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x3['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x3['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x3['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x3['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x3['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x3['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x3['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x3['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x3['state']%>" data-stage='zone-1' value="<%= x3['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x3['state']%>" data-stage='zone-2' value="<%= x3['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x3['state']%>" data-stage='zone-3' value="<%= x3['zone-3']%>"></td>
@@ -137,8 +606,61 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x3['state']%>" data-stage='soil-3' value="<%= x3['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x4['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
-     <td><input type='text' class='pick-me' data-state="<%= x4['state']%>" data-stage='zone-1' value="<%= x4['zone-1']%>"></td>
+
+     <td><%= x4['state']%><p>zone:<select id="default-zone" data-state="<%= x4['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x4['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x4['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x4['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x4['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x4['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x4['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x4['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x4['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x4['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
+         <td><input type='text' class='pick-me' data-state="<%= x4['state']%>" data-stage='zone-1' value="<%= x4['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x4['state']%>" data-stage='zone-2' value="<%= x4['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x4['state']%>" data-stage='zone-3' value="<%= x4['zone-3']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x4['state']%>" data-stage='zone-4' value="<%= x4['zone-4']%>"></td>
@@ -148,7 +670,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x4['state']%>" data-stage='soil-3' value="<%= x4['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x5['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     
+     <td><%= x5['state']%><p>zone:<select id="default-zone" data-state="<%= x5['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x5['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x5['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x5['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x5['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x5['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x5['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x5['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x5['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x5['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x5['state']%>" data-stage='zone-1' value="<%= x5['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x5['state']%>" data-stage='zone-2' value="<%= x5['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x5['state']%>" data-stage='zone-3' value="<%= x5['zone-3']%>"></td>
@@ -159,7 +734,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x5['state']%>" data-stage='soil-3' value="<%= x5['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x6['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x6['state']%><p>zone:<select id="default-zone" data-state="<%= x6['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x6['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x6['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x6['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x6['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x6['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x6['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x6['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x6['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x6['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x6['state']%>" data-stage='zone-1' value="<%= x6['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x6['state']%>" data-stage='zone-2' value="<%= x6['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x6['state']%>" data-stage='zone-3' value="<%= x6['zone-3']%>"></td>
@@ -170,18 +798,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x6['state']%>" data-stage='soil-3' value="<%= x6['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x8['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-1' value="<%= x8['zone-1']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-2' value="<%= x8['zone-2']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-3' value="<%= x8['zone-3']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-4' value="<%= x8['zone-4']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-5' value="<%= x8['zone-5']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='soil-1' value="<%= x8['soil-1']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='soil-2' value="<%= x8['soil-2']%>"></td>
-     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='soil-3' value="<%= x8['soil-3']%>"></td>
-   </tr>
-   <tr>
-     <td><%= x7['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x7['state']%><p>zone:<select id="default-zone" data-state="<%= x7['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x7['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x7['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x7['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x7['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x7['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x7['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x7['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x7['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x7['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x7['state']%>" data-stage='zone-1' value="<%= x7['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x7['state']%>" data-stage='zone-2' value="<%= x7['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x7['state']%>" data-stage='zone-3' value="<%= x7['zone-3']%>"></td>
@@ -192,7 +862,124 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x7['state']%>" data-stage='soil-3' value="<%= x7['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x9['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x8['state']%><p>zone:<select id="default-zone" data-state="<%= x8['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x8['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x8['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x8['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x8['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x8['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x8['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x8['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x8['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x8['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-1' value="<%= x8['zone-1']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-2' value="<%= x8['zone-2']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-3' value="<%= x8['zone-3']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-4' value="<%= x8['zone-4']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='zone-5' value="<%= x8['zone-5']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='soil-1' value="<%= x8['soil-1']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='soil-2' value="<%= x8['soil-2']%>"></td>
+     <td><input type='text' class='pick-me' data-state="<%= x8['state']%>" data-stage='soil-3' value="<%= x8['soil-3']%>"></td>
+   </tr>
+   <tr>
+
+     <td><%= x9['state']%><p>zone:<select id="default-zone" data-state="<%= x9['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x9['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x9['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x9['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x9['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x9['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x9['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x9['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x9['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x9['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x9['state']%>" data-stage='zone-1' value="<%= x9['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x9['state']%>" data-stage='zone-2' value="<%= x9['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x9['state']%>" data-stage='zone-3' value="<%= x9['zone-3']%>"></td>
@@ -203,7 +990,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x9['state']%>" data-stage='soil-3' value="<%= x9['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x10['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x10['state']%><p>zone:<select id="default-zone" data-state="<%= x10['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x10['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x10['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x10['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x10['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x10['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x10['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x10['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x10['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x10['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x10['state']%>" data-stage='zone-1' value="<%= x10['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x10['state']%>" data-stage='zone-2' value="<%= x10['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x10['state']%>" data-stage='zone-3' value="<%= x10['zone-3']%>"></td>
@@ -215,7 +1055,60 @@ width:100px;
    </tr>
      
     <tr>
-     <td><%= x11['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x11['state']%><p>zone:<select id="default-zone" data-state="<%= x11['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x11['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x11['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x11['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x11['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x11['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x11['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x11['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x11['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x11['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x11['state']%>" data-stage='zone-1' value="<%= x11['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x11['state']%>" data-stage='zone-2' value="<%= x11['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x11['state']%>" data-stage='zone-3' value="<%= x11['zone-3']%>"></td>
@@ -227,7 +1120,60 @@ width:100px;
    </tr>
    
    <tr>
-     <td><%= x12['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+ 
+     <td><%= x12['state']%><p>zone:<select id="default-zone" data-state="<%= x12['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x12['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x12['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x12['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x12['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x12['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x12['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x12['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x12['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x12['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x12['state']%>" data-stage='zone-1' value="<%= x12['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x12['state']%>" data-stage='zone-2' value="<%= x12['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x12['state']%>" data-stage='zone-3' value="<%= x12['zone-3']%>"></td>
@@ -237,8 +1183,61 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x12['state']%>" data-stage='soil-2' value="<%= x12['soil-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x12['state']%>" data-stage='soil-3' value="<%= x12['soil-3']%>"></td>
    </tr>
-    <tr>
-     <td><%= x13['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+    <tr> 
+
+     <td><%= x13['state']%><p>zone:<select id="default-zone" data-state="<%= x13['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x13['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x13['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x13['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x13['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x13['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x13['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x13['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x13['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x13['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x13['state']%>" data-stage='zone-1' value="<%= x13['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x13['state']%>" data-stage='zone-2' value="<%= x13['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x13['state']%>" data-stage='zone-3' value="<%= x13['zone-3']%>"></td>
@@ -250,7 +1249,60 @@ width:100px;
    </tr>
      
     <tr>
-     <td><%= x14['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x14['state']%><p>zone:<select id="default-zone" data-state="<%= x14['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x14['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x14['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x14['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x14['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x14['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x14['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x14['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x14['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x14['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x14['state']%>" data-stage='zone-1' value="<%= x14['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x14['state']%>" data-stage='zone-2' value="<%= x14['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x14['state']%>" data-stage='zone-3' value="<%= x14['zone-3']%>"></td>
@@ -262,7 +1314,60 @@ width:100px;
    </tr>
    
    <tr>
-     <td><%= x15['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x15['state']%><p>zone:<select id="default-zone" data-state="<%= x15['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x15['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x15['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x15['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x15['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x15['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x15['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x15['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x15['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x15['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x15['state']%>" data-stage='zone-1' value="<%= x15['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x15['state']%>" data-stage='zone-2' value="<%= x15['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x15['state']%>" data-stage='zone-3' value="<%= x15['zone-3']%>"></td>
@@ -273,7 +1378,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x15['state']%>" data-stage='soil-3' value="<%= x15['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x16['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x16['state']%><p>zone:<select id="default-zone" data-state="<%= x16['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x16['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x16['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x16['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x16['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x16['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x16['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x16['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x16['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x16['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x16['state']%>" data-stage='zone-1' value="<%= x16['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x16['state']%>" data-stage='zone-2' value="<%= x16['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x16['state']%>" data-stage='zone-3' value="<%= x16['zone-3']%>"></td>
@@ -285,7 +1443,60 @@ width:100px;
    </tr>
      
     <tr>
-     <td><%= x17['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x17['state']%><p>zone:<select id="default-zone" data-state="<%= x17['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x17['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x17['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x17['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x17['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x17['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x17['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x17['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x17['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x17['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x17['state']%>" data-stage='zone-1' value="<%= x17['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x17['state']%>" data-stage='zone-2' value="<%= x17['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x17['state']%>" data-stage='zone-3' value="<%= x17['zone-3']%>"></td>
@@ -297,7 +1508,60 @@ width:100px;
    </tr>
    
    <tr>
-     <td><%= x18['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x18['state']%><p>zone:<select id="default-zone" data-state="<%= x18['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x18['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x18['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x18['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x18['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x18['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x18['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x18['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x18['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x18['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x18['state']%>" data-stage='zone-1' value="<%= x18['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x18['state']%>" data-stage='zone-2' value="<%= x18['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x18['state']%>" data-stage='zone-3' value="<%= x18['zone-3']%>"></td>
@@ -308,7 +1572,61 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x18['state']%>" data-stage='soil-3' value="<%= x18['soil-3']%>"></td>
    </tr>
     <tr>
-     <td><%= x19['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x19['state']%><p>zone:<select id="default-zone" data-state="<%= x19['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x19['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x19['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x19['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x19['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x19['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x19['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x19['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x19['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x19['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
+
      <td><input type='text' class='pick-me' data-state="<%= x19['state']%>" data-stage='zone-1' value="<%= x19['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x19['state']%>" data-stage='zone-2' value="<%= x19['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x19['state']%>" data-stage='zone-3' value="<%= x19['zone-3']%>"></td>
@@ -320,7 +1638,60 @@ width:100px;
    </tr>
      
     <tr>
-     <td><%= x20['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x20['state']%><p>zone:<select id="default-zone" data-state="<%= x20['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x20['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x20['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x20['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x20['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x20['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x20['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x20['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x20['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x20['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x20['state']%>" data-stage='zone-1' value="<%= x20['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x20['state']%>" data-stage='zone-2' value="<%= x20['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x20['state']%>" data-stage='zone-3' value="<%= x20['zone-3']%>"></td>
@@ -332,7 +1703,60 @@ width:100px;
    </tr>
    
    <tr>
-     <td><%= x21['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x21['state']%><p>zone:<select id="default-zone" data-state="<%= x21['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x21['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x21['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x21['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x21['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x21['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x21['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x21['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x21['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x21['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x21['state']%>" data-stage='zone-1' value="<%= x21['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x21['state']%>" data-stage='zone-2' value="<%= x21['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x21['state']%>" data-stage='zone-3' value="<%= x21['zone-3']%>"></td>
@@ -343,7 +1767,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x21['state']%>" data-stage='soil-3' value="<%= x21['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x22['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x22['state']%><p>zone:<select id="default-zone" data-state="<%= x22['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x22['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x22['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x22['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x22['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x22['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x22['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x22['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x22['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x22['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x22['state']%>" data-stage='zone-1' value="<%= x22['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x22['state']%>" data-stage='zone-2' value="<%= x22['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x22['state']%>" data-stage='zone-3' value="<%= x22['zone-3']%>"></td>
@@ -355,7 +1832,60 @@ width:100px;
    </tr>
      
     <tr>
-     <td><%= x23['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x23['state']%><p>zone:<select id="default-zone" data-state="<%= x23['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x23['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x23['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x23['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x23['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x23['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x23['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x23['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x23['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x23['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x23['state']%>" data-stage='zone-1' value="<%= x23['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x23['state']%>" data-stage='zone-2' value="<%= x23['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x23['state']%>" data-stage='zone-3' value="<%= x23['zone-3']%>"></td>
@@ -367,7 +1897,60 @@ width:100px;
    </tr>
    
    <tr>
-     <td><%= x24['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x24['state']%><p>zone:<select id="default-zone" data-state="<%= x24['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x24['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x24['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x24['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x24['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x24['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x24['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x24['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x24['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x24['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x24['state']%>" data-stage='zone-1' value="<%= x24['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x24['state']%>" data-stage='zone-2' value="<%= x24['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x24['state']%>" data-stage='zone-3' value="<%= x24['zone-3']%>"></td>
@@ -378,7 +1961,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x24['state']%>" data-stage='soil-3' value="<%= x24['soil-3']%>"></td>
    </tr>
     <tr>
-     <td><%= x25['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x25['state']%><p>zone:<select id="default-zone" data-state="<%= x25['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x25['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x25['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x25['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x25['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x25['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x25['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x25['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x25['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x25['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x25['state']%>" data-stage='zone-1' value="<%= x25['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x25['state']%>" data-stage='zone-2' value="<%= x25['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x25['state']%>" data-stage='zone-3' value="<%= x25['zone-3']%>"></td>
@@ -389,7 +2025,59 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x25['state']%>" data-stage='soil-3' value="<%= x25['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x26['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     <td><%= x26['state']%><p>zone:<select id="default-zone" data-state="<%= x26['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x26['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x26['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x26['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x26['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x26['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x26['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x26['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x26['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x26['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x26['state']%>" data-stage='zone-1' value="<%= x26['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x26['state']%>" data-stage='zone-2' value="<%= x26['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x26['state']%>" data-stage='zone-3' value="<%= x26['zone-3']%>"></td>
@@ -401,7 +2089,60 @@ width:100px;
    </tr>
      
     <tr>
-     <td><%= x27['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x27['state']%><p>zone:<select id="default-zone" data-state="<%= x27['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x27['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x27['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x27['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x27['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x27['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x27['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x27['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x27['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x27['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x27['state']%>" data-stage='zone-1' value="<%= x27['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x27['state']%>" data-stage='zone-2' value="<%= x27['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x27['state']%>" data-stage='zone-3' value="<%= x27['zone-3']%>"></td>
@@ -413,7 +2154,60 @@ width:100px;
    </tr>
    
    <tr>
-     <td><%= x28['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x28['state']%><p>zone:<select id="default-zone" data-state="<%= x28['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x28['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x28['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x28['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x28['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x28['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x28['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x28['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x28['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x28['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x28['state']%>" data-stage='zone-1' value="<%= x28['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x28['state']%>" data-stage='zone-2' value="<%= x28['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x28['state']%>" data-stage='zone-3' value="<%= x28['zone-3']%>"></td>
@@ -424,7 +2218,60 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x28['state']%>" data-stage='soil-3' value="<%= x28['soil-3']%>"></td>
    </tr>
    <tr>
-     <td><%= x29['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+
+     <td><%= x29['state']%><p>zone:<select id="default-zone" data-state="<%= x29['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x29['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x29['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x29['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x29['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x29['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x29['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x29['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x29['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x29['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x29['state']%>" data-stage='zone-1' value="<%= x29['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x29['state']%>" data-stage='zone-2' value="<%= x29['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x29['state']%>" data-stage='zone-3' value="<%= x29['zone-3']%>"></td>
@@ -435,7 +2282,59 @@ width:100px;
      <td><input type='text' class='pick-me' data-state="<%= x29['state']%>" data-stage='soil-3' value="<%= x29['soil-3']%>"></td>
    </tr>
     <tr>
-     <td><%= x30['state']%><p>zone:zone II</p><p>soil: alluvial</p></td>
+     <td><%= x30['state']%><p>zone:<select id="default-zone" data-state="<%= x30['state']%>" data-stage='default-zone' class='pick-me'>
+     <option value="zone-1"
+                                       <% if(x30['default-zone']  == 'zone-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-1
+                                       </option>
+     <option value="zone-2"
+                                       <% if(x30['default-zone']  == 'zone-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-2
+                                       </option>                                  
+     <option value="zone-3"
+                                       <% if(x30['default-zone']  == 'zone-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-3
+                                       </option> 
+     <option value="zone-4"
+                                       <% if(x30['default-zone']  == 'zone-4' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-4
+                                       </option>
+     <option value="zone-5"
+                                       <% if(x30['default-zone']  == 'zone-5' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       zone-5
+                                       </option>                                  
+                                       </select></p><p>soil:<select id="default-soil" data-state="<%= x30['state']%>" data-stage='default-soil' class='pick-me'>
+                                         
+ <option value="Type-1"
+                                       <% if(x30['default-soil']  == 'Type-1' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-1
+                                       </option>
+<option value="Type-2"
+                                       <% if(x30['default-soil']  == 'Type-2' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-2
+                                       </option>
+<option value="Type-3"
+                                       <% if(x30['default-soil']  == 'Type-3' ) { %>
+                                         selected='selected'  
+                                       <% } %> >
+                                       Type-3
+                                       </option>                                       
+                                       </select></p></td>
+     
      <td><input type='text' class='pick-me' data-state="<%= x30['state']%>" data-stage='zone-1' value="<%= x30['zone-1']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x30['state']%>" data-stage='zone-2' value="<%= x30['zone-2']%>"></td>
      <td><input type='text' class='pick-me' data-state="<%= x30['state']%>" data-stage='zone-3' value="<%= x30['zone-3']%>"></td>
@@ -462,11 +2361,14 @@ $(document).ready(function() {
       // console.log(el)
       var state = $(el).data('state')
       var stage = $(el).data('stage')
-       //var soilpro = $(el).data('type');
+      //var defaultsoil = $(el).data('soil');
+      //var defaultzone = $(el).data('zone');
+
      var myObj = {
         state: state,
         zone: stage,
         zoneinfo: $(el).val()
+
       }
       console.log(myObj)
 
