@@ -14,12 +14,14 @@ module.exports = function(app) {
     app.get('/', function(req, res) { 
         res.render('admin_Sign-In.html');
     });
+    /*
     app.get('/earthquakeSurvey', function(req, res) { 
         res.render('earthquake');
     });
     app.get('/editEarthquake', function(req, res) { 
         res.render('editEarthquake');
     });
+    */
     app.post('/addEarthquake', earthquake.addInfo);
     app.post('/updateInfo', earthquake.updateInfo);
     app.get('/viewReport', earthquake.viewInfo);

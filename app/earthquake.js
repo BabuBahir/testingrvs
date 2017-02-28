@@ -259,8 +259,6 @@ module.exports = {
        			 	});
 
 
-       			 //console.log(simpleBihar);
-
 				 return res.render('viewReport', {error : false,  bihar : simpleBihar, gujarat:simple1, andman:simple2, an:simple3,
                   ar:simple4, as:simple5, x1:simple6, x2:simple7, x3:simple8, x4:simple9, x5:simple10,
                   x6:simple11, x7:b7, x8:b8, x9:b9,x10:b10, x11:b11, x12:b12, x13:b13, x14:b14, x15:b15,
