@@ -25,7 +25,7 @@ module.exports = function(app) {
     app.post('/addEarthquake', earthquake.addInfo);
     app.post('/updateInfo', earthquake.updateInfo);
     app.get('/viewReport', earthquake.viewInfo);
-
+ 
     app.get('/user_management',requireLogin,function(req,res){
         Registersurveyer
         .find()
