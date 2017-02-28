@@ -1080,4 +1080,12 @@ toggle {  0% {
 .input-text-first{ 
  color:#b0b0b0;border-radius: 0;
 }
+
+.radioBalancer {
+ height: initial !important; 
+ vertical-align: -2px !important;
+ margin-right: 4px !important;
+ margin-top: 10px !important;
+ margin-left: -20px !important;
+}
 /*added by -rohitas */
