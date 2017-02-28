@@ -27,7 +27,6 @@ module.exports = function(app) {
             .exec()
         })
         .then(function (surveyDetails) {
-            console.log(surveyDetails)
           res.render("user_Management.html", {
             surveyData: surveyDetails,
             registersurveyer: registerUser,
@@ -46,7 +45,6 @@ module.exports = function(app) {
 
     app.get('/survey_details/:id?',function(req,res){
         var dataId = req.params.id
-        console.log(dataId)
         Registersurveyer
         .find()
         .exec()
@@ -57,8 +55,7 @@ module.exports = function(app) {
             .findOne({_id: dataId})
             .exec()
         })       
-        .then(function(surveyResult){
-            console.log(surveyResult)
+        .then(function(surveyResult){            
              res.render("survey_details_view", {
             surveyData: surveyResult,
             allRegister: registerUser
@@ -93,7 +90,6 @@ module.exports = function(app) {
             .exec()
         })
         .then(function (surveyDetails) {
-            console.log(surveyDetails)
             // console.log(surveyDeta)
           res.render("survey_Management.html", {
             surveyData: surveyDetails,

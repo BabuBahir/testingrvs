@@ -296,7 +296,6 @@ module.exports = {
 
                 });  
 
-             
                 QTNew.save(function(err) {
                         if (err) {
                             return err;
@@ -346,10 +345,13 @@ module.exports = {
                         }
                             //video upload
                              else {
+ 
                                 if(req.session.forPAge == 'GI'){
                                   res.redirect('/generalInfo');  
                                 } else if (req.session.forPAge == 'GT'){
                                    res.redirect('/general_techincal');  
+                                }else if(req.session.forPAge == 'SA'){
+                                    res.redirect('/surveyquestions');
                                 };
                             };
                         };

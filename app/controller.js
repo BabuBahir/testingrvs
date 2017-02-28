@@ -38,7 +38,7 @@ module.exports = {
             });
         };
       
-       console.log(req.files.image_masonry.type);  
+         
       if ((req.files.image_masonry.size >0) && ((req.files.image_masonry.type =='application/octet-stream') || (req.files.image_masonry.type =='video/mp4'))) {  // check if video is present                          
             cloudinary.uploader.upload_large(req.files.image_masonry.path, 
             function(result) {            // call back after uploading video to cloudinary 
