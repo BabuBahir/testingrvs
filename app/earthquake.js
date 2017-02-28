@@ -16,11 +16,7 @@ module.exports = {
 		.remove({})
 		 .exec()
 		  .then(function(tasks){
-<<<<<<< HEAD
 				// return res.json(tasks);
-=======
-				return res.json(tasks);
->>>>>>> 83ed8d270b00ec3e5102bb2df9279057cd5817e6
 		  })
 	    .catch(function(err){
 		   return res.json({
@@ -29,19 +25,10 @@ module.exports = {
            reason: err
            });
 		});
-<<<<<<< HEAD
-  			
     Earthquake.create(info, function (err, data) {
 			console.log(data)
 			res.send(data);
     	});
-=======
-  			Earthquake.create(info, function (err, data) {
-  				console.log(data)
-   			 if (err) return res.send(err);
-    			res.send(data);
- 	    	});
->>>>>>> 83ed8d270b00ec3e5102bb2df9279057cd5817e6
   },
 /*
   viewInfo: function (req, res) {

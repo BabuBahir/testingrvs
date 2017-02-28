@@ -82,7 +82,7 @@ module.exports = {
     
         UpdateQuestions : function(req,res){  
             Qindex = req.params.Qindex;    
-            Uid = req.params.id;   
+            Uid = req.params.id;   console.log(req.body);
             TotalCount = req.params.TotalCount;  
             var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
             var NewOptions = []; // to get all new options 
@@ -218,7 +218,7 @@ module.exports = {
             res.render('needAssistancePartial/needAssistancePartialBlank');
         },
 
-        addQuestion: function(req, res) {   
+        addQuestion: function(req, res) {  
                 
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
