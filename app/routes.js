@@ -37,7 +37,7 @@ module.exports = function(app) {
             .exec()
         })
         .then(function (surveyDetails) {
-            console.log(surveyDetails)
+            // console.log(surveyDetails)
           res.render("user_Management.html", {
             surveyData: surveyDetails,
             registersurveyer: registerUser,
@@ -53,6 +53,78 @@ module.exports = function(app) {
     app.get('/index',function(req,res){
         res.render('index.html');
     });
+
+
+    app.put('/expert_comment_added',function(req,res){                                                            
+        var dataId = req.body.id
+        var expertComment = req.body.ecomment
+
+        // console.log(dataId)
+        // console.log(expertComment)
+        Survey
+        .findOne({_id: dataId})
+        .exec()
+        .then(function(surveydata){
+            // console.log(surveydata)
+             surveydata.ExpertComment = expertComment;
+             surveydata.status = 'Review Completed';
+             surveydata.save();
+             return res.json({error: false});
+        })
+        .catch(function (err) {
+          console.log(err);
+          return res.json({error: true, reason: err});
+        })
+
+    });
+
+
+    app.get('/survey_details/:id?',function(req,res){
+        var dataId = req.params.id
+        // console.log(dataId)
+        Registersurveyer
+        .find()
+        .exec()
+        .then(function (user) {
+            registerUser = user;
+            // console.log(user)
+            return Survey
+            .findOne({_id: dataId})
+            .exec()
+        })       
+        .then(function(surveyResult){
+            // console.log(surveyResult)
+             res.render("survey_details_view", {
+            surveyData: surveyResult,
+            allRegister: registerUser
+
+          })
+        })
+        .catch(function (err) {
+          console.log(err);
+          return res.json({error: true, reason: err});
+        })
+        // console.log(dataId)
+        
+    });
+
+    app.delete('/survey_delete',function(req,res){
+        var dataId = req.body.id
+        // console.log(dataId)
+         Survey
+         .remove({_id: dataId})
+         .exec()
+         .then(function(){
+             return res.json({error: false});
+        })
+        .catch(function (err) {
+          console.log(err);
+          return res.json({error: true, reason: err});
+        })
+            
+    });
+
+
 
     app.get('/survey',requireLogin, function(req,res){
        
@@ -74,7 +146,8 @@ module.exports = function(app) {
             .exec()
         })
         .then(function (surveyDetails) {
-            console.log(surveyDetails)
+            // console.log(surveyDetails)
+            // console.log(surveyDeta)
           res.render("survey_Management.html", {
             surveyData: surveyDetails,
             registersurveyer: registerUser,
