@@ -81,7 +81,7 @@ module.exports = {
         },    
     
         UpdateQuestions : function(req,res){  
-            Qindex = req.params.Qindex;     
+            Qindex = req.params.Qindex;    
             Uid = req.params.id;   
             TotalCount = req.params.TotalCount;  
             var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
@@ -114,8 +114,6 @@ module.exports = {
 
 
 
-
-
             question.find({ _id: Uid}, function(err, data) {   
                     var optCount = data[0].question.options.length; 
                     for (var i=0 ; i < TotalCount ; i ++) {
@@ -125,7 +123,6 @@ module.exports = {
                          
                          OptNameObj.push({ENobj ,GJobj , HIobj});
                     };  
-
                     for(var i =0 ; i < TotalCount ; i ++){
                         if(i < optCount) {
                             NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                        

@@ -105,7 +105,7 @@
                     </td>
                     <td class="hover-pointer">
                         <i class="fa fa-eye text-info" data-sur-id='<%= survey._id %>' value='<%= survey._id %>' ></i> &nbsp;&nbsp;
-                        <i class="fa fa-trash text-danger"></i>
+                        <i class="fa fa-trash text-danger" data-id='<%= survey._id %>'></i>
                     </td>
                     
                   </tr>
@@ -150,6 +150,25 @@
         //    }
 
         // });
+    });
+</script>
+<script type="text/javascript">
+
+    $('.fa-trash').click(function (e) {
+        e.preventDefault();
+        
+        var data1 = $(this).data('id')
+        console.log(data1)
+        $.ajax({
+          url: "/survey_delete",   
+          type: "delete",                      
+          data: {id: data1},                         
+          success: function(result) {
+            console.log(result)
+               window.location.href = "/survey"
+           }
+
+        });
     });
 </script>
 

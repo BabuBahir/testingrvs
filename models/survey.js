@@ -41,9 +41,11 @@ var SurveySchema = new Schema({
              _id :String
             }
          ],
- buildingProfileImg: [ { imgUrl :String  , _id : String } ],
- buildingSketchImgs: [ { imgUrl :String  , _id : String } ],
- buildingDamageImgs: [ { imgUrl :String  , _id : String } ],
+
+ buildingProfileImg: {imgUrl :String,  _id : String},
+ buildingSketchImgs: [{imgUrl :String,  _id : String}],
+ buildingDamageImgs: [{imgUrl :String,  _id : String}],
+ 
  survey_img : [ { imgUrl :String  , _id : String } ],
  basicInfo : {
    buildingName: String,
