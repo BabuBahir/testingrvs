@@ -15,6 +15,12 @@ angular.module('GeneralInfoApp',[])
         $scope.choices.push({'_id':newItemNo});
     };
 
+    $scope.addFirstChoice = function(){
+        var newItemNo = $scope.choices.length;
+        $scope.choices.push({'_id':newItemNo});
+    };
+
+
     $scope.removeChoice = function() {
         var lastItem = $scope.choices.length-1;
         $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+($scope.choices.length-1);   // on edit change form destination         

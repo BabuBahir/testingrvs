@@ -16,7 +16,7 @@ module.exports = {
 		.remove({})
 		 .exec()
 		  .then(function(tasks){
-				return res.json(tasks);
+				// return res.json(tasks);
 		  })
 	    .catch(function(err){
 		   return res.json({
@@ -25,11 +25,10 @@ module.exports = {
            reason: err
            });
 		});
-  			Earthquake.create(info, function (err, data) {
-  				console.log(data)
-   			 if (err) return res.send(err);
-    			res.send(data);
- 	    	});
+    Earthquake.create(info, function (err, data) {
+			console.log(data)
+			res.send(data);
+    	});
   },
 /*
   viewInfo: function (req, res) {

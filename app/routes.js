@@ -25,6 +25,7 @@ module.exports = function(app) {
     app.post('/addEarthquake', earthquake.addInfo);
     app.post('/updateInfo', earthquake.updateInfo);
     app.get('/viewReport', earthquake.viewInfo);
+ 
     app.get('/user_management',requireLogin,function(req,res){
         Registersurveyer
         .find()
@@ -37,7 +38,7 @@ module.exports = function(app) {
             .exec()
         })
         .then(function (surveyDetails) {
-            // console.log(surveyDetails)
+          // console.log(surveyDetails)
           res.render("user_Management.html", {
             surveyData: surveyDetails,
             registersurveyer: registerUser,
@@ -79,7 +80,7 @@ module.exports = function(app) {
     });
 
 
-    app.get('/survey_details/:id?',function(req,res){
+      app.get('/survey_details/:id?',function(req,res){
         var dataId = req.params.id
         // console.log(dataId)
         Registersurveyer
@@ -145,21 +146,22 @@ module.exports = function(app) {
             .find()
             .exec()
         })
-        .then(function (surveyDetails) {
-            // console.log(surveyDetails)
-            // console.log(surveyDeta)
-          res.render("survey_Management.html", {
-            surveyData: surveyDetails,
-            registersurveyer: registerUser,
-            buildingType: building, 
-            moment: moment
-          })
-        })
-        .catch(function (err) {
-          console.log(err);
-          return res.json({error: true, reason: err});
-        })
-    });  
+      .then(function (surveyDetails) {
+        // console.log(surveyDetails)
+        // console.log(surveyDeta)
+      res.render("survey_Management.html", {
+        surveyData: surveyDetails,
+        registersurveyer: registerUser,
+        buildingType: building, 
+        moment: moment
+      })
+    })
+    .catch(function (err) {
+      console.log(err);
+      return res.json({error: true, reason: err});
+    })
+});  
+
 
     app.get('/buildingType',controller.index);
 
