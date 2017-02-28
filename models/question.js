@@ -4,6 +4,8 @@ var Schema = mongoose.Schema;
 var questionSchema = new Schema({
     _id : String,
     questionType: String,
+    userType : [{_id: String}] ,
+    assessmentStd : [{_id: String}] ,
     forPAge : String,
     question: {
         text: {
