@@ -6,7 +6,7 @@ var questionSchema = new Schema({
     questionType: String,
     userType : [{_id: String}] ,
     assessmentStd : [{_id: String}] ,
-    damageRisk : {name : String} ,
+    damageRisk : String ,
     forPAge : String,
     question: {
         text: {

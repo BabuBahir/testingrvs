@@ -6,7 +6,7 @@ module.exports = {
   		var info = req.body.info;
 	Earthquake.create(info, function(err, docs) {  //pass the array to the callback function
     if (err) throw err;
-    console.log(docs);
+    
 	});
   },
 
@@ -28,7 +28,7 @@ module.exports = {
   // var query = new Earthquake(info);
    Earthquake.create(info, function (err, data) {
    // query.insertMany(function (err, data){
-			console.log(data)
+			 
 			res.send(data);
     	});
   },

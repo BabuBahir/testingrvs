@@ -223,7 +223,9 @@ module.exports = {
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
                 optionObj   = [];
-
+                userObj = [];
+                StandardObj = [];
+               
                 // checking question type
                 if((req.body["inlineRadioOptions"]) == 'option1') {
                     var Selected_qtType = '0';
@@ -245,6 +247,29 @@ module.exports = {
 
                 if ((req.body["CB_Compo"]) == 'on')
                     buildingObj.push({ _id: 'Composite' });
+
+
+                //checking Type of user(s)
+                if ((req.body["CB_nps"]) == 'on')
+                    userObj.push({ _id: 'Non-Professional Surveyor' });
+
+                if ((req.body["CB_ps"]) == 'on')
+                    userObj.push({ _id: 'Professional Surveyor' });
+ 
+                if ((req.body["CB_cs"]) == 'on')
+                    userObj.push({ _id: 'Certified Surveyor' });
+
+
+                //checking Type of Standard(s)
+                if ((req.body["CB_gis"]) == 'on')
+                    StandardObj.push({ _id: 'General Indian Standard' });
+
+                if ((req.body["CB_gas"]) == 'on')
+                    StandardObj.push({ _id: 'General American Standard' });
+ 
+                if ((req.body["CB_ges"]) == 'on')
+                    StandardObj.push({ _id: 'General European Standard' });
+
 
                 // putting options in the object
                 if(Selected_qtType != '2' && (req.body.opt_EN.length != 'undefined' )) {
@@ -289,8 +314,10 @@ module.exports = {
                         },
                         questionImgUrl: []
                     },
-                    buildingsAssociated: buildingObj
-
+                    buildingsAssociated: buildingObj,
+                    assessmentStd: StandardObj ,
+                    userType  :  userObj , 
+                    damageRisk  :  req.body.QuestOption
                 });  
 
                 QTNew.save(function(err) {
