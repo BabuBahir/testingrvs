@@ -75,6 +75,12 @@
                                             <div  ng-include="'needAssistancePartial/'+'<%=Q_id%>'"></div>
                                        </div> <!--needAssistanceDiv-->                                               
                                         <div class="clearfix"></div>
+
+
+<hr/>
+    <label style="display:block;">
+        <b>Type Of Building </b>
+    </label>
                                         
     <div class="col-sm-12 select-radio-btn">   
 
@@ -96,38 +102,48 @@
         </label>
     </div>
 
-<div class="col-sm-12 select-radio-btn">
-        <label class="checkbox-inline">
-            <input type="checkbox"  class="radioBalancer" > Non-Professional Surveyor 
-        </label>
-        <label class="checkbox-inline  " >
-            <input type="checkbox"  class="radioBalancer" > Professional Surveyor 
-        </label>
-        <label class="checkbox-inline  ">
-            <input type="checkbox" class="radioBalancer"  > Certified Surveyor 
-        </label>
-    </div>
 
+    <label style="display:block;">
+        <b>Type Of User </b>
+    </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
-            <input type="checkbox"  class="radioBalancer"> General Indian Standard
+            <input type="checkbox"  style="margin-top:-4px;" > Non-Professional Surveyor 
         </label>
         <label class="checkbox-inline  " >
-            <input type="checkbox"   class="radioBalancer"> General American Standard 
+            <input type="checkbox"  style="margin-top:-4px;"  > Professional Surveyor 
         </label>
         <label class="checkbox-inline  ">
-            <input type="checkbox"   class="radioBalancer"> General European Standard 
+            <input type="checkbox" style="margin-top:-4px;"  > Certified Surveyor 
         </label>
     </div>
-
+ 
+    <label style="display:block;">
+        <b>Type Of Standard </b>
+    </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
-            <input type="radio" name="QuestOption" style="margin-top: -10px;"  class="radioBalancer"> Yes
+            <input type="checkbox"  style="margin-top:-4px;" > General Indian Standard
         </label>
         <label class="checkbox-inline  " >
-            <input type="radio" name="QuestOption" style="margin-top: -10px"   class="radioBalancer">  No
+            <input type="checkbox"  style="margin-top:-4px;"  > General American Standard 
         </label>
         <label class="checkbox-inline  ">
-            <input type="radio" name="QuestOption" style="margin-top: -10px"  class="radioBalancer">  Nothing 
+            <input type="checkbox" style="margin-top:-4px;"  > General European Standard 
+        </label>
+    </div>
+ 
+    <label style="display:block;">
+        <b>Type Of damageability risk </b>
+    </label>
+    <div class="col-sm-12 select-radio-btn">
+        <label class="checkbox-inline">
+            <input type="radio" name="QuestOption" style="margin-top: -10px;" type="radio" class="radioBalancer"> Yes
+        </label>
+        <label class="checkbox-inline  " >
+            <input type="radio" name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  No
+        </label>
+        <label class="checkbox-inline  ">
+            <input type="radio" name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  Nothing 
         </label>
     </div>

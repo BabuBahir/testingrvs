@@ -89,6 +89,13 @@
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>
     
+
+
+
+<hr/>
+    <label style="display:block;">
+        <b>Type Of Building </b>
+    </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
             <input type="checkbox" id="inlineCheckbox_edit" name="CB_Masonary_edit"  style="margin-top:-4px;"
@@ -119,6 +126,54 @@
 
         </label>
     </div>
+
+    <label style="display:block;">
+        <b>Type Of User </b>
+    </label>
+    <div class="col-sm-12 select-radio-btn">
+        <label class="checkbox-inline">
+            <input type="checkbox"  style="margin-top:-4px;" > Non-Professional Surveyor 
+        </label>
+        <label class="checkbox-inline  " >
+            <input type="checkbox"  style="margin-top:-4px;"  > Professional Surveyor 
+        </label>
+        <label class="checkbox-inline  ">
+            <input type="checkbox" style="margin-top:-4px;"  > Certified Surveyor 
+        </label>
+    </div>
+ 
+    <label style="display:block;">
+        <b>Type Of Standard </b>
+    </label>
+    <div class="col-sm-12 select-radio-btn">
+        <label class="checkbox-inline">
+            <input type="checkbox"  style="margin-top:-4px;" > General Indian Standard
+        </label>
+        <label class="checkbox-inline  " >
+            <input type="checkbox"  style="margin-top:-4px;"  > General American Standard 
+        </label>
+        <label class="checkbox-inline  ">
+            <input type="checkbox" style="margin-top:-4px;"  > General European Standard 
+        </label>
+    </div>
+ 
+    <label style="display:block;">
+        <b>Type Of damageability risk </b>
+    </label>
+    <div class="col-sm-12 select-radio-btn">
+        <label class="checkbox-inline">
+            <input type="radio" name="QuestOption" style="margin-top: -10px;" type="radio" class="radioBalancer"> Yes
+        </label>
+        <label class="checkbox-inline  " >
+            <input type="radio" name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  No
+        </label>
+        <label class="checkbox-inline  ">
+            <input type="radio" name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  Nothing 
+        </label>
+    </div>
+
+
+
 <div class="col-sm-12 text-center">
     <br/> 
     <button ng-click="form_submit('<%=rawData._id%>')"  type="submit" class="orange-btn">Save</button>    
