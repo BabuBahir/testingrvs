@@ -25,9 +25,9 @@ module.exports = {
            reason: err
            });
 		});
-   var query = new Earthquake(info);
-  // Earthquake.create(info, function (err, data) {
-    query.insertMany(function (err, data){
+  // var query = new Earthquake(info);
+   Earthquake.create(info, function (err, data) {
+   // query.insertMany(function (err, data){
 			console.log(data)
 			res.send(data);
     	});
