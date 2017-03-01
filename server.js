@@ -14,11 +14,16 @@
  app.set('views', __dirname + '/views');
  app.engine('html', require('ejs').renderFile);
  app.set('view engine', 'ejs');
+//app.use(express.limit(100000000));
 
  app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: true }));
- app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended: true }));
- app.use(express.static('public')); // all static files here
+// app.use(bodyParser.json());
+ //app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json({limit: '50mb'}));
+ app.use(bodyParser.urlencoded({limit: '50mb',  extended: true, parameterLimit:50000})); //console.log("limit---->"+extended);
+ app.use(express.static('public'));
+ //app.use(bodyParser.json({limit: '50mb'}));
+ //app.use(bodyParser.urlencoded({limit: '50mb'})); // all static files here
  var sess;
 
  var port = process.env.PORT || 3000; // added port

@@ -8,8 +8,8 @@ var Registersurveyer = require('../models/registersurveyer');
 var Survey = require('../models/survey');
 var BuildingType = require('../models/buildingType');
 var moment = require('moment');
-
 module.exports = function(app) {
+//app.use(express.limit(100000000));
     
     app.get('/', function(req, res) { 
         res.render('admin_Sign-In.html');
