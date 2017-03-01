@@ -1,6 +1,8 @@
  
-angular.module('GeneralInfoApp',[]) 
-    .controller('MainCtrl',function ($scope,$http,$document,$rootScope) {         
+angular.module('GeneralInfoApp',['angularFileUpload']) 
+    .controller('MainCtrl',function ($scope,$http,$document,$rootScope,$upload) {         
+
+ $.cloudinary.config({cloud_name: "dcu5hz0re", upload_preset: 'fbesyowr'});  //cloudinary config
 
     $scope.updateTime = Date.now();               
     $scope.QEditID = 'BH';   
@@ -151,4 +153,106 @@ angular.module('GeneralInfoApp',[])
 
           
      };
+
+
+
+
+
+////////////////// latest /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ //rootScope Below THis
+
+        //images Masonry
+        $rootScope.$watch('files_1', function () {    //1st Image Watch                 
+                 $scope.upload($scope.files_1, 1 ,'/image');
+        });
+
+        $rootScope.$watch('files_2', function () {    //2nd Image Watch
+                 $scope.upload($scope.files_2, 2 ,'/image');
+        });
+
+        $rootScope.$watch('files_3', function () {    //3rd  Image Watch
+                 $scope.upload($scope.files_3, 3 ,'/image');
+        });
+
+
+
+
+
+$scope.upload = function (files , imgIndex , type) {   
+        if (files && files.length) {  
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                console.log(file);
+                 
+                $upload.upload({
+                    url: 'https://api.cloudinary.com/v1_1/'+ $.cloudinary.config().cloud_name +type+'/upload',
+                    fields: {'cloud_name': $.cloudinary.config().cloud_name , upload_preset: 'fbesyowr' },
+                    file: file
+                }).progress(function (evt) {
+
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);                      
+                    
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+
+                    $scope.progressPercentage =progressPercentage;
+
+
+                }).success(function (data, status, headers, config) { 
+                     
+                    $scope.progressPercentage =false;
+
+                    $scope.UpdateUrl(data , imgIndex , type);                   
+                      
+                    console.log(imgIndex+'file ' + config.file + 'uploaded. Response: ' + data);
+ 
+                });
+
+                
+            }
+        }
+    };
+
+
+
+
+
+    $scope.UpdateUrl = function(data , imgIndex , type){ 
+        var imrStr = "ImgMasonSrc_"+imgIndex;
+        var idStr  = "ImgMasonID_"+imgIndex;
+        $scope[imrStr]= (data.url).replace(".mp4",".jpg") ;        
+        $scope[idStr] = data.public_id;
+
+        var nextImgIndex = imgIndex +1;
+        var divStr ="MasonImgdiv_"+nextImgIndex;
+        $rootScope[divStr]= true;
+
+        if(type == '/image'){
+             $scope.DynamicImageUpdate(data , "/AddQuestionImageArray" );
+        } else if (type == '/video') {
+            ///$scope.DynamicImageUpdate(data , "/DynamicVideoUpdate" );
+        };      
+    };
+
+    //ADD
+    $scope.DynamicImageUpdate = function(data , ajaxLoc){
+
+        $http({
+        method : "POST",
+        url :  ajaxLoc,      
+        async : false,
+        data:({ "data":data }) 
+        }).then(function mySucces(response) {
+
+           //$scope.myWelcome = response.data;
+        }, function myError(response) {
+          $scope.myWelcome = response.statusText;
+        }); 
+
+    };
+
+///////////////////////
+
+
 });

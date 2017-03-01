@@ -312,38 +312,22 @@ module.exports = {
                             "Hindi": req.body["NA_NameHindi"],
                             "Gujarati": req.body["NA_NameGujarati"]
                         },
-                        questionImgUrl: []
+                        questionImgUrl: req.session.imgArrayAddQ
                     },
                     buildingsAssociated: buildingObj,
                     assessmentStd: StandardObj ,
                     userType  :  userObj , 
-                    damageRisk  :  req.body.QuestOption
+                    damageRisk  :  req.body.QuestOption  
                 });  
 
                 QTNew.save(function(err) {
                         if (err) {
                             return err;
                         } else {  
-                            // now upload image 					
-                        if(req.files.image_masonry.size > 0) {
-                            if (req.files.image_masonry[loc].type == "image/jpeg") { // check if image is uploaded... if yes upload to cloudinary..else redirect        									
-                                cloudinary.v2.uploader.upload(req.files.image_masonry[loc].path, { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation: 'manual' },
-                                    function(err, result) { // call back after uploading image to cloudinary    
-                                    
-                                        question.find({ _id: pseudoID }, function(err, data) { // get last insert  
-                                            result.url=result.url.replace("png","jpg");                                     	
-                                            data[0].needAssistance.questionImgUrl.push({imgUrl: result.url , _id: result.public_id}); // pushing url from cloudinary
-                                            imgurlArray = data[0].needAssistance.questionImgUrl;
-                                            
-                                            question.findOneAndUpdate({ _id: pseudoID }, { $set: { 'needAssistance.questionImgUrl': imgurlArray } }, { new: true }, function(err, tank) {
-                                                if (err) return handleError(err);
-                                                 //save model to MongoDB
-                                                res.redirect('/generalInfo');
-                                            });
-                                        });
-                                    });
-                                };
+                            // now upload image 
+                                    req.session.imgArrayAddQ = null;   // delete session array
                             };
+                        });
                             //video upload
                       if(req.files.video_masonry.size > 0) {
                             var videourlArray = [];
@@ -378,9 +362,8 @@ module.exports = {
                                     res.redirect('/surveyquestions');
                                 };
                             };
-                        };
-         });  
     },
+
     destory: function (req, res) {               
       var imageId = req.body.image_id; Q_id = req.body.Q_ID;  
        
@@ -390,5 +373,15 @@ module.exports = {
                         res.send("done");
                   });
           });
+   },
+
+   AddQuestionImageArray : function(req,res){
+        var result = req.body.data;
+        var imgArrayAddQ =  [];  
+        imgArrayAddQ.push({imgUrl:result.url,_id:result.public_id});
+        req.session.imgArrayAddQ = imgArrayAddQ ;   //setting into session 
+        console.log(req.session.imgArrayAddQ);
+
+        res.send('done');
    }
 }
