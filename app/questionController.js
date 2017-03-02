@@ -82,7 +82,7 @@ module.exports = {
     
         UpdateQuestions : function(req,res){  
             Qindex = req.params.Qindex;    
-            Uid = req.params.id;   console.log(req.body);
+            Uid = req.params.id;   
             TotalCount = req.params.TotalCount;  
             var OptNameObj = [];//"EditoptEN_0-"+Qindex+'*'+Uid;   // last edited id
             var NewOptions = []; // to get all new options 
@@ -140,7 +140,8 @@ module.exports = {
             });         
              
            /////////////////////////////////////////            
-            var  imgurlArray = [];                      
+            var  imgurlArray = []; console.log(req.files.image_masonry[3]);  
+            req.files.image_masonry[1] = req.files.image_masonry[3] ;    // for time being                   
             if(req.files.image_masonry[1].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
             cloudinary.v2.uploader.upload(req.files.image_masonry[1].path,
             { width: 300, height: 300, crop: "limit", tags: req.body.tags, moderation:'manual' },
