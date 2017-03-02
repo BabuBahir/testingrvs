@@ -196,6 +196,8 @@ module.exports = function(app) {
     });
   
     //---some post    
+    app.post('/RemoveQuestionImageArray' , questionController.RemoveQuestionImageArray);
+
     app.post('/AddQuestionImageArray' , questionController.AddQuestionImageArray);
 
     app.post('/DynamicImageUpdate' , controller.DynamicImageUpdate);

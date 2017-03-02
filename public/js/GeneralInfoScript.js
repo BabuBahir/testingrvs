@@ -254,5 +254,25 @@ $scope.upload = function (files , imgIndex , type) {
 
 ///////////////////////
 
+    //Delete 
+    $scope.DeleteCloudiImage = function(img_id , imgIndex){
+        var r = confirm("Do you want to Delete the Image!");    
+
+        if (r == true) {             
+                $http({
+                method : "POST",
+                url : "/RemoveQuestionImageArray" ,
+                async : false,
+                data:({"image_id": $scope[img_id] })
+                }).then(function mySucces(response) {            
+                    var divStr ="MasonImgdiv_"+imgIndex; 
+                    $rootScope[divStr]= false;               // Hiding that Div
+                    console.log(divStr);
+                }, function myError(response) {
+                  $scope.myWelcome = response.statusText;
+                });  
+        };
+    }
+
 
 });

@@ -380,8 +380,25 @@ module.exports = {
         var imgArrayAddQ =  [];  
         imgArrayAddQ.push({imgUrl:result.url,_id:result.public_id});
         req.session.imgArrayAddQ = imgArrayAddQ ;   //setting into session 
-        console.log(req.session.imgArrayAddQ);
-
+         
         res.send('done');
+   },
+
+   RemoveQuestionImageArray : function(req,res){
+      var imageId = req.body.image_id;  
+      cloudinary.v2.uploader.destroy(imageId, function (error, result) {
+                  
+            var arr = req.session.imgArrayAddQ;
+            var index = arr.findIndex(function(o){
+                 return o._id === imageId;
+            })
+            
+            if(index == -1){
+                arr.splice(index, 1);
+            };
+            req.session.imgArrayAddQ  = arr;
+
+                res.send('done');
+          }); 
    }
 }
