@@ -51,7 +51,7 @@ module.exports = {
             });
         },
         fillQuestionPartial: function(req, res) {
-            id = req.params.id; 
+            id = req.params.id;  
             question.find({ _id: id }, function(err, data) {  //  //has the requied question
                 res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) , buildingTypes : JSON.stringify(data[0].buildingsAssociated) });
             });
@@ -320,12 +320,13 @@ module.exports = {
                     damageRisk  :  req.body.QuestOption  
                 });  
 
-                QTNew.save(function(err) {
+
+                QTNew.save(function(err) {  req.session.imgArrayAddQ = null;   // delete session array
                         if (err) {
                             return err;
                         } else {  
                             // now upload image 
-                                    req.session.imgArrayAddQ = null;   // delete session array
+                                   
                             };
                         });
                             //video upload
@@ -377,26 +378,16 @@ module.exports = {
 
    AddQuestionImageArray : function(req,res){
         var result = req.body.data;
-        var imgArrayAddQ =  [];  
+        var imgArrayAddQ =  req.session.imgArrayAddQ || [];  
         imgArrayAddQ.push({imgUrl:result.url,_id:result.public_id});
         req.session.imgArrayAddQ = imgArrayAddQ ;   //setting into session 
-         
+
         res.send('done');
    },
 
    RemoveQuestionImageArray : function(req,res){
       var imageId = req.body.image_id;  
       cloudinary.v2.uploader.destroy(imageId, function (error, result) {
-                  
-            var arr = req.session.imgArrayAddQ;
-            var index = arr.findIndex(function(o){
-                 return o._id === imageId;
-            })
-            
-            if(index == -1){
-                arr.splice(index, 1);
-            };
-            req.session.imgArrayAddQ  = arr;
 
                 res.send('done');
           }); 
