@@ -108,13 +108,22 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline disabled">
-            <input type="checkbox" disabled style="margin-top:-4px;" > Non-Professional Surveyor 
+
+            <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
+             <% if(userTypes.search('Non-Professional') > -1)  { %> checked  <% } else { %> <% }%> >  Non-Professional Surveyor  
+
         </label>
         <label class="checkbox-inline  disabled" >
-            <input type="checkbox" disabled style="margin-top:-4px;"  > Professional Surveyor 
+
+            <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
+             <% if(userTypes.search('Professional') > -1 && (userTypes.search('Non-Professional') < -1))  { %> checked  <% } else { %> <% }%> >  Professional Surveyor 
+
         </label>
         <label class="checkbox-inline  disabled">
-            <input type="checkbox" disabled style="margin-top:-4px;"  > Certified Surveyor 
+          
+            <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
+             <% if(userTypes.search('Certified') > -1)  { %> checked  <% } else { %> <% }%> >  Certified Surveyor 
+
         </label>
     </div>
  
@@ -123,13 +132,22 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline disabled">
-            <input type="checkbox"  disabled style="margin-top:-4px;" > General Indian Standard
+            
+            <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
+             <% if(assessmentStds.search('Indian') > -1)  { %> checked  <% } else { %> <% }%> >  General Indian Standard
+
         </label>
         <label class="checkbox-inline  disabled" >
-            <input type="checkbox"  disabled style="margin-top:-4px;"  > General American Standard 
+           
+            <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
+             <% if(assessmentStds.search('American') > -1)  { %> checked  <% } else { %> <% }%> >  General American Standard
+
         </label>
         <label class="checkbox-inline  disabled">
-            <input type="checkbox" disabled style="margin-top:-4px;"  > General European Standard 
+            
+            <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
+             <% if(assessmentStds.search('European') > -1)  { %> checked  <% } else { %> <% }%> >  General European Standard
+
         </label>
     </div>
  
@@ -138,12 +156,21 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline disabled">
-            <input type="radio" disabled name="QuestOption" style="margin-top: -10px;" type="radio" class="radioBalancer"> Yes
+             
+             <input type="radio" disabled  class="radioBalancer"  style="margin-top:-10px;"  
+             <% if(damageRisks == '"Yes"')  { %> checked   <% } else { %> <% }%> > Yes
+
         </label>
         <label class="checkbox-inline  disabled" >
-            <input type="radio" disabled name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  No
+             
+             <input type="radio" disabled   class="radioBalancer"  style="margin-top:-10px;"  
+             <% if(damageRisks == '"No"')  { %> checked  <% } else { %> <% }%> > No
+
         </label>
         <label class="checkbox-inline  disabled">
-            <input type="radio" disabled name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  Nothing 
+             
+             <input type="radio" disabled   class="radioBalancer"  style="margin-top:-10px;"  
+             <% if(damageRisks == '"Nothing"')  { %> checked  <% } else { %> <% }%> > Nothing
+
         </label>
     </div>

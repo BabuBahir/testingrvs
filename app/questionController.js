@@ -8,14 +8,13 @@ cloudinary.config({
     api_key: '812825971867232',
     api_secret: '_pk-gzAhdI63mSU1FDXIkrXkABo'
 });
-
  
+  
 module.exports = {
         getQuestions: function(req, res) { 
             req.session.forPAge = 'GI'; //setting up Session
 
             question.find({'forPAge':'GI'}).sort({'_id':-1}).exec(function(err,data){    
-
                 var newArrayOfID = [];
                 for (var i = 0; i < data.length; i++) {  
                     newArrayOfID.push({id:data[i]._id , Q_Type : data[i].questionType}); // pushing ID of each Question
@@ -57,19 +56,19 @@ module.exports = {
             });
         }, 
         fillreadOnlyPartial: function(req, res) {
-
+  
             var people = [
                 { model: 'ReadOnlyENQues',name: '<%=question.English%>' },
-                { model: 'ReadOnlyGJQues',name: '<%=question.Gujarati%>' },
+                { model: 'ReadOnlyGJQues',name: '<%=question.Gujarati%>' }, 
                 { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];               
             id = req.params.id;
 
-            question.find({ _id: id }, function(err, data) {   // data[0] has the requied question
+            question.find({ _id: id }, function(err, data) {   // data[0] has the requied question  
                   people[0].name =(data[0].question.text.English);
-                  people[1].name =(data[0].question.text.Gujarati);
+                  people[1].name =(data[0].question.text.Gujarati); 
                   people[2].name =(data[0].question.text.Hindi); 
-                                   
-                res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options , buildingTypes : JSON.stringify(data[0].buildingsAssociated) });
+                 
+                res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options , buildingTypes : JSON.stringify(data[0].buildingsAssociated) , damageRisks : JSON.stringify(data[0].damageRisk) });
             });
         },    
   

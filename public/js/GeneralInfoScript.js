@@ -218,9 +218,6 @@ $scope.upload = function (files , imgIndex , type) {
     };
 
 
-
-
-
     $scope.UpdateUrl = function(data , imgIndex , type){ 
         var imrStr = "ImgMasonSrc_"+imgIndex;
         var idStr  = "ImgMasonID_"+imgIndex;
