@@ -52,7 +52,7 @@ module.exports = {
         fillQuestionPartial: function(req, res) {
             id = req.params.id;  
             question.find({ _id: id }, function(err, data) {  //  //has the requied question
-                res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) , buildingTypes : JSON.stringify(data[0].buildingsAssociated) });
+                res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) , buildingTypes : JSON.stringify(data[0].buildingsAssociated) ,damageRisks : JSON.stringify(data[0].damageRisk) });
             });
         }, 
         fillreadOnlyPartial: function(req, res) {
@@ -139,7 +139,7 @@ module.exports = {
             });         
              
            /////////////////////////////////////////            
-            var  imgurlArray = []; console.log(req.files.image_masonry[3]);  
+            var  imgurlArray = [];  
             req.files.image_masonry[1] = req.files.image_masonry[3] ;    // for time being                   
             if(req.files.image_masonry[1].type=="image/jpeg") {   // check if image is uploaded... if yes upload to cloudinary..else redirect        
             cloudinary.v2.uploader.upload(req.files.image_masonry[1].path,
@@ -187,8 +187,7 @@ module.exports = {
             res.redirect('/generalInfo');  
         },
   
-        SaveQuestions: function(req, res) {   
-
+        SaveQuestions: function(req, res) {    
 
             if(req.body.IF_NA_removed == false){
                 var IF_NA_removed = 0;
@@ -196,12 +195,25 @@ module.exports = {
                 var IF_NA_removed = 1;
             };
 
+            // for user types
+            var UserTypeArr = [];
+            if(req.body.CB_U_NPS == true){
+                UserTypeArr.push({'_id' : "Non-Professional Surveyor"});
+            };
+            if(req.body.CB_U_PS == true){
+                UserTypeArr.push({'_id' : "Professional Surveyor"});
+            };
+            if(req.body.CB_U_PS == true){
+                UserTypeArr.push({'_id' : "Certified Surveyor"});
+            };
+            // for user types
 
 
             id = req.body["QuestionID"];    
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] ,
                         'needAssistance.title.English' : req.body["NA_NameEN"] , 'needAssistance.title.Hindi' : req.body["NA_NameHI"] , 'needAssistance.title.Gujarati' : req.body["NA_NameGJ"] ,
-                        'needAssistance.description.English' :  req.body["NA_DescEN"] , 'needAssistance.description.Hindi' :  req.body["NA_DescHI"] , 'needAssistance.description.Gujarati' : req.body["NA_DescGJ"] , 'ifNeedAssistance' :IF_NA_removed
+                        'needAssistance.description.English' :  req.body["NA_DescEN"] , 'needAssistance.description.Hindi' :  req.body["NA_DescHI"] , 'needAssistance.description.Gujarati' : req.body["NA_DescGJ"] , 'ifNeedAssistance' :IF_NA_removed ,
+                         'userType' : UserTypeArr
                     } }, { new: true }, function(err, tank) {   
                 if (err) return handleError(err);    
                 // call read only partial with id

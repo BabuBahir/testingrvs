@@ -132,13 +132,24 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
-            <input type="checkbox"  style="margin-top:-4px;" > Non-Professional Surveyor 
+              <input type="checkbox"  style="margin-top:-4px;"  ng-model="$root.CB_U_NPS"
+            <% if(userTypes.search('Non-Professional') > -1) { 
+            %> checked   ng-init="$root.CB_U_NPS=true" <% } else { 
+            %> <% }%> > Non-Professional Surveyor  
+
         </label>
         <label class="checkbox-inline  " >
-            <input type="checkbox"  style="margin-top:-4px;"  > Professional Surveyor 
+            <input type="checkbox"  style="margin-top:-4px;"  ng-model="$root.CB_U_PS" 
+             <% if(userTypes.search('Professional Surveyor') > -1 && (userTypes.search('Non-Professional') < -1)) { 
+            %> checked   ng-init="$root.CB_U_PS=true" <% } else { 
+            %> <% }%> > Professional Surveyor 
         </label>
         <label class="checkbox-inline  ">
-            <input type="checkbox" style="margin-top:-4px;"  > Certified Surveyor 
+            <input type="checkbox" style="margin-top:-4px;" ng-model="$root.CB_U_CS"
+
+             <% if(userTypes.search('Certified') > -1) { 
+            %> checked   ng-init="$root.CB_U_CS=true" <% } else { 
+            %> <% }%> > Certified Surveyor 
         </label>
     </div>
  
@@ -162,13 +173,24 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
-            <input type="radio" name="QuestOption" style="margin-top: -10px;" type="radio" class="radioBalancer"> Yes
+             
+             <input type="radio" name="damgeType" class="radioBalancer"  style="margin-top:-10px;"
+                 ng-model="$root.CB_DAMAGE"  
+             <% if(damageRisks == '"Yes"')  { %> checked   <% } else { %> <% }%> > Yes
+
         </label>
-        <label class="checkbox-inline  " >
-            <input type="radio" name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  No
+        <label class="checkbox-inline" >
+             
+             <input type="radio" name="damgeType" class="radioBalancer"  style="margin-top:-10px;"   ng-model="$root.CB_DAMAGE"  
+             <% if(damageRisks == '"No"')  { %> checked  <% } else { %> <% }%> > No
+
         </label>
-        <label class="checkbox-inline  ">
-            <input type="radio" name="QuestOption" style="margin-top: -10px" type="radio" class="radioBalancer">  Nothing 
+        <label class="checkbox-inline">
+             
+             <input type="radio"  class="radioBalancer"  style="margin-top:-10px;"  
+                     ng-model="$root.CB_DAMAGE"  
+             <% if(damageRisks == '"Nothing"')  { %> checked  <% } else { %> <% }%> > Nothing
+
         </label>
     </div>
 
