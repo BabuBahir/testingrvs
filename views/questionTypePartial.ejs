@@ -88,7 +88,7 @@
         <div  ng-include="'needAssistancePartialEditable/'+'<%=Q_id%>'"></div>
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>
-  
+   
 <hr/>
     <label style="display:block;">
         <b>Type Of Building </b>
@@ -126,27 +126,22 @@
 
     <label style="display:block;">
         <b>Type Of User </b>
+         
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
               <input type="checkbox"  style="margin-top:-4px;"  ng-model="$root.CB_U_NPS"
-              ng-checked="$root.CB_U_NPS =='N'"  
-              ng-init="initUserType('CB_U_NPS','<%=userTypes%>')"
-                <% if(userTypes.search('N') > -1)  { %> checked  <% } else { %> <% }%> >  Non-Professional Surveyor   
+                <% if(userTypes.search('N') > -1)  { %> checked ng-init="$root.CB_U_NPS=true" <% } else { %> ng-init="$root.CB_U_NPS=false" <% }%> >  Non-Professional Surveyor   
 
         </label>
         <label class="checkbox-inline  " >
             <input type="checkbox"  style="margin-top:-4px;"  ng-model="$root.CB_U_PS" 
-                ng-checked="$root.CB_U_PS =='P'"  
-                ng-init="initUserType('CB_U_PS','<%=userTypes%>')"
-                <% if(userTypes.search('P') > -1)  { %> checked  <% } else { %> <% }%> >   Professional Surveyor
+                <% if(userTypes.search('P') > -1)  { %> checked ng-init="$root.CB_U_PS=true" <% } else {  %> ng-init="$root.CB_U_PS=false" <% }%> >   Professional Surveyor
 
         </label>
         <label class="checkbox-inline  ">
             <input type="checkbox" style="margin-top:-4px;" ng-model="$root.CB_U_CS"
-            ng-checked="$root.CB_U_CS =='C'" 
-            ng-init="initUserType('CB_U_CS','<%=userTypes%>')"
-            <% if(userTypes.search('C') > -1)  { %> checked  <% } else { %> <% }%> >      Certified Surveyor 
+            <% if(userTypes.search('C') > -1)  { %> checked ng-init="$root.CB_U_CS=true" <% } else { %> ng-init="$root.CB_U_CS=false" <% }%> >      Certified Surveyor 
 
         </label>
     </div>
@@ -156,7 +151,8 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
-            <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_IN" <% if(assessmentStds.search('Indian') > -1)  { %> checked ng-init="$root.CB_IN=true" <% } else { %> <% }%> >  General Indian Standard
+            <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_IN" 
+            <% if(assessmentStds.search('Indian') > -1)  { %> checked ng-init="$root.CB_IN=true" <% } else { %> <% }%> >  General Indian Standard
         </label>
         <label class="checkbox-inline  " >
             <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_AM" <% if(assessmentStds.search('American') > -1)  { %> checked ng-init="$root.CB_AM=true" <% } else { %> <% }%> >  General American Standard
