@@ -88,8 +88,7 @@
         <div  ng-include="'needAssistancePartialEditable/'+'<%=Q_id%>'"></div>
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>
-
-<pre> <%= userTypes.search('Certified')%> </pre>
+ 
 <hr/>
     <label style="display:block;">
         <b>Type Of Building </b>
@@ -172,22 +171,24 @@
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
              
-             <input type="radio" name="damgeType" class="radioBalancer"  style="margin-top:-10px;"
-                 ng-model="$root.CB_DAMAGE"  
-             <% if(damageRisks == '"Yes"')  { %> checked   <% } else { %> <% }%> > Yes
+             <input type="radio"   class="radioBalancer"  style="margin-top:-10px;"
+                value="Yes" ng-model="$root.CB_DAMAGE" ng-checked="$root.CB_DAMAGE=='Yes'"
+                ng-init="$root.CB_DAMAGE='<%=damageRisks%>'"
+             <% if(damageRisks == 'Yes')  { %> checked   <% } else { %> <% }%> > Yes
 
         </label>
         <label class="checkbox-inline" >
              
-             <input type="radio" name="damgeType" class="radioBalancer"  style="margin-top:-10px;"   ng-model="$root.CB_DAMAGE"  
-             <% if(damageRisks == '"No"')  { %> checked  <% } else { %> <% }%> > No
+             <input type="radio"  class="radioBalancer"  style="margin-top:-10px;"  value="No" ng-model="$root.CB_DAMAGE"  ng-checked="$root.CB_DAMAGE=='No'"
+             ng-init="$root.CB_DAMAGE='<%=damageRisks%>'"
+             <% if(damageRisks == 'No')  { %> checked  <% } else { %> <% }%> > No
 
         </label>
         <label class="checkbox-inline">
              
-             <input type="radio"  class="radioBalancer"  style="margin-top:-10px;"  
-                     ng-model="$root.CB_DAMAGE"  
-             <% if(damageRisks == '"Nothing"')  { %> checked  <% } else { %> <% }%> > Nothing
+             <input type="radio"  class="radioBalancer"  style="margin-top:-10px;"      value="Nothing"  ng-model="$root.CB_DAMAGE"  ng-checked="$root.CB_DAMAGE=='Nothing'"
+             ng-init="$root.CB_DAMAGE='<%=damageRisks%>'"
+             <% if(damageRisks == 'Nothing')  { %> checked ng-init="this=true" <% } else {  %> <% }%> > Nothing
 
         </label>
     </div>
