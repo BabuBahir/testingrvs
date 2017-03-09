@@ -278,4 +278,16 @@ $scope.upload = function (files , imgIndex , type) {
 
     ///////////////////////////
     // rootscope change function
+    $scope.initUserType = function(index,data)
+    {  console.log(data);console.log(index);
+        if(data.search('N') > -1 ) {   // N present
+            $rootScope[index] = 'N';
+        }
+        else if(data.search('P') > -1 ) {   // P present
+            $rootScope[index] = 'P';
+        }
+        else if(data.search('C') > -1 ) {   // C present
+            $rootScope[index] = 'C';
+        };
+    }
 });

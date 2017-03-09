@@ -51,7 +51,7 @@ module.exports = {
         },
         fillQuestionPartial: function(req, res) {
             id = req.params.id;  
-            question.find({ _id: id }, function(err, data) {  //  //has the requied question
+            question.find({ _id: id }, function(err, data) {  //has the requied question
                 res.render('questionTypePartial', { question : data[0].question.text, questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id  , qOptions : JSON.stringify(data[0].question.options) , buildingTypes : JSON.stringify(data[0].buildingsAssociated) ,damageRisks :  data[0].damageRisk });
             });
         }, 
@@ -67,7 +67,7 @@ module.exports = {
                   people[0].name =(data[0].question.text.English);
                   people[1].name =(data[0].question.text.Gujarati); 
                   people[2].name =(data[0].question.text.Hindi); 
-                 
+                  
                 res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options , buildingTypes : JSON.stringify(data[0].buildingsAssociated) , damageRisks : data[0].damageRisk });
             });
         },    
@@ -198,13 +198,13 @@ module.exports = {
             // for user types
             var UserTypeArr = [];
             if(req.body.CB_U_NPS == true){
-                UserTypeArr.push({'_id' : "Non-Professional Surveyor"});
+                UserTypeArr.push({'_id' : "N"});
             };
             if(req.body.CB_U_PS == true){
-                UserTypeArr.push({'_id' : "Professional Surveyor"});
+                UserTypeArr.push({'_id' : "P"});
             };
             if(req.body.CB_U_PS == true){
-                UserTypeArr.push({'_id' : "Certified Surveyor"});
+                UserTypeArr.push({'_id' : "C"});
             };
             // for user types
 
@@ -275,13 +275,13 @@ module.exports = {
 
                 //checking Type of user(s)
                 if ((req.body["CB_nps"]) == 'on')
-                    userObj.push({ _id: 'Non-Professional Surveyor' });
+                    userObj.push({ _id: 'N' });
 
                 if ((req.body["CB_ps"]) == 'on')
-                    userObj.push({ _id: 'Professional Surveyor' });
+                    userObj.push({ _id: 'P' });
  
                 if ((req.body["CB_cs"]) == 'on')
-                    userObj.push({ _id: 'Certified Surveyor' });
+                    userObj.push({ _id: 'C' });
 
 
                 //checking Type of Standard(s)

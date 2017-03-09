@@ -109,19 +109,19 @@
         <label class="checkbox-inline disabled">
 
             <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
-             <% if(userTypes.search('Non-Professional') > -1)  { %> checked  <% } else { %> <% }%> >  Non-Professional Surveyor  
+             <% if(userTypes.search('N') > -1)  { %> checked  <% } else { %> <% }%> >  Non-Professional Surveyor  
 
         </label>
         <label class="checkbox-inline  disabled" >
 
             <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
-             <% if(userTypes.search('Professional Surveyor') > -1 && (userTypes.search('Non-Professional') < -1))  { %> checked  <% } else { %> <% }%> >  Professional Surveyor 
+             <% if(userTypes.search('P') > -1 )  { %> checked  <% } else { %> <% }%> >  Professional Surveyor 
 
         </label>
         <label class="checkbox-inline  disabled">
           
             <input type="checkbox" class="radioBalancer" disabled style="margin-top:-4px;"  
-             <% if(userTypes.search('Certified') > -1)  { %> checked  <% } else { %> <% }%> >  Certified Surveyor 
+             <% if(userTypes.search('C') > -1)  { %> checked  <% } else { %> <% }%> >  Certified Surveyor 
 
         </label>
     </div>
