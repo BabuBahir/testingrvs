@@ -88,10 +88,8 @@
         <div  ng-include="'needAssistancePartialEditable/'+'<%=Q_id%>'"></div>
    </div> <!--needAssistanceDiv-->                                               
     <div class="clearfix"></div>
-    
 
-
-
+<pre> <%= userTypes.search('Certified')%> </pre>
 <hr/>
     <label style="display:block;">
         <b>Type Of Building </b>
@@ -142,14 +140,14 @@
             <input type="checkbox"  style="margin-top:-4px;"  ng-model="$root.CB_U_PS" 
              <% if(userTypes.search('Professional Surveyor') > -1 && (userTypes.search('Non-Professional') < -1)) { 
             %> checked   ng-init="$root.CB_U_PS=true" <% } else { 
-            %> <% }%> > Professional Surveyor 
+            %> <%}%> > Professional Surveyor 
         </label>
         <label class="checkbox-inline  ">
             <input type="checkbox" style="margin-top:-4px;" ng-model="$root.CB_U_CS"
 
-             <% if(userTypes.search('Certified') > -1) { 
-            %> checked   ng-init="$root.CB_U_CS=true" <% } else { 
-            %> <% }%> > Certified Surveyor 
+            <% if(userTypes.search('Certified') > -1) { 
+            %> checked   ng-init="$root.CB_U_CS=true" <% } else {  
+            %> <%}%> > Certified Surveyor 
         </label>
     </div>
  
@@ -158,13 +156,13 @@
     </label>
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
-            <input type="checkbox"  style="margin-top:-4px;" > General Indian Standard
+            <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_IN" <% if(assessmentStds.search('Indian') > -1)  { %> checked ng-init="$root.CB_IN=true" <% } else { %> <% }%> >  General Indian Standard
         </label>
         <label class="checkbox-inline  " >
-            <input type="checkbox"  style="margin-top:-4px;"  > General American Standard 
+            <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_AM" <% if(assessmentStds.search('American') > -1)  { %> checked ng-init="$root.CB_AM=true" <% } else { %> <% }%> >  General American Standard
         </label>
         <label class="checkbox-inline  ">
-            <input type="checkbox" style="margin-top:-4px;"  > General European Standard 
+            <input type="checkbox" style="margin-top:-4px;"  ng-model="$root.CB_EU" <% if(assessmentStds.search('European') > -1)  { %> checked ng-init="$root.CB_EU=true" <% } else { %> <% }%> >  General European Standard
         </label>
     </div>
  

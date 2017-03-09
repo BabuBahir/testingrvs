@@ -122,8 +122,8 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
     $scope.Remove_past = function(msg){
           
     };
-
- 	$scope.form_submit =function(Q_id){  console.log($rootScope.CB_DAMAGE);
+ 
+ 	$scope.form_submit =function(Q_id){   
 		$http({
     		method : "POST",
     		url : "/saveQuestions" ,	
@@ -131,7 +131,8 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
     		data:({"NameEN":$scope.QuestEN,"NameHI":$scope.QuestHI,"NameGJ":$scope.QuestGJ ,"DescEN":$scope.DescEN , "DescHI":$scope.DescHI  , "DescGJ":$scope.DescGJ ,"QType": $scope.checkbox ,"QuestionID":Q_id,
                         "NA_NameEN": $rootScope.NA_NameEnglish_edit , "NA_NameHI": $rootScope.NA_NameHindi_edit , "NA_NameGJ": $rootScope.NA_NameGujarati_edit ,
                         "NA_DescEN": $rootScope.NA_DescEnglish_edit , "NA_DescHI" :$rootScope.NA_DescGujarati_edit, "NA_DescGJ" : $rootScope.NA_DescHindi_edit ,
-                        "IF_NA_removed" : $scope.needAssistanceDiv  , "CB_U_NPS" : $rootScope.CB_U_NPS , "CB_U_PS" : $rootScope.CB_U_PS , "CB_U_CS" : $rootScope.CB_U_CS
+                        "IF_NA_removed" : $scope.needAssistanceDiv  , "CB_U_NPS" : $rootScope.CB_U_NPS , "CB_U_PS" : $rootScope.CB_U_PS , "CB_U_CS" : $rootScope.CB_U_CS ,
+                        "CB_IN" : $rootScope.CB_IN , "CB_AM" : $rootScope.CB_AM , "CB_EU" : $rootScope.CB_EU
                     })
 
 		}).then(function mySucces(response) {	

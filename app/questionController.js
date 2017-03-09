@@ -208,12 +208,24 @@ module.exports = {
             };
             // for user types
 
+            //for assessment std
+            var assessArr=[];
+            if(req.body.CB_IN == true ){
+                assessArr.push({'_id' : "General Indian Standard"});
+            };
+            if(req.body.CB_AM == true ){
+                assessArr.push({'_id' : "General American Standard"});
+            };
+            if(req.body.CB_EU == true ){
+                assessArr.push({'_id' : "General European Standard"});
+            };
+            //for assessment std
 
             id = req.body["QuestionID"];    
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] ,
                         'needAssistance.title.English' : req.body["NA_NameEN"] , 'needAssistance.title.Hindi' : req.body["NA_NameHI"] , 'needAssistance.title.Gujarati' : req.body["NA_NameGJ"] ,
                         'needAssistance.description.English' :  req.body["NA_DescEN"] , 'needAssistance.description.Hindi' :  req.body["NA_DescHI"] , 'needAssistance.description.Gujarati' : req.body["NA_DescGJ"] , 'ifNeedAssistance' :IF_NA_removed ,
-                         'userType' : UserTypeArr
+                        'userType' : UserTypeArr  , assessmentStd : assessArr
                     } }, { new: true }, function(err, tank) {   
                 if (err) return handleError(err);    
                 // call read only partial with id
