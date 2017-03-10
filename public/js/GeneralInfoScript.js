@@ -68,9 +68,7 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
     };
 
     $scope.Delete_img = function(msg){        
-        document.getElementById(msg).style.display = "none";
-        console.log(document.getElementById(msg).childNodes);
-
+        
     	var r = confirm("Do you want to Delete the Image!");   
         if (r == true) {              
             $http({
@@ -80,8 +78,8 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
             data:({"image_id":msg  , "Q_ID":$scope.QEditID})
             }).then(function mySucces(response) {      
                //$scope.myWelcome = response.data; 
-                document.getElementById(msg).style.display = 'none';
-                console.log(msg);  
+                $rootScope[msg] = true;
+                console.log(msg);
             }, function myError(response) {
               $scope.myWelcome = response.statusText;
             });  
