@@ -110,7 +110,7 @@ module.exports = {
         };      
  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+ 
 
 
             question.find({ _id: Uid}, function(err, data) {   
@@ -124,12 +124,16 @@ module.exports = {
                     };  
                     for(var i =0 ; i < TotalCount ; i ++){
                         if(i < optCount) {
-                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                        
+                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                                                   
                         } else {
-                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj] ,Gujarati : req.body[OptNameObj[i].GJobj], Hindi : req.body[OptNameObj[i].HIobj] });                                        
+                            if((Array.isArray(req.body[OptNameObj[i].ENobj])) || (Array.isArray(req.body[OptNameObj[i].GJobj])) || (Array.isArray(req.body[OptNameObj[i].HIobj])) )  {
+                                NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][0] ,Gujarati : req.body[OptNameObj[i].GJobj][0], Hindi : req.body[OptNameObj[i].HIobj][0] });    
+                            }                                    
+                            else {
+                                NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj] ,Gujarati : req.body[OptNameObj[i].GJobj], Hindi : req.body[OptNameObj[i].HIobj] });                                  
+                            }
                         }
-                    };  
-                    
+                    };                      
                     if(data[0].questionType == '2') {NewOptions = []; }; //  if Question Type = 2 .. remove OPTIONS
 
                     question.findOneAndUpdate({_id: Uid}, { $set: { 'question.options': NewOptions , 'buildingsAssociated' : buildingObj }}, { new: true }, function (err, tank) {

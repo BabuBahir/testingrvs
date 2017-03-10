@@ -27,6 +27,8 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
         var lastItem = $scope.choices.length-1;
         $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+($scope.choices.length-1);   // on edit change form destination         
         $scope.choices.splice(lastItem);
+
+        $scope.addNewChoice =false;  //hide Add Button
     };
 
     $scope.FillChoices  = function(msg) {//filling choices        
