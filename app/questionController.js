@@ -203,7 +203,7 @@ module.exports = {
             if(req.body.CB_U_PS == true){
                 UserTypeArr.push({'_id' : "P"});
             };
-            if(req.body.CB_U_PS == true){
+            if(req.body.CB_U_CS == true){
                 UserTypeArr.push({'_id' : "C"});
             };
             // for user types

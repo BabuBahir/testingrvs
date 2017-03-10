@@ -60,11 +60,11 @@
               </thead>
               <% surveyData.forEach(function (survey) { %>
               <tbody class="tbody-data" data-survey-status='<%= survey.status %>'>
-                
+                 
                   <tr>
                     <td>
                         <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Building ID:  <br/> Survey ID:">
-                        <img src="<%= survey.buildingProfileImg %>" width="50" />
+                        <img src="<%= survey.buildingProfileImg.imgUrl %>" width="50" />
                         </p>
                     </td>
                     <td>
