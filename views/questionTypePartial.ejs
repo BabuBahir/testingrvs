@@ -152,13 +152,13 @@
     <div class="col-sm-12 select-radio-btn">
         <label class="checkbox-inline">
             <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_IN" 
-            <% if(assessmentStds.search('Indian') > -1)  { %> checked ng-init="$root.CB_IN=true" <% } else { %> <% }%> >  General Indian Standard
+            <% if(assessmentStds.search('Indian') > -1)  { %> checked ng-init="$root.CB_IN=true" <% } else { %> ng-init="$root.CB_IN=false" <% }%> >  General Indian Standard
         </label>
         <label class="checkbox-inline  " >
-            <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_AM" <% if(assessmentStds.search('American') > -1)  { %> checked ng-init="$root.CB_AM=true" <% } else { %> <% }%> >  General American Standard
+            <input type="checkbox"  style="margin-top:-4px;" ng-model="$root.CB_AM" <% if(assessmentStds.search('American') > -1)  { %> checked ng-init="$root.CB_AM=true" <% } else { %> ng-init="$root.CB_AM=false" <% }%> >  General American Standard
         </label>
         <label class="checkbox-inline  ">
-            <input type="checkbox" style="margin-top:-4px;"  ng-model="$root.CB_EU" <% if(assessmentStds.search('European') > -1)  { %> checked ng-init="$root.CB_EU=true" <% } else { %> <% }%> >  General European Standard
+            <input type="checkbox" style="margin-top:-4px;"  ng-model="$root.CB_EU" <% if(assessmentStds.search('European') > -1)  { %> checked ng-init="$root.CB_EU=true" <% } else { %> ng-init="$root.CB_EU=false" <% }%> >  General European Standard
         </label>
     </div>
  

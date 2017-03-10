@@ -187,11 +187,16 @@ module.exports = {
             }, { resource_type: "video" });  
         };
 
-
-            res.redirect('/generalInfo');  
+                 if(req.session.forPAge == 'GI'){
+                      res.redirect('/generalInfo');  
+                    } else if (req.session.forPAge == 'GT'){
+                       res.redirect('/general_techincal');  
+                    }else if(req.session.forPAge == 'SA'){
+                        res.redirect('/surveyquestions');
+                    }; 
         },
   
-        SaveQuestions: function(req, res) {    
+        SaveQuestions: function(req, res) {   
 
             if(req.body.IF_NA_removed == false){
                 var IF_NA_removed = 0;
@@ -225,7 +230,7 @@ module.exports = {
             };
             //for assessment std
 
-            id = req.body["QuestionID"];    
+            id = req.body["QuestionID"];     
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] ,
                         'needAssistance.title.English' : req.body["NA_NameEN"] , 'needAssistance.title.Hindi' : req.body["NA_NameHI"] , 'needAssistance.title.Gujarati' : req.body["NA_NameGJ"] ,
                         'needAssistance.description.English' :  req.body["NA_DescEN"] , 'needAssistance.description.Hindi' :  req.body["NA_DescHI"] , 'needAssistance.description.Gujarati' : req.body["NA_DescGJ"] , 'ifNeedAssistance' :IF_NA_removed ,
