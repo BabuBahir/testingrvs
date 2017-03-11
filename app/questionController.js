@@ -1,5 +1,4 @@
 var question = require("../models/question.js");
-var pseudoID = Date.now();
 
 var cloudinary = require('cloudinary');
 
@@ -230,7 +229,7 @@ module.exports = {
             };
             //for assessment std
 
-            id = req.body["QuestionID"];     
+            id = req.body["QuestionID"];  
             question.findOneAndUpdate({ _id: id }, { $set: { 'question.text.Hindi': req.body["NameHI"], 'question.text.English': req.body["NameEN"] , 'question.text.Gujarati' : req.body["NameGJ"] , 'questionType' : req.body["QType"] ,
                         'needAssistance.title.English' : req.body["NA_NameEN"] , 'needAssistance.title.Hindi' : req.body["NA_NameHI"] , 'needAssistance.title.Gujarati' : req.body["NA_NameGJ"] ,
                         'needAssistance.description.English' :  req.body["NA_DescEN"] , 'needAssistance.description.Hindi' :  req.body["NA_DescHI"] , 'needAssistance.description.Gujarati' : req.body["NA_DescGJ"] , 'ifNeedAssistance' :IF_NA_removed ,
@@ -252,6 +251,7 @@ module.exports = {
         },
 
         addQuestion: function(req, res) {  
+                var pseudoID =  Date.now();
                 
                 var loc = req.files.image_masonry.length -1;
                 buildingObj = [];
@@ -352,7 +352,6 @@ module.exports = {
                     userType  :  userObj , 
                     damageRisk  :  req.body.QuestOption  
                 });  
-
 
                 QTNew.save(function(err) {  req.session.imgArrayAddQ = null;   // delete session array
                         if (err) {

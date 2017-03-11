@@ -76,12 +76,7 @@
                                                     </div> <!-- upload-wrapper -->
                                                                       
                                                    <!-- the below div will be visible on hover -->
-                                                    <div class="upload-hover-wrapper"
-                                                    ng-class="{'toggle-onhover':hovering}"
-                                                        ng-mouseenter="hovering=true"
-                                                        ng-mouseleave="hovering=false"
-                                                        >
-                                                        
+                                                    <div class="upload-hover-wrapper" 
                                                         <span><i ng-click="Delete_img('<%=post._id%>')" class="fa fa-times"></i></span>
                                                     </div> <!-- upload-hover-wrapper -->
                                                 </div>  <!-- upload-files -->
@@ -142,7 +137,10 @@
                                                 <div class="upload-files" style="vertical-align:-5px;">
                                                     <div class="upload-wrapper">
                                                         <label class="" for="video-selector-na-update">
-                                                                <input id="video-selector-na-update" name="video_masonry" type="file" style="display:none;">
+                                                                <input 
+                                                                id="video-selector-na-update" 
+                                                                name="video_masonry" 
+                                                                type="file" style="display:none;">
                                                         <i class="fa fa-plus"></i> 
                                                         </label>
                                                     </div>
@@ -163,10 +161,11 @@
                                         <!-- col-sm-12 -->    
    
   <!-- ****  NOTE: custom code ***** -->
-<script>
+<script type="text/javascript">
+
     $(document).ready(function () {
         $(".upload-files").hover(function () {
-            $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");
+            $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");             
         });
     });
 </script>

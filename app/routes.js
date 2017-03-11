@@ -7,7 +7,7 @@ var earthquake = require('./earthquake');
 var Registersurveyer = require('../models/registersurveyer');
 var Survey = require('../models/survey');
 var BuildingType = require('../models/buildingType');
-var moment = require('moment');
+
 module.exports = function(app) {
 //app.use(express.limit(100000000));
     
@@ -27,6 +27,7 @@ module.exports = function(app) {
     app.get('/viewReport', earthquake.viewInfo);
  
     app.get('/user_management',requireLogin,function(req,res){
+        var moment = require('moment');
         Registersurveyer
         .find()
         .exec()
@@ -128,7 +129,7 @@ module.exports = function(app) {
 
 
     app.get('/survey',requireLogin, function(req,res){
-       
+       var moment = require('moment');
         Registersurveyer
         .find()
         .exec()

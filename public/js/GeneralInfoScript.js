@@ -290,4 +290,11 @@ $scope.upload = function (files , imgIndex , type) {
             $rootScope[index] = 'C';
         };
     }
+
+
+    //mouseover
+
+    $rootScope.hoverOut = function(){
+        console.log('pops');
+    }
 });
