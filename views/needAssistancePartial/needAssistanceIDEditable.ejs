@@ -74,7 +74,8 @@
                                                     <div class="upload-wrapper">
                                                         <img  src="<%=post.imgUrl%>" />
                                                     </div> <!-- upload-wrapper -->
-                                                                      
+                                                   <button type="button" ng-click="Delete_img('<%=post._id%>')"> DELETE
+                                                   </button>                   
                                                    <!-- the below div will be visible on hover -->
                                                     <div class="upload-hover-wrapper" 
                                                         <span><i ng-click="Delete_img('<%=post._id%>')" class="fa fa-times"></i></span>
@@ -119,15 +120,14 @@
                                             <div  class="col-sm-9 col-md-10 col-lg-10 side-padding">
                                                 <% rawData.questionVideoUrl.forEach(function(post, index) { %>
                                                      
-                                                        <div id='<%=post._id%>' class="upload-files">
+                                                        <div ng-hide="$root.<%=post._id%>" class="upload-files">
                                                             <div class="upload-wrapper">
                                                                 <img  src="<%=post.videoUrl%>" />
                                                             </div> <!-- upload-wrapper -->
-                                                                              
+                                                            <button type="button" ng-click="    Delete_Video('<%=post._id%>')"> DELETE
+                                                            </button>                 
                                                            <!-- the below div will be visible on hover -->
-                                                            <div class="upload-hover-wrapper">
-                                                                <span><i ng-click="Delete_img('<%=post._id%>')" class="fa fa-times"></i></span>
-                                                            </div> <!-- upload-hover-wrapper -->
+                                                             
                                                         </div>  <!-- upload-files -->
 
                                                         &nbsp;                                                
@@ -161,11 +161,4 @@
                                         <!-- col-sm-12 -->    
    
   <!-- ****  NOTE: custom code ***** -->
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        $(".upload-files").hover(function () {
-            $(this).find(".upload-hover-wrapper").toggleClass("toggle-onhover");             
-        });
-    });
-</script>
+ 

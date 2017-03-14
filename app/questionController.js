@@ -408,6 +408,18 @@ module.exports = {
           });
    },
 
+    destroy_video:function(req,res){
+      var imageId = req.body.image_id; Q_id = req.body.Q_ID;  // it is acutally video
+
+      cloudinary.uploader.destroy(imageId, function (error, result) { 
+                question.update({_id: Q_id}, { $pull: { 'needAssistance.questionVideoUrl' : { _id : imageId } } },{ safe: true }, function(err, test){                                        
+                        if(err){res.send(err)};                                                             
+                        res.send("done");
+                  });
+          }, { resource_type: "video" });
+   } ,
+
+
    Delete_Question : function(req,res) {
         Q_ID = req.body.Q_ID ;         
         question.find({_id:Q_ID }).remove().exec(

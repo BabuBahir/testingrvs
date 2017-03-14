@@ -79,12 +79,31 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
             }).then(function mySucces(response) {      
                //$scope.myWelcome = response.data; 
                 $rootScope[msg] = true;
-                console.log(msg);
+                 
             }, function myError(response) {
               $scope.myWelcome = response.statusText;
             });  
             };
         };   
+
+        $scope.Delete_Video = function(msg){
+            var r = confirm("Do you want to Delete the video!");   
+        if (r == true) {              
+            $http({
+            method : "POST",
+            url : "/Delete_QuestionVideo" ,
+            async : false,
+            data:({"image_id":msg  , "Q_ID":$scope.QEditID})
+            }).then(function mySucces(response) {      
+               //$scope.myWelcome = response.data; 
+                $rootScope[msg] = true;
+                 
+            }, function myError(response) {
+              $scope.myWelcome = response.statusText;
+            });  
+            };
+        };
+
 
 	$scope.btn_click = function(Q_id , Q_Type){  
         if(Q_Type != '2') {

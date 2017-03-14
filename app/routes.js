@@ -209,6 +209,8 @@ module.exports = function(app) {
 
     app.post('/Delete_Questionimg' , questionController.destory);
 
+    app.post('/Delete_QuestionVideo' , questionController.destroy_video);
+
     app.post('/UpdateQuestions/:Qindex/:TotalCount/:id' , multipartMiddleware , questionController.UpdateQuestions); 
 
     app.post('/AddNewQuestion/:id?' , multipartMiddleware , questionController.addQuestion); 
