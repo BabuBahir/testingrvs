@@ -100,6 +100,26 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
 		$scope.Edit_btn = !$scope.Edit_btn;
 	};
 
+    //Delete Questions
+    $scope.Question_delete = function(Q_id){
+
+        var r = confirm("Do you want to Delete this Question !");   
+        if (r == true) {              
+            $http({
+            method : "POST",
+            url : "/Delete_Question" ,
+            async : false,
+            data:({"Q_ID":Q_id})
+            }).then(function mySucces(response) {      
+               //$scope.myWelcome = response.data;                  
+                location.reload();
+            }, function myError(response) {
+              $scope.myWelcome = response.statusText;
+            });  
+            };
+    };
+
+
 	$scope.showAssistance=function(){           
 		$scope.needAssistanceDiv = !($scope.needAssistanceDiv) ;
 	};    	

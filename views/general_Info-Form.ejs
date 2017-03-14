@@ -102,11 +102,19 @@
                                 <div id="collapse<%=i%>" class="panel-collapse collapse ">
                                     <div class="panel-body">  
                                       
+                                       
+                                      <!--Delete-Part-->
+                                        <button type="button" class="btn btn-xs btn-danger pull-right" 
+                                        ng-click="Question_delete('<%=QTArray[i].id%>')">
+                                            <i class="fa fa-close"></i> &nbsp; Delete
+                                        </button> &nbsp;&nbsp;
+                                     <!--Delete-Part-->
+                                    
                                       <!-- edit-part --> 
-                                        <button   ng-disabled="Edit_btn" class="btn btn-xs btn-info pull-right" 
-                                        ng-click="btn_click('<%=QTArray[i].id%>','<%=QTArray[i].Q_Type%>')">
+                                        <button ng-disabled="Edit_btn" class="btn btn-xs btn-info pull-right" 
+                                        ng-click="btn_click('<%=QTArray[i].id%>','<%=QTArray[i].Q_Type%>')" style="margin-right: 10px" >
                                             <i class="fa fa-edit"></i> &nbsp; Edit
-                                        </button>
+                                        </button>   &nbsp;&nbsp;                                   
                                       <!-- edit-part --> 
                                         
                                         <div class="col-sm-12">             

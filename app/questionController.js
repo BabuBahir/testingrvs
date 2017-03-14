@@ -408,6 +408,14 @@ module.exports = {
           });
    },
 
+   Delete_Question : function(req,res) {
+        Q_ID = req.body.Q_ID ;         
+        question.find({_id:Q_ID }).remove().exec(
+            res.send('Done')
+        );   // Delete Question by ID        
+   },
+
+
    AddQuestionImageArray : function(req,res){
         var result = req.body.data;
         var imgArrayAddQ =  req.session.imgArrayAddQ || [];  

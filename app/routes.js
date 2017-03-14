@@ -197,6 +197,8 @@ module.exports = function(app) {
     });
   
     //---some post    
+    app.post('/Delete_Question' , questionController.Delete_Question);
+
     app.post('/RemoveQuestionImageArray' , questionController.RemoveQuestionImageArray);
 
     app.post('/AddQuestionImageArray' , questionController.AddQuestionImageArray);
