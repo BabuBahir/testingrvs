@@ -87,6 +87,7 @@ module.exports = {
   
         Na_WithID_Editable: function(req, res) {  
             id = req.params.id;  
+             
             question.find({ _id: id}, function(err, data) { // data[0] has the requied question
                 res.render('needAssistancePartial/needAssistanceIDEditable', { rawData: data[0].needAssistance });
             }); 
@@ -256,7 +257,7 @@ module.exports = {
         },
         ShowAssistancePartial: function(req, res) {  
             qid = req.params.id;  
-           console.log(qid);
+            
             if(qid != undefined) {   // if valid id
                  question.findOne( {} , function(err, data) {   // data[0] has the requied question  
                      data[0] = data;  // array to object     
