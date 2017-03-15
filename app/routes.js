@@ -147,7 +147,7 @@ module.exports = function(app) {
             .find()
             .exec()
         })
-      .then(function (surveyDetails) {
+      .then(function (surveyDetails) {  
         // console.log(surveyDetails)
         // console.log(surveyDeta)
       res.render("survey_Management.html", {
