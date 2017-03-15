@@ -1,0 +1,246 @@
+<!DOCTYPE html>  
+<html lang=en ng-app="SurveyApp" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>General Info Form</title>
+         <% include ./partials/head %>
+       
+    </head>
+    <body ng-controller="MainCtrl">    
+ 
+
+       <!-- nav bar starts here -->
+        <% include ./partials/header %>
+       <!-- nav bar ends here -->
+      
+       <div class="container-fluid new-surveyor-form_bg-img">
+          
+            <div class="col-sm-10 col-sm-offset-1">
+                
+              
+                
+                <h3 class="select-building-type"> <span> Soil Type </span> </h3> 
+                
+                <div class="row" style="margin:0; padding-bottom:20px; background:#fff;">
+                    
+                  <!-- left-side ad div -->
+                    <div class="col-sm-3 col-md-3 col-lg-2">
+                        <div class="ad-space-left">
+                            <img src="http://res.cloudinary.com/dcu5hz0re/image/upload/v1488953858/rvs/ad2.jpg" class="img-responsive ad-left">
+                        </div>
+                        <br/>
+                        <div class="ad-space-left">
+                            <img src="http://res.cloudinary.com/dcu5hz0re/image/upload/v1488953858/rvs/ad2.jpg" class="img-responsive ad-left">
+                        </div>
+                    </div>  <!-- col-sm-3 col-md-3 col-lg-2 -->
+ 
+                    <div class="col-sm-6 col-md-6 col-lg-8">    
+                     
+                        <br/><br/>
+                     
+               
+
+
+
+                        <form class="general-form-bg" style="position: relative;">
+                            
+
+                        <!--Required Fields-->
+                            <div class="row" style="margin:0">
+                                <!-- state -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label ><b>State Name</b></label>
+                                        <select class="form-control state" id="" name="">
+                                            <option value="Selected">Select</option>
+                                            <option value="Andamanand and Nicobar Islands" >Andamanand and Nicobar Islands</option>
+                                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                            <option value="Assam"> Assam</option>
+                                            <option value="Chandigarh"> Chandigarh</option>
+                                            <option value="Bihar"> Bihar</option>
+                                            <option value="Gujarat">Gujarat </option>
+                                            <option value="Chhattisgarh">Chhattisgarh </option>
+                                            <option value="Dadraand and Nagar Haveli">Dadraand and Nagar Haveli </option>
+                                            <option value="Damanand and Diu"> Damanand and Diu</option>
+                                            <option value="Delhi"> Delhi</option>
+                                            <option value="Goa">Goa </option>
+                                            <option value="Haryana">Haryana </option>
+                                            <option value="Himachal Pradesh"> Himachal Pradesh</option>
+                                            <option value="Jammuand and Kashmir">Jammuand and Kashmir </option>
+                                            <option value="Karnataka">Karnataka </option>
+                                            <option value="Kerala">Kerala </option>
+                                            <option value="Lakshadweep">Lakshadweep </option>
+                                            <option value="Madhya Pradesh">Madhya Pradesh </option>
+                                            <option value="Maharashtra"> Maharashtra</option>
+                                            <option value="Manipur"> Manipur</option>
+                                            <option value="Meghalaya"> Meghalaya</option>
+                                            <option value="Mizoram">Mizoram </option>
+                                            <option value="Nagaland">Nagaland </option>
+                                            <option value="Odisha"> Odisha</option>
+                                            <option value="Puducherry">Puducherry </option>
+                                            <option value="Tripura"> Tripura</option>
+                                            <option value="Punjab">Punjab </option>
+                                            <option value="Rajasthan">Rajasthan </option>
+                                            <option value="Sikkim">Sikkim </option>
+                                            <option value="Tamil Nadu">Tamil Nadu </option>
+                                            <option value="Telangana">Telangana </option>
+                                            <option value="Uttar Pradesh">Uttar Pradesh </option>
+                                            <option value="Tripura">Tripura </option>
+                                            <option value="Uttarakhand"> Uttarakhand</option>
+                                            <option value="West Bengal">West Bengal </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- start default -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label ><b>Default Type</b></label>
+                                        <select class="form-control dType" id="" name="">
+                                            <option value="Selected">Select</option>
+                                            <option value="Arid" >Arid</option>
+                                            <option value="Black">Black</option>
+                                            <option value="Laterite">Laterite</option>
+                                            <option value="Alluvial"> Alluvial</option>
+                                            <option value="Red & Yellow"> Red & Yellow</option>
+                                            <option value="Forest & Mountainous"> Forest & Mountainous</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- soil 1 -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label><b>City Name Under Arid  </b></label>
+                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control arid" name="" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                                <!-- soil 2 -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label><b>City Name Under Black </b></label>
+                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control black" name="" value="" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                                <!-- soil 3 -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label><b>City Name Under Laterite</b></label>
+                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control laterite" name="" value="" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                                <!-- soil 4 -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label><b>City Name Under Alluvial</b></label>
+                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control alluvial" name="" value="" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                                <!-- soil 5 -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label><b>City Name Under Red & Yellow</b></label>
+                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control red" name="" value="" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                                <!-- soil 6 -->
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label><b>City Name Under Forest & Mountainous</b></label>
+                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control forest" name="" value="" placeholder=""></textarea>
+                                    </div>
+                                </div>                                          
+                                                          
+                            </div>  <!-- row -->
+                        </form>
+                        
+                        <button class="orange-btn" style="width:190px;">Save &nbsp; &nbsp;</button>
+                        
+                    
+                    </div> <!-- col-sm-6 -->
+ 
+
+                    
+                </div>  <!-- row -->
+                
+            
+            </div>  <!-- col-sm-10 -->
+
+            <!--Modal-->
+
+        
+        </div> <!-- container-fluid --> 
+        <% include ./partials/footer %>             
+       
+          <script type="text/javascript">
+
+            $('.orange-btn').click(function (e) {
+                
+                e.preventDefault();
+                // var data = {
+                //     state: $('.state').val(),
+                //     arid: $('.arid').val(),
+                //     black: $('.black').val(),  
+                //     laterite: $('.laterite').val(), 
+                //     alluvial: $('.alluvial').val(),
+                //     redYellow: $('.red').val(),
+                //     forestMountainous: $('.forest').val(),
+                //     defaultTpye: $('.dType').val()
+                // }
+                
+                // console.log(data)
+                
+                $.ajax({
+                  url: "/soil_added",   
+                  type: "post",                      
+                  data: {
+                    state: $('.state').val(),
+                    arid: $('.arid').val(),
+                    black: $('.black').val(),  
+                    laterite: $('.laterite').val(), 
+                    alluvial: $('.alluvial').val(),
+                    redYellow: $('.red').val(),
+                    forestMountainous: $('.forest').val(),
+                    defaultTpye: $('.dType').val()
+
+                },                         
+                  success: function(result) {
+                       console.log('success')
+                       window.location.reload()
+                   }
+                });
+            });
+        </script>
+          <script type="text/javascript">
+            var soils = <%- JSON.stringify(soil) %>
+            $('.state').change(function (e) {
+                
+                e.preventDefault();
+                var selectedState = $(this).val()
+                var data = ''
+               
+                console.log(soils[selectedState])
+                // console.log(selectedState)
+                if ( soils[selectedState] === undefined ){
+                    $('.arid').val(data)
+                    $('.black').val(data)
+                    $('.laterite').val(data)
+                    $('.alluvial').val(data)
+                    $('.red').val(data)
+                    $('.forest').val(data)
+                    $('.dType').val('Selected')
+                } else {
+                    $('.arid').val(soils[selectedState].arid)
+                    $('.black').val(soils[selectedState].black)
+                    $('.laterite').val(soils[selectedState].laterite)
+                    $('.alluvial').val(soils[selectedState].alluvial)
+                    $('.red').val(soils[selectedState].redYellow)
+                    $('.forest').val(soils[selectedState].forestMountainous)
+                    $('.dType').val(soils[selectedState].defaultTpye)
+
+                }
+                // if ( data1 == soils)
+            });
+        </script>
+
+        
+    </body>
+</html>

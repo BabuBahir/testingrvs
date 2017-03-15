@@ -4,6 +4,7 @@ var controller = require('./controller');
 var login = require('./login');
 var questionController = require('./questionController');
 var earthquake = require('./earthquake');
+var Soil = require('./soil');
 var Registersurveyer = require('../models/registersurveyer');
 var Survey = require('../models/survey');
 var BuildingType = require('../models/buildingType');
@@ -25,6 +26,9 @@ module.exports = function(app) {
     app.post('/addEarthquake', earthquake.addInfo);
     app.post('/updateInfo', earthquake.updateInfo);
     app.get('/viewReport', earthquake.viewInfo);
+
+    app.get('/soil', Soil.get);
+    app.post('/soil_added', Soil.post);
  
     app.get('/user_management',requireLogin,function(req,res){
         var moment = require('moment');
