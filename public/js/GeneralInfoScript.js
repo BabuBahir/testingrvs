@@ -5,7 +5,8 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
  $.cloudinary.config({cloud_name: "dcu5hz0re", upload_preset: 'fbesyowr'});  //cloudinary config
 
     $scope.updateTime = Date.now();               
-    $scope.QEditID = 'BH';   
+    
+     
      
     $scope.FormDestination = "AddNewQuestion";
 

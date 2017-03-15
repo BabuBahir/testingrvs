@@ -13,7 +13,8 @@ module.exports = {
         getQuestions: function(req, res) { 
             req.session.forPAge = 'GI'; //setting up Session
 
-            question.find({'forPAge':'GI'}).sort({'_id':-1}).exec(function(err,data){    
+            question.find({'forPAge':'GI'}).sort({'_id':-1}).exec(function(err,data){  
+                
                 var newArrayOfID = [];
                 for (var i = 0; i < data.length; i++) {  
                     newArrayOfID.push({id:data[i]._id , Q_Type : data[i].questionType}); // pushing ID of each Question
@@ -21,7 +22,7 @@ module.exports = {
                  
                 res.render('general_Info-Form', { rawData: data, QTArray: newArrayOfID , title: "General Info" });
             });
-        },
+        }, 
         getQuestions_technical: function(req, res) {
             req.session.forPAge = 'GT'; //setting up Session
 
@@ -59,16 +60,29 @@ module.exports = {
             var people = [
                 { model: 'ReadOnlyENQues',name: '<%=question.English%>' },
                 { model: 'ReadOnlyGJQues',name: '<%=question.Gujarati%>' }, 
-                { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ];               
-            id = req.params.id;
+                { model: 'ReadOnlyHIQues',name: '<%=question.Hindi%>' }     ]; 
 
-            question.find({ _id: id }, function(err, data) {   // data[0] has the requied question  
-                  people[0].name =(data[0].question.text.English);
-                  people[1].name =(data[0].question.text.Gujarati); 
-                  people[2].name =(data[0].question.text.Hindi); 
-                  
-                res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options , buildingTypes : JSON.stringify(data[0].buildingsAssociated) , damageRisks : data[0].damageRisk });
-            });
+            id = req.params.id;
+            
+            if(id != null) {
+                question.find({ _id: id }, function(err, data) {   // data[0] has the requied question  
+                     
+                      people[0].name =(data[0].question.text.English);
+                      people[1].name =(data[0].question.text.Gujarati); 
+                      people[2].name =(data[0].question.text.Hindi); 
+                      
+                    res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options , buildingTypes : JSON.stringify(data[0].buildingsAssociated) , damageRisks : data[0].damageRisk });
+                });
+            } else { 
+                 question.findOne( {} , function(err, data) {   // data[0] has the requied question  
+                     data[0] = data ; 
+                      people[0].name =(data[0].question.text.English);
+                      people[1].name =(data[0].question.text.Gujarati); 
+                      people[2].name =(data[0].question.text.Hindi); 
+                      
+                    res.render('questionreadOnlypartial',{question: data[0].question.text,questionType: data[0].questionType, userTypes: JSON.stringify(data[0].userType), assessmentStds: JSON.stringify(data[0].assessmentStd) , rawData: data[0], Q_id: id , people : people , qOptions : data[0].question.options , buildingTypes : JSON.stringify(data[0].buildingsAssociated) , damageRisks : data[0].damageRisk });
+                });
+            };
         },    
   
         Na_WithID_Editable: function(req, res) {  
@@ -241,9 +255,19 @@ module.exports = {
             });  
         },
         ShowAssistancePartial: function(req, res) {  
-            question.find({_id: id}, function(err, data) {   
-                res.render('needAssistancePartial/needAssistancePartialID', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0].needAssistance });
-            }); 
+            qid = req.params.id;  
+           console.log(qid);
+            if(qid != undefined) {   // if valid id
+                 question.findOne( {} , function(err, data) {   // data[0] has the requied question  
+                     data[0] = data;  // array to object     
+                     res.render('needAssistancePartial/needAssistancePartialID', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0].needAssistance });
+                 });
+            } else {
+                
+                question.find({_id: qid}, function(err, data) {  
+                    res.render('needAssistancePartial/needAssistancePartialID', { question: data[0].question.text, questionType: data[0].questionType, rawData: data[0].needAssistance });
+                }); 
+            };
         },
 
         ShowAssistancePartialBlank: function(req, res) { 
