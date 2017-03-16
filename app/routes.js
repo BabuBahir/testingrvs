@@ -26,9 +26,14 @@ module.exports = function(app) {
     app.post('/addEarthquake', earthquake.addInfo);
     app.post('/updateInfo', earthquake.updateInfo);
     app.get('/viewReport', earthquake.viewInfo);
+    
 
+    app.get('/earthquake', earthquake.get);
+    app.post('/earthquake_added', earthquake.post);
+    
     app.get('/soil', Soil.get);
     app.post('/soil_added', Soil.post);
+    
  
     app.get('/user_management',requireLogin,function(req,res){
         var moment = require('moment');

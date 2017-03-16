@@ -18,7 +18,7 @@
                 
               
                 
-                <h3 class="select-building-type"> <span> Soil Type </span> </h3> 
+                <h3 class="select-building-type"> <span> Earthquake Zone </span> </h3> 
                 
                 <div class="row" style="margin:0; padding-bottom:20px; background:#fff;">
                     
@@ -97,62 +97,53 @@
                                         <label ><b>Default Type</b></label>
                                         <select class="form-control dType" id="" name="">
                                             <option value="Selected">Select</option>
-                                            <option value="Arid" >Arid</option>
-                                            <option value="Black">Black</option>
-                                            <option value="Laterite">Laterite</option>
-                                            <option value="Alluvial"> Alluvial</option>
-                                            <option value="Red & Yellow"> Red & Yellow</option>
-                                            <option value="Forest & Mountainous"> Forest & Mountainous</option>
+                                            <option value="Zone-1" >Zone-1</option>
+                                            <option value="Zone-2">Zone-2</option>
+                                            <option value="Zone-3">Zone-3</option>
+                                            <option value="Zone-4"> Zone-4</option>
+                                            <option value="Zone-5"> Zone-5</option>
                                         </select>
                                     </div>
                                 </div>
-                                <!-- soil 1 -->
+                                <!-- ZONE 1 -->
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <label><b>Cities Under Arid  </b></label>
-                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control arid" name="" placeholder=""></textarea>
+                                        <label><b>Cities Under Zone-1  </b></label>
+                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control zone-one" name="" placeholder=""></textarea>
                                     </div>
                                 </div>
-                                <!-- soil 2 -->
+                                <!-- ZONE 2 -->
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <label><b>Cities Under Black </b></label>
-                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control black" name="" value="" placeholder=""></textarea>
+                                        <label><b>Cities Under Zone-2 </b></label>
+                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control zone-two" name="" value="" placeholder=""></textarea>
                                     </div>
                                 </div>
-                                <!-- soil 3 -->
+                                <!-- ZONE 3 -->
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <label><b>Cities Under Laterite</b></label>
-                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control laterite" name="" value="" placeholder=""></textarea>
+                                        <label><b>Cities Under Zone-3</b></label>
+                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control zone-three" name="" value="" placeholder=""></textarea>
                                     </div>
                                 </div>
-                                <!-- soil 4 -->
+                                <!-- ZONE 4 -->
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <label><b>Cities Under Alluvial</b></label>
-                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control alluvial" name="" value="" placeholder=""></textarea>
+                                        <label><b>Cities Under Zone-4</b></label>
+                                        <textarea style="border-left:  3px solid #fb6969"  type="text" class="form-control zone-four" name="" value="" placeholder=""></textarea>
                                     </div>
                                 </div>
-                                <!-- soil 5 -->
+                                <!-- ZONE 5 -->
                                 <div class="col-sm-12 col-md-6">
                                     <div class="form-group">
-                                        <label><b>Cities Under Red & Yellow</b></label>
-                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control red" name="" value="" placeholder=""></textarea>
+                                        <label><b>Cities Under Zone-5</b></label>
+                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control zone-five" name="" value="" placeholder=""></textarea>
                                     </div>
-                                </div>
-                                <!-- soil 6 -->
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="form-group">
-                                        <label><b>Cities Under Forest & Mountainous</b></label>
-                                        <textarea type="text" style="border-left:  3px solid #fb6969" class="form-control forest" name="" value="" placeholder=""></textarea>
-                                    </div>
-                                </div>                                          
-                                                          
+                                </div>                   
                             </div>  <!-- row -->
                         </form>
                         
-                        <button class="orange-btn" style="width:190px;">Save &nbsp; &nbsp;</button>
+                        <button class="orange-btn" id="submit-earth" style="width:190px;">Save &nbsp; &nbsp;</button>
                         
                     
                     </div> <!-- col-sm-6 -->
@@ -172,33 +163,29 @@
        
           <script type="text/javascript">
 
-            $('.orange-btn').click(function (e) {
-                
+            $('#submit-earth').click(function (e) {              
                 e.preventDefault();
+                // console.log('XXXXXXXXX')
                 // var data = {
                 //     state: $('.state').val(),
-                //     arid: $('.arid').val(),
-                //     black: $('.black').val(),  
-                //     laterite: $('.laterite').val(), 
-                //     alluvial: $('.alluvial').val(),
-                //     redYellow: $('.red').val(),
-                //     forestMountainous: $('.forest').val(),
+                //     zoneOne: $('.zone-one').val(),
+                //     zoneTwo: $('.zone-two').val(),  
+                //     zoneThree: $('.zone-three').val(), 
+                //     zoneFour: $('.zone-four').val(),
+                //     zoneFive: $('.zone-five').val(),
                 //     defaultTpye: $('.dType').val()
-                // }
-                
-                // console.log(data)
-                
+                // }                
+                // console.log(data)                
                 $.ajax({
-                  url: "/soil_added",   
-                  type: "post",                      
-                  data: {
+                url: "/earthquake_added",   
+                type: "post",                      
+                data: {
                     state: $('.state').val(),
-                    arid: $('.arid').val(),
-                    black: $('.black').val(),  
-                    laterite: $('.laterite').val(), 
-                    alluvial: $('.alluvial').val(),
-                    redYellow: $('.red').val(),
-                    forestMountainous: $('.forest').val(),
+                    zoneOne: $('.zone-one').val(),
+                    zoneTwo: $('.zone-two').val(),  
+                    zoneThree: $('.zone-three').val(), 
+                    zoneFour: $('.zone-four').val(),
+                    zoneFive: $('.zone-five').val(),
                     defaultTpye: $('.dType').val()
 
                 },                         
@@ -210,31 +197,29 @@
             });
         </script>
           <script type="text/javascript">
-            var soils = <%- JSON.stringify(soil) %>
+            var earthquakes = <%- JSON.stringify(earthquake) %>
             $('.state').change(function (e) {
                 
                 e.preventDefault();
                 var selectedState = $(this).val()
                 var data = ''
                
-                console.log(soils[selectedState])
+                // console.log(earthquakes[selectedState])
                 // console.log(selectedState)
-                if ( soils[selectedState] === undefined ){
-                    $('.arid').val(data)
-                    $('.black').val(data)
-                    $('.laterite').val(data)
-                    $('.alluvial').val(data)
-                    $('.red').val(data)
-                    $('.forest').val(data)
+                if ( earthquakes[selectedState] === undefined ){
+                    $('.zone-one').val(data)
+                    $('.zone-two').val(data)
+                    $('.zone-three').val(data)
+                    $('.zone-four').val(data)
+                    $('.zone-five').val(data)
                     $('.dType').val('Selected')
                 } else {
-                    $('.arid').val(soils[selectedState].arid)
-                    $('.black').val(soils[selectedState].black)
-                    $('.laterite').val(soils[selectedState].laterite)
-                    $('.alluvial').val(soils[selectedState].alluvial)
-                    $('.red').val(soils[selectedState].redYellow)
-                    $('.forest').val(soils[selectedState].forestMountainous)
-                    $('.dType').val(soils[selectedState].defaultTpye)
+                    $('.zone-one').val(earthquakes[selectedState].zoneOne)
+                    $('.zone-two').val(earthquakes[selectedState].zoneTwo)
+                    $('.zone-three').val(earthquakes[selectedState].zoneThree)
+                    $('.zone-four').val(earthquakes[selectedState].zoneFour)
+                    $('.zone-five').val(earthquakes[selectedState].zoneFive)
+                    $('.dType').val(earthquakes[selectedState].defaultTpye)
 
                 }
                 // if ( data1 == soils)

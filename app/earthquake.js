@@ -1,4 +1,5 @@
 var Earthquake = require("../models/earthquake.js");
+var EarthquakeZone = require("../models/earthquakeZone.js");
 module.exports = {
   
   
@@ -268,6 +269,70 @@ module.exports = {
 				 });
 			}
     	});
-  }
+  },
+
+  get: function (req, res){
+
+    EarthquakeZone.find()
+    .exec()
+    .then(function (earthquake) {
+      var earthquakeData = earthquake.reduce((acc, cur) => {acc[cur.state] = cur;
+        return acc;
+      }, {})
+      // console.log(soilData)
+      res.render('earthquakeType', {
+        error: false,
+        earthquake: earthquakeData 
+      })
+    })
+    .catch(function (err) {
+      return res.json({
+        error: true,
+        reason: err
+      });
+    })
+  },
+
+  post: function (req, res) {
+    var data = req.body;
+    EarthquakeZone.findOne({state: data.state})
+    .exec()
+    .then(function (earthquake) {
+      if ( earthquake === null ) {
+        var earthquake = new EarthquakeZone(data)
+        return earthquake.save()
+      } else {
+        // if(soil.state !== undefined){
+        //  soil.state =  data.state;
+        // }
+        if(earthquake.zoneOne !== undefined){
+          earthquake.zoneOne =  data.zoneOne;
+        }
+        if(earthquake.zoneTwo !== undefined){
+          earthquake.zoneTwo =  data.zoneTwo;
+        }
+        if(earthquake.zonethree !== undefined){
+          earthquake.zonethree =  data.zonethree;
+        }
+        if(earthquake.zoneFour !== undefined){
+          earthquake.zoneFour =  data.zoneFour;
+        }
+        if(earthquake.zoneFive !== undefined){
+          earthquake.zoneFive =  data.zoneFive;
+        }
+        if(earthquake.defaultTpye !== undefined){
+          earthquake.defaultTpye =  data.defaultTpye;
+        }
+        return earthquake.save()
+      }
+    })
+    .then(function (saved) {
+      return res.json({ error: false, result: 'Added success' });
+    })
+    .catch(function (err) {
+      return res.json({ error: true, reason: err});
+    })
+    
+  },
 
 }  
