@@ -175,25 +175,30 @@
                 //     zoneFive: $('.zone-five').val(),
                 //     defaultTpye: $('.dType').val()
                 // }                
-                // console.log(data)                
-                $.ajax({
-                url: "/earthquake_added",   
-                type: "post",                      
-                data: {
-                    state: $('.state').val(),
-                    zoneOne: $('.zone-one').val(),
-                    zoneTwo: $('.zone-two').val(),  
-                    zoneThree: $('.zone-three').val(), 
-                    zoneFour: $('.zone-four').val(),
-                    zoneFive: $('.zone-five').val(),
-                    defaultTpye: $('.dType').val()
+                // console.log(data) 
+                var st = $('.state').val()
+                var df = $('.dType').val()
+                 
+                if (st !== 'Selected' && df !== 'Selected') {
+                    $.ajax({
+                    url: "/earthquake_added",   
+                    type: "post",                      
+                    data: {
+                        state: $('.state').val(),
+                        zoneOne: $('.zone-one').val(),
+                        zoneTwo: $('.zone-two').val(),  
+                        zoneThree: $('.zone-three').val(), 
+                        zoneFour: $('.zone-four').val(),
+                        zoneFive: $('.zone-five').val(),
+                        defaultTpye: $('.dType').val()
 
-                },                         
-                  success: function(result) {
-                       console.log('success')
-                       window.location.reload()
-                   }
-                });
+                    },                         
+                      success: function(result) {
+                           console.log('success')
+                           window.location.reload()
+                       }
+                    });
+                }
             });
         </script>
           <script type="text/javascript">

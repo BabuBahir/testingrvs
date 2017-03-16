@@ -28,32 +28,33 @@ module.exports = {
 	  Soil.findOne({state: data.state})
 	  .exec()
 	  .then(function (soil) {
+	  	// console.log(soil)
 	  	if ( soil === null ) {
-	  		var soil = new Soil(data)
-	  		return soil.save()
+	  		var soilName = new Soil(data)
+	  		return soilName.save()
 	  	} else {
 	  		// if(soil.state !== undefined){
 	  		// 	soil.state =  data.state;
 	  		// }
-	  		if(soil.arid !== undefined){
+	  		if(data.arid !== undefined){
 	  			soil.arid =  data.arid;
 	  		}
-	  		if(soil.black !== undefined){
+	  		if(data.black !== undefined){
 	  			soil.black =  data.black;
 	  		}
-	  		if(soil.laterite !== undefined){
+	  		if(data.laterite !== undefined){
 	  			soil.laterite =  data.laterite;
 	  		}
-	  		if(soil.alluvial !== undefined){
+	  		if(data.alluvial !== undefined){
 	  			soil.alluvial =  data.alluvial;
 	  		}
-	  		if(soil.redYellow !== undefined){
+	  		if(data.redYellow !== undefined){
 	  			soil.redYellow =  data.redYellow;
 	  		}
-	  		if(soil.forestMountainous !== undefined){
+	  		if(data.forestMountainous !== undefined){
 	  			soil.forestMountainous =  data.forestMountainous;
 	  		}
-	  		if(soil.defaultTpye !== undefined){
+	  		if(data.defaultTpye !== undefined){
 	  			soil.defaultTpye =  data.defaultTpye;
 	  		}
 	  		return soil.save()
@@ -63,6 +64,7 @@ module.exports = {
 	  	return res.json({ error: false, result: 'Added success' });
 	  })
 	  .catch(function (err) {
+	  	// console.log(err)
 	  	return res.json({ error: true, reason: err});
 	  })
 	  

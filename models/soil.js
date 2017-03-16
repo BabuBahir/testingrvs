@@ -7,13 +7,13 @@ var soilSchema = new Schema({
     	type: String,
     	unique: true
     },
-    arid: {type: String, default:''},
-    black: {type: String, default:''},
-    laterite: {type: String, default:''},
-    alluvial: {type: String, default:''},
-    redYellow: {type: String, default:''},
-    forestMountainous: {type: String, default:''},
-    defaultTpye: {type: String, default:''}
+    arid: {type: String },
+    black: {type: String },
+    laterite: {type: String },
+    alluvial: {type: String },
+    redYellow: {type: String },
+    forestMountainous: {type: String },
+    defaultTpye: {type: String }
     //defaultzone: {type: String, default: ''},
     //defaultsoil: {type: String, default: ''}
 });

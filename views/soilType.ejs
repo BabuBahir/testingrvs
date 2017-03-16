@@ -187,26 +187,29 @@
                 // }
                 
                 // console.log(data)
-                
-                $.ajax({
-                  url: "/soil_added",   
-                  type: "post",                      
-                  data: {
-                    state: $('.state').val(),
-                    arid: $('.arid').val(),
-                    black: $('.black').val(),  
-                    laterite: $('.laterite').val(), 
-                    alluvial: $('.alluvial').val(),
-                    redYellow: $('.red').val(),
-                    forestMountainous: $('.forest').val(),
-                    defaultTpye: $('.dType').val()
+                var st = $('.state').val()
+                var df = $('.dType').val()
+                if (st !== 'Selected' && df !== 'Selected') {
+                    $.ajax({
+                      url: "/soil_added",   
+                      type: "post",                      
+                      data: {
+                        state: $('.state').val(),
+                        arid: $('.arid').val(),
+                        black: $('.black').val(),  
+                        laterite: $('.laterite').val(), 
+                        alluvial: $('.alluvial').val(),
+                        redYellow: $('.red').val(),
+                        forestMountainous: $('.forest').val(),
+                        defaultTpye: $('.dType').val()
 
-                },                         
-                  success: function(result) {
-                       console.log('success')
-                       window.location.reload()
-                   }
-                });
+                    },                         
+                      success: function(result) {
+                           console.log('success')
+                           window.location.reload()
+                       }
+                    });
+                }
             });
         </script>
           <script type="text/javascript">

@@ -305,22 +305,22 @@ module.exports = {
         // if(soil.state !== undefined){
         //  soil.state =  data.state;
         // }
-        if(earthquake.zoneOne !== undefined){
+        if(data.zoneOne !== undefined){
           earthquake.zoneOne =  data.zoneOne;
         }
-        if(earthquake.zoneTwo !== undefined){
+        if(data.zoneTwo !== undefined){
           earthquake.zoneTwo =  data.zoneTwo;
         }
-        if(earthquake.zonethree !== undefined){
+        if(data.zonethree !== undefined){
           earthquake.zonethree =  data.zonethree;
         }
-        if(earthquake.zoneFour !== undefined){
+        if(data.zoneFour !== undefined){
           earthquake.zoneFour =  data.zoneFour;
         }
-        if(earthquake.zoneFive !== undefined){
+        if(data.zoneFive !== undefined){
           earthquake.zoneFive =  data.zoneFive;
         }
-        if(earthquake.defaultTpye !== undefined){
+        if(data.defaultTpye !== undefined){
           earthquake.defaultTpye =  data.defaultTpye;
         }
         return earthquake.save()
