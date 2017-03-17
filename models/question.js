@@ -5,8 +5,7 @@ var questionSchema = new Schema({
     _id : String,
     questionType: String,
     userType : [{_id: String}] ,
-    assessmentStd : [{_id: String}] ,
-    damageRisk : String ,
+    assessmentStd : [{_id: String}] ,     
     forPAge : String,
     question: {
         text: {
@@ -18,7 +17,8 @@ var questionSchema = new Schema({
             _id  : String,
             Hindi: String,
             English: String,
-            Gujarati: String
+            Gujarati: String ,
+            damageRisk : String 
         }]
     },
     ifNeedAssistance : String ,

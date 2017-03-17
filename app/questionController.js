@@ -93,7 +93,7 @@ module.exports = {
             }); 
         },    
     
-        UpdateQuestions : function(req,res){  
+        UpdateQuestions : function(req,res){ 
             Qindex = req.params.Qindex;    
             Uid = req.params.id;   
             TotalCount = req.params.TotalCount;  
@@ -125,26 +125,26 @@ module.exports = {
  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
  
-
-
             question.find({ _id: Uid}, function(err, data) {   
                     var optCount = data[0].question.options.length; 
                     for (var i=0 ; i < TotalCount ; i ++) {
                         var ENobj = "Editopt"+'EN_'+i+'-'+Qindex+'*'+Uid;
                         var HIobj = 'Editopt'+'HI_'+i+'-'+Qindex+'*'+Uid; 
                         var GJobj = "Editopt"+'GJ_'+i+'-'+Qindex+'*'+Uid;
-                         
-                         OptNameObj.push({ENobj ,GJobj , HIobj});
-                    };  
-                    for(var i =0 ; i < TotalCount ; i ++){
+                      var DamageObj = "EditDamage_"+i+'-'+Qindex+'*'+Uid;
+
+                         OptNameObj.push({ENobj ,GJobj , HIobj , DamageObj});
+                    }; 
+
+                    for(var i =0 ; i < TotalCount ; i ++){   
                         if(i < optCount) {
-                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] });                                                                   
+                            NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][Qindex] ,Gujarati : req.body[OptNameObj[i].GJobj][Qindex] , Hindi : req.body[OptNameObj[i].HIobj][Qindex] , damageRisk : req.body[OptNameObj[i].DamageObj][Qindex] });                                                                   
                         } else {
                             if((Array.isArray(req.body[OptNameObj[i].ENobj])) || (Array.isArray(req.body[OptNameObj[i].GJobj])) || (Array.isArray(req.body[OptNameObj[i].HIobj])) )  {
-                                NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][0] ,Gujarati : req.body[OptNameObj[i].GJobj][0], Hindi : req.body[OptNameObj[i].HIobj][0] });    
+                                NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj][0] ,Gujarati : req.body[OptNameObj[i].GJobj][0], Hindi : req.body[OptNameObj[i].HIobj][0] , damageRisk : req.body[OptNameObj[i].DamageObj][0] });    
                             }                                    
                             else {
-                                NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj] ,Gujarati : req.body[OptNameObj[i].GJobj], Hindi : req.body[OptNameObj[i].HIobj] });                                  
+                                NewOptions.push({_id: i , English : req.body[OptNameObj[i].ENobj] ,Gujarati : req.body[OptNameObj[i].GJobj], Hindi : req.body[OptNameObj[i].HIobj] , damageRisk : req.body[OptNameObj[i].DamageObj][0] });                                  
                             }
                         }
                     };                      
