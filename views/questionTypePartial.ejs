@@ -66,12 +66,11 @@
                     <input type="text" value="{{choice.Hindi}}" 
                     name="{{'EditoptHI_'+choice._id+'-'+thisQues+'*'}}<%=Q_id%>" placeholder="">
                 </div> 
-
+                
                 <div class="col-sm-3 form-group">                     
-                    <select name="{{'EditDamage_'+choice._id+'-'+thisQues+'*'}}<%=Q_id%>"  >
-                        <option value="Nothing">Nothing</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>                         
+                    <select name="{{'EditDamage_'+choice._id+'-'+thisQues+'*'}}<%=Q_id%>"  
+                            ng-model= "damageM" ng-options="x.value for x in Damagelist"
+                            ng-init="DamageFillOption('<%=qOptions%>')"  >             
                     </select>
                 </div> 
 

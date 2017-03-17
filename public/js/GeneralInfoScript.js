@@ -6,7 +6,7 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
 
     $scope.updateTime = Date.now();               
     
-     
+    $scope.Damagelist = [ { value: 'Nothing' }, { value: 'Yes' }, { value: 'No' } ];
      
     $scope.FormDestination = "AddNewQuestion";
 
@@ -35,6 +35,10 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
     $scope.FillChoices  = function(msg) {//filling choices        
        $scope.choices =  JSON.parse(msg) ;       
     };
+
+    $scope.DamageFillOption = function(msg) {
+        console.log(JSON.parse(msg));
+    }
 
     $scope.Add_New = function(){
         $scope.choices = [{_id: 0}, {_id: 1}];  // repush 2 default elements
