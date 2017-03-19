@@ -330,10 +330,10 @@ module.exports = {
 
 
                 // putting options in the object
-                if(Selected_qtType != '2' && (req.body.opt_EN.length != 'undefined' )) {
+                if(Selected_qtType != '2' && (req.body.opt_EN.length != 'undefined' )) { console.log(req.body.opt_Damage);
                     var optLength = req.body.opt_EN.length;  
                     for(var i=0;i<optLength; i++){ 
-                        optionObj.push( { _id : i , English : req.body.opt_EN[i] , Gujarati : req.body.opt_GJ[i] , Hindi : req.body.opt_HI[i]} );
+                        optionObj.push( { _id : i , English : req.body.opt_EN[i] , Gujarati : req.body.opt_GJ[i] , Hindi : req.body.opt_HI[i] ,  damageRisk :  req.body.opt_Damage[i] } );
                     };
                 };
 
