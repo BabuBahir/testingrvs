@@ -12,6 +12,8 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
 
     $scope.choices = [{_id: 0}, {_id: 1}];
 
+    $scope.interpretation = {};
+
     $scope.addNewChoice = function() {
         var newItemNo = $scope.choices.length;
         $scope.FormDestination = "UpdateQuestions/"+$scope.thisQues+"/"+($scope.choices.length+1);   // on edit change form destination         
@@ -36,8 +38,10 @@ angular.module('GeneralInfoApp',['angularFileUpload'])
        $scope.choices =  JSON.parse(msg) ;       
     };
 
-    $scope.DamageFillOption = function(msg) {
-        console.log(JSON.parse(msg));
+    $scope.DamageFillOption = function(msg , index , Qid) {                    
+        var optObj = (JSON.parse(msg));         
+        var modelStr = "DamageM" + Qid + index;
+        $scope.interpretation[index+1] = ($scope.Damagelist[optObj[index].damageRisk]);     
     }
 
     $scope.Add_New = function(){

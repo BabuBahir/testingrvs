@@ -69,8 +69,9 @@
                 
                 <div class="col-sm-3 form-group">                     
                     <select name="{{'EditDamage_'+choice._id+'-'+thisQues+'*'}}<%=Q_id%>"  
-                            ng-model= "damageM" ng-options="x.value for x in Damagelist"
-                            ng-init="DamageFillOption('<%=qOptions%>')"  >             
+                            ng-model= "interpretation[$index + 1]" 
+                            ng-options="x.value for x in Damagelist"
+                            ng-init="DamageFillOption('<%=qOptions%>' , $index , '<%=Q_id%>' )"  >             
                     </select>
                 </div> 
 

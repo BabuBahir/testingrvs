@@ -55,7 +55,9 @@
                 </div> 
 
                 <div class="col-sm-3 form-group">                     
-                    <select name="opt_Damage" ng-model="newDamgeM" ng-options="x.value for x in $parent.Damagelist" >             
+                    <select name="opt_Damage" ng-model="newDamgeM" 
+                            ng-options="x.value for x in $parent.Damagelist"
+                            ng-init="newDamgeM = $parent.Damagelist[0]" >             
                     </select>
                 </div> 
 
