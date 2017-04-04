@@ -3,6 +3,7 @@ var multipartMiddleware = multipart();
 var controller = require('./controller');
 var login = require('./login');
 var questionController = require('./questionController');
+var surveyController = require('./surveyController');
 var earthquake = require('./earthquake');
 var Soil = require('./soil');
 var Registersurveyer = require('../models/registersurveyer');
@@ -34,7 +35,9 @@ module.exports = function(app) {
     app.get('/soil', Soil.get);
     app.post('/soil_added', Soil.post);
     
- 
+    app.post('/SaveExpert' , surveyController.SaveExpert);
+
+
     app.get('/user_management',requireLogin,function(req,res){
         var moment = require('moment');
         Registersurveyer
@@ -90,7 +93,7 @@ module.exports = function(app) {
     });
 
 
-      app.get('/survey_details/:id?',function(req,res){
+      app.get('/survey_details/:id?',requireLogin,function(req,res){
         var sId = req.params.id;
         // console.log(dataId)
           Survey

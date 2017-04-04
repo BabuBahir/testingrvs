@@ -60,11 +60,10 @@
               </thead>
               <% surveyData.forEach(function (survey) { %>
               <tbody class="tbody-data" data-survey-status='<%= survey.status %>'>
-                 
                   <tr>
                     <td>
                         <p data-html="true" data-toggle="tooltip" data-placement="bottom" title="Building ID: <%= survey.buildingId%> <br/> Survey ID: <%= survey.surveyID%>">
-                        <img src="<%= survey.buildingProfileImg.imgUrl %>" width="50" />
+                        <img src="<%= survey.buildingProfileImg[0].imgUrl %>" width="50" />
                         </p>
                     </td>
                     <td>
@@ -86,14 +85,10 @@
                       </p>
                     </td>
                     <td>
-                        <%= survey.typeOfAssessment %>
+                        <%= survey.AssesmentStd %>
                     </td>
                     <td> 
-                    <% buildingType.forEach(function (building) { %>
-                        <% if(building._id  === survey.buildingTypeId ) { %>
-                          <%= building.name.English %>
-                        <% } %>
-                      <% }) %>
+                       <%= survey.building_type %>
                     </td>
                     <td><%= moment(survey.dateTime).format('DD/MM/YYYY') %></td>
                     <td class="text-success sur-status"><b><%= survey.status %></b></td>

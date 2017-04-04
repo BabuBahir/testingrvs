@@ -61,7 +61,7 @@ var SurveySchema = new Schema({
     SoilGrade  : String,
     aadharCardNo: String 
   },
-  ExpertComment: String
+  ExpertComment: { type: String, default: "" }
 
   
 });
