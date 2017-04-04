@@ -91,31 +91,23 @@ module.exports = function(app) {
 
 
       app.get('/survey_details/:id?',function(req,res){
-        var dataId = req.params.id
+        var sId = req.params.id;
         // console.log(dataId)
-        Registersurveyer
-        .find()
-        .exec()
-        .then(function (user) {
-            registerUser = user;
-            // console.log(user)
-            return Survey
-            .findOne({_id: dataId})
+          Survey
+            .findOne({_id: sId})
             .exec()
-        })       
-        .then(function(surveyResult){
-            // console.log(surveyResult)
-             res.render("survey_details_view", {
-            surveyData: surveyResult,
-            allRegister: registerUser
-
-          })
-        })
-        .catch(function (err) {
-          console.log(err);
-          return res.json({error: true, reason: err});
-        })
-        // console.log(dataId)
+            .then(function (all) {          
+                res.render("report_Format", { 
+                  FUllName :req.session.name,
+                  survey: all,
+                  membership: req.session.membershiptype
+                })
+               
+            })
+            .catch(function (err) {
+              // console.log(err);
+              return res.json({error: true, reason: err});
+            })
         
     });
 

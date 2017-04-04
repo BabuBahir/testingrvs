@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Report Format</title>
+         <% include ./partials/head %>
+    </head>
+ 
+    <body>
+       <!-- nav bar starts here -->
+         <% include ./partials/header %>
+      <!-- nav bar ends here -->
+       
+       <div class="container-fluid new-surveyor-form_bg-img">
+        
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <br/>
+                <h3 class="select-building-type">  
+                    <span style="background-color: #73b6d2; border : 4px solid #73b6d2; border-radius: 20px; color: #fff;"> Rapid Visual Screening Of Buildings For Potential Seismic Hazards
+                    </span> 
+                 </h3>
+
+               Date Of Survey : <input type="text" disabled value="<%=survey.dateTime%>" size="40" name="">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+               MemberShip Type:  <input type="text" disabled value="<%=membership%>" name="">
+        
+                <br/> 
+
+               Report ID: <input type="text" disabled value="<%=survey.buildingId%>" size="45" name="">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+               Survey ID:  <input type="text" disabled value="<%=survey.surveyID%>" name="">
+
+
+                <div class="row" style="margin:0; padding-top:25px; padding-bottom:10px; background:#f5f5f5;">
+                 
+                 <!-- img column start -->
+                    <div class="col-sm-6">                         
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="profile-img-wrap">
+                                    <img src="
+                                    <% if(survey.buildingProfileImg[0] !== undefined ) { %>
+                                    <%= survey.buildingProfileImg[0].imgUrl %>
+                                    <% } %>" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="padding-right:0">
+                                                      
+                                <div class="elevation-img-wrap">
+                                    <img src="
+                                     <% if(survey.buildingSketchImgs[0] !== undefined) { %>
+                                    <%= survey.buildingSketchImgs[0].imgUrl %>
+                                    <% } %>
+                                    " class="img-responsive">
+                                </div>
+                                <div class="isometric-img-wrap">
+                                    <img src="
+                                     <% if(survey.buildingDamageImgs[0] !== undefined) { %>
+                                    <%= survey.buildingDamageImgs[0].imgUrl %>
+                                    <% } %>
+                                    " class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-sm-6" style="padding-left:0">
+                                 <div class="side-view-img-wrap">
+                                    <img src="
+                                    <% if(survey.buildingSketchImgs[1] !== undefined) { %>
+                                    <%= survey.buildingSketchImgs[1].imgUrl %>
+                                    <% } %>
+                                    " class="img-responsive">
+                                </div>
+                                 <div class="plan-img-wrap">
+                                    <img src="
+                                    <% if(survey.buildingDamageImgs[1] !== undefined) { %>
+                                    <%= survey.buildingDamageImgs[1].imgUrl %>
+                                    <% } %>
+                                    " class="img-responsive">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div> <!-- col-sm-6 -->
+                    
+                  <!-- img column end -->
+                  
+                  <!-- question/answer column start -->
+                    
+                    <div class="col-sm-6">
+                       
+                      <div class="general-info-wrap">
+                          
+                        <h4 class="section-heading">
+                          <span style="background-color: #6bb36b; border : 4px solid ; border-radius: 20px; color: #fff;"> 
+                            <b> General Information  </b>
+                          </span>
+                        </h4>
+          <% for(var i = 0; i < survey.generalInfoQuestions.length ; i ++) { %>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>" class="question-block">Q) 
+                                        <%=survey.generalInfoQuestions[i].QuestionText %>
+                                            
+                                        </a>
+                                    </h4> 
+                                </div>  <!-- panel-heading-->
+                                <div id="collapse<%=i%>" class="panel-collapse collapse in">
+                                    <div class="panel-body answer-block">
+                                       <%=survey.generalInfoQuestions[i].answer %>
+                                    </div>
+                                </div> <!-- id="collapse1" -->
+                            </div> <!-- panel-default -->
+                            
+                        </div> <!-- id="accordion" -->
+                <% } %>  
+ 
+                      </div> <!-- general-info-wrap -->
+                        
+                      <div class="technical-info-wrap">
+                        
+                        <h4 class="section-heading">
+                          <span style="background-color: #6bb36b; border : 4px solid ; border-radius: 20px; color: #fff;"> 
+                                <b> General Structural Audit -</b>
+                          </span>
+                        </h4>
+            <% for(var i = 0; i < survey.technicalInfoQuestions.length ; i ++) { %>
+                        <div class="panel-group" id="accordion-2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion-2" href="#collapse-one<%=i%>" class="question-block">Q) 
+                                        <%=survey.technicalInfoQuestions[i].QuestionText %>
+                                            
+                                        </a>
+                                    </h4> 
+                                </div>  <!-- panel-heading-->
+                                <div id="collapse-one<%=i%>" class="panel-collapse collapse in">
+                                    <div class="panel-body answer-block">
+                                         <%=survey.technicalInfoQuestions[i].answer %>
+                                    </div>
+                                </div> <!-- id="collapse-one" -->
+                            </div> <!-- panel-default -->
+                        </div> <!-- id="accordion-2" -->
+                   <% } %>     
+                      </div>  <!--  technical-info-wrap -->
+                    
+                    </div> <!-- col-sm-6 -->
+                  <!-- question/answer column end -->
+                    
+                 <div class="col-sm-12">
+                     
+                    
+                     
+                    <br/>
+                    
+                    
+                  <div class="seismic-assessment-wrap">
+                    
+                   <h4 class="section-heading">
+                          <span <span style="background-color: #6bb36b; border : 4px solid ; border-radius: 20px; color: #fff;"> 
+                                    <b>Seismic Evaluation Audit</b>
+                          </span>
+                   </h4>
+               <% for(var i = 0; i < survey.seismicAssessmentQuestions.length ; i ++) { %>
+                    <div class="panel-group" id="accordion-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion-3" href="#collapse-four<%=i%>" class="question-block">Q) 
+                                               <%=survey.seismicAssessmentQuestions[i].QuestionText %>
+                                    </a>
+                                </h4> 
+                            </div>  <!-- panel-heading-->
+                            <div id="collapse-four<%=i%>" class="panel-collapse collapse in">
+                                <div class="panel-body answer-block"> 
+                                             <%=survey.seismicAssessmentQuestions[i].answer %>
+                                </div>
+                            </div> <!-- id="collapse-one" -->
+                        </div> <!-- panel-default -->
+
+                    </div> <!-- id="accordion-3" -->
+                <% } %>        
+                  </div> <!-- seismic-assessment-wrap  -->
+                    
+                  </div> <!-- col-sm-12 -->
+          
+                </div> <!-- row -->
+            
+            </div> <!-- col-sm-12 -->
+        
+        </div> <!--  sign-up-bg_img -->
+      
+      <!-- footer  -->
+          <% include ./partials/footer %>
+      <!-- footer  -->  
+      
+        <script src="js/bootstrap.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                $('#btn').click(function() {                     
+                    $.ajax({
+                        type: "POST",
+                        url: "/MoveToSupport",                         
+                        data : {'PageToSupport': 'report'},                         
+                        success: function(result) {
+                              location.href= "/support";
+                            }
+
+                        });
+                    });
+                })             
+            </script>
+    </body>
+</html>

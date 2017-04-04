@@ -101,6 +101,7 @@ module.exports = {
             var NewOptions = []; // to get all new options 
             var buildingObj = [];
 
+            console.log(req.body);
             // checking building type(s)  
          if( typeof (req.body["CB_Masonary_edit"]) !== 'undefined') { 
             if (((req.body["CB_Masonary_edit"]) == 'on') || ((req.body["CB_Masonary_edit"][0]) == 'on'))
@@ -124,8 +125,7 @@ module.exports = {
         };      
  
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
-            question.find({ _id: Uid}, function(err, data) {   
+            question.find({ _id: Uid}, function(err, data) {    
                     var optCount = data[0].question.options.length; 
                     for (var i=0 ; i < TotalCount ; i ++) {
                         var ENobj = "Editopt"+'EN_'+i+'-'+Qindex+'*'+Uid;
